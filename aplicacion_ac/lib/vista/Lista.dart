@@ -3,8 +3,10 @@ class Lista {
   late String _nombre;
   late String _descripcion;
 
+
   
   
+  // Rename this constructor to use the class name as its identifier
 
   Lista( String nom, String des){
 
