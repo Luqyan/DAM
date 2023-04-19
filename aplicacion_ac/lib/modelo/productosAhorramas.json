@@ -1,0 +1,2390 @@
+{
+    "Producto 1": {
+        "Producto": "Aceite de oliva virgen extra Maestros de Hojiblanca garrafa 3l",
+        "Precio": "19,47€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-virgen-extra-maestros-de-hojiblanca-garrafa-3l-56752.html",
+        "Características": {
+            "Marca": "HOJIBLANCA",
+            "Peso Neto": "2,74 KG"
+        }
+    },
+    "Producto 2": {
+        "Producto": "Donuts pack 2 nocilla",
+        "Precio": "1,99€",
+        "Categoria": "Berlinas de chocolate y glaseadas",
+        "Imagen": "https://www.ahorramas.com/donuts-pack-2-nocilla-59978.html",
+        "Características": {
+            "Marca": "DONUTS",
+            "Peso Neto": "0,14 KG"
+        }
+    },
+    "Producto 3": {
+        "Producto": "Aceite de oliva Abril 2l suave",
+        "Precio": "9,98€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-abril-2l-suave-25105.html",
+        "Características": {
+            "Marca": "ABRIL",
+            "Peso Neto": "2,00 KG"
+        }
+    },
+    "Producto 4": {
+        "Producto": "Aceite de oliva Carbonell garrafa 3l 0,4º",
+        "Precio": "17,49€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-carbonell-garrafa-3l-04-77029.html",
+        "Características": {
+            "Marca": "CARBONELL",
+            "Peso Neto": "2,75 KG"
+        }
+    },
+    "Producto 5": {
+        "Producto": "Pan de molde sin corteza Bimbo 450g",
+        "Precio": "2,49€",
+        "Categoria": "Pan de molde",
+        "Imagen": "https://www.ahorramas.com/pan-de-molde-sin-corteza-bimbo-450g-54398.html",
+        "Características": {
+            "Marca": "BIMBO"
+        }
+    },
+    "Producto 6": {
+        "Producto": "Caldo casero Gallina Blanca 1l pollo 100% natural",
+        "Precio": "2,20€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-gallina-blanca-1l-pollo-100-natural-29420.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 7": {
+        "Producto": "Bonito Alipende 73g en aceite oliva",
+        "Precio": "1,59€",
+        "Categoria": "Bonito y Ventresca",
+        "Imagen": "https://www.ahorramas.com/bonito-alipende-73g-en-aceite-oliva-75839.html",
+        "Características": {
+            "Marca": "ALIPENDE",
+            "Peso Neto": "0,07 KG"
+        }
+    },
+    "Producto 8": {
+        "Producto": "Café molido Marcilla 500g natural",
+        "Precio": "5,99€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-molido-marcilla-500g-natural-55646.html",
+        "Características": {
+            "Marca": "MARCILLA",
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 9": {
+        "Producto": "Donuts pack 4 glacé",
+        "Precio": "2,39€",
+        "Categoria": "Berlinas de chocolate y glaseadas",
+        "Imagen": "https://www.ahorramas.com/donuts-pack-4-glace-2951.html",
+        "Características": {
+            "Marca": "DONUTS"
+        }
+    },
+    "Producto 10": {
+        "Producto": "Pan de molde artesano Bimbo 550g",
+        "Precio": "2,69€",
+        "Categoria": "Pan de molde",
+        "Imagen": "https://www.ahorramas.com/pan-de-molde-artesano-bimbo-550g-41956.html",
+        "Características": {
+            "Marca": "BIMBO",
+            "Peso Neto": "0,55 KG"
+        }
+    },
+    "Producto 11": {
+        "Producto": "Hogaza de pan The Rustik Bakery 450g",
+        "Precio": "2,49€",
+        "Categoria": "Pan de molde",
+        "Imagen": "https://www.ahorramas.com/hogaza-de-pan-the-rustik-bakery-450g-48388.html",
+        "Características": {
+            "Marca": "THE RUSTIK BAKERY",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 12": {
+        "Producto": "Ketchup Heinz 700g",
+        "Precio": "3,49€",
+        "Categoria": "Ketchup",
+        "Imagen": "https://www.ahorramas.com/ketchup-heinz-700g-19179.html",
+        "Características": {
+            "Marca": "HEINZ",
+            "Peso Neto": "0,70 KG"
+        }
+    },
+    "Producto 13": {
+        "Producto": "Garbanzo cocido Luengo 400g",
+        "Precio": "1,10€",
+        "Categoria": "Legumbres",
+        "Imagen": "https://www.ahorramas.com/garbanzo-cocido-luengo-400g-44569.html",
+        "Características": {
+            "Marca": "LUENGO",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 14": {
+        "Producto": "Tomate frito sin gluten abre fácil Orlando 780g",
+        "Precio": "1,59€",
+        "Categoria": "Tomate frito",
+        "Imagen": "https://www.ahorramas.com/tomate-frito-sin-gluten-abre-facil-orlando-780g-40038.html",
+        "Características": {
+            "Marca": "ORLANDO",
+            "Peso Neto": "0,80 KG"
+        }
+    },
+    "Producto 15": {
+        "Producto": "Bonito Consorcio 260g en aceite oliva",
+        "Precio": "7,49€",
+        "Categoria": "Bonito y Ventresca",
+        "Imagen": "https://www.ahorramas.com/bonito-consorcio-260g-en-aceite-oliva-84393.html",
+        "Características": {
+            "Marca": "CONSORCIO",
+            "Peso Neto": "0,26 KG"
+        }
+    },
+    "Producto 16": {
+        "Producto": "Patatas fritas lays 170g gourmet",
+        "Precio": "2,79€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/patatas-fritas-lays-170g-gourmet-76305.html",
+        "Características": {
+            "Marca": "LAY'S",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 17": {
+        "Producto": "Hélices Gallo 450g con vegetales",
+        "Precio": "1,71€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/helices-gallo-450g-con-vegetales-74099.html",
+        "Características": {
+            "Marca": "GALLO",
+            "Peso Neto": "0,45 KG"
+        }
+    },
+    "Producto 18": {
+        "Producto": "Galleta de barquillo choco wafer cubierto de Milka 180g",
+        "Precio": "2,80€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-de-barquillo-choco-wafer-cubierto-de-milka-180g-6864.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,18 KG"
+        }
+    },
+    "Producto 19": {
+        "Producto": "Caldo casero paella fácil con marisco Gallina Blanca 1l",
+        "Precio": "3,30€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-paella-facil-con-marisco-gallina-blanca-1l-3495.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 20": {
+        "Producto": "Caldo natural pollo y verduras sin gluten Aneto 1l",
+        "Precio": "3,95€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-natural-pollo-y-verduras-sin-gluten-aneto-1l-74934.html",
+        "Características": {
+            "Marca": "ANETO",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 21": {
+        "Producto": "Fabada asturiana con selectos embutidos Litoral 435g",
+        "Precio": "2,50€",
+        "Categoria": "Legumbres",
+        "Imagen": "https://www.ahorramas.com/fabada-asturiana-con-selectos-embutidos-litoral-435g-476.html",
+        "Características": {
+            "Marca": "LITORAL",
+            "Peso Neto": "0,42 KG"
+        }
+    },
+    "Producto 22": {
+        "Producto": "Aceite oliva virgen extra Carbonell 750ml",
+        "Precio": "6,49€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-oliva-virgen-extra-carbonell-750ml-70684.html",
+        "Características": {
+            "Marca": "CARBONELL",
+            "Peso Neto": "0,75 KG"
+        }
+    },
+    "Producto 23": {
+        "Producto": "Aceite de girasol Koipe 1l",
+        "Precio": "1,99€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-girasol-koipe-1l-38478.html",
+        "Características": {
+            "Marca": "KOIPESOL",
+            "Peso Neto": "0,97 KG"
+        }
+    },
+    "Producto 24": {
+        "Producto": "Barra horno super 250g",
+        "Precio": "0,48€",
+        "Categoria": "Pan de horno",
+        "Imagen": "https://www.ahorramas.com/barra-horno-super-250g-60527.html",
+        "Características": {
+            "Peso Neto": "0,26 KG"
+        }
+    },
+    "Producto 25": {
+        "Producto": "Tortillas de trigo Old El Paso 8 unidades mejicana",
+        "Precio": "2,15€",
+        "Categoria": "Pan hamburguesa, Tortillas wrap y Pan de perritos",
+        "Imagen": "https://www.ahorramas.com/tortillas-de-trigo-old-el-paso-8-unidades-mejicana-20912.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,33 KG"
+        }
+    },
+    "Producto 26": {
+        "Producto": "Bizcochito Milka 150g brownie de chocolate",
+        "Precio": "2,80€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/bizcochito-milka-150g-brownie-de-chocolate-32750.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 27": {
+        "Producto": "Empanada 500g pollo y setas",
+        "Precio": "3,15€",
+        "Categoria": "Empanadas",
+        "Imagen": "https://www.ahorramas.com/empanada-500g-pollo-y-setas-19639.html",
+        "Características": {
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 28": {
+        "Producto": "Snack de maíz cheetos 130g pelotazos",
+        "Precio": "1,79€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/snack-de-maiz-cheetos-130g-pelotazos-72316.html",
+        "Características": {
+            "Marca": "CHEETOS",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 29": {
+        "Producto": "Patatas fritas Alipende 150g aceite oliva",
+        "Precio": "1,15€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/patatas-fritas-alipende-150g-aceite-oliva-71044.html",
+        "Características": {
+            "Marca": "ALIPENDE",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 30": {
+        "Producto": "Empanada de atún 500g",
+        "Precio": "3,15€",
+        "Categoria": "Empanadas",
+        "Imagen": "https://www.ahorramas.com/empanada-de-atun-500g-69379.html",
+        "Características": {
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 31": {
+        "Producto": "Gazpacho Alvalle 1l",
+        "Precio": "3,39€",
+        "Categoria": "Gazpacho y salmorejo",
+        "Imagen": "https://www.ahorramas.com/gazpacho-alvalle-1l-59554.html",
+        "Características": {
+            "Marca": "ALVALLE",
+            "Peso Neto": "1,04 KG",
+            "Volumen": "1,00 LITRO"
+        }
+    },
+    "Producto 32": {
+        "Producto": "Café soluble natural con magnesio Nescafé 200g",
+        "Precio": "5,50€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-soluble-natural-con-magnesio-nescafe-200g-46209.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 33": {
+        "Producto": "Aceite de oliva Carbonell 1l virgen extra",
+        "Precio": "6,79€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-carbonell-1l-virgen-extra-68940.html",
+        "Características": {
+            "Marca": "CARBONELL",
+            "Peso Neto": "0,92 KG"
+        }
+    },
+    "Producto 34": {
+        "Producto": "Atún Albo pack 3 en aceite oliva virgen extra",
+        "Precio": "4,99€",
+        "Categoria": "Atún",
+        "Imagen": "https://www.ahorramas.com/atun-albo-pack-3-en-aceite-oliva-virgen-extra-44539.html",
+        "Características": {
+            "Marca": "ALBO",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 35": {
+        "Producto": "Tomate triturado natural categoria extra Apis 400g",
+        "Precio": "1,00€",
+        "Categoria": "Tomate",
+        "Imagen": "https://www.ahorramas.com/tomate-triturado-natural-categoria-extra-apis-400g-61921.html",
+        "Características": {
+            "Marca": "APIS",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 36": {
+        "Producto": "Café espresso sontuoso intensidad 8 L'Or 10 cápsulas",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-espresso-sontuoso-intensidad-8-lor-10-capsulas-47415.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 37": {
+        "Producto": "Galleta Oreo 160g mini",
+        "Precio": "1,90€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-oreo-160g-mini-80197.html",
+        "Características": {
+            "Marca": "OREO",
+            "Peso Neto": "0,16 KG"
+        }
+    },
+    "Producto 38": {
+        "Producto": "Café espresso onyx intensidad 12 L'Or 10 cápsulas",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe--espresso-onyx-intensidad-12-lor-10-capsulas-47438.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 39": {
+        "Producto": "Aceite de oliva Carbonell botella 1l sabor",
+        "Precio": "5,99€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-carbonell-botella-1l-sabor-53989.html",
+        "Características": {
+            "Marca": "CARBONELL",
+            "Peso Neto": "0,96 KG",
+            "Volumen": "1,00 LITRO"
+        }
+    },
+    "Producto 40": {
+        "Producto": "Fabada asturiana receta selecta Litoral 420g",
+        "Precio": "3,95€",
+        "Categoria": "Legumbres",
+        "Imagen": "https://www.ahorramas.com/fabada-asturiana-receta-selecta-litoral-420g-67001.html",
+        "Características": {
+            "Marca": "LITORAL",
+            "Peso Neto": "0,42 KG"
+        }
+    },
+    "Producto 41": {
+        "Producto": "Snack de patata Pringles 165g sour cream&onion",
+        "Precio": "1,90€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/snack-de-patata-pringles-165g-sour-creamonion-45500.html",
+        "Características": {
+            "Marca": "PRINGLES",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 42": {
+        "Producto": "Galleta Chips Ahoy 160g mini",
+        "Precio": "1,95€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-chips-ahoy-160g-mini-54567.html",
+        "Características": {
+            "Marca": "CHIPS AHOY",
+            "Peso Neto": "0,16 KG"
+        }
+    },
+    "Producto 43": {
+        "Producto": "Tortilla de patata con cebolla sin gluten Palacios 650g",
+        "Precio": "4,45€",
+        "Categoria": "Tortillas de patata, bravas y croquetas",
+        "Imagen": "https://www.ahorramas.com/tortilla-de-patata-con-cebolla-sin-gluten-palacios-650g-65546.html",
+        "Características": {
+            "Marca": "PALACIOS",
+            "Peso Neto": "0,65 KG"
+        }
+    },
+    "Producto 44": {
+        "Producto": "Sazonador Old El Paso 30g fajitas",
+        "Precio": "1,19€",
+        "Categoria": "Especias",
+        "Imagen": "https://www.ahorramas.com/sazonador-old-el-paso-30g-fajitas-20918.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 45": {
+        "Producto": "Galletas sin azúcar añadido Chiquilín 525g",
+        "Precio": "3,50€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galletas-sin-azucar-anadido-chiquilin-525g-58383.html",
+        "Características": {
+            "Marca": "CHIQUILIN",
+            "Peso Neto": "0,53 KG"
+        }
+    },
+    "Producto 46": {
+        "Producto": "Calamar Albo 72g en su tinta",
+        "Precio": "2,49€",
+        "Categoria": "Otras conservas de pescado",
+        "Imagen": "https://www.ahorramas.com/calamar-albo-72g-en-su-tinta-82772.html",
+        "Características": {
+            "Marca": "ALBO",
+            "Peso Neto": "0,07 KG"
+        }
+    },
+    "Producto 47": {
+        "Producto": "Aceite de oliva virgen extra Maestros de Hojiblanca 1l",
+        "Precio": "6,95€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-virgen-extra-maestros-de-hojiblanca-1l-49443.html",
+        "Características": {
+            "Marca": "HOJIBLANCA",
+            "Peso Neto": "0,92 KG"
+        }
+    },
+    "Producto 48": {
+        "Producto": "Empanada carbonara pollo 1unidad",
+        "Precio": "3,15€",
+        "Categoria": "Empanadas",
+        "Imagen": "https://www.ahorramas.com/empanada-carbonara-pollo-1unidad-31209.html",
+        "Características": {
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 49": {
+        "Producto": "Mermelada melocotones extra de temporada Hero 350g",
+        "Precio": "2,99€",
+        "Categoria": "Mermelada",
+        "Imagen": "https://www.ahorramas.com/mermelada-melocotones-extra-de-temporada-hero-350g-16786.html",
+        "Características": {
+            "Marca": "HERO",
+            "Peso Neto": "0,35 KG"
+        }
+    },
+    "Producto 50": {
+        "Producto": "Galleta de chocolate Tostarica Cuétara 210g",
+        "Precio": "2,00€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-de-chocolate-tostarica-cuetara-210g-64238.html",
+        "Características": {
+            "Marca": "TOSTARICA",
+            "Peso Neto": "0,21 KG"
+        }
+    },
+    "Producto 51": {
+        "Producto": "Galleta sin azúcar añadido zero Gullón 400g digestive",
+        "Precio": "1,60€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-sin-azucar-anadido-zero-gullon-400g-digestive-76258.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 52": {
+        "Producto": "Salsa fina Ligeresa 430ml nature",
+        "Precio": "2,39€",
+        "Categoria": "Mayonesa",
+        "Imagen": "https://www.ahorramas.com/salsa-fina-ligeresa-430ml-nature-35120.html",
+        "Características": {
+            "Marca": "LIGERESA",
+            "Peso Neto": "0,43 KG"
+        }
+    },
+    "Producto 53": {
+        "Producto": "Aceite de oliva virgen Carbonell garrafa 3l",
+        "Precio": "18,75€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-virgen-carbonell--garrafa-3l--48233.html",
+        "Características": {
+            "Marca": "CARBONELL",
+            "Peso Neto": "2,75 KG"
+        }
+    },
+    "Producto 54": {
+        "Producto": "Caldo casero Gallina Blanca 1l cocido 100% natural",
+        "Precio": "2,20€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-gallina-blanca-1l-cocido-100-natural-29421.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 55": {
+        "Producto": "Galleta rellena Príncipe lu 160g mini",
+        "Precio": "1,95€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-rellena-principe-lu-160g-mini-82016.html",
+        "Características": {
+            "Marca": "PRINCIPE",
+            "Peso Neto": "0,16 KG"
+        }
+    },
+    "Producto 56": {
+        "Producto": "Patatas Ruffles jamón 275g",
+        "Precio": "2,50€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/patatas-ruffles-jamon-275g-46359.html",
+        "Características": {
+            "Marca": "RUFFLES",
+            "Peso Neto": "0,29 KG"
+        }
+    },
+    "Producto 57": {
+        "Producto": "Salsa Old El Paso 312g guacamole suave para dippear",
+        "Precio": "2,99€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/salsa-old-el-paso-312g-guacamole-suave-para-dippear-44335.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,32 KG"
+        }
+    },
+    "Producto 58": {
+        "Producto": "Hogaza candeal 310g",
+        "Precio": "1,45€",
+        "Categoria": "Pan de horno",
+        "Imagen": "https://www.ahorramas.com/hogaza-candeal-310g-34983.html",
+        "Características": {
+            "Peso Neto": "0,31 KG"
+        }
+    },
+    "Producto 59": {
+        "Producto": "Copos de avena integrales Alipende 1kg suaves",
+        "Precio": "1,75€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/copos-de-avena-integrales-alipende-1kg-suaves-74134.html",
+        "Características": {
+            "Marca": "ALIPENDE",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 60": {
+        "Producto": "Snack Maíz Lays 3D´s 36g",
+        "Precio": "0,99€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/snack-maiz-lays-3ds-36g-30160.html",
+        "Características": {
+            "Marca": "LAY'S",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 61": {
+        "Producto": "Barquillo relleno crema vainilla s/azúcar Gullón 180g",
+        "Precio": "1,60€",
+        "Categoria": "Barquillos",
+        "Imagen": "https://www.ahorramas.com/barquillo-relleno-crema-vainilla-s-azucar-gullon-180g-74275.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,18 KG"
+        }
+    },
+    "Producto 62": {
+        "Producto": "Hogaza pan The Rustik Bakery cereales masa madre 450g",
+        "Precio": "2,49€",
+        "Categoria": "Pan de molde",
+        "Imagen": "https://www.ahorramas.com/hogaza-pan-the-rustik-bakery-cereales-masa-madre-450g-48387.html",
+        "Características": {
+            "Marca": "THE RUSTIK BAKERY",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 63": {
+        "Producto": "Salsa fina Ligeresa 430ml bocabajo",
+        "Precio": "2,25€",
+        "Categoria": "Mayonesa",
+        "Imagen": "https://www.ahorramas.com/salsa-fina-ligeresa-430ml-bocabajo-71936.html",
+        "Características": {
+            "Marca": "LIGERESA",
+            "Peso Neto": "0,43 KG"
+        }
+    },
+    "Producto 64": {
+        "Producto": "Snack Doritos Tex-Mex 44g",
+        "Precio": "0,99€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/snack-doritos-tex-mex-44g-30303.html",
+        "Características": {
+            "Marca": "DORITOS",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 65": {
+        "Producto": "Snack de patata cheetos 75g pandilla",
+        "Precio": "1,79€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/snack-de-patata-cheetos-75g-pandilla-72318.html",
+        "Características": {
+            "Marca": "CHEETOS",
+            "Peso Neto": "0,07 KG"
+        }
+    },
+    "Producto 66": {
+        "Producto": "Bizcochito Milka Cake Choc crema pepitas chocolate 175g",
+        "Precio": "2,80€",
+        "Categoria": "Bizcochos y tartas",
+        "Imagen": "https://www.ahorramas.com/bizcochito-milka-cake-choc-crema-pepitas-chocolate-175g-4998.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 67": {
+        "Producto": "Tortitas maíz setas trufa y queso Bicentury 124g",
+        "Precio": "2,19€",
+        "Categoria": "",
+        "Imagen": "https://www.ahorramas.com/tortitas-maiz-setas-trufa-y-queso-bicentury-124g-15452.html",
+        "Características": {
+            "Marca": "BICENTURY",
+            "Peso Neto": "0,12 KG"
+        }
+    },
+    "Producto 68": {
+        "Producto": "Caldo natural Aneto 1l cocido madrileño 100% natural",
+        "Precio": "3,49€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-natural-aneto-1l-cocido-madrileno-100-natural-81156.html",
+        "Características": {
+            "Marca": "ANETO",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 69": {
+        "Producto": "Chocolate con leche, bizcocho y galleta Milka 300g",
+        "Precio": "2,95€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-con-leche-bizcocho-y-galleta-milka-300g-71995.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 70": {
+        "Producto": "Snack de patata Pringles 165g original",
+        "Precio": "1,90€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/snack-de-patata-pringles-165g-original-47052.html",
+        "Características": {
+            "Marca": "PRINGLES",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 71": {
+        "Producto": "Café molido Marcilla 500g mezcla",
+        "Precio": "5,99€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-molido-marcilla-500g-mezcla-17475.html",
+        "Características": {
+            "Marca": "MARCILLA",
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 72": {
+        "Producto": "Sofrito Gallina Blanca 350g con tomate y cebolla",
+        "Precio": "2,25€",
+        "Categoria": "Tomate",
+        "Imagen": "https://www.ahorramas.com/sofrito-gallina-blanca-350g-con-tomate-y-cebolla-78741.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "0,35 KG"
+        }
+    },
+    "Producto 73": {
+        "Producto": "Salsa Old El Paso 300g mejicana para dippear",
+        "Precio": "2,99€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/salsa-old-el-paso-300g-mejicana-para-dippear-44336.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,32 KG"
+        }
+    },
+    "Producto 74": {
+        "Producto": "Atún claro Ortiz 520g en escabeche",
+        "Precio": "12,75€",
+        "Categoria": "Atún",
+        "Imagen": "https://www.ahorramas.com/atun-claro-ortiz-520g-en-escabeche-81360.html",
+        "Características": {
+            "Marca": "ORTIZ",
+            "Peso Neto": "0,52 KG"
+        }
+    },
+    "Producto 75": {
+        "Producto": "Pan de molde Bimbo 375g grande",
+        "Precio": "1,35€",
+        "Categoria": "Pan de molde",
+        "Imagen": "https://www.ahorramas.com/pan-de-molde-bimbo-375g-grande-29705.html",
+        "Características": {
+            "Marca": "BIMBO",
+            "Peso Neto": "0,38 KG"
+        }
+    },
+    "Producto 76": {
+        "Producto": "Tila Pompadour 25u",
+        "Precio": "2,15€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/tila-pompadour-25u-142.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 77": {
+        "Producto": "Manzanilla Pompadour 25u con anís",
+        "Precio": "2,15€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/manzanilla-pompadour-25u-con-anis-2169.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 78": {
+        "Producto": "Tortilla de patata con cebolla caramelizada Palacios 600g",
+        "Precio": "4,45€",
+        "Categoria": "Tortillas de patata, bravas y croquetas",
+        "Imagen": "https://www.ahorramas.com/tortilla-de-patata-con-cebolla-caramelizada-palacios-600g-61061.html",
+        "Características": {
+            "Marca": "PALACIOS",
+            "Peso Neto": "0,60 KG"
+        }
+    },
+    "Producto 79": {
+        "Producto": "Aceite de oliva virgen extra Maestros de Hojiblanca ODA nº 5",
+        "Precio": "4,69€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-virgen-extra-maestros-de-hojiblanca-oda-n-5-53727.html",
+        "Características": {
+            "Marca": "HOJIBLANCA",
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 80": {
+        "Producto": "Galleta sin azúcar añadido zero Gullón 125g chips choco",
+        "Precio": "1,60€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-sin-azucar-anadido-zero-gullon-125g-chips-choco-60226.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 81": {
+        "Producto": "Pasta fresca ravioli relleno de calabaza Rana 250g",
+        "Precio": "3,05€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/pasta-fresca-ravioli-relleno-de-calabaza-rana-250g-17484.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 82": {
+        "Producto": "Chocolate con Oreo mmmax Milka 300g",
+        "Precio": "3,19€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-con-oreo-mmmax-milka-300g-37682.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 83": {
+        "Producto": "Galleta mini cacao sin lactosa sin huevo Gullón 250g",
+        "Precio": "1,45€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-mini-cacao-sin-lactosa-sin-huevo-gullon-250g-83242.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 84": {
+        "Producto": "Galleta sin azúcar añadido zero Gullón 170g fibra",
+        "Precio": "1,60€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-sin-azucar-anadido-zero-gullon-170g-fibra-60282.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 85": {
+        "Producto": "Fettuccine Gallo 450g a las espinacas",
+        "Precio": "1,86€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/fettuccine-gallo-450g-a-las-espinacas-42988.html",
+        "Características": {
+            "Marca": "GALLO",
+            "Peso Neto": "0,45 KG"
+        }
+    },
+    "Producto 86": {
+        "Producto": "Cereal de trigo inflado kellogg's 450g Smacks",
+        "Precio": "2,75€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereal-de-trigo-inflado-kelloggs-450g-smacks-11342.html",
+        "Características": {
+            "Marca": "SMACKS",
+            "Peso Neto": "0,45 KG"
+        }
+    },
+    "Producto 87": {
+        "Producto": "Barritas cereales chocolate Corny 6 unidades",
+        "Precio": "1,99€",
+        "Categoria": "Barritas de cereales",
+        "Imagen": "https://www.ahorramas.com/barritas-cereales-chocolate-corny-6-unidades-4664.html",
+        "Características": {
+            "Marca": "CORNY",
+            "Peso Neto": "0,12 KG"
+        }
+    },
+    "Producto 88": {
+        "Producto": "Pasta fresca tortellini gourmet 4 quesos Rana 250g",
+        "Precio": "2,59€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/pasta-fresca-tortellini-gourmet-4-quesos-rana-250g-37668.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 89": {
+        "Producto": "Tosta para canapé Recondo 110g redonda",
+        "Precio": "1,99€",
+        "Categoria": "Pan tostado y Biscotes",
+        "Imagen": "https://www.ahorramas.com/tosta-para-canape-recondo-110g-redonda-57438.html",
+        "Características": {
+            "Marca": "RECONDO",
+            "Peso Neto": "0,11 KG"
+        }
+    },
+    "Producto 90": {
+        "Producto": "Galleta Lotus 250g biscoff caramelised",
+        "Precio": "1,79€",
+        "Categoria": "",
+        "Imagen": "https://www.ahorramas.com/galleta-lotus-250g-biscoff-caramelised-83117.html",
+        "Características": {
+            "Marca": "LOTUS",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 91": {
+        "Producto": "Pasta fresca tortellini atún y tomate Rana 250g",
+        "Precio": "2,59€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/pasta-fresca-tortellini-atun-y-tomate-rana-250g-17480.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 92": {
+        "Producto": "Caldo casero Gallina Blanca 1l verduras 100% natural",
+        "Precio": "2,20€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-gallina-blanca-1l-verduras-100-natural-3496.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,01 KG"
+        }
+    },
+    "Producto 93": {
+        "Producto": "Tallarines deshidratados parmesana Gallina Blanca 143g",
+        "Precio": "2,49€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/tallarines-deshidratados-parmesana-gallina-blanca-143g-4859.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "0,14 KG"
+        }
+    },
+    "Producto 94": {
+        "Producto": "Café soluble descafeinado con magnesio Nescafé 200g",
+        "Precio": "5,50€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-soluble-descafeinado-con-magnesio-nescafe-200g-46210.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 95": {
+        "Producto": "Café espresso barista L'Or 10 cápsulas",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-espresso-barista-lor-10-capsulas-46129.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 96": {
+        "Producto": "Almejones Galica 63g natural",
+        "Precio": "1,15€",
+        "Categoria": "Otras conservas de pescado",
+        "Imagen": "https://www.ahorramas.com/almejones-galica-63g-natural-50089.html",
+        "Características": {
+            "Marca": "GALICA",
+            "Peso Neto": "0,06 KG"
+        }
+    },
+    "Producto 97": {
+        "Producto": "Galleta 0% sin azúcar añadido Cuétara 400g campurriana",
+        "Precio": "2,99€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-0-sin-azucar-anadido-cuetara-400g-campurriana-44538.html",
+        "Características": {
+            "Marca": "CAMPURRIANAS",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 98": {
+        "Producto": "Arroz largo Brillante pack 2 xl",
+        "Precio": "2,15€",
+        "Categoria": "Arroz Precocinado",
+        "Imagen": "https://www.ahorramas.com/arroz-largo-brillante-pack-2-xl-23414.html",
+        "Características": {
+            "Marca": "BRILLANTE",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 99": {
+        "Producto": "Snack Cheetos Pelotazos 40g",
+        "Precio": "0,99€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/snack-cheetos-pelotazos-40g-64096.html",
+        "Características": {
+            "Marca": "CHEETOS",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 100": {
+        "Producto": "Harina de maíz sin gluten Maizena 400g fina",
+        "Precio": "2,49€",
+        "Categoria": "Harina",
+        "Imagen": "https://www.ahorramas.com/harina-de-maiz-sin-gluten-maizena-400g-fina-158.html",
+        "Características": {
+            "Marca": "MAIZENA",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 101": {
+        "Producto": "Aceite de orujo 3 aceitunas Cexac 1l",
+        "Precio": "3,49€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-orujo-3-aceitunas-cexac-1l-61029.html",
+        "Características": {
+            "Marca": "CEXAC",
+            "Peso Neto": "0,92 KG"
+        }
+    },
+    "Producto 102": {
+        "Producto": "Galleta rellena chocolate sin azúcar zero Gullón 250g",
+        "Precio": "1,60€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-rellena-chocolate-sin-azucar-zero-gullon-250g-74277.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 103": {
+        "Producto": "Atún claro Albo pack3 aceite oliva",
+        "Precio": "4,99€",
+        "Categoria": "Atún",
+        "Imagen": "https://www.ahorramas.com/atun-claro-albo-pack3-aceite-oliva-13993.html",
+        "Características": {
+            "Marca": "ALBO",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 104": {
+        "Producto": "Avena cocida Brillante 125G p2",
+        "Precio": "1,35€",
+        "Categoria": "Especialidades, quinoa, chía y semillas",
+        "Imagen": "https://www.ahorramas.com/avena-cocida-brillante-125g-p2-32506.html",
+        "Características": {
+            "Marca": "BRILLANTE",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 105": {
+        "Producto": "Empanada gallega de carne 500g",
+        "Precio": "3,15€",
+        "Categoria": "Empanadas",
+        "Imagen": "https://www.ahorramas.com/empanada-gallega-de-carne-500g-13616.html",
+        "Características": {
+            "Marca": "LAMASTELLE",
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 106": {
+        "Producto": "Cacao puro en polvo sin azúcar añadido Valor 250g",
+        "Precio": "3,39€",
+        "Categoria": "Cacao",
+        "Imagen": "https://www.ahorramas.com/cacao-puro-en-polvo-sin-azucar-anadido-valor-250g-16857.html",
+        "Características": {
+            "Marca": "VALOR",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 107": {
+        "Producto": "Chocolate negro 70% de cacao s/gluten Valor 125g",
+        "Precio": "1,69€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-negro-70-de-cacao-s-gluten-valor-125g-38486.html",
+        "Características": {
+            "Marca": "VALOR",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 108": {
+        "Producto": "Boqueron Usisa 84g en aceite oliva",
+        "Precio": "1,79€",
+        "Categoria": "Otras conservas de pescado",
+        "Imagen": "https://www.ahorramas.com/boqueron-usisa-84g-en-aceite-oliva-73808.html",
+        "Características": {
+            "Marca": "USISA",
+            "Peso Neto": "0,08 KG"
+        }
+    },
+    "Producto 109": {
+        "Producto": "Cacao soluble Nesquik 0% 320g",
+        "Precio": "2,85€",
+        "Categoria": "Cacao",
+        "Imagen": "https://www.ahorramas.com/cacao-soluble-nesquik-0-320g-64998.html",
+        "Características": {
+            "Marca": "NESQUIK",
+            "Peso Neto": "0,32 KG"
+        }
+    },
+    "Producto 110": {
+        "Producto": "Aceite de oliva Abril 2l intenso",
+        "Precio": "9,98€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-abril-2l-intenso-25107.html",
+        "Características": {
+            "Marca": "ABRIL",
+            "Peso Neto": "2,00 KG"
+        }
+    },
+    "Producto 111": {
+        "Producto": "Tomate frito estilo casero Solís 350g P2",
+        "Precio": "1,99€",
+        "Categoria": "Tomate",
+        "Imagen": "https://www.ahorramas.com/tomate-frito-estilo-casero-solis-350g-p2-60404.html",
+        "Características": {
+            "Marca": "SOLIS",
+            "Peso Neto": "0,70 KG"
+        }
+    },
+    "Producto 112": {
+        "Producto": "Chocolate negro postres Nestlé 200g",
+        "Precio": "2,25€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-negro-postres-nestle-200g-45062.html",
+        "Características": {
+            "Marca": "NESTLE",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 113": {
+        "Producto": "Bombón láminas After Eight 200g",
+        "Precio": "2,79€",
+        "Categoria": "Bombones",
+        "Imagen": "https://www.ahorramas.com/bombon-laminas-after-eight-200g-67537.html",
+        "Características": {
+            "Marca": "AFTER EIGHT",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 114": {
+        "Producto": "Placas de lasaña El Pavo 18unid",
+        "Precio": "1,43€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/placas-de-lasana-el-pavo-18unid-46376.html",
+        "Características": {
+            "Marca": "EL PAVO",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 115": {
+        "Producto": "Cereales classic Special K 335g",
+        "Precio": "1,85€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereales-classic-special-k-335g-67395.html",
+        "Características": {
+            "Marca": "SPECIAL K",
+            "Peso Neto": "0,34 KG"
+        }
+    },
+    "Producto 116": {
+        "Producto": "Mermelada fresas extra de temporada Hero 350g",
+        "Precio": "2,99€",
+        "Categoria": "Mermelada",
+        "Imagen": "https://www.ahorramas.com/mermelada-fresas-extra-de-temporada-hero-350g-13959.html",
+        "Características": {
+            "Marca": "HERO",
+            "Peso Neto": "0,35 KG"
+        }
+    },
+    "Producto 117": {
+        "Producto": "Pastelito Pantera Rosa Bimbo 3 uds relleno de crema",
+        "Precio": "1,89€",
+        "Categoria": "Bizcochos y tartas",
+        "Imagen": "https://www.ahorramas.com/pastelito-pantera-rosa-bimbo-3-uds-relleno-de-crema-7625.html",
+        "Características": {
+            "Marca": "PANTERA ROSA",
+            "Peso Neto": "0,22 KG"
+        }
+    },
+    "Producto 118": {
+        "Producto": "Tagliatelle Gallo gourmet 250g al nero di sepia",
+        "Precio": "2,15€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/tagliatelle-gallo-gourmet-250g-al-nero-di-sepia-82554.html",
+        "Características": {
+            "Marca": "GALLO",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 119": {
+        "Producto": "Calamar Albo 72g en salsa americana",
+        "Precio": "2,49€",
+        "Categoria": "Otras conservas de pescado",
+        "Imagen": "https://www.ahorramas.com/calamar-albo-72g-en-salsa-americana-82773.html",
+        "Características": {
+            "Marca": "ALBO",
+            "Peso Neto": "0,07 KG"
+        }
+    },
+    "Producto 120": {
+        "Producto": "Baguette de horno 250g",
+        "Precio": "0,59€",
+        "Categoria": "Pan de horno",
+        "Imagen": "https://www.ahorramas.com/baguette-de-horno-250g-41201.html",
+        "Características": {
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 121": {
+        "Producto": "Café origen brazil lungo Nescafé 10 cápsulas",
+        "Precio": "3,69€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-origen-brazil-lungo-nescafe-10-capsulas-49820.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 122": {
+        "Producto": "Pan molde Bimbo sin lactosa natural 460g",
+        "Precio": "2,19€",
+        "Categoria": "Pan de molde",
+        "Imagen": "https://www.ahorramas.com/pan-molde-bimbo-sin-lactosa-natural-460g-38430.html",
+        "Características": {
+            "Marca": "BIMBO",
+            "Peso Neto": "0,55 KG"
+        }
+    },
+    "Producto 123": {
+        "Producto": "Alitas de pollo asadas BBQ Granja Gourmet 400g",
+        "Precio": "3,69€",
+        "Categoria": "Carne",
+        "Imagen": "https://www.ahorramas.com/alitas-de-pollo-asadas-bbq-granja-gourmet-400g-68490.html",
+        "Características": {
+            "Marca": "GRANJA GOURMET",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 124": {
+        "Producto": "Patatas fritas Ruffles jamón 45g",
+        "Precio": "0,99€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/patatas-fritas-ruffles-jamon-45g-64077.html",
+        "Características": {
+            "Marca": "RUFFLES",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 125": {
+        "Producto": "Té verde matcha Undercover 50g",
+        "Precio": "3,99€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/te-verde-matcha-undercover-50g-60355.html",
+        "Características": {
+            "Marca": "UNDERCOVER",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 126": {
+        "Producto": "Pote gallego Litoral 430g",
+        "Precio": "3,69€",
+        "Categoria": "Legumbres",
+        "Imagen": "https://www.ahorramas.com/pote-gallego-litoral-430g-61948.html",
+        "Características": {
+            "Marca": "LITORAL",
+            "Peso Neto": "0,43 KG"
+        }
+    },
+    "Producto 127": {
+        "Producto": "Snacks Cheetos Pandilla 31g",
+        "Precio": "0,99€",
+        "Categoria": "Snacks",
+        "Imagen": "https://www.ahorramas.com/snacks-cheetos-pandilla-31g-30189.html",
+        "Características": {
+            "Marca": "CHEETOS",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 128": {
+        "Producto": "Caldo casero Gallina Blanca 1l carne 100% natural",
+        "Precio": "2,20€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-gallina-blanca-1l-carne-100-natural-30430.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 129": {
+        "Producto": "Café molido Bonka 250g mezcla 50/50",
+        "Precio": "2,80€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-molido-bonka-250g-mezcla-50-50-54835.html",
+        "Características": {
+            "Marca": "BONKA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 130": {
+        "Producto": "Tagliatelle nido Garofalo 500g",
+        "Precio": "2,59€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/tagliatelle-nido-garofalo-500g-15960.html",
+        "Características": {
+            "Marca": "GAROFALO",
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 131": {
+        "Producto": "Tortilla Old El Paso pockets 8 unidades",
+        "Precio": "2,99€",
+        "Categoria": "Pan hamburguesa, Tortillas wrap y Pan de perritos",
+        "Imagen": "https://www.ahorramas.com/tortilla-old-el-paso-pockets-8-unidades-44451.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,22 KG"
+        }
+    },
+    "Producto 132": {
+        "Producto": "Café soluble Nescafé gold 250g capuccino",
+        "Precio": "3,45€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-soluble-nescafe-gold-250g-capuccino-80579.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 133": {
+        "Producto": "Pasta fresca tortellini jamon y queso Rana 250g jamon y qu",
+        "Precio": "2,59€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/pasta-fresca-tortellini-jamon-y-queso-rana-250g-jamon-y-qu-17482.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 134": {
+        "Producto": "Spaghettini Gallo 450g al huevo",
+        "Precio": "1,67€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/spaghettini-gallo-450g-al-huevo-57.html",
+        "Características": {
+            "Marca": "GALLO",
+            "Peso Neto": "0,45 KG"
+        }
+    },
+    "Producto 135": {
+        "Producto": "Cereales en copos de maíz tostados 450g Frosties",
+        "Precio": "2,75€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereales-en-copos-de-maiz-tostados-450g-frosties-11343.html",
+        "Características": {
+            "Marca": "FROSTIES",
+            "Peso Neto": "0,45 KG"
+        }
+    },
+    "Producto 136": {
+        "Producto": "Galleta cookies mini Milka 110g",
+        "Precio": "1,70€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-cookies-mini-milka-110g-61380.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,11 KG"
+        }
+    },
+    "Producto 137": {
+        "Producto": "Cereales con chocolate negro Special K 325g",
+        "Precio": "2,25€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereales-con-chocolate-negro-special-k-325g-67581.html",
+        "Características": {
+            "Marca": "SPECIAL K",
+            "Peso Neto": "0,33 KG"
+        }
+    },
+    "Producto 138": {
+        "Producto": "Té rojo Hornimans 20u con anés",
+        "Precio": "2,79€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/te-rojo-hornimans-20u-con-anes-31179.html",
+        "Características": {
+            "Marca": "HORNIMANS",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 139": {
+        "Producto": "Pasta fresca ravioli Rana 250g relleno de pollo asado",
+        "Precio": "2,59€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/pasta-fresca-ravioli-rana-250g-relleno-de-pollo-asado-48962.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 140": {
+        "Producto": "Chocolate blanco sin gluten Nestlé 180g postres",
+        "Precio": "2,25€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-blanco-sin-gluten-nestle-180g-postres-23792.html",
+        "Características": {
+            "Marca": "NESTLE",
+            "Peso Neto": "0,18 KG"
+        }
+    },
+    "Producto 141": {
+        "Producto": "Harina Gallo 1kg repostería",
+        "Precio": "1,63€",
+        "Categoria": "Harina",
+        "Imagen": "https://www.ahorramas.com/harina-gallo-1kg-reposteria-46251.html",
+        "Características": {
+            "Marca": "GALLO",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 142": {
+        "Producto": "Salsa fresca Rana 180g quesos italianos",
+        "Precio": "2,10€",
+        "Categoria": "Salsas",
+        "Imagen": "https://www.ahorramas.com/salsa-fresca-rana-180g-quesos-italianos-39882.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,18 KG"
+        }
+    },
+    "Producto 143": {
+        "Producto": "Cereales Cheerios 300g avena",
+        "Precio": "2,79€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereales-cheerios-300g-avena-53650.html",
+        "Características": {
+            "Marca": "CHEERIOS",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 144": {
+        "Producto": "Café capuccino nescafé Dolce Gusto 8 cápsulas",
+        "Precio": "4,89€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-capuccino-nescafe-dolce-gusto-8-capsulas-79643.html",
+        "Características": {
+            "Marca": "DOLCE GUSTO",
+            "Peso Neto": "0,19 KG"
+        }
+    },
+    "Producto 145": {
+        "Producto": "Bonito Alipende 73g en escabeche",
+        "Precio": "1,59€",
+        "Categoria": "Bonito y Ventresca",
+        "Imagen": "https://www.ahorramas.com/bonito-alipende-73g-en-escabeche-75840.html",
+        "Características": {
+            "Marca": "ALIPENDE",
+            "Peso Neto": "0,07 KG"
+        }
+    },
+    "Producto 146": {
+        "Producto": "Sazonador Old Paso 40g burritos",
+        "Precio": "1,19€",
+        "Categoria": "Especias",
+        "Imagen": "https://www.ahorramas.com/sazonador-old-paso-40g-burritos-44395.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 147": {
+        "Producto": "Patatas fritas Lay´s punto de sal 44g",
+        "Precio": "0,99€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/patatas-fritas-lays-punto-de-sal-44g-64014.html",
+        "Características": {
+            "Marca": "LAY'S",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 148": {
+        "Producto": "Melba cuadrada Recondo 100g",
+        "Precio": "1,99€",
+        "Categoria": "Pan tostado y Biscotes",
+        "Imagen": "https://www.ahorramas.com/melba-cuadrada-recondo-100g-57437.html",
+        "Características": {
+            "Marca": "RECONDO",
+            "Peso Neto": "0,10 KG"
+        }
+    },
+    "Producto 149": {
+        "Producto": "Infusión delgaxan fibra Pompadur 20 Uds",
+        "Precio": "2,75€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-delgaxan-fibra-pompadur-20-uds-47471.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 150": {
+        "Producto": "Infusión Pompadour 20u duerme bien plus",
+        "Precio": "2,75€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-pompadour-20u-duerme-bien-plus-77331.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 151": {
+        "Producto": "Galleta integral Gullón 560g active",
+        "Precio": "3,00€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-integral-gullon-560g-active-80555.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,84 KG"
+        }
+    },
+    "Producto 152": {
+        "Producto": "Infusión infudren con cola de caballo Hornimans 20u",
+        "Precio": "2,79€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-infudren-con-cola-de-caballo-hornimans-20u-14685.html",
+        "Características": {
+            "Marca": "HORNIMANS",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 153": {
+        "Producto": "Pastelito Bony Bimbo relleno crema y mermelada fresa 3 uds",
+        "Precio": "1,89€",
+        "Categoria": "Bollería Infantil",
+        "Imagen": "https://www.ahorramas.com/pastelito-bony-bimbo-relleno-crema-y-mermelada-fresa-3-uds-27863.html",
+        "Características": {
+            "Marca": "BONY",
+            "Peso Neto": "0,22 KG"
+        }
+    },
+    "Producto 154": {
+        "Producto": "Regaliz Migueláñez 165g discos rojos",
+        "Precio": "1,69€",
+        "Categoria": "Golosinas y regaliz",
+        "Imagen": "https://www.ahorramas.com/regaliz-miguelanez-165g-discos-rojos-34645.html",
+        "Características": {
+            "Marca": "MIGUELAÑEZ",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 155": {
+        "Producto": "Salsa Rana 140g pesto de albahaca",
+        "Precio": "2,10€",
+        "Categoria": "Salsas",
+        "Imagen": "https://www.ahorramas.com/salsa-rana-140g-pesto-de-albahaca-37396.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,14 KG"
+        }
+    },
+    "Producto 156": {
+        "Producto": "Pan de torrijas 350g",
+        "Precio": "0,80€",
+        "Categoria": "Pan de horno",
+        "Imagen": "https://www.ahorramas.com/pan-de-torrijas-350g-80056.html",
+        "Características": {
+            "Marca": "SIN MARCA",
+            "Peso Neto": "0,35 KG"
+        }
+    },
+    "Producto 157": {
+        "Producto": "Té silueta té matcha té verde guaraná Hornimans 20u",
+        "Precio": "2,79€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/te--silueta-te-matcha-te-verde-guarana-hornimans-20u-16535.html",
+        "Características": {
+            "Marca": "HORNIMANS",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 158": {
+        "Producto": "Chocolate blanco Nestlé Jungly 125g",
+        "Precio": "1,59€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-blanco-nestle-jungly-125g-62258.html",
+        "Características": {
+            "Marca": "NESTLE",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 159": {
+        "Producto": "Ketchup Orlando 300g barril",
+        "Precio": "1,25€",
+        "Categoria": "Ketchup",
+        "Imagen": "https://www.ahorramas.com/ketchup-orlando-300g-barril-33725.html",
+        "Características": {
+            "Marca": "ORLANDO",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 160": {
+        "Producto": "Caldo casero pescado con marisco Gallina Blanca 1l",
+        "Precio": "2,20€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-pescado-con-marisco-gallina-blanca-1l-29452.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 161": {
+        "Producto": "Cacao negro soluble Valor 250g 100%",
+        "Precio": "3,39€",
+        "Categoria": "Cacao",
+        "Imagen": "https://www.ahorramas.com/cacao-negro-soluble-valor-250g-100-54019.html",
+        "Características": {
+            "Marca": "VALOR",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 162": {
+        "Producto": "Multinfusión Pompadour 20u quema-grasa",
+        "Precio": "2,75€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/multinfusion-pompadour-20u-quema-grasa-47398.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 163": {
+        "Producto": "Torrijas fritas 3uds",
+        "Precio": "4,00€",
+        "Categoria": "Bollería de horno",
+        "Imagen": "https://www.ahorramas.com/torrijas-fritas-3uds-50215.html",
+        "Características": {
+            "Peso Neto": "0,42 KG"
+        }
+    },
+    "Producto 164": {
+        "Producto": "Pan tostado integral Recondo bajo en sal 30 rebanadas",
+        "Precio": "2,09€",
+        "Categoria": "Pan tostado y Biscotes",
+        "Imagen": "https://www.ahorramas.com/pan-tostado-integral-recondo-bajo-en-sal-30-rebanadas-57426.html",
+        "Características": {
+            "Marca": "RECONDO",
+            "Peso Neto": "0,27 KG"
+        }
+    },
+    "Producto 165": {
+        "Producto": "Arroz especial paellas Sos 1kg",
+        "Precio": "2,95€",
+        "Categoria": "Arroz",
+        "Imagen": "https://www.ahorramas.com/arroz-especial-paellas-sos-1kg-60250.html",
+        "Características": {
+            "Marca": "SOS",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 166": {
+        "Producto": "Caldo pescado-marisco Fumet Gallina Blanca 1L",
+        "Precio": "3,30€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-pescado-marisco-fumet-gallina-blanca-1l-62341.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,01 KG"
+        }
+    },
+    "Producto 167": {
+        "Producto": "Macarrones al huevo Gallo 450g",
+        "Precio": "1,67€",
+        "Categoria": "Pasta",
+        "Imagen": "https://www.ahorramas.com/macarrones-al-huevo-gallo-450g-58.html",
+        "Características": {
+            "Marca": "GALLO",
+            "Peso Neto": "0,45 KG"
+        }
+    },
+    "Producto 168": {
+        "Producto": "Barritas de cereales Nesquik nestlé 6u con chocolate",
+        "Precio": "2,99€",
+        "Categoria": "Barritas de cereales",
+        "Imagen": "https://www.ahorramas.com/barritas-de-cereales-nesquik-nestle-6u-con-chocolate-57390.html",
+        "Características": {
+            "Marca": "NESQUIK",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 169": {
+        "Producto": "Caldo natural cocido El Pavo 1l",
+        "Precio": "3,49€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-natural-cocido-el-pavo-1l-40434.html",
+        "Características": {
+            "Marca": "EL PAVO",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 170": {
+        "Producto": "Barritas de chocolate con leche Kinder 8u",
+        "Precio": "1,29€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/barritas-de-chocolate-con-leche-kinder-8u-17408.html",
+        "Características": {
+            "Marca": "KINDER",
+            "Peso Neto": "0,10 KG"
+        }
+    },
+    "Producto 171": {
+        "Producto": "Huevo sorpresa de chocolate kinder 3u joy",
+        "Precio": "3,15€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/huevo-sorpresa-de-chocolate-kinder-3u-joy-2660.html",
+        "Características": {
+            "Marca": "KINDER JOY",
+            "Peso Neto": "0,06 KG"
+        }
+    },
+    "Producto 172": {
+        "Producto": "Caldo natural de pollo El Pavo 1l",
+        "Precio": "3,49€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-natural-de-pollo-el-pavo-1l-40441.html",
+        "Características": {
+            "Marca": "EL PAVO",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 173": {
+        "Producto": "Galletas crackers Gullón 250g quinoa y chía",
+        "Precio": "2,15€",
+        "Categoria": "Galletas saladas",
+        "Imagen": "https://www.ahorramas.com/galletas-crackers-gullon-250g-quinoa-y-chia-28312.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 174": {
+        "Producto": "Snack de patata Pringles 165g paprika",
+        "Precio": "1,90€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/snack-de-patata-pringles-165g-paprika-46226.html",
+        "Características": {
+            "Marca": "PRINGLES",
+            "Peso Neto": "0,17 KG"
+        }
+    },
+    "Producto 175": {
+        "Producto": "Patatas fritas lays 150g horno al punto de sal",
+        "Precio": "2,39€",
+        "Categoria": "Patatas fritas",
+        "Imagen": "https://www.ahorramas.com/patatas-fritas-lays-150g-horno-al-punto-de-sal-372.html",
+        "Características": {
+            "Marca": "LAY'S",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 176": {
+        "Producto": "Donuts pack 2 nocilla",
+        "Precio": "1,99€",
+        "Categoria": "Berlinas de chocolate y glaseadas",
+        "Imagen": "https://www.ahorramas.com/donuts-pack-2-nocilla-59978.html",
+        "Características": {
+            "Marca": "DONUTS",
+            "Peso Neto": "0,14 KG"
+        }
+    },
+    "Producto 177": {
+        "Producto": "Chocolate con leche Nestlé 125g jungly",
+        "Precio": "1,59€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-con-leche-nestle-125g-jungly-39189.html",
+        "Características": {
+            "Marca": "NESTLE",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 178": {
+        "Producto": "Barquillo relleno crema chocolate s/azúcar Gullón 180g",
+        "Precio": "1,60€",
+        "Categoria": "Barquillos",
+        "Imagen": "https://www.ahorramas.com/barquillo-relleno-crema-chocolate-s-azucar-gullon-180g-52411.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,18 KG"
+        }
+    },
+    "Producto 179": {
+        "Producto": "Salsa Solís 350g tomate receta artesana",
+        "Precio": "2,25€",
+        "Categoria": "Tomate frito",
+        "Imagen": "https://www.ahorramas.com/salsa-solis-350g-tomate-receta-artesana-51413.html",
+        "Características": {
+            "Marca": "SOLIS",
+            "Peso Neto": "0,35 KG"
+        }
+    },
+    "Producto 180": {
+        "Producto": "Salsa La Costeña 220g mexicana verde",
+        "Precio": "1,65€",
+        "Categoria": "",
+        "Imagen": "https://www.ahorramas.com/salsa-la-costena-220g-mexicana-verde-12358.html",
+        "Características": {
+            "Marca": "LA COSTEÑA",
+            "Peso Neto": "0,22 KG"
+        }
+    },
+    "Producto 181": {
+        "Producto": "Chocolatinas de chocolate con leche Jungly P3",
+        "Precio": "1,35€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/chocolatinas-de-chocolate-con-leche-jungly-p3-68648.html",
+        "Características": {
+            "Marca": "NESTLÉ",
+            "Peso Neto": "0,10 KG"
+        }
+    },
+    "Producto 182": {
+        "Producto": "Crema de pollo Sopinstant 63g con picatostes",
+        "Precio": "1,45€",
+        "Categoria": "Cremas y purés",
+        "Imagen": "https://www.ahorramas.com/crema-de-pollo-sopinstant-63g-con-picatostes-2164.html",
+        "Características": {
+            "Marca": "SOPINSTANT",
+            "Peso Neto": "0,06 KG"
+        }
+    },
+    "Producto 183": {
+        "Producto": "Palitos de pan saladitos Velarte 240g",
+        "Precio": "1,59€",
+        "Categoria": "Pan de picos y Colines",
+        "Imagen": "https://www.ahorramas.com/palitos-de-pan-saladitos-velarte-240g-26447.html",
+        "Características": {
+            "Marca": "VELARTE",
+            "Peso Neto": "0,24 KG"
+        }
+    },
+    "Producto 184": {
+        "Producto": "Caldo casero bajo en sal pollo natural Gallina Blanca 1l",
+        "Precio": "2,20€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/caldo-casero-bajo-en-sal-pollo-natural-gallina-blanca-1l-29418.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "1,00 KG"
+        }
+    },
+    "Producto 185": {
+        "Producto": "Tortitas de maíz Bicentury 123g sabor jamón",
+        "Precio": "2,19€",
+        "Categoria": "",
+        "Imagen": "https://www.ahorramas.com/tortitas-de-maiz-bicentury-123g-sabor-jamon-43180.html",
+        "Características": {
+            "Marca": "BICENTURY",
+            "Peso Neto": "0,12 KG"
+        }
+    },
+    "Producto 186": {
+        "Producto": "Barra de espiga plus puro trigo 300g",
+        "Precio": "0,85€",
+        "Categoria": "Pan de horno",
+        "Imagen": "https://www.ahorramas.com/barra-de-espiga-plus-puro-trigo-300g-16170.html",
+        "Características": {
+            "Peso Neto": "0,33 KG"
+        }
+    },
+    "Producto 187": {
+        "Producto": "Consomé al jerez Sopinstant 46g con picatostes",
+        "Precio": "1,45€",
+        "Categoria": "Sopas y caldos",
+        "Imagen": "https://www.ahorramas.com/consome-al-jerez-sopinstant-46g-con-picatostes-2165.html",
+        "Características": {
+            "Marca": "SOPINSTANT",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 188": {
+        "Producto": "Sofrito verduras Gallina Blanca 350g",
+        "Precio": "2,25€",
+        "Categoria": "Tomate",
+        "Imagen": "https://www.ahorramas.com/sofrito-verduras-gallina-blanca-350g-31355.html",
+        "Características": {
+            "Marca": "GALLINA BLANCA",
+            "Peso Neto": "0,35 KG"
+        }
+    },
+    "Producto 189": {
+        "Producto": "Ensalada ligera Carretilla 200g",
+        "Precio": "2,29€",
+        "Categoria": "Ensaladas",
+        "Imagen": "https://www.ahorramas.com/ensalada-ligera-carretilla-200g-80794.html",
+        "Características": {
+            "Marca": "CARRETILLA",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 190": {
+        "Producto": "Infusión Pompadour 20u ultralax mix natural de sen con hinojo",
+        "Precio": "2,75€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-pompadour-20u-ultralax-mix-natural-de-sen-con-hinojo-45516.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 191": {
+        "Producto": "Pan tostado sin gluten sin lactosa Schär 260g",
+        "Precio": "4,45€",
+        "Categoria": "Pan tostado y Biscotes",
+        "Imagen": "https://www.ahorramas.com/pan-tostado-sin-gluten-sin-lactosa-schar-260g-15962.html",
+        "Características": {
+            "Marca": "SCHÄR",
+            "Peso Neto": "0,26 KG"
+        }
+    },
+    "Producto 192": {
+        "Producto": "Bombón Lindor 200g leche cornet",
+        "Precio": "5,99€",
+        "Categoria": "Bombones",
+        "Imagen": "https://www.ahorramas.com/bombon-lindor-200g-leche-cornet-68480.html",
+        "Características": {
+            "Marca": "LINDOR",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 193": {
+        "Producto": "Café L'Or espresso 10 cápsulas forza intensidad 9",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-lor-espresso-10-capsulas-forza-intensidad-9-47499.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 194": {
+        "Producto": "Ensalada Carretilla 240g pasta con jamon",
+        "Precio": "2,29€",
+        "Categoria": "Ensaladas",
+        "Imagen": "https://www.ahorramas.com/ensalada-carretilla-240g-pasta-con-jamon-80797.html",
+        "Características": {
+            "Marca": "CARRETILLA",
+            "Peso Neto": "0,24 KG"
+        }
+    },
+    "Producto 195": {
+        "Producto": "Chocolatina Snickers 3u rellena de crema de cacahuete",
+        "Precio": "2,39€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/chocolatina-snickers-3u-rellena-de-crema-de-cacahuete-44479.html",
+        "Características": {
+            "Marca": "SNICKERS",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 196": {
+        "Producto": "Té verde Hornimans 20u",
+        "Precio": "2,79€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/te-verde-hornimans-20u-50181.html",
+        "Características": {
+            "Marca": "HORNIMANS",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 197": {
+        "Producto": "Pan tostado integral Dextrin Santiveri con semilla 300g",
+        "Precio": "2,60€",
+        "Categoria": "Pan tostado y Biscotes",
+        "Imagen": "https://www.ahorramas.com/pan-tostado-integral-dextrin-santiveri-con-semilla-300g-2969.html",
+        "Características": {
+            "Marca": "SANTIVERI",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 198": {
+        "Producto": "Cacao 0% con fibra sin azúcar añadido Colacao 300g",
+        "Precio": "3,49€",
+        "Categoria": "Cacao",
+        "Imagen": "https://www.ahorramas.com/cacao-0-con-fibra-sin-azucar-anadido-colacao-300g-45388.html",
+        "Características": {
+            "Marca": "COLACAO",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 199": {
+        "Producto": "Caramelos sin gluten sin azúcar Chupa Chups 6u",
+        "Precio": "2,49€",
+        "Categoria": "Caramelos",
+        "Imagen": "https://www.ahorramas.com/caramelos-sin-gluten-sin-azucar-chupa-chups-6u-81309.html",
+        "Características": {
+            "Marca": "CHUPA CHUPS",
+            "Peso Neto": "0,07 KG"
+        }
+    },
+    "Producto 200": {
+        "Producto": "Pastelito Tigretón Bimbo chocolate nata y mermelada 3 uds",
+        "Precio": "1,89€",
+        "Categoria": "Bizcochos y tartas",
+        "Imagen": "https://www.ahorramas.com/pastelito-tigreton-bimbo-chocolate-nata-y-mermelada-3-uds-7626.html",
+        "Características": {
+            "Marca": "TIGRETON",
+            "Peso Neto": "0,20 KG"
+        }
+    },
+    "Producto 201": {
+        "Producto": "Pan tostado integral Santiveri tradicional 300g",
+        "Precio": "2,60€",
+        "Categoria": "Pan tostado y Biscotes",
+        "Imagen": "https://www.ahorramas.com/pan-tostado-integral-santiveri-tradicional-300g-67770.html",
+        "Características": {
+            "Marca": "SANTIVERI",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 202": {
+        "Producto": "Chocolate con almendras enteras Milka MMMAX 270g",
+        "Precio": "3,39€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-con-almendras-enteras-milka-mmmax-270g-67475.html",
+        "Características": {
+            "Marca": "MILKA",
+            "Peso Neto": "0,27 KG"
+        }
+    },
+    "Producto 203": {
+        "Producto": "Pasta fresca tortellini relleno de boletus Rana 250g",
+        "Precio": "3,05€",
+        "Categoria": "Arroz, pasta, noodles",
+        "Imagen": "https://www.ahorramas.com/pasta-fresca-tortellini-relleno-de-boletus-rana-250g-17483.html",
+        "Características": {
+            "Marca": "RANA",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 204": {
+        "Producto": "Chocolatina Kinder bueno pack-3 white",
+        "Precio": "2,45€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/chocolatina-kinder-bueno-pack-3-white-43627.html",
+        "Características": {
+            "Marca": "KINDER",
+            "Peso Neto": "0,12 KG"
+        }
+    },
+    "Producto 205": {
+        "Producto": "Chocolatina Twix 3u 150g",
+        "Precio": "2,39€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/chocolatina-twix-3u-150g-44465.html",
+        "Características": {
+            "Marca": "TWIX",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 206": {
+        "Producto": "Galletas saladas crackers Gullón 250g sabor cheddar",
+        "Precio": "2,15€",
+        "Categoria": "Galletas saladas",
+        "Imagen": "https://www.ahorramas.com/galletas-saladas-crackers-gullon-250g-sabor-cheddar-41786.html",
+        "Características": {
+            "Marca": "GULLON",
+            "Peso Neto": "0,25 KG"
+        }
+    },
+    "Producto 207": {
+        "Producto": "Huevo de chocolate Kinder sorpresa 3u",
+        "Precio": "2,99€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/huevo-de-chocolate-kinder-sorpresa-3u-68491.html",
+        "Características": {
+            "Marca": "KINDER",
+            "Peso Neto": "0,06 KG"
+        }
+    },
+    "Producto 208": {
+        "Producto": "Chocolate con almendras marconas s/gluten s/azúcar Valor 150g",
+        "Precio": "2,45€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-con-almendras-marconas-s-gluten-s-azucar-valor-150g-5707.html",
+        "Características": {
+            "Marca": "VALOR",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 209": {
+        "Producto": "Croissant curvo 3 uds",
+        "Precio": "1,70€",
+        "Categoria": "Bollería de horno",
+        "Imagen": "https://www.ahorramas.com/croissant-curvo-3-uds-77928.html",
+        "Características": {}
+    },
+    "Producto 210": {
+        "Producto": "Infusión Pompadour 20u digestive plus",
+        "Precio": "2,75€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-pompadour-20u-digestive-plus-4729.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 211": {
+        "Producto": "Cereales de maíz nestlé 420g Golden Grahams",
+        "Precio": "3,59€",
+        "Categoria": "",
+        "Imagen": "https://www.ahorramas.com/cereales-de-maiz-nestle-420g-golden-grahams-57241.html",
+        "Características": {
+            "Marca": "GOLDEN GRAHAMS",
+            "Peso Neto": "0,42 KG"
+        }
+    },
+    "Producto 212": {
+        "Producto": "Café descafeinado espresso ristretto L'Or 10 capsulas",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-descafeinado-espresso-ristretto-lor-10-capsulas-47404.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 213": {
+        "Producto": "Café descafeinado origen colombia Nescafé 10 cápsulas intensidad 6",
+        "Precio": "3,69€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-descafeinado-origen-colombia-nescafe-10-capsulas-intensidad-6-49821.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 214": {
+        "Producto": "Bizcocho de nuez",
+        "Precio": "3,40€",
+        "Categoria": "Bizcochos y tartas",
+        "Imagen": "https://www.ahorramas.com/bizcocho-de-nuez-81357.html",
+        "Características": {
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 215": {
+        "Producto": "Infusión cola de caballo con piña Pompadour 20u",
+        "Precio": "2,75€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-cola-de-caballo-con-pina-pompadour-20u-29609.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 216": {
+        "Producto": "Té chai Hornimans 20u",
+        "Precio": "2,79€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/te-chai-hornimans-20u-38604.html",
+        "Características": {
+            "Marca": "HORNIMANS",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 217": {
+        "Producto": "Chocolate negro Jungly Nestlé 125g",
+        "Precio": "1,59€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-negro-jungly-nestle-125g-68481.html",
+        "Características": {
+            "Marca": "NESTLÉ",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 218": {
+        "Producto": "Guisantes ecologicos sin azucar Bonduelle pack 2",
+        "Precio": "2,35€",
+        "Categoria": "Maíz, guisantes y zanahoria",
+        "Imagen": "https://www.ahorramas.com/guisantes-ecologicos-sin-azucar-bonduelle-pack-2-24441.html",
+        "Características": {
+            "Marca": "BONDUELLE",
+            "Peso Neto": "0,26 KG"
+        }
+    },
+    "Producto 219": {
+        "Producto": "Cereales integrales Oatibix 550g avena flakes",
+        "Precio": "2,55€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereales-integrales-oatibix-550g-avena-flakes-42780.html",
+        "Características": {
+            "Marca": "OATIBIX",
+            "Peso Neto": "0,55 KG"
+        }
+    },
+    "Producto 220": {
+        "Producto": "Chocolatina Kinder bueno pack-3",
+        "Precio": "2,45€",
+        "Categoria": "Chocolatinas",
+        "Imagen": "https://www.ahorramas.com/chocolatina-kinder-bueno-pack-3-74834.html",
+        "Características": {
+            "Marca": "KINDER",
+            "Peso Neto": "0,13 KG"
+        }
+    },
+    "Producto 221": {
+        "Producto": "Crema de vinagre balsámico mango Vega Río 265g",
+        "Precio": "1,65€",
+        "Categoria": "Vinagres",
+        "Imagen": "https://www.ahorramas.com/crema-de-vinagre-balsamico-mango-vega-rio-265g-64856.html",
+        "Características": {
+            "Marca": "VEGA DEL RÍO",
+            "Peso Neto": "0,27 KG"
+        }
+    },
+    "Producto 222": {
+        "Producto": "Sazonador jugoso al horno Maggi receta mediterránea",
+        "Precio": "1,19€",
+        "Categoria": "Especias",
+        "Imagen": "https://www.ahorramas.com/sazonador-jugoso-al-horno-maggi-receta-mediterranea-44284.html",
+        "Características": {
+            "Marca": "MAGGI",
+            "Peso Neto": "0,03 KG"
+        }
+    },
+    "Producto 223": {
+        "Producto": "Café Colombia grano espresso L´or 500g",
+        "Precio": "11,79€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-colombia-grano-espresso-lor-500g-46809.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,50 KG"
+        }
+    },
+    "Producto 224": {
+        "Producto": "Aceite de oliva Carbonell 1l 0,4º",
+        "Precio": "5,99€",
+        "Categoria": "Aceites",
+        "Imagen": "https://www.ahorramas.com/aceite-de-oliva-carbonell-1l-04-38496.html",
+        "Características": {
+            "Marca": "CARBONELL",
+            "Peso Neto": "0,91 KG"
+        }
+    },
+    "Producto 225": {
+        "Producto": "Café origen india espresso Nescafé 10 cápsulas intensidad 9",
+        "Precio": "3,69€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-origen-india-espresso-nescafe-10-capsulas-intensidad-9-49822.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 226": {
+        "Producto": "Café espresso origen india L'Or 10 cápsulas",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-espresso-origen-india-lor-10-capsulas-52236.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 227": {
+        "Producto": "Caramelo líquido Royal 400g",
+        "Precio": "2,90€",
+        "Categoria": "Caramelo líquido",
+        "Imagen": "https://www.ahorramas.com/caramelo-liquido-royal-400g-29802.html",
+        "Características": {
+            "Marca": "ROYAL",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 228": {
+        "Producto": "Galleta rellena biscoff Lotus 150g milk chocolate",
+        "Precio": "1,69€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galleta-rellena-biscoff-lotus-150g-milk-chocolate-58863.html",
+        "Características": {
+            "Marca": "LOTUS",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 229": {
+        "Producto": "Cereales Weetabix 430g original",
+        "Precio": "2,59€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/cereales-weetabix-430g-original-77880.html",
+        "Características": {
+            "Marca": "WEETABIX",
+            "Peso Neto": "0,43 KG"
+        }
+    },
+    "Producto 230": {
+        "Producto": "Chocolate puro almendras s/gluten s/azúcar Valor 150g",
+        "Precio": "2,45€",
+        "Categoria": "Tabletas",
+        "Imagen": "https://www.ahorramas.com/chocolate-puro-almendras-s-gluten-s-azucar-valor-150g-70562.html",
+        "Características": {
+            "Marca": "VALOR",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 231": {
+        "Producto": "Infusión Pompadour 25u poleo-menta",
+        "Precio": "2,15€",
+        "Categoria": "Infusiones",
+        "Imagen": "https://www.ahorramas.com/infusion-pompadour-25u-poleo-menta-144.html",
+        "Características": {
+            "Marca": "POMPADOUR",
+            "Peso Neto": "0,04 KG"
+        }
+    },
+    "Producto 232": {
+        "Producto": "Salsa Heinz 220ml curry y mango",
+        "Precio": "1,99€",
+        "Categoria": "",
+        "Imagen": "https://www.ahorramas.com/salsa-heinz-220ml-curry-y-mango-79377.html",
+        "Características": {
+            "Marca": "HEINZ",
+            "Peso Neto": "0,22 KG"
+        }
+    },
+    "Producto 233": {
+        "Producto": "Salsa Orlando barril 290g brava",
+        "Precio": "1,25€",
+        "Categoria": "Salsas",
+        "Imagen": "https://www.ahorramas.com/salsa-orlando-barril-290g-brava-15243.html",
+        "Características": {
+            "Marca": "ORLANDO",
+            "Peso Neto": "0,29 KG"
+        }
+    },
+    "Producto 234": {
+        "Producto": "Galletas Chiquilín Ositos 450g a cucharadas sabor chocolate",
+        "Precio": "3,50€",
+        "Categoria": "Cereales",
+        "Imagen": "https://www.ahorramas.com/galletas-chiquilin-ositos-450g-a-cucharadas-sabor-chocolate-38237.html",
+        "Características": {
+            "Marca": "CHIQUILIN",
+            "Peso Neto": "0,40 KG"
+        }
+    },
+    "Producto 235": {
+        "Producto": "Barquitas mejicanas Old El Paso 8 uds",
+        "Precio": "2,45€",
+        "Categoria": "Pan hamburguesa, Tortillas wrap y Pan de perritos",
+        "Imagen": "https://www.ahorramas.com/barquitas-mejicanas-old-el-paso-8-uds-46786.html",
+        "Características": {
+            "Marca": "OLD EL PASO",
+            "Peso Neto": "0,19 KG"
+        }
+    },
+    "Producto 236": {
+        "Producto": "Cacao negro sin gluten soluble Valor 300g 70%",
+        "Precio": "3,39€",
+        "Categoria": "Cacao",
+        "Imagen": "https://www.ahorramas.com/cacao-negro-sin-gluten-soluble-valor-300g-70-76720.html",
+        "Características": {
+            "Marca": "VALOR",
+            "Peso Neto": "0,30 KG"
+        }
+    },
+    "Producto 237": {
+        "Producto": "Café espresso ristretto intensidad 11L'Or 10 cápsulas",
+        "Precio": "3,95€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-espresso-ristretto-intensidad-11lor-10-capsulas-47362.html",
+        "Características": {
+            "Marca": "L'OR",
+            "Peso Neto": "0,05 KG"
+        }
+    },
+    "Producto 238": {
+        "Producto": "Café origen áfrica ristretto Nescafé 10 cápsulas",
+        "Precio": "3,69€",
+        "Categoria": "Cafés",
+        "Imagen": "https://www.ahorramas.com/cafe-origen-africa-ristretto-nescafe-10-capsulas-49819.html",
+        "Características": {
+            "Marca": "NESCAFE",
+            "Peso Neto": "0,06 KG"
+        }
+    },
+    "Producto 239": {
+        "Producto": "Galletas de chocolate Lotus Biscoff 154g",
+        "Precio": "1,99€",
+        "Categoria": "Galletas",
+        "Imagen": "https://www.ahorramas.com/galletas-de-chocolate-lotus-biscoff-154g-68033.html",
+        "Características": {
+            "Marca": "LOTUS",
+            "Peso Neto": "0,15 KG"
+        }
+    },
+    "Producto 240": {
+        "Producto": "Ensalada de pasta con atún Carretilla 240g",
+        "Precio": "2,29€",
+        "Categoria": "Ensaladas",
+        "Imagen": "https://www.ahorramas.com/ensalada-de-pasta-con-atun-carretilla-240g-80795.html",
+        "Características": {
+            "Marca": "CARRETILLA",
+            "Peso Neto": "0,24 KG"
+        }
+    }
+}
