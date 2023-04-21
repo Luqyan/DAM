@@ -1,40 +1,32 @@
-class Lista {
+import 'package:aplicacion_ac/vista/Producto.dart';
 
-  late String _nombre;
-  late String _descripcion;
+class Lista{
+
+  String? _nombre;
+  String? _descripcion;
 
 
-  
+  static List<Producto> lista_productos = List.empty();
   
   // Rename this constructor to use the class name as its identifier
 
-  Lista( String nom, String des){
-
-    _nombre = nom;
-    _descripcion = des;
-  }
+  Lista( this._nombre, this._descripcion);
+  
 
 
-  String get nombre{
+  get nombreLista => this._nombre;
+  
 
-    return _nombre;
-  }
-
-  set nombre(String nom){
-
-    _nombre = nom;
-  }
+  set nombreLista(value) => this._nombre= value;
 
 
-  String get descripcion{
+  get descripcionLista => this._descripcion;
+ 
 
-    return _descripcion;
-  }
+  set descripcionLista(value) =>  this._descripcion = value;
 
 
-  set descripcion(String des){
 
-    _descripcion = des;
-  }
+
 
 }

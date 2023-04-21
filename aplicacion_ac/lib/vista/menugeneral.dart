@@ -1,4 +1,5 @@
 
+import 'package:aplicacion_ac/vista/pagina8.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/main.dart';
@@ -6,6 +7,7 @@ import 'pagina2.dart';
 import 'pagina3.dart';
 import 'pagina4.dart';
 import 'pagina5.dart';
+import 'pagina7.dart';
 
 /////////////////////////////////2 ª PARTE/////CLASE MENU ////////////////////////////////////////////
 
@@ -23,8 +25,10 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   static const _menuOpciones = [
     'Listas favoritas',
     'Productos favoritos',
-    'Configuración',
-    'Cerrar sesión',
+    'Productos lista',
+    'Selector de productos',
+    'Configuración cuenta',
+    
   ];
 
   // creamos variables que contienen los valores definidos
@@ -186,7 +190,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
      
         ),   
 
-             
+          
           onTap: () {
             if (i==0) {
               Navigator.push(
@@ -196,7 +200,15 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
               Navigator.push(
               conte, 
               MaterialPageRoute(builder: (conte)=>const Pagina4()));
-            } else if(i==2) {
+            // } else if(i==2) {
+            //   Navigator.push(
+            //   conte, 
+            //   MaterialPageRoute(builder: (conte)=> Pagina8(cesta: null,)));
+            // } else if(i==3) {
+              Navigator.push(
+              conte, 
+              MaterialPageRoute(builder: (conte)=>const Pagina7()));
+            } else if(i==4) {
               Navigator.push(
               conte, 
               MaterialPageRoute(builder: (conte)=>const Pagina5()));
@@ -211,11 +223,6 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     }
     return listItems;
   }
-
-
-
-
-
 
 
 
