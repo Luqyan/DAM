@@ -1,16 +1,20 @@
+import 'package:flutter/material.dart';
+
 class Producto{
   String _nombreProducto;
-  int _precio;
+  double _precio;
   int? _peso;
   int? _volumen;
   String? _descripcion;
   String? _marca;
   String? _categoria;
-  String _hrefProducto;
+  String? _hrefProducto;
+  String? _imagen;
   
-  Producto(this._nombreProducto,this._precio,this._hrefProducto);
+  Producto(this._nombreProducto,this._precio,this._imagen);
  
-
+get imagenProducto => this._imagen;
+set imagenProducto(value) => this._imagen = value;
     
 get nombreProducto => this._nombreProducto;
 

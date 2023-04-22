@@ -1,9 +1,15 @@
+import 'package:aplicacion_ac/vista/pagina7.dart';
 import 'package:flutter/material.dart';
+import 'Producto.dart';
 import 'pagina1.dart';
 import 'pagina3.dart';
 import 'pagina4.dart';
 import 'pagina5.dart';
 import 'menugeneral.dart';
+
+
+
+
 
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'
@@ -225,7 +231,7 @@ class _Pagina2 extends State<Pagina2>
         conte, 
         // nos pide el widget a utilizar que es de tipo materialpageroute
         // creando una ruta de la pagina
-        MaterialPageRoute(builder: (conte)=>const Pagina4())),
+        MaterialPageRoute(builder: (conte)=>const Pagina7())),
     
     }, ),)
           ],
