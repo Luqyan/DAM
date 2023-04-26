@@ -214,6 +214,13 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
         child: Icon(Icons.delete, color: Colors.white, size: 40.0,),
 
       ),
+          
+      
+          key: ValueKey(w),
+        onDismissed: (_){
+          print("Elemento eliminado");
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
             
         child: SizedBox(
           height: 200.0,
@@ -226,26 +233,9 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
                 child: w,
               ),
         ),
-          
-      
-          key: ValueKey(w),
-        onDismissed: (_){
-          print("Elemento eliminado");
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        },
         );
      
   }
-  
-
-void handleDragEnd(BuildContext context, List lista, int index) {
-  setState(() {
-    lista.removeAt(index);
-  });
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(content: Text("Elemento eliminado")),
-  );
-}
 
 
   // Contenedor que se muestra detrás del que se arrastra

@@ -22,7 +22,7 @@ get nombreProducto => this._nombreProducto;
 
   get precio => this._precio;
 
- set precio( value) => this._precio = value;
+ set modificaPrecio(value) => _precio = value;
 
   get peso => this._peso;
 

@@ -1,4 +1,6 @@
 import 'package:aplicacion_ac/vista/Producto.dart';
+import 'package:aplicacion_ac/vista/Lista.dart';
+import 'package:aplicacion_ac/vista/pagina11.dart';
 import 'package:aplicacion_ac/vista/pagina7.dart';
 import 'package:flutter/material.dart';
 import 'Lista.dart';
@@ -6,41 +8,29 @@ import 'Lista.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
 
-
-
-
-Producto prod1 = new Producto('pan integral', 2.40, 'assets/pan_integral.jpg');
-Producto prod2 =
-    new Producto('leche sin lactosa', 1.20, 'assets/leche_sin_lactosa.png');
-Producto prod3 = new Producto('cerveza', 0.70, 'assets/mahou.jpg');
-// Lista contenedora de productos
-Set<Producto> _productos = Set<Producto>()..addAll([prod1, prod2, prod3]);
-
-
-
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class Pagina8 extends StatefulWidget {
-  
-final Set<Producto> productos;
+  const Pagina8({Key? key}) : super(key: key);
 
-  Pagina8( {
-    super.key,  required this.productos
-  });
   // creamos la ista de listas a través del método
 
   @override
   State<Pagina8> createState() => _Pagina8();
-  
 }
 
 /////////////////////////////////////1 ª PARTE//////////////////////////////////////////////
 // CLASE ANIMADO
 class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
+
+  final TextEditingController valor_introducido = TextEditingController();
+
+  List<Lista> listas_confirmdas = List<Lista>.empty();
+
   @override
   void initState() {
     super.initState();
-    
+
     _drawerSlideController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 150),
@@ -78,12 +68,9 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 ///////////////////////////////////////////////generamos la lista de elementos
-  
-    //Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Producto>;
-Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Producto>;
-  List<Widget> listaListas = crearListas(productos);
 
-    
+    // Cogemos los Productos de la lista atributo de la clase Lista
+    List<Widget> listaListas = crearListas(Lista.getProductos());
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
@@ -94,11 +81,184 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
           _buildDrawer(),
         ],
       ),
+
+      // LOS DOS BOTONES QUE SE ENCUENTRAN EN LA PARTE INFERIOR DE LA PÁGINA
+      bottomNavigationBar: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Material(
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: Color.fromRGBO(240, 158, 111, 1), width: 5.0)),
+              color: Color.fromARGB(255, 80, 184, 74),
+              child: InkWell(
+                onTap: () {
+                  print('Pulsado "Guardar Lista"');
+
+                  if (Lista.getProductos().length > 0) {
+                    guardar_lista();
+                  } else {
+                    _showDailog() {}
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title:
+                                const Text("No tienes ningúna lista generada."),
+                            content: const Text(
+                                "Para generar listas accede a la página 'Selector de productos' desde el menú "),
+                            actions: [
+                              ElevatedButton(
+                                  child: const Text("Cerrar"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  })
+                            ],
+                          );
+                        });
+                  }
+                },
+                child: const SizedBox(
+                  height: kToolbarHeight,
+                  width: double.infinity,
+                  child: Center(
+                    child: Text(
+                      'Guardar lista',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Material(
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: Color.fromRGBO(240, 158, 111, 1), width: 5.0)),
+              color: Color.fromARGB(255, 80, 184, 74),
+              child: InkWell(
+                onTap: () {
+                  print('Pulsado "Confirmar Lista"');
+
+                  // /// // // / /// / //// / / // /AQUI VER COMO HACEMOS PARA GENERAR RESULTADO / / // / / // //// / //// / / // // / // / // / / //
+                  if (Lista.getProductos().length > 0) {
+                    confirmar_lista(context);
+                  } else {
+                    _showDailog() {}
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text("No hay listas por confirmar"),
+                            content: const Text(
+                                "Para generar listas accede a la página 'Selector de productos' desde el menú "),
+                            actions: [
+                              ElevatedButton(
+                                  child: const Text("Cerrar"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  })
+                            ],
+                          );
+                        });
+                  }
+                  //  / //  ///     //  / / //  /// /// / ///   /   / /   / / //  / / //  //  / //  //  / / / /   / / //  /
+
+                  /// /// / //  / //  ////  //  / ///   /// / / / / /       / / / /   / / / / //  / ////  / / //  /
+                },
+                child: const SizedBox(
+                  height: kToolbarHeight,
+                  width: double.infinity,
+                  child: Center(
+                    child: Text(
+                      'Confirmar lista',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
+  Future guardar_lista() => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Introducir nombre lista:"),
+          content: TextField(
+            autofocus: true,
+            decoration: InputDecoration(hintText: "Nombre lista"),
+            controller: valor_introducido,
+          ),
+          actions: [
+            TextButton(
+              child: Text("Aceptar"),
+              onPressed: () {
+                // SE GENERA UNA LISTA NUEVA Y SE AÑADE A LA LISTA DE LISTAS
+                Lista lista1 =
+                    new Lista(valor_introducido.text, "Lista guardada");
+                lista1.productos = Lista.getProductos();
+                Lista.addLista();
+             
+                print((Lista.listas).length);
+
+                submit();
+              },
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("Cancelar"))
+          ],
+        ),
+      );
+
+  Future confirmar_lista(conte) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Lista confirmada!"),
+          content: Text("Pulse aceptar para generar visualizar el resultado."),
+          actions: [
+            TextButton(
+                child: Text("Aceptar"),
+                onPressed: () {
+                  // LA LISTA CREADA SE CONSERVA EN LA VARIABLE STATIC '_lista_productos'
+                  // CUYOS VALORES SE UTILIZAN EN LA SIGUIENTE PÁGINA DONDE SE GENERAN
+                  // LOS RESULTADOS
+
+                  // print( (Lista.listas).length);
+
+                  submit();
+
+                  setState(() {
+                    Navigator.push(
+                        conte,
+                        // nos pide el widget a utilizar que es de tipo materialpageroute
+                        // creando una ruta de la pagina
+                        MaterialPageRoute(builder: (conte) => Pagina11()));
+                  });
+                }),
+          ],
+        ),
+      );
+
+  void submit() {
+    Navigator.of(context).pop();
+  }
+
 //////////////////////////////////////////////////////////////////////////////////////////
-////////////////////// método de creación de appBar personalizado/////////////////////////
+////////////////////// método de creación de appBaar personalizado/////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
   PreferredSizeWidget _buildAppBar() {
@@ -145,10 +305,8 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
 
   Widget _buildContent(conte, productos) {
     // Indicador si se ha arrastrado y soltado algo
-    bool pasadoOnaccept = false;
+    bool activado = false;
 
-  
-   
     return Container(
       margin: const EdgeInsets.only(left: 50.0, right: 50.0, top: 20.0),
       //color: Color(0xFFFAF482),
@@ -159,8 +317,47 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                Expanded(
+                    flex: 2,
+                    child: Container(
+                      child: Text("Centralizado"),
+                    )),
+                Switch(
+                  value: activado,
+                  onChanged: (bool value) {
+                    setState(() {
+                      value = activado;
+
+                      print(value);
+                    });
+                  },
+                ),
+                Spacer(),
+                Expanded(
+                    flex: 2,
+                    child: Container(
+                      child: Text("Precio"),
+                    )),
+                Switch(
+                  value: activado,
+                  onChanged: (bool value) {
+                    setState(() {
+                      value = activado;
+
+                      print(value);
+                    });
+                  },
+                ),
+              ],
+            ),
+            Divider(),
             Expanded(
+
+                ///////////////////////////////////////////////////vrlodicdad
                 child: ListView(
+              controller: ScrollController(initialScrollOffset: 2),
               //shrinkWrap: true,
               children: productos,
             )),
@@ -174,49 +371,37 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
   ////////////////////////////////////////////////////////////////////////
 
   /// Metodo que genera una lista de widgets de listas favoritas (guardadas)
-  List<Widget> crearListas(Set<Producto> productos) {
-
-    
-    """
-    Lista lis1 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
-    Lista lis2 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
-    Lista lis3 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
-
-    List<Lista> ejemplos = [];
-    ejemplos.add(lis1);
-    ejemplos.add(lis2);
-    ejemplos.add(lis3);
-    """;
-
+  List<Widget> crearListas(List<Producto> productos) {
     final List<Widget> listaObj = [];
 
     // Por cada objeto Producto encontrado se monta un contenedor y se añade a
     // la lista de widgets que va dentro de un LIST VIEW
-
+    int pos = 0;
     for (Producto pro in productos) {
       final objetoTemporal = _montar_contenedor(pro);
       // y despues lo convertimos a un objeto draggable
-      final objetoFinal = _generaDraggable(objetoTemporal);
+      final objetoFinal = _generaDraggable(objetoTemporal, pos);
       listaObj.add(objetoFinal);
 
       listaObj.add(SizedBox(height: 20.0));
+      pos += 1;
     }
 
     return listaObj;
   }
 
   // Metodo de conversión de los elementos de ListView a Draggable
-  Widget _generaDraggable(Widget w) {
+
+  Widget _generaDraggable(Widget w, int pos) {
     const snackBar = SnackBar(
-      duration: Duration(seconds: 2),
-      
-      content: Text("El producto ha sido eliminado!"));
+        duration: Duration(seconds: 1),
+        content: Text("El producto ha sido eliminado!"));
 
     return Dismissible(
       direction: DismissDirection.endToStart,
       background: Container(
-        padding: const EdgeInsets.only(left: 20.0),
-        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        padding: const EdgeInsets.all(20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
         color: Colors.red,
         child: const Icon(
           Icons.delete,
@@ -227,9 +412,12 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
       key: ValueKey(w),
       onDismissed: (_) {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        setState(() {
+          Lista.borrarProductoPorPosicion(pos);
+        });
       },
       child: SizedBox(
-        height: 150.0,
+        height: 80.0,
         width: MediaQuery.of(context).size.width,
         child: ConstrainedBox(
           constraints:
@@ -240,42 +428,20 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
     );
   }
 
-  void handleDragEnd(BuildContext context, List lista, int index) {
-    setState(() {
-      lista.removeAt(index);
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Elemento eliminado")),
-    );
-  }
-
-  // Contenedor que se muestra detrás del que se arrastra
-  Widget _monta_contenedor_vacio() {
-    return Container(
-        decoration: BoxDecoration(
-            border: Border.all(
-                color: const Color.fromARGB(255, 220, 230, 247), width: 3.0),
-            borderRadius: BorderRadius.circular(12),
-            color: const Color.fromARGB(226, 188, 179, 241)),
-        child: const SizedBox(
-          width: 300,
-          height: 150,
-        ));
-  }
-
   // Metodo constructor de contenedor de lista (ListTile)
   Widget _montar_contenedor(Producto p) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-          border: Border.all(
-              color: const Color.fromARGB(255, 220, 230, 247), width: 40.0),
+          border:
+              Border.all(color: Color.fromRGBO(240, 158, 111, 1), width: 5.0),
           borderRadius: BorderRadius.circular(15),
-          color: const Color.fromRGBO(239, 237, 254, 0.898)),
+          color: Color.fromARGB(226, 244, 250, 226)),
       child: SizedBox(
-        width: 300,
-        height: 150,
+        width: double.infinity,
+        height: double.infinity,
         child: ListTile(
-          visualDensity: const VisualDensity(vertical: -4),
+          visualDensity: const VisualDensity(vertical: 0.0),
           minLeadingWidth: 100.0,
           dense: false,
           onTap: () => () {},
@@ -284,17 +450,22 @@ Set<Producto> productos = ModalRoute.of(context)!.settings.arguments as Set<Prod
                 minWidth: 70.0,
                 minHeight: 100.0,
                 maxWidth: 300.0,
-                maxHeight: 200.0),
+                maxHeight: 300.0),
             child: Image.asset(
               p.imagenProducto,
-              width: 80.0,
-              height: 100,
+              width: 50.0,
+              height: MediaQuery.of(context).size.height,
               alignment: Alignment.centerLeft,
               fit: BoxFit.cover,
             ),
           ),
-          title: Text(p.nombreProducto),
-          subtitle: Text(p.precio.toString()),
+          title: Text(
+            p.nombreProducto,
+          ),
+          trailing: Icon(
+            Icons.star_border_rounded,
+            size: 40.0,
+          ),
         ),
       ),
     );

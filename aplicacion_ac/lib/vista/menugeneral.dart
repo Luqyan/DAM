@@ -98,7 +98,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          _buildFlutterLogo(),
+          //_buildFlutterLogo(),
           _buildContent(context),
         ],
       ),
@@ -200,11 +200,11 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
               Navigator.push(
               conte, 
               MaterialPageRoute(builder: (conte)=>const Pagina4()));
-            // } else if(i==2) {
-            //   Navigator.push(
-            //   conte, 
-            //   MaterialPageRoute(builder: (conte)=> Pagina8(cesta: null,)));
-            // } else if(i==3) {
+            } else if(i==2) {
+              Navigator.push(
+              conte, 
+              MaterialPageRoute(builder: (conte)=> Pagina8()));
+            } else if(i==3) {
               Navigator.push(
               conte, 
               MaterialPageRoute(builder: (conte)=>const Pagina7()));

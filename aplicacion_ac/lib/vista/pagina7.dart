@@ -20,12 +20,19 @@ import 'Item.dart';
 // Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
 List<Item> _listaItems = generaItems(1);
 
-Producto prod1 = new Producto('pan integral', 2.40, 'assets/pan_integral.jpg');
+Producto prod1 = new Producto('pan integral', 1.60, 'assets/pan_integral.jpg');
 Producto prod2 =
     new Producto('leche sin lactosa', 1.20, 'assets/leche_sin_lactosa.png');
-Producto prod3 = new Producto('cerveza', 0.70, '05424543');
+Producto prod3 = new Producto('cerveza', 0.70, 'assets/mahou.jpg');
+Producto prod4 = new Producto('huevos', 2.60, 'assets/huevos_eco.jpg');
+Producto prod5 = new Producto('helado hägen dasz', 4.80, 'assets/helado_haagen.jpg');
+Producto prod6 =  Producto('yogur griego', 0.60, 'assets/yogur_griego.jpg');
+Producto prod7 = Producto('Arroz', 0.90, 'assets/arroz.jpg');
+
+
+
 // Lista contenedora de productos
-Set<Producto> _productos = Set<Producto>()..addAll([prod1, prod2, prod3]);
+Set<Producto> _productos = Set<Producto>()..addAll([prod1, prod2, prod3, prod4, prod5, prod6, prod7]);
 
 final _opcionesTiendas = [
   Tiendas(nombre: "Carrefour", imagen: "assets/carrefour.png"),
@@ -59,7 +66,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
   
   // Lista de productos que surge al buscar productos y añadirlos a la cesta
-   Set<Producto> _cesta_productos = Set<Producto>();
+ List<Producto> _cesta_productos = List<Producto>.empty(growable: true);
 
 
   @override
@@ -181,15 +188,13 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             child: ElevatedButton(
               onPressed: () {
                 
-                print(_cesta_productos.toString());
-                if (_cesta_productos.length > 0) {
-                  Navigator.push(
-                      conte, 
-                    MaterialPageRoute(
-                      builder:  (context)=> Pagina8(productos: (_cesta_productos)),
-                      ),
-                      );
-                }
+                print("Numero productos en cesta: "+_cesta_productos.toString());
+                 Navigator.push(
+        conte, 
+        // nos pide el widget a utilizar que es de tipo materialpageroute
+        // creando una ruta de la pagina
+        MaterialPageRoute(builder: (conte)=> Pagina8()));
+    
               },
               child: const Text(
                 'Mi cesta',
@@ -283,10 +288,10 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             if (cantidad_prod > 0) {
               // MOSTRAMOS ALGO ..........................
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar( duration: Duration(seconds: 2),content: Text("Mostrando producto")));
+                  const SnackBar( duration: Duration(seconds: 1),content: Text("Mostrando producto")));
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar( duration: Duration(seconds: 2),content: Text("Producto no encontrado!")));
+                  const SnackBar( duration: Duration(seconds: 1),content: Text("Producto no encontrado!")));
             }
             //_valorIntroducido = "";
           });
@@ -370,6 +375,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                                   onTap: () {
                                     setState(() {
                                        aniadir_a_cesta(_productoE);
+
                                     });
                                    
                                     
@@ -395,10 +401,10 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
 
 
- aniadir_a_cesta(prod) {
+ void aniadir_a_cesta(prod) {
  // print(prod.toString());
-  _cesta_productos.add(prod);
- print(_cesta_productos.length);
+  Lista.addProducto(prod);
+  print(_cesta_productos.length);
 }
 
 

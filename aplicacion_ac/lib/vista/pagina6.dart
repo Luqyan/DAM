@@ -220,9 +220,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-         
-            
-                               Text(
+                            Text(
                               "Lista Navidad",
                               textAlign: TextAlign.center,
                               style: TextStyle(

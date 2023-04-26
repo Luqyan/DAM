@@ -3,7 +3,7 @@ class Tiendas{
   final String nombre;
   bool clickado = false;
   final String imagen;
-  final String tipoClase = "Alergenos";
+  final String tipoClase = "Tiendas";
 
 
 
