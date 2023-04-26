@@ -1,16 +1,26 @@
+import 'dart:async';
+
+import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/vista/pagina1.dart';
 
 import 'vista/menugeneral.dart';
+import 'package:aplicacion_ac/modelo/Tienda.dart';
+import 'package:aplicacion_ac/controlador/flujoTexto/EscribirYLeerFichero.dart';
+import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
+import 'controlador/Json/DML/Select.dart';
+void main(){
+  print(Select.buscarProductoPorNombre(nomProducto: "Donuts pack 2 nocilla", nomTienda: "AhorraMas"));
+  //TratarString.printAsincrono("fsdfs");
 
-
-void main() {
-  runApp(
-    const MaterialApp(
-      home: MiAplicacion(),
-      debugShowCheckedModeBanner: false,
-    ),
-  );
+  // Tienda caca=Tienda("Ahorra");
+  // Timer(Duration(seconds: 10), ()=> {caca.imprimir()});
+  // runApp(
+  //   const MaterialApp(
+  //     home: MiAplicacion(),
+  //     debugShowCheckedModeBanner: false,
+  //   ),
+  // );
 }
 
 
