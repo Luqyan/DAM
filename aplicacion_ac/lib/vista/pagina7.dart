@@ -2,7 +2,7 @@ import 'dart:html';
 
 import 'package:aplicacion_ac/vista/Alergenos.dart';
 import 'package:aplicacion_ac/vista/Item.dart';
-import 'package:aplicacion_ac/vista/Producto.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/vista/Tiendas.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina8.dart';

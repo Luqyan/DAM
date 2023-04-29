@@ -1,6 +1,6 @@
 import 'package:aplicacion_ac/vista/pagina7.dart';
 import 'package:flutter/material.dart';
-import 'Producto.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'pagina1.dart';
 import 'pagina3.dart';
 import 'pagina4.dart';

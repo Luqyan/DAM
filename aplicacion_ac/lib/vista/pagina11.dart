@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'Lista.dart';
-import 'Producto.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
 import 'package:pdf/pdf.dart';
