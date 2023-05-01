@@ -20,21 +20,21 @@ class Tienda{
 
   
 
-  static Future<List<Producto>> obtenerProductosJsonAhorraMas() async{//Es necesario ponerlo get y statico para meterlo dentro del constructor
-    List<Producto> productoss=List.empty(growable: true);
-    String contenidoJson="no hay contenido de JSOn1";
-    EscribirYLeerFichero.leerFichero(rutaFichero: ".\\lib\\modelo\\productosAhorramas.json").then((value){
-      contenidoJson=value;
-      Map<String, dynamic> userMap = jsonDecode(contenidoJson);
-
-      for(int i=1;i<userMap.length+1;i++){
-        productoss.add(Producto.userDesdeJson(userMap,i));
-      }
-      
-      });
-    return productoss;
-    
+static Future<List<Producto>> obtenerProductosDeJson(String nomTienda) async {
+  List<Producto> productoss = [];
+  String contenidoJson = "no hay contenido de JSON1";
+  if(nomTienda.toLowerCase()=='ahorramas'){
+    contenidoJson = await EscribirYLeerFichero.leerFichero(rutaFichero: ".\\lib\\modelo\\productosAhorramas.json");
+  }else if(nomTienda.toLowerCase()=='carrefour'){
+    contenidoJson = await EscribirYLeerFichero.leerFichero(rutaFichero: ".\\lib\\modelo\\productosAhorramas.json");
   }
+  Map<String, dynamic> userMap = jsonDecode(contenidoJson);
+
+  for (int i = 1; i < userMap.length + 1; i++) {
+    productoss.add(Producto.userDesdeJson(userMap, i));
+  }
+  return productoss;
+}
 
   @override
   String toString() {

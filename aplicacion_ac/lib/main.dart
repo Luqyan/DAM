@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/vista/pagina1.dart';
@@ -8,19 +9,18 @@ import 'vista/menugeneral.dart';
 import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:aplicacion_ac/controlador/flujoTexto/EscribirYLeerFichero.dart';
 import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
-import 'controlador/Json/DML/Select.dart';
+import 'JLAR/CRUD/Select.dart';
 void main(){
-  print(Select.buscarProductoPorNombre(nomProducto: "Donuts pack 2 nocilla", nomTienda: "AhorraMas"));
-  //TratarString.printAsincrono("fsdfs");
+  //Ejemplo de como se hace una select
+  // List<Producto>? producto;
+  // Select.buscarProductosPorNombre(nomProducto: "Donuts pack 2 nocilla", nomTienda: "AhorraMas").then((value) => print(value));
 
-  // Tienda caca=Tienda("Ahorra");
-  // Timer(Duration(seconds: 10), ()=> {caca.imprimir()});
-  // runApp(
-  //   const MaterialApp(
-  //     home: MiAplicacion(),
-  //     debugShowCheckedModeBanner: false,
-  //   ),
-  // );
+  runApp(
+    const MaterialApp(
+      home: MiAplicacion(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
 
 

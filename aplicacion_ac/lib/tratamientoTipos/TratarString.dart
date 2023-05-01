@@ -28,9 +28,5 @@ class TratarString{
     }
     return frase.toLowerCase().replaceAll(RegExp(','), ".");
   }
-  static printAsincrono(dynamic frase) async{
-    print(frase);
-    
-  }
   
 }
