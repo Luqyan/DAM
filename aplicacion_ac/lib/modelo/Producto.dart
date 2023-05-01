@@ -3,6 +3,7 @@ import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
 
 
 class Producto {
+ 
   late String _nombreProducto;
   late double _precio;
   late double? _peso;
@@ -12,6 +13,8 @@ class Producto {
   late String _hrefProducto;
   late int _unidades;
   Producto({required String nombreProducto,required double precio,required String hrefImgProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null}):
+    
+  
     this._nombreProducto=nombreProducto,
     this._precio=precio,
     this._hrefProducto=hrefImgProducto,
@@ -28,6 +31,8 @@ class Producto {
   Producto.userDesdeJson(Map<String, dynamic> json, int i){
       _nombreProducto=json['Producto $i']['Producto'];
       _precio = TratarString.quitarUnidadesEspacios(TratarString.sustituirComasPorPuntos(json['Producto $i']['Precio']))!;//Confio en que simpre se devolvera el precio en el json
+      
+      
       if(json['Producto $i']['Características']['Peso Neto']!= null){
         _peso = TratarString.quitarUnidadesEspacios(TratarString.sustituirComasPorPuntos(json['Producto $i']['Características']['Peso Neto']));
       }else{
@@ -83,13 +88,13 @@ get nombreProducto => this._nombreProducto;
 
   Map<String,dynamic?> toMap(){
     return {
-      'nombreproducto':this._nombreProducto,
+      'nombre':this._nombreProducto,
       'precio':this._precio,
-      'peso':this._peso,
-      'volumen':this._volumen,
-      'marca':this._marca,
       'categoria':this._categoria,
-      'hrefProducto':this._hrefProducto,
+      'marca':this._marca,
+      'volumen':this._volumen,
+      'peso':this._peso,
+      'imagen':this._hrefProducto,
     };
   } 
 

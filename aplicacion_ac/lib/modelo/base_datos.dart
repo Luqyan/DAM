@@ -16,14 +16,23 @@ class BD {
   "nombre", "categoria", "precio", "marca", "volumen", "peso" e "imagen". La columna "nombre" se convierte en 
   clave primaria.*/
 
+  
+
   static Future<Database> openBD() async {
 
-    Database database;
-    return database = await openDatabase(join(await getDatabasesPath(), 'productos.db'),
-        onCreate: (database, version) {
-        database.execute(
-          "CREATE TABLE ahorramas (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT , precio NUMERIC, categoria TEXT, marca TEXT, volumen NUMERIC, peso NUMERIC, imagen TEXT);"
-          );
+    return openDatabase(join(await getDatabasesPath(), 'productos.db'),
+        onCreate: (db, version) {
+        db.execute(
+          """CREATE TABLE ahorramas (
+          nombre TEXT PRIMARY KEY,
+          precio REAL,
+          categoria TEXT,
+          marca TEXT,
+          peso REAL,
+          volumen REAL,
+          imagen TEXT
+); """
+      );
     }, version: 1);
   }
 
@@ -119,11 +128,14 @@ se especifican mediante los parámetros ${prod.nombreProducto}, ${prod.precio}, 
 
 Además, el método almacena el resultado de la operación de inserción en una variable llamada resultado.*/
 
-  static Future<void> insertarProducto(Database database, Producto prod, String tienda) async {
-    
+  static Future<void> insertarProducto(Producto prod) async {
+    Database database = await openBD();
 
     var resultado = await database.rawInsert(
-        "INSERT INTO $tienda (nombre, precio, categoria, marca, peso, volumen, imagen) VALUES ('${prod.nombreProducto}', ${prod.precio}, ${prod.categoria}, ${prod.marca}, ${prod.peso}, ${prod.volumen}, '${prod.hrefProducto}')");
+        'INSERT INTO ahorramas (nombre, precio, categoria, marca, peso, volumen, imagen) VALUES ("${prod.nombreProducto}", ${prod.precio}, "${prod.categoria}", "${prod.marca}", ${prod.volumen}, ${prod.peso}, "${prod.hrefProducto}")'
+        
+        );
+
   
   }
 
@@ -136,8 +148,6 @@ Además, el método almacena el resultado de la operación de inserción en una 
 
 
   }
-
-
 
 }
 

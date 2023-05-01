@@ -10,30 +10,24 @@ import 'package:aplicacion_ac/modelo/TiendaJson.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  Database database;
-
+  await BD.openBD();
+ 
   List<Producto> productos_ahorra = await TiendaJson.obtenerProductosDeJson("ahorramas");
   
-  print(productos_ahorra[1]);
+  // print(productos_ahorra[2000]);
 
-  await BD.borrarTabla("carrefour");
-
-  database = await BD.openBD();
-
-  // for(Producto p in productos_ahorra) {
-
-  //   await BD.insertarProducto(database, p, "ahorramas");
-
-  // }
-
-  Producto prod5 =
-    Producto(nombreProducto:'helado hägen dasz',precio: 4.80,hrefImgProducto:  'assets/helado_haagen.jpg');
+  // await BD.borrarTabla("ahorramas");
 
 
-  await BD.insertarProducto(database, prod5, "ahorramas");
+  for(Producto p in productos_ahorra) {
 
+  await BD.insert(p);
 
-  print(await BD.productos("ahorramas"));
+  }
+
+  
+
+  print(await BD.productos("ahorramas").toString());
 
 
 
@@ -126,10 +120,6 @@ class _MiAplicacion extends State<MiAplicacion>
       ),
     );
   }
-
-
-
-
 
 
 
