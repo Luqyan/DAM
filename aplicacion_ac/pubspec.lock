@@ -111,10 +111,10 @@ packages:
     dependency: transitive
     description:
       name: image
-      sha256: "483a389d6ccb292b570c31b3a193779b1b0178e7eb571986d9a49904b6861227"
+      sha256: "73964e3609fb96e01e69b0924b939967c556e46c7ff05db2ea9e31019000f4ef"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.15"
+    version: "4.0.16"
   js:
     dependency: transitive
     description:
@@ -216,6 +216,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  sqflite:
+    dependency: "direct main"
+    description:
+      name: sqflite
+      sha256: "8453780d1f703ead201a39673deb93decf85d543f359f750e2afc4908b55533f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.8"
+  sqflite_common:
+    dependency: transitive
+    description:
+      name: sqflite_common
+      sha256: e77abf6ff961d69dfef41daccbb66b51e9983cdd5cb35bf30733598057401555
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.5"
   stack_trace:
     dependency: transitive
     description:
@@ -240,6 +256,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  synchronized:
+    dependency: transitive
+    description:
+      name: synchronized
+      sha256: "5fcbd27688af6082f5abd611af56ee575342c30e87541d0245f7ff99faa02c60"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   term_glyph:
     dependency: transitive
     description:
@@ -282,3 +306,4 @@ packages:
     version: "6.3.0"
 sdks:
   dart: ">=3.0.0-313.0.dev <4.0.0"
+  flutter: ">=3.3.0"

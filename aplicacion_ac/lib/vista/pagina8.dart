@@ -308,7 +308,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     bool activado = false;
 
     return Container(
-      margin: const EdgeInsets.only(left: 50.0, right: 50.0, top: 20.0),
+      margin: const EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
       //color: Color(0xFFFAF482),
       alignment: AlignmentDirectional.center,
       width: MediaQuery.of(context).size.width,
@@ -432,15 +432,19 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   Widget _montar_contenedor(Producto p) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
+          decoration: BoxDecoration(
+        
           border:
-              Border.all(color: Color.fromRGBO(240, 158, 111, 1), width: 5.0),
+              Border.all(color: Color.fromRGBO(240, 158, 111, 1), width: 3.0),
           borderRadius: BorderRadius.circular(15),
           color: Color.fromARGB(226, 244, 250, 226)),
+      
       child: SizedBox(
+        
         width: double.infinity,
-        height: double.infinity,
+        height: MediaQuery.of(context).size.height,
         child: ListTile(
+          contentPadding: EdgeInsets.all(10.0),
           visualDensity: const VisualDensity(vertical: 0.0),
           minLeadingWidth: 100.0,
           dense: false,
@@ -451,21 +455,28 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
                 minHeight: 100.0,
                 maxWidth: 300.0,
                 maxHeight: 300.0),
+                
             child: Image.asset(
-              p.imagenProducto,
+              p.hrefProducto,
               width: 50.0,
               height: MediaQuery.of(context).size.height,
-              alignment: Alignment.centerLeft,
-              fit: BoxFit.cover,
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
             ),
           ),
           title: Text(
             p.nombreProducto,
           ),
+
+          
+
+
           trailing: Icon(
             Icons.star_border_rounded,
             size: 40.0,
           ),
+
+
         ),
       ),
     );

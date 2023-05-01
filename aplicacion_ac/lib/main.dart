@@ -1,10 +1,43 @@
+import 'package:aplicacion_ac/modelo/TiendaJson.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/vista/pagina1.dart';
-
 import 'vista/menugeneral.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:aplicacion_ac/modelo/base_datos.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
+import 'package:aplicacion_ac/modelo/TiendaJson.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Database database;
+
+  List<Producto> productos_ahorra = await TiendaJson.obtenerProductosDeJson("ahorramas");
+  
+  print(productos_ahorra[1]);
+
+  await BD.borrarTabla("carrefour");
+
+  database = await BD.openBD();
+
+  // for(Producto p in productos_ahorra) {
+
+  //   await BD.insertarProducto(database, p, "ahorramas");
+
+  // }
+
+  Producto prod5 =
+    Producto(nombreProducto:'helado hägen dasz',precio: 4.80,hrefImgProducto:  'assets/helado_haagen.jpg');
 
 
-void main() {
+  await BD.insertarProducto(database, prod5, "ahorramas");
+
+
+  print(await BD.productos("ahorramas"));
+
+
+
+
   runApp(
     const MaterialApp(
       home: MiAplicacion(),

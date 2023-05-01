@@ -1,9 +1,7 @@
-import 'dart:html';
-
 import 'package:aplicacion_ac/vista/Alergenos.dart';
 import 'package:aplicacion_ac/vista/Item.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
-import 'package:aplicacion_ac/vista/Tiendas.dart';
+import 'package:aplicacion_ac/modelo/Tiendas.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina8.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +18,14 @@ import 'Item.dart';
 // Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
 List<Item> _listaItems = generaItems(1);
 
-Producto prod1 = new Producto('pan integral', 1.60, 'assets/pan_integral.jpg');
+Producto prod1 = new Producto(nombreProducto: 'pan integral',precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
 Producto prod2 =
-    new Producto('leche sin lactosa', 1.20, 'assets/leche_sin_lactosa.png');
-Producto prod3 = new Producto('cerveza', 0.70, 'assets/mahou.jpg');
-Producto prod4 = new Producto('huevos', 2.60, 'assets/huevos_eco.jpg');
-Producto prod5 = new Producto('helado hägen dasz', 4.80, 'assets/helado_haagen.jpg');
-Producto prod6 =  Producto('yogur griego', 0.60, 'assets/yogur_griego.jpg');
-Producto prod7 = Producto('Arroz', 0.90, 'assets/arroz.jpg');
+    new Producto(nombreProducto:'leche sin lactosa', precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
+Producto prod3 = new Producto(nombreProducto:'cerveza',precio:  0.70, hrefImgProducto: 'assets/mahou.jpg');
+Producto prod4 = new Producto(nombreProducto:'huevos', precio: 2.60, hrefImgProducto: 'assets/huevos_eco.jpg');
+Producto prod5 = new Producto(nombreProducto:'helado hägen dasz', precio: 4.80, hrefImgProducto: 'assets/helado_haagen.jpg');
+Producto prod6 =  Producto(nombreProducto:'yogur griego',precio:  0.60, hrefImgProducto: 'assets/yogur_griego.jpg');
+Producto prod7 = Producto(nombreProducto:'Arroz',precio:  0.90, hrefImgProducto: 'assets/arroz.jpg');
 
 
 
@@ -58,11 +56,11 @@ class Pagina7 extends StatefulWidget {
 /////////////////////////////////////1 ª PARTE//////////////////////////////////////////////
 // CLASE ANIMADO
 class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
-  late AnimationController _drawerSlideController;
+  late AnimationController _drawerSlideController; 
 
   String _valorIntroducido = "";
   bool _productoEncontrado = false;
-  Producto _productoE = new Producto("", 0, "");
+  Producto _productoE = new Producto(nombreProducto: "", precio:  0, hrefImgProducto: "");
 
   
   // Lista de productos que surge al buscar productos y añadirlos a la cesta
@@ -337,7 +335,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                 children: [
                   // Imagen del producto
                   Image.asset(
-                    prod.imagenProducto,
+                    prod.hrefProducto,
                     height: MediaQuery.of(context).size.height,
                     width: 100.0,
                     alignment: Alignment.centerLeft,
