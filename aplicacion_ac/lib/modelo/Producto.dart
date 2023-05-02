@@ -3,7 +3,7 @@ import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
 
 
 class Producto {
- 
+  late int _id;
   late String _nombreProducto;
   late double _precio;
   late double? _peso;
@@ -12,9 +12,8 @@ class Producto {
   late String? _categoria;
   late String _hrefProducto;
   late int _unidades;
-  Producto({required String nombreProducto,required double precio,required String hrefImgProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null}):
-    
-  
+  Producto({required int id, required String nombreProducto,required double precio,required String hrefImgProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null}):
+    this._id = id,
     this._nombreProducto=nombreProducto,
     this._precio=precio,
     this._hrefProducto=hrefImgProducto,
@@ -60,6 +59,10 @@ get nombreProducto => this._nombreProducto;
 
   set peso( value) => this._peso = value;
 
+  get id => this._id;
+
+  set id( value) => this._id = value;
+
   get volumen => this._volumen;
 
   set unidades( value) => this._unidades = value;
@@ -101,7 +104,9 @@ get nombreProducto => this._nombreProducto;
   @override
   String toString() {
     // TODO: implement toString
-    return """ Nombre del Producto: ${ this._nombreProducto}
+    return """ 
+    ID: ${this._id}
+    Nombre del Producto: ${ this._nombreProducto}
     Precio: ${this._precio} 
     Peso: ${this._peso} 
     Volumen: ${this._volumen}

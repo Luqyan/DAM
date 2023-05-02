@@ -18,14 +18,14 @@ import 'Item.dart';
 // Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
 List<Item> _listaItems = generaItems(1);
 
-Producto prod1 = new Producto(nombreProducto: 'pan integral',precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
+Producto prod1 = new Producto(id: 10, nombreProducto: 'pan integral',precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
 Producto prod2 =
-    new Producto(nombreProducto:'leche sin lactosa', precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
-Producto prod3 = new Producto(nombreProducto:'cerveza',precio:  0.70, hrefImgProducto: 'assets/mahou.jpg');
-Producto prod4 = new Producto(nombreProducto:'huevos', precio: 2.60, hrefImgProducto: 'assets/huevos_eco.jpg');
-Producto prod5 = new Producto(nombreProducto:'helado hägen dasz', precio: 4.80, hrefImgProducto: 'assets/helado_haagen.jpg');
-Producto prod6 =  Producto(nombreProducto:'yogur griego',precio:  0.60, hrefImgProducto: 'assets/yogur_griego.jpg');
-Producto prod7 = Producto(nombreProducto:'Arroz',precio:  0.90, hrefImgProducto: 'assets/arroz.jpg');
+    new Producto(id: 10, nombreProducto:'leche sin lactosa', precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
+Producto prod3 = new Producto(id: 10, nombreProducto:'cerveza',precio:  0.70, hrefImgProducto: 'assets/mahou.jpg');
+Producto prod4 = new Producto(id: 10, nombreProducto:'huevos', precio: 2.60, hrefImgProducto: 'assets/huevos_eco.jpg');
+Producto prod5 = new Producto(id: 10, nombreProducto:'helado hägen dasz', precio: 4.80, hrefImgProducto: 'assets/helado_haagen.jpg');
+Producto prod6 =  Producto(id: 10, nombreProducto:'yogur griego',precio:  0.60, hrefImgProducto: 'assets/yogur_griego.jpg');
+Producto prod7 = Producto(id: 10, nombreProducto:'Arroz',precio:  0.90, hrefImgProducto: 'assets/arroz.jpg');
 
 
 
@@ -60,7 +60,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
   String _valorIntroducido = "";
   bool _productoEncontrado = false;
-  Producto _productoE = new Producto(nombreProducto: "", precio:  0, hrefImgProducto: "");
+  Producto _productoE = new Producto(id: 10, nombreProducto: "", precio:  0, hrefImgProducto: "");
 
   
   // Lista de productos que surge al buscar productos y añadirlos a la cesta

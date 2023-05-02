@@ -2,9 +2,7 @@ import 'Producto.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-
 class BD {
-
   /* El método _openBD() es un método asincrónico que devuelve una instancia de la base de datos Database.
 
   El método utiliza el método getDatabasesPath() para obtener la ruta de acceso al directorio de bases de datos 
@@ -16,27 +14,21 @@ class BD {
   "nombre", "categoria", "precio", "marca", "volumen", "peso" e "imagen". La columna "nombre" se convierte en 
   clave primaria.*/
 
-  
-
   static Future<Database> openBD() async {
-
-    return openDatabase(join(await getDatabasesPath(), 'productos.db'),
+    return openDatabase(join(await getDatabasesPath(), 'baseDB2.db'),
         onCreate: (db, version) {
-        db.execute(
-          """CREATE TABLE ahorramas (
-          nombre TEXT PRIMARY KEY,
+      db.execute("""CREATE TABLE ahorramas (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          nombre TEXT UNIQUE,
           precio REAL,
           categoria TEXT,
           marca TEXT,
           peso REAL,
           volumen REAL,
           imagen TEXT
-); """
-      );
+); """);
     }, version: 1);
   }
-
-
 
 /*El método insert() es un método estático y asíncrono que toma un objeto Producto como entrada. 
 El método devuelve una Future<void>.
@@ -64,10 +56,10 @@ La condición de eliminación se especifica utilizando el parámetro where, que 
 y el valor que coincide con la condición se proporciona al parámetro whereArgs, que se establece en 
 [prod.nombreProducto].*/
 
-  static Future<void> delete(Producto prod) async {
+  static Future<int> delete(Producto prod) async {
     Database database = await openBD();
 
-    database.delete('productos',
+    return database.delete('ahorramas',
         where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
   }
 
@@ -87,7 +79,6 @@ a actualizar. En este caso, se actualiza el primer registro cuyo nombre sea igua
 
     database.update('productos', prod.toMap(),
         where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
-
   }
 
 /*El método productos() es un método asincrónico que devuelve una lista de objetos Producto.
@@ -107,9 +98,9 @@ El método crea una nueva lista de objetos Producto, basada en el resultado de l
         await database.query("$tienda");
 
     return List.generate(
-
         productosLista.length,
         (index) => Producto(
+            id: productosLista[index]['id'],
             nombreProducto: productosLista[index]['nombre'],
             hrefImgProducto: productosLista[index]['imagen'],
             precio: productosLista[index]['precio']));
@@ -128,29 +119,55 @@ se especifican mediante los parámetros ${prod.nombreProducto}, ${prod.precio}, 
 
 Además, el método almacena el resultado de la operación de inserción en una variable llamada resultado.*/
 
-  static Future<void> insertarProducto(Producto prod) async {
+  static Future<int> insertarProducto(Producto prod) async {
     Database database = await openBD();
 
-    var resultado = await database.rawInsert(
-        'INSERT INTO ahorramas (nombre, precio, categoria, marca, peso, volumen, imagen) VALUES ("${prod.nombreProducto}", ${prod.precio}, "${prod.categoria}", "${prod.marca}", ${prod.volumen}, ${prod.peso}, "${prod.hrefProducto}")'
-        
-        );
-
+    return await database.rawInsert(
+        'INSERT INTO ahorramas (nombre, precio, categoria, marca, volumen, peso, imagen) VALUES (${prod.nombreProducto}, ${prod.precio}, ${prod.categoria}, ${prod.marca}, ${prod.volumen}, ${prod.peso}, "${prod.hrefProducto}")');
+    
+  
   
   }
 
-
   static Future<void> borrarTabla(String nombre) async {
-
     Database database = await openBD();
 
-    database.delete(nombre);
-
+    await database.execute('DELETE FROM $nombre');
 
   }
 
-}
+  static Future<int> getCount() async {
+    Database database = await openBD();
+    var result = await database.query("ahorramas");
+    int count = result.length;
+  
+    return count;
+  }
 
+  static Future<List<Producto>?> muestraTodo() async {
+    // ABRIMOS LA BASE DE DATOS
+    Database database = await openBD();
+
+    // RECOGEMOS TODAS LAS FILAS DE LA TABLA
+    final List<Map<String, dynamic>> result = await database.query('ahorramas');
+
+    // IMPRIMIMOS CADA FILA
+
+    result.forEach((row) => print(row));
+   
+    return null;
+  }
+
+  static Future<Map<String,dynamic>> consultaProducto(String tabla,
+      String nombre) async {
+    Database database = await openBD();
+
+    final List<Map<String, dynamic>> producto =  await database.query("$tabla", where: "nombre LIKE (?)", whereArgs: ['%$nombre%']);
+    return producto.first;
+  
+    
+  }
+}
 
 
 /*
