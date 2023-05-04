@@ -3,7 +3,7 @@ import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
 
 
 class Producto {
-  late int _id;
+
   late String _nombreProducto;
   late double _precio;
   late double? _peso;
@@ -12,8 +12,7 @@ class Producto {
   late String? _categoria;
   late String _hrefProducto;
   late int _unidades;
-  Producto({required int id, required String nombreProducto,required double precio,required String hrefImgProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null}):
-    this._id = id,
+  Producto({required String nombreProducto,required double precio,required String hrefImgProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null}):
     this._nombreProducto=nombreProducto,
     this._precio=precio,
     this._hrefProducto=hrefImgProducto,
@@ -45,6 +44,7 @@ class Producto {
       _marca= json['Producto $i']['Características']['Marca'];
       _categoria= json['Producto $i']['Categoria'];
       _hrefProducto= json['Producto $i']['Imagen'];
+      _unidades=0;
 
   }
 get nombreProducto => this._nombreProducto;
@@ -58,10 +58,6 @@ get nombreProducto => this._nombreProducto;
   get peso => this._peso;
 
   set peso( value) => this._peso = value;
-
-  get id => this._id;
-
-  set id( value) => this._id = value;
 
   get volumen => this._volumen;
 
@@ -99,13 +95,32 @@ get nombreProducto => this._nombreProducto;
       'peso':this._peso,
       'imagen':this._hrefProducto,
     };
-  } 
+  }
+  Producto.inicializandoDesdeMapa(Map<String,dynamic> productoMapa):
+
+    _nombreProducto = productoMapa['nombre'],
+    _precio = productoMapa['precio'],
+    _hrefProducto = productoMapa['imagen'],
+    _peso = productoMapa['peso'],
+    _volumen = productoMapa['volumen'],
+    _marca = productoMapa['marca'],
+    _categoria = productoMapa['categoria'],
+    _unidades =0;
+    
+    
+    
+  
+  Producto toObjeto(Map<String,dynamic> objeto){
+     
+    Producto resultado= Producto(nombreProducto: objeto['nombre'], precio: objeto['precio'], hrefImgProducto: objeto['imagen'], categoria: objeto['categoria'],marca: objeto['marca'],peso: objeto[peso],volumen: objeto['volumen']);
+    print(resultado);
+    return resultado;
+  }  
 
   @override
   String toString() {
     // TODO: implement toString
-    return """ 
-    ID: ${this._id}
+    return """
     Nombre del Producto: ${ this._nombreProducto}
     Precio: ${this._precio} 
     Peso: ${this._peso} 

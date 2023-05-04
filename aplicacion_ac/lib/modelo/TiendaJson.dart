@@ -3,6 +3,7 @@ import 'Producto.dart';
 import 'package:aplicacion_ac/controlador/flujoTexto/EscribirYLeerFichero.dart';
 import 'dart:convert'; //Libreria para parsear un json
 import 'base_datos.dart';
+
 class TiendaJson {
   String _nombreTienda;
   List<Producto> _productos;
@@ -35,7 +36,6 @@ class TiendaJson {
     Map<String, dynamic> userMap = jsonDecode(contenidoJson);
 
     for (int i = 1; i < userMap.length + 1; i++) {
-
       productoss.add(Producto.userDesdeJson(userMap, i));
     }
     return productoss;

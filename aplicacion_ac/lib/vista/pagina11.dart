@@ -11,25 +11,25 @@ import 'package:pdf/widgets.dart' as pw;
 
 /////////////////// MIRAR POR QUE NO FUNCIONAN LOS SETTERS DE LA CLASE /////////////////////
 
-Producto prod1 = Producto(id: 10, nombreProducto: 'pan integral', precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
+Producto prod1 = Producto(  nombreProducto: 'pan integral', precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
 Producto prod2 =
-    Producto(id: 10, nombreProducto:'leche sin lactosa',precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
-Producto prod3 = Producto(id: 10, nombreProducto:'cerveza',precio: 0.80,hrefImgProducto:  'assets/mahou.jpg');
-Producto prod4 = Producto(id: 10, nombreProducto:'huevos',precio: 2.60,hrefImgProducto:  'assets/huevos_eco.jpg');
+    Producto(  nombreProducto:'leche sin lactosa',precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
+Producto prod3 = Producto(  nombreProducto:'cerveza',precio: 0.80,hrefImgProducto:  'assets/mahou.jpg');
+Producto prod4 = Producto(  nombreProducto:'huevos',precio: 2.60,hrefImgProducto:  'assets/huevos_eco.jpg');
 Producto prod5 =
-    Producto(id: 10, nombreProducto:'helado hägen dasz',precio: 4.80,hrefImgProducto:  'assets/helado_haagen.jpg');
+    Producto(  nombreProducto:'helado hägen dasz',precio: 4.80,hrefImgProducto:  'assets/helado_haagen.jpg');
 
 // Lista contenedora de productos de Careffour
 Set<Producto> _Careffour = Set<Producto>()
   ..addAll([prod1, prod2, prod3, prod4, prod5]);
 
-Producto prod6 = Producto(id: 10, nombreProducto:'pan integral',precio:1.30,hrefImgProducto:  'assets/pan_integral.jpg');
+Producto prod6 = Producto(  nombreProducto:'pan integral',precio:1.30,hrefImgProducto:  'assets/pan_integral.jpg');
 Producto prod7 =
-    Producto(id: 10, nombreProducto:'leche sin lactosa',precio: 1.30, hrefImgProducto: 'assets/leche_sin_lactosa.png');
-Producto prod8 = Producto(id: 10, nombreProducto:'cerveza',precio: 0.80, hrefImgProducto: 'assets/mahou.jpg');
-Producto prod9 = Producto(id: 10, nombreProducto:'huevos', precio:2.40, hrefImgProducto: 'assets/huevos_eco.jpg');
-Producto prod10 = Producto(id: 10, nombreProducto:'yogur griego',precio: 0.60,hrefImgProducto:  'assets/yogur_griego.jpg');
-Producto prod11 = Producto(id: 10, nombreProducto:'Arroz',precio: 0.90, hrefImgProducto: 'assets/arroz.jpg');
+    Producto(  nombreProducto:'leche sin lactosa',precio: 1.30, hrefImgProducto: 'assets/leche_sin_lactosa.png');
+Producto prod8 = Producto(  nombreProducto:'cerveza',precio: 0.80, hrefImgProducto: 'assets/mahou.jpg');
+Producto prod9 = Producto(  nombreProducto:'huevos', precio:2.40, hrefImgProducto: 'assets/huevos_eco.jpg');
+Producto prod10 = Producto(  nombreProducto:'yogur griego',precio: 0.60,hrefImgProducto:  'assets/yogur_griego.jpg');
+Producto prod11 = Producto(  nombreProducto:'Arroz',precio: 0.90, hrefImgProducto: 'assets/arroz.jpg');
 
 // Lista contenedora de productos de Ahorramás
 Set<Producto> _Ahorramas = Set<Producto>()
@@ -255,8 +255,8 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     // Por cada elemento de nuestra lista creada cargamos el nombre y precio
     Lista.getProductos().forEach((element) {
       
-      Producto productoAhorr = Producto(id: 10, nombreProducto: "", precio:100.0, hrefImgProducto: "");
-      Producto productoCarr = Producto(id: 10, nombreProducto: "", precio:90.0, hrefImgProducto: "");
+      Producto productoAhorr = Producto(  nombreProducto: "", precio:100.0, hrefImgProducto: "");
+      Producto productoCarr = Producto(  nombreProducto: "", precio:90.0, hrefImgProducto: "");
 
       // se busca en la lista de productos de Carrefour
       for (Producto prod_car in _Careffour) {
