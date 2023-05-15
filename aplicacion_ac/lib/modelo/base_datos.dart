@@ -123,8 +123,9 @@ El método crea una nueva lista de objetos Producto, basada en el resultado de l
     return List.generate(
         productosLista.length,
         (index) => Producto(
+            //id: productosLista[index]['id'],
             nombreProducto: productosLista[index]['nombre'],
-            hrefImgProducto: productosLista[index]['imagen'],
+            hrefProducto: productosLista[index]['imagen'],
             precio: productosLista[index]['precio']));
   }
 
@@ -202,7 +203,7 @@ Además, el método almacena el resultado de la operación de inserción en una 
 
   //Funciona
   static Future<Producto> consultaPrimerProducto(String tabla,String nombreProducto) async {
-    Producto resultado=Producto(nombreProducto: "productoNoEncontrado", precio: 0, hrefImgProducto: "assets/producto_no_encontrado.png");
+    Producto resultado=Producto(nombreProducto: "productoNoEncontrado", precio: 0, hrefProducto: "assets/producto_no_encontrado.png");
 
     Database database = await openBD();
 

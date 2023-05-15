@@ -3,37 +3,40 @@ import 'dart:typed_data';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'Lista.dart';
-import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
+import 'package:path/path.dart' as p;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:path_provider/path_provider.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 
 /////////////////// MIRAR POR QUE NO FUNCIONAN LOS SETTERS DE LA CLASE /////////////////////
 
-Producto prod1 = Producto(  nombreProducto: 'pan integral', precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
+Producto prod1 = Producto(nombreProducto: 'pan integral', precio: 1.60, hrefProducto: 'assets/pan_integral.jpg', unidades: 0);
 Producto prod2 =
-    Producto(  nombreProducto:'leche sin lactosa',precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
-Producto prod3 = Producto(  nombreProducto:'cerveza',precio: 0.80,hrefImgProducto:  'assets/mahou.jpg');
-Producto prod4 = Producto(  nombreProducto:'huevos',precio: 2.60,hrefImgProducto:  'assets/huevos_eco.jpg');
+    Producto(nombreProducto:'leche sin lactosa',precio: 1.20, hrefProducto: 'assets/leche_sin_lactosa.png');
+Producto prod3 = Producto(nombreProducto:'cerveza',precio: 0.80,hrefProducto:  'assets/mahou.jpg');
+Producto prod4 = Producto(nombreProducto:'huevos',precio: 2.60,hrefProducto:  'assets/huevos_eco.jpg');
 Producto prod5 =
-    Producto(  nombreProducto:'helado hägen dasz',precio: 4.80,hrefImgProducto:  'assets/helado_haagen.jpg');
+    Producto(nombreProducto:'helado hägen dasz',precio: 4.80,hrefProducto:  'assets/helado_haagen.jpg');
 
 // Lista contenedora de productos de Careffour
 Set<Producto> _Careffour = Set<Producto>()
   ..addAll([prod1, prod2, prod3, prod4, prod5]);
 
-Producto prod6 = Producto(  nombreProducto:'pan integral',precio:1.30,hrefImgProducto:  'assets/pan_integral.jpg');
+Producto prod6 = Producto(nombreProducto:'pan integral',precio:1.30,hrefProducto:  'assets/pan_integral.jpg');
 Producto prod7 =
-    Producto(  nombreProducto:'leche sin lactosa',precio: 1.30, hrefImgProducto: 'assets/leche_sin_lactosa.png');
-Producto prod8 = Producto(  nombreProducto:'cerveza',precio: 0.80, hrefImgProducto: 'assets/mahou.jpg');
-Producto prod9 = Producto(  nombreProducto:'huevos', precio:2.40, hrefImgProducto: 'assets/huevos_eco.jpg');
-Producto prod10 = Producto(  nombreProducto:'yogur griego',precio: 0.60,hrefImgProducto:  'assets/yogur_griego.jpg');
-Producto prod11 = Producto(  nombreProducto:'Arroz',precio: 0.90, hrefImgProducto: 'assets/arroz.jpg');
+    Producto(nombreProducto:'leche sin lactosa',precio: 1.30, hrefProducto: 'assets/leche_sin_lactosa.png');
+Producto prod8 = Producto(nombreProducto:'cerveza',precio: 0.80, hrefProducto: 'assets/mahou.jpg');
+Producto prod9 = Producto(nombreProducto:'huevos', precio:2.40, hrefProducto: 'assets/huevos_eco.jpg');
+Producto prod10 = Producto(nombreProducto:'yogur griego',precio: 0.60,hrefProducto:  'assets/yogur_griego.jpg');
+Producto prod11 = Producto(nombreProducto:'Arroz',precio: 0.90, hrefProducto: 'assets/arroz.jpg');
+Producto prod12 = Producto(nombreProducto: 'pan', precio: 1.10, hrefProducto: 'assets/pan.jpg');
 
 // Lista contenedora de productos de Ahorramás
 Set<Producto> _Ahorramas = Set<Producto>()
-  ..addAll([prod6, prod7, prod8, prod9, prod10, prod11]);
+  ..addAll([prod6, prod7, prod8, prod9, prod10, prod11, prod12]);
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class Pagina11 extends StatefulWidget {
@@ -96,11 +99,14 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
       appBar: _buildAppBar(),
-      body: Stack(
-        children: [
-          _buildContent(context),
-          _buildDrawer(),
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          
+          children: [
+            _buildContent(context),
+            _buildDrawer(),
+          ],
+        ),
       ),
     );
   }
@@ -111,9 +117,9 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(
-        Icons.shopping_basket_sharp,
-        color: Color.fromARGB(255, 3, 122, 44),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
       ),
       title: const Text(
         'Listas favoritas',
@@ -154,18 +160,17 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
   Widget _buildContent(conte) {
     // Indicador si se ha arrastrado y soltado algo
     bool pasadoOnaccept = false;
-    List<List<Producto>> listas = _devuelve_listas_por_precio();
+    List<List<Producto>> listas = devuelve_listas_por_precio();
   
- 
-    //  List<Widget> lista = List.from(listaListas);
-
     return Container(
-      margin: const EdgeInsets.only(left: 50.0, right: 50.0, top: 20.0),
+      margin: const EdgeInsets.only(left: 30.0, right: 30.0, top: 20.0),
       //color: Color(0xFFFAF482),
       alignment: AlignmentDirectional.center,
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+      //height: MediaQuery.of(context).size.height,
       child: Column(
+          
+        
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -184,54 +189,68 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
   // Metodo constructor de contenedor de lista (ListTile)
   Widget _montar_contenedor(listas) {
 
-  Widget wid = _generarCards(listas);
 
     return Container(
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           border: Border.all(
-              color: const Color.fromARGB(255, 220, 230, 247), width: 10.0),
+              color: const Color.fromARGB(255, 220, 230, 247), width: 4.0),
           borderRadius: BorderRadius.circular(15),
           color: const Color.fromRGBO(239, 237, 254, 0.898)),
-      child: SizedBox(
-        width: 300,
-        height: 100,
-        child: ListTile(
-          visualDensity: const VisualDensity(vertical: 3),
-          minLeadingWidth: 100.0,
-          dense: false,
-          onTap: () => () {},
-          leading: ConstrainedBox(
-            constraints: const BoxConstraints(
-                minWidth: 70.0,
-                minHeight: 70.0,
-                maxWidth: 300.0,
-                maxHeight: 200.0),
-            child: Image.asset(
-              'assets/logo_cart.png',
-              width: 80.0,
-              height: 80,
-              alignment: Alignment.centerLeft,
-              fit: BoxFit.cover,
+      
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: 100,
+          child: ListTile(
+            visualDensity: const VisualDensity(vertical: 3),
+            minLeadingWidth: 70.0,
+            dense: false,
+          
+            leading: ConstrainedBox(
+              constraints: const BoxConstraints(
+                  minWidth: 50.0,
+                  minHeight: 50.0,
+                  maxWidth: 200.0,
+                  maxHeight: 200.0),
+              child: Image.asset(
+                'assets/logo_cart.png',
+                width: 60.0,
+                height: 60.0,
+                alignment: Alignment.center,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          title: Text("Lista de compra"),
-          subtitle: Text("Total productos:  ${Lista.getProductos().length}"),
-          trailing: Tooltip(
-            message: "Guardar lista.",
-            child: OutlinedButton(
-              onPressed: () =>setState(() {
-               generatePDF(wid as pw.Widget);
-              }),
-              // MOSTRAMOS CONFIRMACIÓN DE QUE SE HA GUARDADO ..........................
+            
+            title: Text("Lista de compra", style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),),
+
+            subtitle: Text("Total productos:  ${Lista.getProductos().length}", style: TextStyle(fontSize: 11),),
+      
+            trailing: Tooltip(
               
-            child: const Icon(
-              Icons.summarize_rounded,
-              size: 50.0,
+              message: "Guardar lista.",
+
+              child: OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                  
+                  backgroundColor: Color.fromARGB(100, 20, 80, 1 ),
+                  textStyle: TextStyle(fontSize: 10.0)
+      
+              ),
+               
+                onPressed: () =>setState(() {
+                 generatePDF(listas);
+                }),
+                // MOSTRAMOS CONFIRMACIÓN DE QUE SE HA GUARDADO ..........................
+                label: Text("Descarga PDF"),
+             
+                icon: Icon(Icons.picture_as_pdf,
+                size: 30.0,
+                ),
             ),
-          ),
+            ),
           ),
         ),
-      ),
+      
     );
   }
 
@@ -243,7 +262,7 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
   /// NOS TENDRÁ QUE DEVOLVER UNA LISTA DE LISTVIEWS ??????
   /// mirar Pagina7 fila 460
 
-  List<List<Producto>> _devuelve_listas_por_precio() {
+  List<List<Producto>> devuelve_listas_por_precio() {
     // Objeto que nos devuelve que incluye las listas generadas en base al precio más barato
     List<List<Producto>> listasGeneradas = List.empty(growable: true);
 
@@ -252,58 +271,78 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     Lista listaAhorramas =
         Lista("Ahorramas", "Resultado busqueda por criterio 'precio'");
 
-    // Por cada elemento de nuestra lista creada cargamos el nombre y precio
+    // Por cada elemento de nuestra lista creada cargamos el nombre, precio y unidades
     Lista.getProductos().forEach((element) {
       
-      Producto productoAhorr = Producto(  nombreProducto: "", precio:100.0, hrefImgProducto: "");
-      Producto productoCarr = Producto(  nombreProducto: "", precio:90.0, hrefImgProducto: "");
-
+      Producto productoAhor = Producto.filtrado();
+      Producto productoCarr = Producto.filtrado();
+      
       // se busca en la lista de productos de Carrefour
+      
+      
+    
+      // Representan los datos extraidos desde la tabla de Carrefour
       for (Producto prod_car in _Careffour) {
+
         // Si se encuentra un producto con nombre similar
         if (prod_car.nombreProducto
             .toString()
             .contains(element.nombreProducto.toString())) {
-          productoCarr = prod_car;
-          print(
+          productoCarr = prod_car.copyWith(nombreProducto: prod_car.nombreProducto, precio: prod_car.precio, hrefProducto: prod_car.hrefProducto, unidades: element.unidades);
+            print(
               "Se ha encontrado el producto ${element.nombreProducto} en Carrefour");
+              break;
         } 
       }
 
-      // Se pasa a buscar en la lista de productos de Ahorramas
+      // Representan los datos extraidos desde la tabla de Ahorramas
       for (Producto prod_ahor in _Ahorramas) {
         if (prod_ahor.nombreProducto
             .toString()
             .contains(element.nombreProducto.toString())) {
-          productoAhorr = prod_ahor;
+          productoAhor = prod_ahor.copyWith(nombreProducto: prod_ahor.nombreProducto, precio: prod_ahor.precio, hrefProducto: prod_ahor.hrefProducto, unidades: element.unidades);
           print(
               "Se ha encontrado el producto ${element.nombreProducto} en Ahorramás");
+              break;
         } 
       }
 
       // Se comparan los precios y nos quedamos con el más barato añadiendolo a la lista correspondiente
       // Para despues mostrarla por pantalla
 
-      if (productoAhorr.precio > productoCarr.precio) {
+      if((productoCarr.precio == 0) && (productoAhor.precio == 0)){
+        
+          print("No se ha encontrado el objeto ${element.nombreProducto}");
+      }
+
+      else if(productoCarr.precio == 0){
+      
+      listaAhorramas.aniadir_producto(productoAhor);
+      }else if(productoAhor.precio == 0) {
+      
+      listaCarrefour.aniadir_producto(productoCarr);
+      }      else if (productoAhor.precio > productoCarr.precio) {
         listaCarrefour.aniadir_producto(productoCarr);
-      } else if (productoAhorr.precio < productoCarr.precio) {
-        listaAhorramas.aniadir_producto(productoAhorr);
+      } else if (productoAhor.precio < productoCarr.precio) {
+        listaAhorramas.aniadir_producto(productoAhor);
 
         // Si se han encontrado en las dos tiendas y los precios son iguales
         // miramos cual de las dos tiendas tienen un numero inferior de productos
         // encontrados y lo añadimos a esa para equilibrar las cantidades
-      } else if (productoAhorr.precio == productoCarr.precio) {
+      } else if (productoAhor.precio == productoCarr.precio) {
         if (listaAhorramas.productos.length >
             listaCarrefour.productos.length) {
 
           listaCarrefour.aniadir_producto(productoCarr);
 
-        } else if (listaAhorramas.productos.length <
-            listaCarrefour.productos.length) {
-          listaAhorramas.aniadir_producto(productoAhorr);
-        } else {
+        } else if ( listaAhorramas.productos.length <
+            listaCarrefour.productos.length ) {
+          listaAhorramas.aniadir_producto(productoAhor);
+        } else if ( listaAhorramas.productos.length ==
+            listaCarrefour.productos.length ){
            listaCarrefour.aniadir_producto(productoCarr);
-        }
+            }
+        
       }
     });
 
@@ -317,58 +356,16 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     print("Ahorramás: ${listaAhorramas.productos.length}");
     print(listasGeneradas.length);
 
+    // Borrar contenido de la lista de productos buscados
+    Lista.getProductos().clear();
+
     return listasGeneradas;
   }
 
-// Widget _generarCards(List<List<Producto>> lista) {
-//   List<Widget> cards = [];
-//   for (int i = 0; i < lista.length; i++) {
-    
-//     List<Producto> productos = lista[i];
-
-//     for (int j = 0; j < productos.length; j++) {
-//       Producto producto = productos[j];
-//       Widget card = Card(
-//         color: Colors.amber,
-//         child: Column(
-          
-//           children: <Widget>[
-//             Text("Producto ${producto.nombreProducto}"),
-//             Text("Precio: ${producto.precio.toString()} €"),
-//           ],
-//         ),
-//       );
-//       cards.add(card);
-//     }
-//   }
-//   return Column(children: cards);
-// }
-  
-
-
-// Widget createCard(List<Producto> productos) {
-//   return Card(
-//     child: ListView.builder(
-//       itemCount: productos.length,
-//       itemBuilder: (context, index) {
-//         return ListTile(
-//           title: Text(productos[index].nombreProducto),
-//           subtitle: Text(productos[index].descripcion),
-//         );
-//       },
-//     ),
-//   );
-// }
-
-
-
-
-
-
 
 Widget _generarCards(List<List<Producto>> lista) {
-  
-  
+
+
   List<Widget> cards = [];
 
 
@@ -379,11 +376,10 @@ Widget _generarCards(List<List<Producto>> lista) {
 
       total += p.precio;
 
-
     }
 
 
-    Widget card = Card( 
+    Widget card = Card(
         ////////////////////////////////////// TEXT PRODUCTOS TYPE (CARREFOUR / AHORRAMAS)
         color: Color.fromARGB(255, 188, 177, 144),
         child: SizedBox(
@@ -391,7 +387,7 @@ Widget _generarCards(List<List<Producto>> lista) {
           child: Column(
             
             children:
-         
+
              productos.map((producto) =>
              
               Column(
@@ -400,9 +396,11 @@ Widget _generarCards(List<List<Producto>> lista) {
                   Divider(),
                   Text("Producto ${producto.nombreProducto}", textAlign: TextAlign.justify, style: TextStyle(fontSize: 18, ),),
                   Text("Precio: ${producto.precio.toStringAsFixed(2)}€", style: TextStyle(fontSize: 18, ),),
+                  Text("Unidades: ${producto.unidades.toString()}", style: TextStyle(fontSize: 18, ),),
                   Divider(),
+
                 ],
-              )
+              ),
             ).toList(),
             
           ),
@@ -412,33 +410,40 @@ Widget _generarCards(List<List<Producto>> lista) {
 
 
 
-      cards.add(Divider(height: 35.0,));
+      cards.add(Divider(height: 35.0, thickness: 3.0,));
       if(i==0){
-        cards.add(Text("Carrefour",style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),));
-        cards.add(Text("Productos encontrados: ${productos.length}"));
-        makePdf(productos);
-      }else{
-        cards.add(Text("Ahorramás",style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),));
+        cards.add(Text("Carrefour",style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),));
         cards.add(Text("Productos encontrados: ${productos.length}",style: TextStyle(fontSize: 24, fontStyle:FontStyle.italic)));
         makePdf(productos);
-     
+
+      }else{
+        cards.add(Text("Ahorramás",style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),));
+        cards.add(Text("Productos encontrados: ${productos.length}",style: TextStyle(fontSize: 24, fontStyle:FontStyle.italic)));
+        makePdf(productos);
+
       }
 
       cards.add(card);
 
-      cards.add(Text("TOTAL: ${total.toStringAsFixed(2)}€", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),));
+      cards.add(Text("TOTAL: ${total.toStringAsFixed(2)}Eu", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),textAlign: TextAlign.right,));
 
+       cards.add(Divider(height: 35.0,thickness: 3.0,));
 
-    
     }
-     return SingleChildScrollView(
-    child: SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: cards,
-      ),
-    ),
-  );
+
+     return(Container( 
+
+      child: 
+        Column(
+          children: cards,
+        )
+       )
+     
+     );
+     
+     
+      
+  
 }
 
 
@@ -450,31 +455,123 @@ Widget _generarCards(List<List<Producto>> lista) {
 //Debes asegurarte de especificar un nombre de archivo único y diferente cada vez que llames a la función para evitar sobrescribir archivos existentes.
 
 
-Future<void> generatePDF(pw.Widget content) async {
+Future<void> generatePDF(List<List<Producto>> lista) async {
   print("Pasamos a generar el pdf...");
+  
+  
   final pdf = pw.Document();
-  final page = pw.Page(
-    build: (context) => content,
+
+ 
+
+  pw.Container contenedor = await _generarContenido(lista);
+
+  final page = pw.Page (
+    build: (pw.Context context) => contenedor,
+  
   );
+  
   pdf.addPage(page);
   print("Se ha añadido una pagina en el pdf...");
 
+  final file = File("lista_compra.pdf");
+  await file.writeAsBytes(await pdf.save());
 
-  // Guardamos el archivo PDF como bytes en memoria.
-  final output = await pdf.save();
+  final absoluta = await getApplicationDocumentsDirectory();
 
+  print(absoluta);
+  final output = await getTemporaryDirectory();
+
+  print(output);
   // Escribimos los bytes del archivo PDF a un archivo en disco.
-  final file = File('ejemplo.pdf');
-  await file.writeAsBytes(output);
+  // final file = File(output+"/lista.pdf");
+  // await file.writeAsBytes( await pdf.save());
+  
+  
 }
 
 
-void guardaPDF( pdf){
+pw.Container _generarContenido(List<List<Producto>> lista) {
 
-  pdf.save();
-  print("Lista guardada.");
+
+  List<pw.Widget> cards = [];
+
+
+  for (int i = 0; i < lista.length; i++) {
+    List<Producto> productos = lista[i];
+    var total = 0.0;
+    for(Producto p in productos){
+
+      total += p.precio;
+
+    }
+
+
+    pw.Widget card = pw.Column(
+        ////////////////////////////////////// TEXT PRODUCTOS TYPE (CARREFOUR / AHORRAMAS)
+       
+        children: [ pw.SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: pw.Column(
+            
+            children:
+
+             productos.map((producto) =>
+             
+              pw.Column(
+                
+                children: <pw.Widget>[
+                  pw.Divider(),
+                  pw.Text("Producto ${producto.nombreProducto}", textAlign: pw.TextAlign.justify, style: pw.TextStyle(fontSize: 18, ),),
+                  pw.Text("Precio: ${producto.precio.toStringAsFixed(2)}", style: pw.TextStyle(fontSize: 18, ),),
+                  pw.Divider(),
+
+                ],
+              ),
+            ).toList(),
+            
+          ),
+          
+        ),
+        ]
+      );
+
+
+
+      cards.add(pw.Divider(height: 35.0, thickness: 3.0,));
+      if(i==0){
+        cards.add(pw.Text("Carrefour"));
+        cards.add(pw.Text("Productos encontrados: ${productos.length}"));
+        makePdf(productos);
+
+      }else{
+        cards.add(pw.Text("Ahorramás"));
+        cards.add(pw.Text("Productos encontrados: ${productos.length}"));
+        makePdf(productos);
+
+      }
+
+      cards.add(card);
+
+      cards.add(pw.Text("TOTAL: ${total.toStringAsFixed(2)}Eu"));
+
+       cards.add(pw.Divider(height: 35.0,thickness: 3.0,));
+
+    }
+
+    return(pw.Container( 
+
+      child: 
+        pw.Column(
+          children: cards,
+        )
+       )
+     
+     );
+     
+     
+      
+  
 }
-
 
 
 
@@ -504,7 +601,7 @@ pw.Row construyeFila(Producto producto) {
       mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
       children: <pw.Widget>[
         pw.Text(producto.nombreProducto),
-        pw.Text("${producto.precio}€"),
+        pw.Text("${producto.precio}Eu"),
       ],
     );
 }

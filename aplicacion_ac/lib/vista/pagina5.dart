@@ -77,9 +77,9 @@ class _Pagina5 extends State<Pagina5> with SingleTickerProviderStateMixin {
   // método de creación de appBar personalizado
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(
-        Icons.shopping_basket_sharp,
-        color: Color.fromARGB(255, 3, 122, 44),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
       ),
       title: const Text(
         'Configuración cuenta',

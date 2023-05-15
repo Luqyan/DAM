@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'Item.dart';
 import 'pagina1.dart';
 import 'pagina3.dart';
 import 'pagina4.dart';
 import 'pagina5.dart';
 import 'menugeneral.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
+import 'Lista.dart';
 
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'
@@ -25,7 +28,7 @@ class _Pagina4 extends State<Pagina4>
     with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
-
+  
 
   @override
   void initState() {
@@ -72,33 +75,38 @@ class _Pagina4 extends State<Pagina4>
   // metodo creacion Scaffold
   @override
   Widget build(BuildContext context) {
-    
-    return Scaffold(
-       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
-      appBar: _buildAppBar(),
-      body: Stack(
-        
-        children: [
-          _buildContent(context),
-          _buildDrawer(),
 
-        ],
-      ),
+      
+    // Ordenar los productos ascendentemente por los precios 
+    print((Lista.getFavoritos().toList()..sort()).reversed);
+    
+    // Coger los Productos de la lista atributo de la clase Lista
+    List<Widget> listaListas = crearListas(Lista.getFavoritos().toList());
+
+    return Scaffold(
+        
+        backgroundColor: Color.fromARGB(255, 252, 224, 125),
+        appBar: _buildAppBar(),
+        body: Stack(
+          
+          children: [
+            _buildContent(context, listaListas),
+            _buildDrawer(),
+    
+          ],
+        ),
     );
   }
 
-
-
-
-
-
-
-  // hay que acceder 
 //////////////////////////////////////////////////////////////////////////////////////////
   // método de creación de appBar personalizado
   PreferredSizeWidget _buildAppBar() {
+    
     return AppBar(
-      leading: const Icon(Icons.shopping_basket_sharp , color: Color.fromARGB(255, 3, 122, 44),),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
+      ),
       title: const Text(
         'Productos favoritos',
         style: TextStyle(
@@ -130,19 +138,16 @@ class _Pagina4 extends State<Pagina4>
     );
   }
 
-
-
- 
  
  /////////////////////////////////////////////////////
   // AQUI AÑADIMOS EL CONTENIDO DE LA PAGINA (BODY)////
   // METODO QUE DEVUELVE UN SIZED BOX CON SUS VALORES//
-  Widget _buildContent(conte) {
+  Widget _buildContent(conte, productos) {
     // Put page content here.
      
     return  SizedBox(
       child: Container(
-        margin: const EdgeInsets.only(left: 50.0,right: 50.0,top: 20.0),
+        margin: const EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0),
         //color: Color(0xFFFAF482),
         alignment: AlignmentDirectional.center,
         width: MediaQuery.of(context).size.width,
@@ -172,23 +177,30 @@ class _Pagina4 extends State<Pagina4>
               ),
           ),
        
-          Expanded(
-            child: ListView(
-              children: [
+          // Expanded(
+          //   child: ListView(
+          //     children: [
 
-              _construye_producto('assets/pan_integral.jpg', 'Pan integral'),
-              _construye_producto('assets/yogur_griego.jpg', 'Yogur griego'),
-              _construye_producto('assets/leche_sin_lactosa.png', 'Leche sín lactosa'),
-              _construye_producto('assets/huevos_eco.jpg', 'Huevos ecológicos'),
-              _construye_producto('assets/mahou.jpg', 'Cerveza Mahou 5 estrellas'),
-              _construye_producto('assets/papel_ig.jpg', 'Papel igiénico'),
+          //     _construye_producto('assets/pan_integral.jpg', 'Pan integral'),
+          //     _construye_producto('assets/yogur_griego.jpg', 'Yogur griego'),
+          //     _construye_producto('assets/leche_sin_lactosa.png', 'Leche sín lactosa marca Puleva semidesnatada y baja en grasa 1L abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrst'),
+          //     _construye_producto('assets/huevos_eco.jpg', 'Huevos ecológicos'),
+          //     _construye_producto('assets/mahou.jpg', 'Cerveza Mahou 5 estrellas'),
+          //     _construye_producto('assets/papel_ig.jpg', 'Papel igiénico'),
 
-          ]
+          // ]
           
-          ))
+          // ))
             // esto es el objeto por cada lista creada....
           
-            
+          Expanded(
+            child: ListView.builder(
+            padding: EdgeInsets.only(top: 30),
+            controller: ScrollController(initialScrollOffset: 2),
+            itemCount: productos.length,
+            itemBuilder:(BuildContext context, int index) => productos[index],
+          ),
+          )
          
                             
               ]
@@ -211,7 +223,7 @@ class _Pagina4 extends State<Pagina4>
 
 
 
-  Widget _construye_producto(String imagen, String nombre){
+  Widget _construye_producto(Producto p){
     // esto es el objeto por cada producto favorito...
     return Container(
       padding: const EdgeInsets.all(5.0),
@@ -227,7 +239,7 @@ class _Pagina4 extends State<Pagina4>
              
       child:SizedBox(
               
-        width: 200,
+        width: 250,
         height: 100,
           
           child: Row(
@@ -235,14 +247,14 @@ class _Pagina4 extends State<Pagina4>
            
             children: [
                 
-              Image.asset(imagen, height: MediaQuery.of(context).size.height,width: 100.0, alignment:Alignment.centerLeft,) ,
+              Image.asset(p.hrefProducto, height: MediaQuery.of(context).size.height,width: 100.0, alignment:Alignment.center,) ,
               
               Container(
                 decoration: const BoxDecoration(
                   //border: Border.all(color: Colors.blueAccent)
                   color: Color.fromRGBO(255, 255, 255, 0.5)
                 ),
-                width: MediaQuery.of(context).size.width/2.3,
+                width: MediaQuery.of(context).size.width/2.2,
                 margin: const EdgeInsets.all(8.0),
                 padding: const EdgeInsets.all(3.0),  
                                    
@@ -252,8 +264,18 @@ class _Pagina4 extends State<Pagina4>
                   
                   children: [
 
-                    Text(nombre, textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                    Expanded(
+
+                            flex: 9,
+                            child: Center(
+                              child: Text(
+                                p.nombreProducto.toString(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
 
                   ]
                                     
@@ -270,9 +292,62 @@ class _Pagina4 extends State<Pagina4>
 
 
 
+ Widget _generaDraggable(Widget w, int pos) {
+    const snackBar = SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text("El producto ha sido eliminado!"));
+
+    return Dismissible(
+      direction: DismissDirection.endToStart,
+      background: Container(
+        padding: const EdgeInsets.all(20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+        color: Colors.red,
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
+          size: 40.0,
+        ),
+      ),
+      key: ValueKey(w),
+      onDismissed: (_) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        setState(() {
+          Lista.quitarFavorito(pos);
+        });
+      },
+      child: SizedBox(
+        height: 80.0,
+        width: MediaQuery.of(context).size.width,
+        child: ConstrainedBox(
+          constraints:
+              BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
+          child: w,
+        ),
+      ),
+    );
+  }
 
 
+  /// Metodo que genera una lista de widgets de listas favoritas (guardadas)
+  List<Widget> crearListas(List<Producto> productos) {
+    final List<Widget> listaObj = [];
 
+    // Por cada objeto Producto encontrado se monta un contenedor y se añade a
+    // la lista de widgets que va dentro de un LIST VIEW
+    int pos = 0;
+    for (Producto pro in productos) {
+      final objetoTemporal = _construye_producto(pro);
+      // y despues lo convertimos a un objeto draggable
+      final objetoFinal = _generaDraggable(objetoTemporal, pos);
+      listaObj.add(objetoFinal);
+
+      listaObj.add(SizedBox(height: 20.0));
+      pos += 1;
+    }
+
+    return listaObj;
+  }
 
 
 
@@ -292,6 +367,17 @@ class _Pagina4 extends State<Pagina4>
 
 
 
+// Generador de una lista de Items
+List<Item> generaItems(int tamanio) {
+  return List.generate(
+    tamanio,
+    (int index) => Item(
+      expanded: '$index',
+      title: 'Item $index',
+      isExpanded: false,
+    ),
+  );
+}
 
 
 

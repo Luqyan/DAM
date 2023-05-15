@@ -17,6 +17,9 @@ class Lista{
 
   static List<dynamic> get listas => _listas;
 
+  // Lista de productos favoritos utilizada en la pantalla 'pagina4'
+  static final Set<Producto> _productos_favoritos = Set(); 
+
   static void addLista() {
     _listas.add(_lista_productos);
   }
@@ -38,13 +41,28 @@ class Lista{
   set descripcionLista(value) =>  this._descripcion = value;
 
 
+
+
+  static void aniadir_favorito(Producto producto) {
+    _productos_favoritos.add(producto);
+  }
+
+  static Set<Producto> getFavoritos() {
+    return _productos_favoritos;
+  }
+
+  // void agregarFavoritosALaLista(List<Producto>) {
+  //   Lista.aniadir_favorito(producto);
+  // }
+
+
+
+
+
   
   static void addProducto(Producto producto) {
     _lista_productos.add(producto);
   }
-
-
-
 
   // Métodos lista de productos 'static'
   static List<Producto> getProductos() {
@@ -63,6 +81,14 @@ class Lista{
     _lista_productos.removeAt(posicion);
   }
 
+  static void quitarFavorito(int posicion) {
+
+    if(posicion >= 0 && posicion < _productos_favoritos.length){
+
+      _productos_favoritos.remove(_productos_favoritos.elementAt(posicion));
+    }
+
+  }
 
   // Métodos lista de productos private
 

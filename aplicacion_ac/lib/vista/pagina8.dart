@@ -1,12 +1,11 @@
-import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina11.dart';
 import 'package:aplicacion_ac/vista/pagina7.dart';
 import 'package:flutter/material.dart';
 import 'Lista.dart';
-import 'Lista.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class Pagina8 extends StatefulWidget {
@@ -70,7 +69,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
 ///////////////////////////////////////////////generamos la lista de elementos
 
     // Cogemos los Productos de la lista atributo de la clase Lista
-    List<Widget> listaListas = crearListas(Lista.getProductos());
+    List<Widget> listaListas = crearListas(Lista.getProductos(), context);
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
@@ -209,7 +208,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
                     new Lista(valor_introducido.text, "Lista guardada");
                 lista1.productos = Lista.getProductos();
                 Lista.addLista();
-             
+
                 print((Lista.listas).length);
 
                 submit();
@@ -228,7 +227,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
         context: context,
         builder: (context) => AlertDialog(
           title: Text("Lista confirmada!"),
-          content: Text("Pulse aceptar para generar visualizar el resultado."),
+          content: Text("Pulse aceptar para generar y visualizar el resultado."),
           actions: [
             TextButton(
                 child: Text("Aceptar"),
@@ -263,9 +262,9 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(
-        Icons.shopping_basket_sharp,
-        color: Color.fromARGB(255, 3, 122, 44),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
       ),
       title: const Text(
         'Cesta productos',
@@ -303,82 +302,157 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   /////////////////////// METODO QUE DEVUELVE UN SIZED BOX CON SU CONTENIDO////////////
   /////////////////////////////////////////////////////////////////////////////////////
 
+  // Widget _buildContent(conte, productos) {
+  //   // Indicador si se ha arrastrado y soltado algo
+  //   bool activado = false;
+
+  //   return Container(
+  //     margin: const EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
+  //     //color: Color(0xFFFAF482),
+  //     alignment: AlignmentDirectional.center,
+  //     width: MediaQuery.of(context).size.width,
+  //     height: MediaQuery.of(context).size.height,
+  //     child: Column(
+
+  //         children: [
+
+  //           Divider(height: 20, thickness: 3, color: Colors.orangeAccent,),
+
+  //           Row(
+  //             children: [
+  //               Expanded(
+  //                   flex: 2,
+  //                   child: Container(
+  //                     child: Text("Centralizado"),
+  //                   )),
+  //               Switch(
+  //                 value: activado,
+  //                 onChanged: (bool value) {
+  //                   setState(() {
+  //                     value = activado;
+
+  //                     print(value);
+  //                   });
+  //                 },
+  //               ),
+  //               Spacer(),
+  //               Expanded(
+  //                   flex: 2,
+  //                   child: Container(
+  //                     child: Text("Precio"),
+  //                   )),
+  //               Switch(
+  //                 value: activado,
+  //                 onChanged: (bool value) {
+  //                   setState(() {
+  //                     value = activado;
+
+  //                     print(value);
+  //                   });
+  //                 },
+  //               ),
+  //             ],
+  //           ),
+  //           Divider(height: 30, thickness: 3, color: Colors.orangeAccent,),
+
+  //           Expanded(
+
+  //               ///////////////////////////////////////////////////vrlodicdad
+  //               child: ListView(
+
+  //                 padding: EdgeInsets.only(top: 30),
+  //             controller: ScrollController(initialScrollOffset: 2),
+  //             //shrinkWrap: true,
+  //             children: productos,
+  //           )),
+  //           const SizedBox(
+  //             height: 20,
+  //           ),
+  //         ]),
+  //   );
+  // }
+  ////////////////////////////////////////////////////////////////////////
   Widget _buildContent(conte, productos) {
     // Indicador si se ha arrastrado y soltado algo
-    bool activado = false;
+    bool centralizado = false;
+    bool precio = false;
 
     return Container(
       margin: const EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
-      //color: Color(0xFFFAF482),
       alignment: AlignmentDirectional.center,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: Container(
-                      child: Text("Centralizado"),
-                    )),
-                Switch(
-                  value: activado,
-                  onChanged: (bool value) {
-                    setState(() {
-                      value = activado;
-
-                      print(value);
-                    });
-                  },
+        children: [
+          Divider(
+            height: 20,
+            thickness: 3,
+            color: Colors.orangeAccent,
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child: Text("Centralizado"),
                 ),
-                Spacer(),
-                Expanded(
-                    flex: 2,
-                    child: Container(
-                      child: Text("Precio"),
-                    )),
-                Switch(
-                  value: activado,
-                  onChanged: (bool value) {
-                    setState(() {
-                      value = activado;
-
-                      print(value);
-                    });
-                  },
+              ),
+              Switch(
+                value: centralizado,
+                onChanged: (bool value) {
+                  setState(() {
+                    centralizado = value;
+                    print(value);
+                  });
+                },
+              ),
+              Spacer(),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child: Text("Precio"),
                 ),
-              ],
-            ),
-            Divider(),
-            Expanded(
-
-                ///////////////////////////////////////////////////vrlodicdad
-                child: ListView(
+              ),
+              Switch(
+                value: precio,
+                onChanged: (bool value) {
+                  setState(() {
+                    precio = value;
+                    print(value);
+                  });
+                },
+              ),
+            ],
+          ),
+          Divider(
+            height: 30,
+            thickness: 3,
+            color: Colors.orangeAccent,
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.only(top: 30),
               controller: ScrollController(initialScrollOffset: 2),
-              //shrinkWrap: true,
-              children: productos,
-            )),
-            const SizedBox(
-              height: 20,
+              itemCount: productos.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  productos[index],
             ),
-          ]),
+          ),
+        ],
+      ),
     );
   }
   ////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////
 
   /// Metodo que genera una lista de widgets de listas favoritas (guardadas)
-  List<Widget> crearListas(List<Producto> productos) {
+  List<Widget> crearListas(List<Producto> productos, context) {
     final List<Widget> listaObj = [];
 
     // Por cada objeto Producto encontrado se monta un contenedor y se añade a
     // la lista de widgets que va dentro de un LIST VIEW
     int pos = 0;
     for (Producto pro in productos) {
-      final objetoTemporal = _montar_contenedor(pro);
+      final objetoTemporal = _montar_contenedor(pro, context);
       // y despues lo convertimos a un objeto draggable
       final objetoFinal = _generaDraggable(objetoTemporal, pos);
       listaObj.add(objetoFinal);
@@ -429,57 +503,64 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   }
 
   // Metodo constructor de contenedor de lista (ListTile)
-  Widget _montar_contenedor(Producto p) {
+  Widget _montar_contenedor(Producto p, context) {
+    const snackBar = SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text("El producto ha sido añadido a favoritos!"));
+    final ThemeData theme = ThemeData();
+    Color myColor = Theme.of(context).colorScheme.secondary;
+
     return Container(
       height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-        
+      decoration: BoxDecoration(
           border:
               Border.all(color: Color.fromRGBO(240, 158, 111, 1), width: 3.0),
           borderRadius: BorderRadius.circular(15),
           color: Color.fromARGB(226, 244, 250, 226)),
-      
       child: SizedBox(
-        
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height,
-        child: ListTile(
-          contentPadding: EdgeInsets.all(10.0),
-          visualDensity: const VisualDensity(vertical: 0.0),
-          minLeadingWidth: 100.0,
-          dense: false,
-          onTap: () => () {},
-          leading: ConstrainedBox(
-            constraints: const BoxConstraints(
-                minWidth: 70.0,
-                minHeight: 100.0,
-                maxWidth: 300.0,
-                maxHeight: 300.0),
-                
-            child: Image.asset(
-              p.hrefProducto,
-              width: 50.0,
-              height: MediaQuery.of(context).size.height,
-              alignment: Alignment.center,
-              fit: BoxFit.contain,
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height,
+          child: ListTile(
+            contentPadding: EdgeInsets.all(10.0),
+            visualDensity: const VisualDensity(vertical: 0.0),
+            minLeadingWidth: 70.0,
+            dense: false,
+            leading: ConstrainedBox(
+              constraints: const BoxConstraints(
+                  minWidth: 70.0,
+                  minHeight: 100.0,
+                  maxWidth: 200.0,
+                  maxHeight: 200.0),
+              child: Image.asset(
+                p.hrefProducto,
+                width: 50.0,
+                height: MediaQuery.of(context).size.height,
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+              ),
             ),
-          ),
-          title: Text(
-            p.nombreProducto,
-          ),
-
-          
-
-
-          trailing: Icon(
-            Icons.star_border_rounded,
-            size: 40.0,
-          ),
-
-
-        ),
-      ),
+            title: Text(
+              p.nombreProducto,
+            ),
+            trailing: IconButton(
+              icon: new Icon(
+                Icons.star_border_rounded,
+                size: 40.0,
+              ),
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                setState(() {
+                  aniadir_favorito(p);
+                });
+              },
+            ),
+          )),
     );
+  }
+
+  void aniadir_favorito(Producto p) {
+
+    Lista.aniadir_favorito(p);
   }
 
   // METODO QUE DEVUELVE UN BUILDER ANIMADO

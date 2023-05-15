@@ -68,8 +68,18 @@ void main() async {
   // print(p.runtimeType.toString());
   
 
+  var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
+  print(p.runtimeType.toString());
+  print(p.toString());
+  
+  final ThemeData theme = ThemeData();
   runApp(
-    const MaterialApp(
+    
+    MaterialApp(
+       theme: theme.copyWith(
+    colorScheme: theme.colorScheme.copyWith(secondary: Colors.greenAccent),
+  ),
+
       home: MiAplicacion(),
       debugShowCheckedModeBanner: false,
     ),
@@ -132,6 +142,8 @@ class _MiAplicacion extends State<MiAplicacion>
   // metodo creacion Scaffold
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
       appBar: _buildAppBar(),
@@ -149,10 +161,12 @@ class _MiAplicacion extends State<MiAplicacion>
   // método de creación de appBar personalizado
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(
-        Icons.shopping_basket_sharp,
-        color: Color.fromARGB(255, 3, 122, 44),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
       ),
+      
+      
       title: const Text(
         'AveriCarro',
         style: TextStyle(
@@ -194,16 +208,17 @@ class _MiAplicacion extends State<MiAplicacion>
 
     return SizedBox(
       child: Container(
-        margin: EdgeInsets.only(left: 50.0, right: 50.0, top: 100.0),
-        //color: Color(0xFFFAF482),
+        margin: EdgeInsets.only(left: 50.0, right: 50.0, top: 200.0),
         alignment: AlignmentDirectional.center,
-        height: MediaQuery.of(context).size.height * 0.4,
+        height: MediaQuery.of(context).size.height * 0.3,
         width: MediaQuery.of(context).size.width / 1.2,
-        decoration: const BoxDecoration(),
+       
         child: InkWell(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
             child: Ink.image(
               image: const AssetImage('assets/logo4.png'),
               fit: BoxFit.cover,
+              
             ),
             onTap: () => {
                   Navigator.push(conte,
