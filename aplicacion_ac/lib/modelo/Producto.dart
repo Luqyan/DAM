@@ -2,28 +2,61 @@ import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
 
 
-class Producto {
-  late int _id;
+class Producto implements Comparable<Producto>{
+  
   late String _nombreProducto;
   late double _precio;
-  late double? _peso;
-  late double? _volumen;
-  late String? _marca;
-  late String? _categoria;
+  double? _peso;
+  double? _volumen;
+  String? _marca;
+  String? _categoria;
   late String _hrefProducto;
-  late int _unidades;
-  Producto({required int id, required String nombreProducto,required double precio,required String hrefImgProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null}):
-    this._id = id,
+  int? _unidades;
+
+
+  Producto.filtrado() :
+    
+    this._nombreProducto = "",
+    this._precio = 0.0,
+    this._hrefProducto = "",
+    this._unidades = 0
+  ;
+
+
+
+
+
+
+  Producto({required String nombreProducto,required double precio,required String hrefProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null, int? unidades = null}):
+  
     this._nombreProducto=nombreProducto,
     this._precio=precio,
-    this._hrefProducto=hrefImgProducto,
+    this._hrefProducto=hrefProducto,
     this._peso=peso,
     this._volumen=volumen,
     this._marca=marca,
     this._categoria=categoria,
-    this._unidades=0
+    this._unidades = unidades
     ;
     
+
+   Producto copyWith({required String nombreProducto,required double precio,
+   required String hrefProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null, required int unidades})
+  { return Producto (
+    
+    nombreProducto : nombreProducto ?? this._nombreProducto,
+    precio : precio  ?? this._precio ,
+    hrefProducto : hrefProducto  ?? this._hrefProducto,
+    peso : peso  ?? this._peso ,
+    volumen : volumen  ?? this._volumen ,
+    marca : marca  ?? this._marca ,
+    categoria : categoria  ?? this.categoria ,
+    unidades : unidades  ?? this._unidades
+  );
+
+ }
+
+
 
 
   ///Funcion que es usada en la funcion obtener jSON ubicada en las crpeta JSON cada vez que se quiera leer el archivo
@@ -59,13 +92,9 @@ get nombreProducto => this._nombreProducto;
 
   set peso( value) => this._peso = value;
 
-  get id => this._id;
-
-  set id( value) => this._id = value;
-
   get volumen => this._volumen;
 
-  set unidades( value) => this._unidades = value;
+  void set setUnidades(int value) => this._unidades = value;
 
   get unidades => this._unidades;
 
@@ -105,14 +134,28 @@ get nombreProducto => this._nombreProducto;
   String toString() {
     // TODO: implement toString
     return """ 
-    ID: ${this._id}
     Nombre del Producto: ${ this._nombreProducto}
     Precio: ${this._precio} 
     Peso: ${this._peso} 
     Volumen: ${this._volumen}
     Marca: ${this.marca}
     Categoria: ${this._categoria}
+    Unidades: ${this._unidades}
     hrefproducto: ${this.hrefProducto}""";
+  }
+
+
+
+
+
+  
+  @override
+  int compareTo(Producto other) {
+    if(precio>other.precio) return -1;
+    if(precio<other.precio) return 1;
+
+
+    return 0;
   }
 
 }

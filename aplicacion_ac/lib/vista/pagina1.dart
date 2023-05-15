@@ -1,3 +1,4 @@
+import 'package:aplicacion_ac/vista/pagina7.dart';
 import 'package:flutter/material.dart';
 import 'pagina2.dart';
 
@@ -105,7 +106,10 @@ class _Pagina1 extends State<Pagina1>
   // método de creación de appBar personalizado
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(Icons.shopping_basket_sharp , color: Color.fromARGB(255, 3, 122, 44),),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
+      ),
       title: const Text(
         'AveriCarro',
         style: TextStyle(
@@ -192,7 +196,7 @@ class _Pagina1 extends State<Pagina1>
         conte, 
         // nos pide el widget a utilizar que es de tipo materialpageroute
         // creando una ruta de la pagina
-        MaterialPageRoute(builder: (conte)=>const Pagina2())),}),
+        MaterialPageRoute(builder: (conte)=>const Pagina7())),}),
             ),
             SizedBox(
               height: 120,
@@ -226,7 +230,7 @@ class _Pagina1 extends State<Pagina1>
                   // controlamos donde nos devuelve al pulsar
                   // como guardar en una base de datos Firebase
                   // los datos introducidos
-                  onPressed: () => {Navigator.pop(context)}),
+                  onPressed: () => {Navigator.push(context,  MaterialPageRoute(builder: (conte)=>const Pagina2())),})
             )
           ],
         ),

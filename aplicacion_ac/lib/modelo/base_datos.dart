@@ -100,9 +100,9 @@ El método crea una nueva lista de objetos Producto, basada en el resultado de l
     return List.generate(
         productosLista.length,
         (index) => Producto(
-            id: productosLista[index]['id'],
+            //id: productosLista[index]['id'],
             nombreProducto: productosLista[index]['nombre'],
-            hrefImgProducto: productosLista[index]['imagen'],
+            hrefProducto: productosLista[index]['imagen'],
             precio: productosLista[index]['precio']));
   }
 

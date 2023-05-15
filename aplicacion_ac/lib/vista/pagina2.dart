@@ -104,8 +104,11 @@ class _Pagina2 extends State<Pagina2>
   // método de creación de appBar personalizado
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(Icons.shopping_basket_sharp , color: Color.fromARGB(255, 3, 122, 44),),
-      title: const Text(
+      leading:const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
+      ),
+       title: const Text(
         'AveriCarro',
         style: TextStyle(
           color: Colors.black,

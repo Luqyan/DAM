@@ -77,6 +77,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
       appBar: _buildAppBar(),
       body: Stack(
+        
         children: [
           _buildContent(context,listaListas),
           _buildDrawer(),
@@ -177,11 +178,25 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
     Lista lis1 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
     Lista lis2 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
     Lista lis3 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
+    Lista lis4 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
+    Lista lis5 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
+    Lista lis6 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
+    Lista lis7 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
+    Lista lis8 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
+    Lista lis9 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
+
+
 
     List<Lista> ejemplos = [];
     ejemplos.add(lis1);
     ejemplos.add(lis2);
     ejemplos.add(lis3);
+    ejemplos.add(lis4);
+    ejemplos.add(lis5);
+    ejemplos.add(lis6);
+    ejemplos.add(lis7);
+    ejemplos.add(lis8);
+    ejemplos.add(lis9);
     final List<Widget> listaObj = [];
 
     // Por cada objeto lista encontrado se monta un contenedor y se añade a
@@ -201,7 +216,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
   // Metodo de conversión de los elementos de ListView a Draggable
   Widget _generaDraggable(Widget w) {
     final snackBar = SnackBar(content: Text("La lista ha sido eliminada!"));
-    Widget objetoLista = _monta_contenedor_vacio();
+    
     bool muestraCaja = true;
 
     return Dismissible(
@@ -223,7 +238,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
         },
             
         child: SizedBox(
-          height: 200.0,
+          height: 100.0,
 
           width: MediaQuery.of(context).size.width,
           
@@ -238,55 +253,44 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
   }
 
 
-  // Contenedor que se muestra detrás del que se arrastra
-  Widget _monta_contenedor_vacio() {
-    return Container(
-        decoration: BoxDecoration(
-            border: Border.all(
-                color: const Color.fromARGB(255, 220, 230, 247), width: 3.0),
-            borderRadius: BorderRadius.circular(12),
-            color: const Color.fromARGB(226, 188, 179, 241)),
-        child: const SizedBox(
-          width: 300,
-          height: 180,
-        ));
-  }
+
 
   // Metodo constructor de contenedor de lista (ListTile)
   Widget _montar_contenedor(Lista li) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
+          
           border: Border.all(
-              color: const Color.fromARGB(255, 220, 230, 247), width: 40.0),
-          borderRadius: BorderRadius.circular(15),
-          color: const Color.fromRGBO(239, 237, 254, 0.898)),
+              color: const Color.fromARGB(255, 220, 230, 247), width: 4.0),
+          borderRadius: BorderRadius.circular(20),
+          color: const Color.fromRGBO(239, 237, 254, 0.898)
+          ),
       child: SizedBox(
-        width: 300,
-        height: 100,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: ListTile(
           visualDensity: const VisualDensity(vertical: 3),
-          minLeadingWidth: 100.0,
+          minLeadingWidth:50.0,
           dense: false,
           onTap: () => () {},
           leading: ConstrainedBox(
             constraints: const BoxConstraints(
                 minWidth: 70.0,
                 minHeight: 70.0,
-                maxWidth: 300.0,
+                maxWidth: 200.0,
                 maxHeight: 200.0),
             child: Image.asset(
               'assets/logo_cart.png',
               width: 80.0,
-              height: 80,
+              height: 80.0,
               alignment: Alignment.centerLeft,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
-          title: Text(li.nombreLista),
+          title: Text(li.nombreLista, style: TextStyle(fontSize: 20),),
           subtitle: Text(li.descripcionLista),
-          trailing: const Icon(
-            Icons.arrow_circle_right_outlined,
-          ),
+          
         ),
       ),
     );

@@ -4,33 +4,56 @@ import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/modelo/Tiendas.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina8.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
 import 'Item.dart';
 
-// Creamos un objeto de clase 'Lista' para usar el atributo lista_productos 
+import 'package:numberpicker/numberpicker.dart';
+// Creamos un objeto de clase 'Lista' para usar el atributo lista_productos
 // que representará la cesta de productos añadidos después de la busqueda
-
-
-
 
 // Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
 List<Item> _listaItems = generaItems(1);
+Producto prod0 = Producto(
+    nombreProducto: 'pan',
+    precio: 1.10,
+    hrefProducto: 'assets/pan.jpg');
 
-Producto prod1 = new Producto(id: 10, nombreProducto: 'pan integral',precio: 1.60, hrefImgProducto: 'assets/pan_integral.jpg');
-Producto prod2 =
-    new Producto(id: 10, nombreProducto:'leche sin lactosa', precio: 1.20, hrefImgProducto: 'assets/leche_sin_lactosa.png');
-Producto prod3 = new Producto(id: 10, nombreProducto:'cerveza',precio:  0.70, hrefImgProducto: 'assets/mahou.jpg');
-Producto prod4 = new Producto(id: 10, nombreProducto:'huevos', precio: 2.60, hrefImgProducto: 'assets/huevos_eco.jpg');
-Producto prod5 = new Producto(id: 10, nombreProducto:'helado hägen dasz', precio: 4.80, hrefImgProducto: 'assets/helado_haagen.jpg');
-Producto prod6 =  Producto(id: 10, nombreProducto:'yogur griego',precio:  0.60, hrefImgProducto: 'assets/yogur_griego.jpg');
-Producto prod7 = Producto(id: 10, nombreProducto:'Arroz',precio:  0.90, hrefImgProducto: 'assets/arroz.jpg');
-
-
+Producto prod1 = Producto(
+    nombreProducto: 'pan integral',
+    precio: 1.60,
+    hrefProducto: 'assets/pan_integral.jpg');
+Producto prod2 = Producto(
+    nombreProducto:
+        'leche sin lactosa semidesnatada marca Puleva bajo contenido en grasa',
+    precio: 1.20,
+    hrefProducto: 'assets/leche_sin_lactosa.png');
+Producto prod3 = Producto(
+    nombreProducto: 'cerveza',
+    precio: 0.70,
+    hrefProducto: 'assets/mahou.jpg');
+Producto prod4 = Producto(
+    nombreProducto: 'huevos',
+    precio: 2.60,
+    hrefProducto: 'assets/huevos_eco.jpg');
+Producto prod5 = Producto(
+    nombreProducto: 'helado hägen dasz',
+    precio: 4.80,
+    hrefProducto: 'assets/helado_haagen.jpg');
+Producto prod6 = Producto(
+    nombreProducto: 'yogur griego',
+    precio: 0.60,
+    hrefProducto: 'assets/yogur_griego.jpg');
+Producto prod7 = Producto(
+    nombreProducto: 'Arroz',
+    precio: 0.90,
+    hrefProducto: 'assets/arroz.jpg');
 
 // Lista contenedora de productos
-Set<Producto> _productos = Set<Producto>()..addAll([prod1, prod2, prod3, prod4, prod5, prod6, prod7]);
+Set<Producto> _productos = Set<Producto>()
+  ..addAll([prod0, prod1, prod2, prod3, prod4, prod5, prod6, prod7]);
 
 final _opcionesTiendas = [
   Tiendas(nombre: "Carrefour", imagen: "assets/carrefour.png"),
@@ -56,16 +79,16 @@ class Pagina7 extends StatefulWidget {
 /////////////////////////////////////1 ª PARTE//////////////////////////////////////////////
 // CLASE ANIMADO
 class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
-  late AnimationController _drawerSlideController; 
-
+  late AnimationController _drawerSlideController;
+  int valor_actual = 1;
+  List<int> unidades = [1,2,3,4,5,6,7,8,9,10];
   String _valorIntroducido = "";
   bool _productoEncontrado = false;
-  Producto _productoE = new Producto(id: 10, nombreProducto: "", precio:  0, hrefImgProducto: "");
+  Producto _productoE =
+      new Producto(nombreProducto: "", precio: 0, hrefProducto: "");
 
-  
   // Lista de productos que surge al buscar productos y añadirlos a la cesta
- List<Producto> _cesta_productos = List<Producto>.empty(growable: true);
-
+  List<Producto> _cesta_productos = List<Producto>.empty(growable: true);
 
   @override
   void initState() {
@@ -107,15 +130,25 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   // metodo creacion Scaffold
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(254, 239, 188, 1),
+    return  Scaffold(
+      //backgroundColor: Colors.transparent,
       appBar: _buildAppBar(),
-      body: Stack(
-        children: [
-          _buildContent(context),
-          _buildDrawer(),
-        ],
-      ),
+      body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(image: DecorationImage(
+          image: AssetImage('assets/carts.jpg'), 
+          opacity: 0.9,
+          invertColors: true,
+          fit: BoxFit.cover),
+          ),
+          child: Stack(
+            children: [
+              _buildContent(context),
+              _buildDrawer(),
+            ],
+          ),
+        ),     
     );
   }
 
@@ -124,9 +157,9 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   // método de creación de appBar personalizado
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(
-        Icons.shopping_basket_sharp,
-        color: Color.fromARGB(255, 3, 122, 44),
+      leading: const Image(image: 
+        AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
       ),
       title: const Text(
         'Selector de productos',
@@ -163,8 +196,6 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   // AQUI AÑADIMOS EL CONTENIDO DE LA PAGINA (BODY)////
   // METODO QUE DEVUELVE UN SIZED BOX CON SUS VALORES//
   Widget _buildContent(conte) {
-
-     
     List<bool> _abierto = [];
     bool filtros = false;
     _abierto.add(filtros);
@@ -185,14 +216,13 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             width: 120.0,
             child: ElevatedButton(
               onPressed: () {
-                
-                print("Numero productos en cesta: "+_cesta_productos.toString());
-                 Navigator.push(
-        conte, 
-        // nos pide el widget a utilizar que es de tipo materialpageroute
-        // creando una ruta de la pagina
-        MaterialPageRoute(builder: (conte)=> Pagina8()));
-    
+                print("Numero productos en cesta: " +
+                    Lista.getProductos().length.toString());
+                Navigator.push(
+                    conte,
+                    // nos pide el widget a utilizar que es de tipo materialpageroute
+                    // creando una ruta de la pagina
+                    MaterialPageRoute(builder: (conte) => Pagina8()));
               },
               child: const Text(
                 'Mi cesta',
@@ -203,53 +233,61 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
           // BARRA DESLIZANTE 'FILTRADO'
           Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
-              color: Color(0xFFFAF482),
-              alignment: AlignmentDirectional.topStart,
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
+            color: Color(0xFFFAF482),
+            alignment: AlignmentDirectional.topStart,
+            width: MediaQuery.of(context).size.width,
+            //height: MediaQuery.of(context).size.height * 1.2,
+            constraints: BoxConstraints(
+              maxHeight: double.infinity,
+            ),
+
+            child: SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 1.2,
-              constraints: BoxConstraints(
-                maxHeight: double.infinity,
-              ),
-              child: SizedBox(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Divider(height: 20.0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Divider(height: 50.0),
 
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                children: [
-                                  _contenidoFiltrado(),
-                                  const Divider(
-                                    height: 30,
-                                  ),
-                                  buscaProducto(),
-                                ],
-                              ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              children: [
+                                _contenidoFiltrado(),
+                                const Divider(
+                                  height: 50,
+                                ),
+                                buscaProducto(),
+                              ],
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
+                    ),
 
-                      Divider(height: 20.0),
+                    const Divider(height: 40.0),
 
-                      // mostramos producto buscado en caso de que exista
-                      if (_productoEncontrado) _construye_producto(_productoE)
-                    ]),
-              )),
+                    // mostramos producto buscado en caso de que exista
+                    if (_productoEncontrado)  _construye_producto(_productoE),
+                    _construye_unidades(_productoE, context),
+
+                  //   if(_productoEncontrado) _construye_unidades(_productoE, context),
+
+                    const Divider(
+                                  height: 40,
+                                ),
+                  ]),
+            ),
+          ),
         ],
       )),
     );
   }
-
-
 
   // Barra de busqueda de productos
   Widget buscaProducto() {
@@ -267,15 +305,15 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                   .startsWith(_valorIntroducido.toLowerCase())) {
                 _productoE = p;
 
-                
- 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar( duration: Duration(seconds: 2),content: Text("Producto encontrado!")));
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    duration: Duration(seconds: 1),
+                    backgroundColor: Color.fromARGB(255, 31, 85, 34),
+                    content: Text("Producto encontrado!")));
                 _productoEncontrado = true;
-              
+
                 // CONTROLAMOS EL NUMERO DE COINCIDENCIAS
                 cantidad_prod += 1;
                 break;
@@ -285,11 +323,15 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             }
             if (cantidad_prod > 0) {
               // MOSTRAMOS ALGO ..........................
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar( duration: Duration(seconds: 1),content: Text("Mostrando producto")));
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  duration: Duration(milliseconds: 1000),
+                  backgroundColor: Color.fromARGB(255, 31, 85, 34),
+                  content: Text("Mostrando producto genérico...")));
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar( duration: Duration(seconds: 1),content: Text("Producto no encontrado!")));
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  duration: Duration(milliseconds: 1500),
+                  backgroundColor: Colors.deepOrangeAccent,
+                  content: Text("Producto no encontrado!")));
             }
             //_valorIntroducido = "";
           });
@@ -303,18 +345,13 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             hintText: "Nombre del producto",
             filled: true,
             fillColor: Colors.white60),
+            
       ),
     );
   }
 
-
-
-
-   // MÉTODO CONTRUCTOR DE PRODUCTO BUSCADO Y ENCONTRADO
+  // MÉTODO CONTRUCTOR DE PRODUCTO BUSCADO Y ENCONTRADO
   Widget _construye_producto(Producto prod) {
-
-  
-
     // devolvemos si existe el producto buscado dentro de un CONTAINER
     return Container(
         width: MediaQuery.of(context).size.width,
@@ -328,7 +365,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
         ),
         child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 100,
+            height: MediaQuery.of(context).size.height / 9,
             child: Row(
                 //mainAxisSize: MainAxisSize.min,
 
@@ -337,74 +374,148 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                   Image.asset(
                     prod.hrefProducto,
                     height: MediaQuery.of(context).size.height,
-                    width: 100.0,
-                    alignment: Alignment.centerLeft,
+                    width: 70.0,
+                    alignment: Alignment.center,
                   ),
 
                   // Nombre del producto
                   Container(
                     decoration: const BoxDecoration(
                         color: Color.fromRGBO(241, 238, 238, 0.498)),
-                    width: MediaQuery.of(context).size.width / 2,
+                    width: MediaQuery.of(context).size.width / 2.1,
+                    height: MediaQuery.of(context).size.height,
                     margin: const EdgeInsets.all(8.0),
                     padding: const EdgeInsets.all(3.0),
                     child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                         Expanded(
-
-                          flex: 9,
-                          child: Text(
-                            prod.nombreProducto.toString(),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                          Expanded(
+                            flex: 9,
+                            child: Text(
+                              prod.nombreProducto.toString(),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                         ),
-                         // Boton AÑADIR A LISTA
-                         SizedBox.fromSize(
-                            size: const Size(70, 70),
+                          // Boton AÑADIR A LISTA
+                          SizedBox.fromSize(
+                            size: const Size(60, 60),
                             child: ClipOval(
                               child: Material(
-                                color: Color.fromARGB(255, 93, 129, 71),
+                                color: Color.fromARGB(255, 190, 224, 169),
                                 child: InkWell(
-                                  splashColor: Colors.green, 
+                                  splashColor: Colors.green,
                                   onTap: () {
                                     setState(() {
-                                       aniadir_a_cesta(_productoE);
+                                      _productoE.setUnidades = valor_actual;
+                                      // SE CONSERVA EL DATO INTRODUCIDO EN EL NOMBRE DEL PRODUCTO
+                                      // PARA REALIZAR UNA BUSQUEDA SOBRE EL DURANTE EL PROCESO DE FILTRADO
+                                      // DE LA PAGINA 11 (CUANDO EN LA PAGINA 8 SE PULSA 'CREAR LISTA' INMEDIATAMENTE DESPUÉS)
 
-                                    });
-                                   
+                                      // _productoE.nombreProducto(prod.nombreProducto.toString()); 
+
+                                      aniadir_a_cesta(_productoE);
+                                      valor_actual = 1;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              duration: Duration(milliseconds: 1200),
+                                              backgroundColor: Color.fromARGB(255, 31, 85, 34),
+                                              content: Text(
+                                                  "Producto añadido a la cesta!")));
                                     
+                                    
+                                    
+                                    });
+
                                     // Navigator.push(context,Pagina8(productos: productos),
                                     // cesta_productos);
-                                    }, 
+                                  },
                                   child: const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(Icons.shopping_cart), // <-- Icon
-                                      Text("Añadir a cesta",textAlign: TextAlign.center, style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),), // <-- Text
+                                      Text(
+                                        "Añadir a cesta",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 8,
+                                            fontStyle: FontStyle.italic,
+                                            fontWeight: FontWeight.bold),
+                                      ), // <-- Text
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                           )
-                          
                         ]),
                   ),
                 ])));
   }
 
+  Widget _construye_unidades(Producto p, context) {
+   
+    return Center(
+      child: CupertinoButton.filled(
+        child: Text("Unidades: $valor_actual"),
+        onPressed: () {
+          showCupertinoModalPopup(
+              context: context,
+              builder: (_) => SizedBox(
+                    width: double.infinity,
+                    height: 120,
+                    child: CupertinoPicker(
+                        useMagnifier: true,
+                        magnification: 1.35,
+                        squeeze: 1,
+
+                        scrollController:
+                            FixedExtentScrollController(initialItem: valor_actual),
+                        backgroundColor: Color.fromARGB(255, 133, 127, 109),
+                        itemExtent: 25,
+                        onSelectedItemChanged: (int value) {
+                          
+                          setState(() {
+                            valor_actual = value+1;
+                           //       _productoE.setUnidades(valor_actual);
+                          });
+                        },
+                        children:  [
+                          
+                    //         List<Widget>.generate(unidades.length, (int index) {
+                    //   return Center(child: Text(unidades[index] as String));
+                    // }),
 
 
- void aniadir_a_cesta(prod) {
- // print(prod.toString());
-  Lista.addProducto(prod);
-  print(_cesta_productos.length);
-}
 
+                          Text('1', style: TextStyle(color: valor_actual == 1 ? Colors.blue : Colors.black),),
+                          Text('2', style: TextStyle(color: valor_actual == 2 ? Colors.blue : Colors.black),),
+                          Text('3', style: TextStyle(color: valor_actual == 3 ? Colors.blue : Colors.black),),
+                          Text('4', style: TextStyle(color: valor_actual == 4 ? Colors.blue : Colors.black),),
+                          Text('5', style: TextStyle(color: valor_actual == 5 ? Colors.blue : Colors.black),),
+                          Text('6', style: TextStyle(color: valor_actual == 6 ? Colors.blue : Colors.black),),
+                          Text('7', style: TextStyle(color: valor_actual == 7 ? Colors.blue : Colors.black),),
+                          Text('8', style: TextStyle(color: valor_actual == 8 ? Colors.blue : Colors.black),),
+                          Text('9', style: TextStyle(color: valor_actual == 9 ? Colors.blue : Colors.black),),
+                          Text('10', style: TextStyle(color: valor_actual == 109 ? Colors.blue : Colors.black),),
+                      
+                        
+                        
+                        
+                        ]),
+                  ));
+        },
+      ),
+    );
+  }
+
+  void aniadir_a_cesta(prod) {
+    
+    // print(prod.toString());
+    Lista.addProducto(prod);
+  }
 
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
@@ -433,7 +544,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             height: MediaQuery.of(context).size.height / 1.5,
             child: Container(
                 padding: EdgeInsets.all(15.0),
-                color: Color.fromARGB(255, 236, 166, 100),
+                color: Color.fromARGB(255, 226, 203, 181),
                 child: eligeOpciones()),
           ),
           isExpanded: item.isExpanded!,
@@ -442,10 +553,8 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
     );
   }
 
-
-
 // SECCIÓN DE TIENDAS FAVORITAS
-Widget tiendasPref() {
+  Widget tiendasPref() {
     return SizedBox(
       child: Column(
           //padding: EdgeInsets.all(15.0),
@@ -454,7 +563,9 @@ Widget tiendasPref() {
             const Text(
               "Elegir tiendas favoritas:",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20,),
+              style: TextStyle(
+                fontSize: 20,
+              ),
             ),
             const Divider(height: 15),
             Column(
@@ -475,7 +586,6 @@ Widget tiendasPref() {
 
             children: [
           const Text(
-            
             "Elegir alérgenos:",
             textAlign: TextAlign.left,
             style: TextStyle(fontSize: 20),
@@ -555,8 +665,6 @@ Widget tiendasPref() {
         ]));
   }
 
- 
-
   // METODO QUE DEVUELVE UN BUILDER ANIMADO
   Widget _buildDrawer() {
     return AnimatedBuilder(
@@ -569,8 +677,6 @@ Widget tiendasPref() {
       },
     );
   }
-
-
 }
 
 // Generador de una lista de Items
@@ -584,6 +690,3 @@ List<Item> generaItems(int tamanio) {
     ),
   );
 }
-
-
-
