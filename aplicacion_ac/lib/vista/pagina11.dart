@@ -98,17 +98,27 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(254, 239, 188, 1),
+      
       appBar: _buildAppBar(),
-      body: SingleChildScrollView(
-        child: Stack(
+      body: 
+      
+            Stack(
+              children: [
+               
+                    
+                  
+                      _buildContent(context),
+                      _buildDrawer(),
+                    ],
+           
+
           
-          children: [
-            _buildContent(context),
-            _buildDrawer(),
-          ],
-        ),
-      ),
-    );
+                 )
+                );
+              
+            
+  
+    
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -122,7 +132,7 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
         filterQuality: FilterQuality.high,
       ),
       title: const Text(
-        'Listas favoritas',
+        'Listas generadas',
         style: TextStyle(
           color: Colors.black,
         ),
@@ -159,7 +169,7 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
 
   Widget _buildContent(conte) {
     // Indicador si se ha arrastrado y soltado algo
-    bool pasadoOnaccept = false;
+   
     List<List<Producto>> listas = devuelve_listas_por_precio();
   
     return Container(
@@ -167,20 +177,24 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
       //color: Color(0xFFFAF482),
       alignment: AlignmentDirectional.center,
       width: MediaQuery.of(context).size.width,
-      //height: MediaQuery.of(context).size.height,
-      child: Column(
-          
-        
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            _montar_contenedor(listas),
-            const SizedBox(
-              height: 20,
-            ),
-            _generarCards(listas)
+      height: MediaQuery.of(context).size.height,
 
-        ]),
+
+      child: SingleChildScrollView(
+        child: Column(
+            
+      
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              _montar_contenedor(listas),
+              const SizedBox(
+                height: 20,
+              ),
+              _generarCards(listas)
+      
+          ]),
+      ),
     );
   }
   ////////////////////////////////////////////////////////////////////////

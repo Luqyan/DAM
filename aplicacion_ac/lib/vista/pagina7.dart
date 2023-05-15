@@ -134,16 +134,17 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
       //backgroundColor: Colors.transparent,
       appBar: _buildAppBar(),
       body: Container(
-          height: MediaQuery.of(context).size.height,
+          height: double.infinity,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(image: DecorationImage(
           image: AssetImage('assets/carts.jpg'), 
           opacity: 0.9,
           invertColors: true,
-          fit: BoxFit.cover),
+          fit: BoxFit.fill),
           ),
           child: Stack(
             children: [
+              
               _buildContent(context),
               _buildDrawer(),
             ],
@@ -271,7 +272,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                     ),
 
                     const Divider(height: 40.0),
-
+                    
                     // mostramos producto buscado en caso de que exista
                     if (_productoEncontrado)  _construye_producto(_productoE),
                     _construye_unidades(_productoE, context),
@@ -418,7 +419,9 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
                                       aniadir_a_cesta(_productoE);
                                       valor_actual = 1;
-                                      ScaffoldMessenger.of(context)
+
+
+                                        ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                               duration: Duration(milliseconds: 1200),
                                               backgroundColor: Color.fromARGB(255, 31, 85, 34),

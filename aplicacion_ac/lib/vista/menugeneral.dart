@@ -1,4 +1,5 @@
 
+import 'package:aplicacion_ac/vista/pagina11.dart';
 import 'package:aplicacion_ac/vista/pagina8.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     'Productos lista',
     'Selector de productos',
     'Configuración cuenta',
+    'Mi cesta',
     
   ];
 
@@ -212,6 +214,10 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
               Navigator.push(
               conte, 
               MaterialPageRoute(builder: (conte)=>const Pagina5()));
+            } else if(i==5) {
+              Navigator.push(
+              conte, 
+              MaterialPageRoute(builder: (conte)=>const Pagina11()));
             }
            } 
         ),
