@@ -78,6 +78,7 @@ class Producto implements Comparable<Producto>{
       _marca= json['Producto $i']['Características']['Marca'];
       _categoria= json['Producto $i']['Categoria'];
       _hrefProducto= json['Producto $i']['Imagen'];
+      _unidades=0;
 
   }
 get nombreProducto => this._nombreProducto;
@@ -128,12 +129,32 @@ get nombreProducto => this._nombreProducto;
       'peso':this._peso,
       'imagen':this._hrefProducto,
     };
-  } 
+  }
+  Producto.inicializandoDesdeMapa(Map<String,dynamic> productoMapa):
+
+    _nombreProducto = productoMapa['nombre'],
+    _precio = productoMapa['precio'],
+    _hrefProducto = productoMapa['imagen'],
+    _peso = productoMapa['peso'],
+    _volumen = productoMapa['volumen'],
+    _marca = productoMapa['marca'],
+    _categoria = productoMapa['categoria'],
+    _unidades =0;
+    
+    
+    
+  
+  Producto toObjeto(Map<String,dynamic> objeto){
+     
+    Producto resultado= Producto(nombreProducto: objeto['nombre'], precio: objeto['precio'], hrefProducto: objeto['imagen'], categoria: objeto['categoria'],marca: objeto['marca'],peso: objeto[peso],volumen: objeto['volumen']);
+    print(resultado);
+    return resultado;
+  }  
 
   @override
   String toString() {
     // TODO: implement toString
-    return """ 
+    return """
     Nombre del Producto: ${ this._nombreProducto}
     Precio: ${this._precio} 
     Peso: ${this._peso} 

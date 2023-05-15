@@ -22,13 +22,13 @@ void main() async {
 
   // BD.muestraTodo();
 
-  for (Producto p in productos_ahorra) {
-    try {
-      await BD.insert(p);
-    } on Exception catch (e) {
-      print(e.toString());
-    }
-  }
+  // for (Producto p in productos_ahorra) {
+  //   try {
+  //     await BD.insert(p);
+  //   } on Exception catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 
   // OK
   print(await BD.getCount());
@@ -44,7 +44,7 @@ void main() async {
 
   
   // OK 
-  var p = await BD.consultaProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
+  var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
   print(p.runtimeType.toString());
   print(p.toString());
   final ThemeData theme = ThemeData();

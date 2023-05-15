@@ -1,4 +1,3 @@
-import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina11.dart';
 import 'package:aplicacion_ac/vista/pagina7.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'Lista.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class Pagina8 extends StatefulWidget {

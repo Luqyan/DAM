@@ -158,12 +158,18 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return null;
   }
 
-  static Future<Map<String,dynamic>> consultaProducto(String tabla,
-      String nombre) async {
+  static Future<Producto> consultaPrimerProducto(String tabla,String nombre) async {
+    Producto resultado=Producto(nombreProducto: "productoNoEncontrado", precio: 0, hrefProducto: "assets/producto_no_encontrado.png");
+
     Database database = await openBD();
 
     final List<Map<String, dynamic>> producto =  await database.query("$tabla", where: "nombre LIKE (?)", whereArgs: ['%$nombre%']);
-    return producto.first;
+    print("hola voy por aqui");
+    if(producto.length>0){
+      resultado=Producto.inicializandoDesdeMapa(producto[0]);
+    }
+    
+    return resultado;
   
     
   }

@@ -3,13 +3,13 @@ import 'dart:typed_data';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'Lista.dart';
-import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
 import 'package:path/path.dart' as p;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
 
 /////////////////// MIRAR POR QUE NO FUNCIONAN LOS SETTERS DE LA CLASE /////////////////////
 
