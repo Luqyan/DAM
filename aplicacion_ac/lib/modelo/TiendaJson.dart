@@ -3,7 +3,9 @@ import 'Producto.dart';
 import 'package:aplicacion_ac/controlador/flujoTexto/EscribirYLeerFichero.dart';
 import 'dart:convert'; //Libreria para parsear un json
 import 'base_datos.dart';
+import 'dart:developer' as developer;
 
+///Clase que sirve para tratar el json de todas las tiendas y pasarlo a una lista de productos
 class TiendaJson {
   String _nombreTienda;
   List<Producto> _productos;
@@ -20,23 +22,34 @@ class TiendaJson {
 
   set productos(value) => _productos = value;
 
-  static Future<String> leerJSON() async {
-    return await rootBundle.loadString('assets/productosAhorramas.json');
+  static Future<String> leerJSON(String nomTienda) async {
+    String resultado="";
+    if (nomTienda.toLowerCase() == 'ahorramas') {
+      resultado= await rootBundle.loadString('assets/productosAhorramas.json');
+    } else if (nomTienda.toLowerCase() == 'carrefour') {
+      resultado= await rootBundle.loadString('assets/productosCarrefour.json');
+    }else{
+      developer.log("No ha introducido bien el nombre por parametro el parametro que ha introdudico es $nomTienda");
+    }
+    return resultado;
+    
   }
 
   static Future<List<Producto>> obtenerProductosDeJson(String nomTienda) async {
     List<Producto> productoss = [];
     String contenidoJson = "no hay contenido de JSON1";
-    if (nomTienda.toLowerCase() == 'ahorramas') {
-      contenidoJson = await leerJSON();
-    } else if (nomTienda.toLowerCase() == 'carrefour') {
-      contenidoJson = await EscribirYLeerFichero.leerFichero(
-          rutaFichero: ".\\lib\\modelo\\productosAhorramas.json");
-    }
-    Map<String, dynamic> userMap = jsonDecode(contenidoJson);
+    contenidoJson = await leerJSON(nomTienda);
+    Map<String, dynamic> userMap = await jsonDecode(contenidoJson);
 
     for (int i = 1; i < userMap.length + 1; i++) {
-      productoss.add(Producto.userDesdeJson(userMap, i));
+      print(i);
+      if(Producto.userDesdeJson(userMap, i).nombreProducto == "ProductoNoExisteJSON"||  Producto.userDesdeJson(userMap, i).nombreProducto == "ProductoJSONnoTienePrecio"){
+        developer.log("No existe o no tiene ningun precio el producto en el json con el id: $i ");
+      }else{
+        print(Producto.userDesdeJson(userMap, i));
+        productoss.add(Producto.userDesdeJson(userMap, i));
+      }
+      
     }
     return productoss;
   }

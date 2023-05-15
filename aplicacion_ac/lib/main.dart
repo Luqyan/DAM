@@ -7,21 +7,36 @@ import 'package:aplicacion_ac/modelo/Producto.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // getDatabasesPath().then((value) => print(value));
-  await BD.borrarTabla("ahorramas");
-
-  print(await BD.getCount());
-
   await BD.openBD();
+  // getDatabasesPath().then((value) => print(value));
+  //await BD.borrarTabla("ahorramas");
+  print("Hola");
+  print(await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g"));
+  print("adioos");
   
-  List<Producto> productos_ahorra =
-      await TiendaJson.obtenerProductosDeJson("ahorramas");
-
-  // print(productos_ahorra[2000]);
-
-  // BD.muestraTodo();
-
+  // // List<Object?> caca=await BD.obtenerNombresTablasTiendas();
+  
+  
+  // // List<Producto> productos_ahorra =
+  // //   await TiendaJson.obtenerProductosDeJson("ahorramas");
+  //  print(productos_ahorra[2000]);
+  // // print(BD.productos("ahorramas"));
+  // BD.insertarProducto(Producto(nombreProducto: "Fumada", precio: 30000, hrefImgProducto: "aleatorio"));
+  // BD.consultaPrimerProducto("ahorramas","Fumada");
+  // // print("hola estoy aqui: ${await BD.getCount()}");
+  // List<Producto>? productos=await BD.muestraTodo(ca);
+  // if(productos!=null){
+  //   for(Producto a in productos!){
+  //     print(a);
+  //   }
+  // }
+  // List<Producto>? productos=await BD.muestraTodo("ahorramas");
+  // for (var element in productos) {
+  //   print(element);
+    
+  // }
+//  //print(await BD.consultaPrimerProducto("ahorramas","Sopa Gallina Blanca 71g pollo con fideos finos"));
+  //BD.insertarTodosProductosDeTienda(productos_ahorra,"ahorramas");
   // for (Producto p in productos_ahorra) {
   //   try {
   //     await BD.insert(p);
@@ -31,7 +46,7 @@ void main() async {
   // }
 
   // OK
-  print(await BD.getCount());
+  // // print(await BD.getCount());
 
   // OK
   // BD.muestraTodo();
@@ -44,9 +59,14 @@ void main() async {
 
   
   // OK 
-  var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
-   print(p.runtimeType.toString());
-   print(p.toString());
+  // // var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
+  // //  print(p.runtimeType.toString());
+  // //  print(p.toString());
+
+  // var p = await BD.consultaProductos(["ahorramas"],"Ternera a la jardinera Carretilla 300g");
+  // print(p.toString());
+  // print(p.runtimeType.toString());
+  
 
   runApp(
     const MaterialApp(
