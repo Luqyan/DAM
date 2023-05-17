@@ -51,9 +51,9 @@ await _insertarTodosProductosDeTienda(db,['Ahorramas','carrefour']);
     
     for(int i=0;i<nomTiendas.length;i++){
       List<Producto> productosIntroducir = await TiendaJson.obtenerProductosDeJson(nomTiendas[i]);
-      print("cantidad de productos: ${productosIntroducir.length} de ${nomTiendas[i]}");
+      //  print("cantidad de productos: ${productosIntroducir.length} de ${nomTiendas[i]}");
       for (Producto p in productosIntroducir) {
-        print(p);
+        
         try {
           await BD._insert(db,p,nomTiendas[i]);
         } on Exception catch (e) {
@@ -175,6 +175,8 @@ Además, el método almacena el resultado de la operación de inserción en una 
   
     return count;
   }
+
+  
   //TODO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
   static Future<List<Producto>?> muestraTodo(String nomTabla) async {
     // ABRIMOS LA BASE DE DATOS
@@ -208,7 +210,7 @@ Además, el método almacena el resultado de la operación de inserción en una 
     Database database = await openBD();
 
     final List<Map<String, dynamic>> producto =  await database.query("$tabla", where: "nombre LIKE (?)", whereArgs: ['%$nombreProducto%']);
-    print("hola voy por aqui");
+  
     if(producto.length>0){
       resultado=Producto.inicializandoDesdeMapa(producto[0]);
     }

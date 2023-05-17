@@ -205,7 +205,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
               onPressed: () {
                 // SE GENERA UNA LISTA NUEVA Y SE AÑADE A LA LISTA DE LISTAS
                 Lista lista1 =
-                    new Lista(valor_introducido.text, "Lista guardada");
+                    new Lista(valor_introducido.text);
                 lista1.productos = Lista.getProductos();
                 Lista.addLista();
 

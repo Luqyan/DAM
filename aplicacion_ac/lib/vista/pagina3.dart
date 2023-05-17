@@ -175,15 +175,15 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
  
   /// Metodo que genera una lista de widgets de listas favoritas (guardadas) 
   List<Widget> crearListas() {
-    Lista lis1 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
-    Lista lis2 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
-    Lista lis3 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
-    Lista lis4 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
-    Lista lis5 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
-    Lista lis6 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
-    Lista lis7 = Lista('Lista semanal', 'Lista de compras que se realizan todas las semanas.');
-    Lista lis8 = Lista('Lista productos igiéne','Productos necesarios para la igiene personal.');
-    Lista lis9 = Lista('Lista productos cosmeticos','Productos necesarios para la imágen personal.');
+    Lista lis1 = Lista('Lista semanal');
+    Lista lis2 = Lista('Lista productos igiéne');
+    Lista lis3 = Lista('Lista productos cosmeticos');
+    Lista lis4 = Lista('Lista semanal');
+    Lista lis5 = Lista('Lista productos igiéne');
+    Lista lis6 = Lista('Lista productos cosmeticos');
+    Lista lis7 = Lista('Lista semanal');
+    Lista lis8 = Lista('Lista productos igiéne');
+    Lista lis9 = Lista('Lista productos cosmeticos');
 
 
 

@@ -281,9 +281,9 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     List<List<Producto>> listasGeneradas = List.empty(growable: true);
 
     Lista listaCarrefour =
-        Lista("Carrefour", "Resultado busqueda por criterio 'precio'");
+        Lista("Carrefour");
     Lista listaAhorramas =
-        Lista("Ahorramas", "Resultado busqueda por criterio 'precio'");
+        Lista("Ahorramas");
 
     // Por cada elemento de nuestra lista creada cargamos el nombre, precio y unidades
     Lista.getProductos().forEach((element) {

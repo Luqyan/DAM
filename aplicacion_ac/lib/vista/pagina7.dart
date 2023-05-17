@@ -1,16 +1,16 @@
 import 'package:aplicacion_ac/vista/Alergenos.dart';
 import 'package:aplicacion_ac/vista/Item.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
-import 'package:aplicacion_ac/modelo/Tiendas.dart';
+import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina8.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../modelo/base_datos.dart';
 import 'pagina1.dart';
 import 'menugeneral.dart';
 import 'Item.dart';
-
-import 'package:numberpicker/numberpicker.dart';
+import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
 // Creamos un objeto de clase 'Lista' para usar el atributo lista_productos
 // que representará la cesta de productos añadidos después de la busqueda
 
@@ -56,15 +56,20 @@ Set<Producto> _productos = Set<Producto>()
   ..addAll([prod0, prod1, prod2, prod3, prod4, prod5, prod6, prod7]);
 
 final _opcionesTiendas = [
-  Tiendas(nombre: "Carrefour", imagen: "assets/carrefour.png"),
-  Tiendas(nombre: "Ahorramas", imagen: "assets/ahorramas.jpg"),
-  Tiendas(nombre: "Supercor", imagen: "assets/supercor.png")
+  Tienda(nombre: "Carrefour", imagen: "assets/carrefour.png"),
+  Tienda(nombre: "Ahorramas", imagen: "assets/ahorramas.jpg"),
+  Tienda(nombre: "Supercor", imagen: "assets/supercor.png")
 ];
 final _opcionesAlergenos = [
   Alergenos(nombre: "Gluten", imagen: "assets/trigo.jpg"),
   Alergenos(nombre: "Lactosa", imagen: "assets/lactose.png"),
   Alergenos(nombre: "Frutos secos", imagen: "assets/images.jpg")
 ];
+
+
+
+
+
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class Pagina7 extends StatefulWidget {
@@ -90,6 +95,16 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   // Lista de productos que surge al buscar productos y añadirlos a la cesta
   List<Producto> _cesta_productos = List<Producto>.empty(growable: true);
 
+  List<Lista> tiendas = Tienda.listas_busqueda as List<Lista>;
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  
+            
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   @override
   void initState() {
     super.initState();
@@ -290,6 +305,11 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
     );
   }
 
+
+  
+
+
+
   // Barra de busqueda de productos
   Widget buscaProducto() {
     int cantidad_prod = 0;
@@ -299,6 +319,25 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
         onSubmitted: (value) {
           setState(() {
             _valorIntroducido = value;
+
+           
+           
+
+
+            // SELECT * IN carrefour => List()
+
+
+
+
+            // carrefour.productos(BD.consultaProductos([carrefour.nombreLista], value));
+
+
+            // SELECT * IN ahorramas => List()
+
+
+
+
+
 
             for (Producto p in _productos) {
               if ((p.nombreProducto.toString())
@@ -574,7 +613,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
             Column(
               children: _opcionesTiendas
                   .map<CheckboxListTile>(
-                      (Tiendas t) => construyeCheckboxTienda(t))
+                      (Tienda t) => construyeCheckboxTienda(t))
                   .toList(),
             )
           ]),
@@ -606,7 +645,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   }
 
   // CONSTRUYE CHECKBOX DE TIENDAS
-  CheckboxListTile construyeCheckboxTienda(Tiendas tienda) {
+  CheckboxListTile construyeCheckboxTienda(Tienda tienda) {
     return CheckboxListTile(
       activeColor: Color.fromARGB(255, 122, 214, 16),
       checkColor: Color.fromARGB(255, 0, 0, 0),
