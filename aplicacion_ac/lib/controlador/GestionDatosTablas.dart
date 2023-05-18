@@ -1,3 +1,4 @@
+import 'package:aplicacion_ac/modelo/base_datos.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/modelo/base_datos.dart';
 
@@ -25,6 +26,19 @@ class GestionDatos {
 
     return lista;
   }
+///===========Advertencia: Esta funcion es obligatorio ejecutarla simpre 
+///después de haver ejecutado la funcion generarTiendas
+///de la clase modelo/Tienda.dart
+  static void anadirElementosAarrayTienda(String productoAbuscar)async {
+    for (var i = 0; i < Tienda.obtenerTiendas.length; i++) {
+      List<String> tiendaEnDondeSeRealizaSelect=[Tienda.obtenerTiendas[i].nombre];
+      
+      Tienda.anadirproductoOproductosATienda(tiendaEnDondeSeRealizaSelect[0], 
+        await BD.consultaProductos(tiendaEnDondeSeRealizaSelect, productoAbuscar)
+      );
 
+    }
+    
+  }
 
 }

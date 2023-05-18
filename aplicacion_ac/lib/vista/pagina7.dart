@@ -95,7 +95,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   // Lista de productos que surge al buscar productos y añadirlos a la cesta
   List<Producto> _cesta_productos = List<Producto>.empty(growable: true);
 
-  List<Lista> tiendas = Tienda.listas_busqueda as List<Lista>;
+  List<Tienda> tiendas = Tienda.obtenerTiendas as List<Tienda>;
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
