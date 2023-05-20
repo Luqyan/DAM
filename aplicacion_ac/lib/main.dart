@@ -18,19 +18,25 @@ void main() async {
   print("Hola");
   //  print(await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g"));
   print("adioos");
+  // List<Producto> productos=await BD.consultaProductosTienda("ahorramas","chicle");
+  // for (var i = 0; i < productos.length; i++) {
+  //   print("index $i ${productos[i].nombreProducto}");
+  // }
+  //  var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
+  //  print(p.runtimeType.toString());
+  //  print(p.toString());
   
-  var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
-  print(p.runtimeType.toString());
-  print(p.toString());
+
+
+  await Tienda.generarTiendas();
+  Tienda.obtenerTiendas;
+  await GestionDatos.anadirElementosAarrayTienda("chicle");
+
+  List<Tienda> tiendas=await Tienda.obtenerTiendas;
+  for(int i=0;i<tiendas.length;i++){
+    print(tiendas[i].nombre);
+  }
   
-
-
-
-  // Recoger nombres tablas desde la base de datos
-  List<Tienda> tiendas = await GestionDatos.devuelveTiendas();
-  tiendas.forEach((element) {Tienda.aniadir_lista_resultado(element); print("Nombre tabla: ${element.nombre}");});
-
-
 
 
 

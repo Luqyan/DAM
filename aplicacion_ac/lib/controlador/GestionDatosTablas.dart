@@ -26,15 +26,15 @@ class GestionDatos {
 
     return lista;
   }
-///===========Advertencia: Esta funcion es obligatorio ejecutarla simpre 
-///después de haver ejecutado la funcion generarTiendas
+///===========Advertencia: Esta funcion es obligatoria ejecutarla simpre 
+///después de haber ejecutado la funcion generarTiendas
 ///de la clase modelo/Tienda.dart
-  static void anadirElementosAarrayTienda(String productoAbuscar)async {
+  static Future<void> anadirElementosAarrayTienda(String productoAbuscar)async {
     for (var i = 0; i < Tienda.obtenerTiendas.length; i++) {
-      List<String> tiendaEnDondeSeRealizaSelect=[Tienda.obtenerTiendas[i].nombre];
+      String tiendaEnDondeSeRealizaSelect=Tienda.obtenerTiendas[i].nombre;
       
-      Tienda.anadirproductoOproductosATienda(tiendaEnDondeSeRealizaSelect[0], 
-        await BD.consultaProductos(tiendaEnDondeSeRealizaSelect, productoAbuscar)
+      Tienda.anadirproductoOproductosATienda(tiendaEnDondeSeRealizaSelect,
+        await BD.consultaProductosTienda(tiendaEnDondeSeRealizaSelect, productoAbuscar)
       );
 
     }

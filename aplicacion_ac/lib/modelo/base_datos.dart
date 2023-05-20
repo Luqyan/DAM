@@ -4,10 +4,11 @@ import 'package:aplicacion_ac/modelo/TiendaJson.dart';
 import 'Producto.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'dart:developer' as developer;//Sirve para los logs
+import 'dart:developer' as developer; //Sirve para los logs
 import 'dart:io' as system;
+
 class BD {
-  
+  static late Database baseDatos;
   /* El método _openBD() es un método asincrónico que devuelve una instancia de la base de datos Database.
 
   El método utiliza el método getDatabasesPath() para obtener la ruta de acceso al directorio de bases de datos 
@@ -19,9 +20,8 @@ class BD {
   "nombre", "categoria", "precio", "marca", "volumen", "peso" e "imagen". La columna "nombre" se convierte en 
   clave primaria.*/
 
-  
-   static Future<Database>  openBD()  async {
-     return await openDatabase(join(await getDatabasesPath(), 'baseDB2.db'),
+  static Future<void> openBD() async {
+    baseDatos = await openDatabase(join(await getDatabasesPath(), 'cacatua.db'),
         onCreate: (db, version) async {
       db.execute("""CREATE TABLE ahorramas (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,7 +33,7 @@ class BD {
           volumen REAL,
           imagen TEXT
 ); """);
-db.execute("""CREATE TABLE carrefour (
+      db.execute("""CREATE TABLE carrefour (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           nombre TEXT UNIQUE,
           precio REAL,
@@ -43,29 +43,30 @@ db.execute("""CREATE TABLE carrefour (
           volumen REAL,
           imagen TEXT
 ); """);
-await _insertarTodosProductosDeTienda(db,['Ahorramas','carrefour']);
+      await _insertarTodosProductosDeTienda(db, ['Ahorramas', 'carrefour']);
     }, version: 1);
   }
+
   //Funciona
-  static Future<void> _insertarTodosProductosDeTienda(Database db,List<String> nomTiendas)async {
-    
-    for(int i=0;i<nomTiendas.length;i++){
-      List<Producto> productosIntroducir = await TiendaJson.obtenerProductosDeJson(nomTiendas[i]);
+  static Future<void> _insertarTodosProductosDeTienda(
+      Database db, List<String> nomTiendas) async {
+    for (int i = 0; i < nomTiendas.length; i++) {
+      List<Producto> productosIntroducir =
+          await TiendaJson.obtenerProductosDeJson(nomTiendas[i]);
       //  print("cantidad de productos: ${productosIntroducir.length} de ${nomTiendas[i]}");
       for (Producto p in productosIntroducir) {
-        
         try {
-          await BD._insert(db,p,nomTiendas[i]);
+          await BD._insert(db, p, nomTiendas[i]);
         } on Exception catch (e) {
           developer.log(e.toString());
         }
+      }
     }
-    
-    }
-    
   }
+
 //Funciona
-  static Future<void> _insert(Database db,Producto prod,String nomTabla) async {
+  static Future<void> _insert(
+      Database db, Producto prod, String nomTabla) async {
     return await db.insert(nomTabla, prod.toMap()).then((value) => value);
   }
 
@@ -98,7 +99,7 @@ Además, el método tiene dos parámetros opcionales where y whereArgs que se ut
 a actualizar. En este caso, se actualiza el primer registro cuyo nombre sea igual al nombre del objeto prod.*/
   //TODO: Se va a usar esta función
   static Future<void> update(Producto prod) async {
-    Database database = await openBD();
+    Database database = baseDatos;
 
     database.update('productos', prod.toMap(),
         where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
@@ -115,7 +116,7 @@ una fila en la tabla "productos".
 El método crea una nueva lista de objetos Producto, basada en el resultado de la consulta, y devuelve la lista.*/
   //TODO: no funciona
   static Future<List<Producto>> productos(String tienda) async {
-    Database database = await openBD();
+    Database database = baseDatos;
 
     final List<Map<String, dynamic>> productosLista =
         await database.query("$tienda");
@@ -143,44 +144,39 @@ se especifican mediante los parámetros ${prod.nombreProducto}, ${prod.precio}, 
 Además, el método almacena el resultado de la operación de inserción en una variable llamada resultado.*/
   //TODO: no funciona este método
   static Future<int> insertarProducto(Producto prod) async {
-    Database database = await openBD();
+    Database database = baseDatos;
 
     return await database.rawInsert(
         'INSERT INTO ahorramas (nombre, precio, categoria, marca, volumen, peso, imagen) VALUES (${prod.nombreProducto}, ${prod.precio}, ${prod.categoria}, ${prod.marca}, ${prod.volumen}, ${prod.peso}, "${prod.hrefProducto}")');
-    
-  
-  
   }
+
   //Funciona
   static Future<void> borrarTabla(String nombre) async {
-    Database database = await openBD();
+    Database database = baseDatos;
 
     await database.execute('DELETE FROM $nombre');
-
   }
+
   //TODO: No se si funciona correctamente
   static Future<void> borrarBBDD() async {
-    String ruta=join(await getDatabasesPath(), 'baseDB2.db');
-    File baseDatosEliminar= File(ruta);
+    String ruta = join(await getDatabasesPath(), 'baseDB2.db');
+    File baseDatosEliminar = File(ruta);
     await baseDatosEliminar.delete();
-
-
   }
 
   //TODO: No se si funciona correctamente
   static Future<int> getCount() async {
-    Database database = await openBD();
+    Database database = baseDatos;
     var result = await database.query("ahorramas");
     int count = result.length;
-  
+
     return count;
   }
 
-  
   //TODO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
   static Future<List<Producto>?> muestraTodo(String nomTabla) async {
     // ABRIMOS LA BASE DE DATOS
-    Database database = await openBD();
+    Database database = baseDatos;
 
     // RECOGEMOS TODAS LAS FILAS DE LA TABLA
     final List<Map<String, dynamic>> result = await database.query(nomTabla);
@@ -188,53 +184,83 @@ Además, el método almacena el resultado de la operación de inserción en una 
     // IMPRIMIMOS CADA FILA
 
     result.forEach((row) => print(row));
-   
+
     return null;
   }
 
   //Funciona
-  static Future<List<Object?>> obtenerNombresTablasTiendas() async{
-    List<Object?> resultado=[];
-    Database database = await openBD();
-     List<Map<String, Object?>> tablas=await database.query(columns: ['name'],"sqlite_master", where: "type LIKE (?) AND name != 'android_metadata' AND name != 'sqlite_sequence' ", whereArgs: ['table'],orderBy: 'name');
-     for(int i=0;i<tablas.length;i++){
+  static Future<List<Object?>> obtenerNombresTablasTiendas() async {
+    List<Object?> resultado = [];
+    Database database = baseDatos;
+    List<Map<String, Object?>> tablas = await database.query(
+        columns: ['name'],
+        "sqlite_master",
+        where:
+            "type LIKE (?) AND name != 'android_metadata' AND name != 'sqlite_sequence' ",
+        whereArgs: ['table'],
+        orderBy: 'name');
+    for (int i = 0; i < tablas.length; i++) {
       resultado.add((tablas[i]['name']));
-     }
-     return resultado;
-  }
-
-  //Funciona
-  static Future<Producto> consultaPrimerProducto(String tabla,String nombreProducto) async {
-    Producto resultado=Producto(nombreProducto: "productoNoEncontrado", precio: 0, hrefProducto: "assets/producto_no_encontrado.png");
-
-    Database database = await openBD();
-
-    final List<Map<String, dynamic>> producto =  await database.query("$tabla", where: "nombre LIKE (?)", whereArgs: ['%$nombreProducto%']);
-  
-    if(producto.length>0){
-      resultado=Producto.inicializandoDesdeMapa(producto[0]);
     }
-    
     return resultado;
-  
-    
   }
+
   //Funciona
-  static Future<List<Producto>> consultaProductos(List<String>tablas,String nombre) async {
-    List<Producto> resultado=[];
+  static Future<Producto> consultaPrimerProducto(
+      String tabla, String nombreProducto) async {
+    Producto resultado = Producto(
+        nombreProducto: "productoNoEncontrado",
+        precio: 0,
+        hrefProducto: "assets/producto_no_encontrado.png");
 
-    Database database = await openBD();
+    Database database = baseDatos;
 
-    for(int i=0;i<tablas.length;i++){
-      final List<Map<String, dynamic>> producto =  await database.query("${tablas[i]}", where: "nombre LIKE (?)", whereArgs: ['%$nombre%']);
-      for(int f=0;f<producto.length;f++){
+    final List<Map<String, dynamic>> producto = await database.query("$tabla",
+        where: "nombre LIKE (?)", whereArgs: ['%$nombreProducto%']);
+
+    if (producto.length > 0) {
+      resultado = Producto.inicializandoDesdeMapa(producto[0]);
+    }
+
+    return resultado;
+  }
+
+  //Funciona
+  static Future<List<Producto>> consultaProductos(
+      List<String> tablas, String nombre) async {
+    List<Producto> resultado = [];
+
+    Database database = baseDatos;
+
+    for (int i = 0; i < tablas.length; i++) {
+      final List<Map<String, dynamic>> producto = await database.query(
+          "${tablas[i]}",
+          where: "nombre LIKE (?)",
+          whereArgs: ['%$nombre%']);
+      for (int f = 0; f < producto.length; f++) {
         resultado.add(Producto.inicializandoDesdeMapa(producto[f]));
       }
     }
-  
+
     return resultado;
-  
-    
+  }
+
+  static Future<List<Producto>> consultaProductosTienda(String nomTabla, String nombre) async {
+    List<Producto> resultado = [];
+
+    Database database = baseDatos;
+
+    final List<Map<String, dynamic>> producto = await database
+        .query("$nomTabla", where: "nombre LIKE (?)", whereArgs: ['%$nombre%']);
+    if(producto.length!=0){//Este if esta puesto por la estructura del del Map si tiene tamaño 0 peta debido a que no encuentra el producto[0]: no se ha comprobado si la causa es esta
+      //TODO:Investigar cual es el esquema del map generado
+      for (int f = 0; f < producto[0].length; f++) {
+        resultado.add(Producto.inicializandoDesdeMapa(producto[f]));
+      }
+    }else{
+      developer.log("No hay ningun producto que tenga el nombre '$nombre' en la tabla : '$nomTabla' ");
+    }
+    return resultado;
   }
 }
 

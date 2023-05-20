@@ -5,7 +5,7 @@ import 'Producto.dart';
 import 'dart:developer'as developer;
 class Tienda{
 
-  late final String nombre;
+  final String nombre;
   bool clickado = false;
   final String imagen;
   final String tipoClase = "Tienda";
@@ -22,7 +22,9 @@ class Tienda{
 
 
   /// Constructor usado en la creacion de cada objeto Tienda por cada tabla de la BD
-  Tienda.tabla({required nombre, this.imagen =""});
+  Tienda.tabla({required nombre, imagen =""}):
+  this.nombre=nombre,
+  this.imagen=imagen;
 
   Tienda({required this.nombre, this.clickado = false, required this.imagen});
     
@@ -30,10 +32,6 @@ class Tienda{
   
 
   static List<Tienda> get obtenerTiendas => _listas_generadas_busqueda;
-  
-  //TODO:Ver si esta función es necesaria ya que la funión generarTiendas ya genera todas las tiendas, por lo que no es necesario un set de tiendas
-  static void aniadir_lista_resultado(Tienda tienda) =>
-      _listas_generadas_busqueda.add(tienda);
 
 
 
@@ -50,7 +48,7 @@ class Tienda{
 
   get img => imagen;
 
-/// Especie de set para la Lis<Producto> del atributo _listasProductosAnadidos
+/// Especie de set para la List <Producto> del atributo _listasProductosAnadidos
 /// añade un grupo de productos o un producto a una tienda expecifica
 /// Atributos:
 /// - tienda : es la tienda donde se insertará los productos o producto
@@ -61,17 +59,17 @@ class Tienda{
       if(_listas_generadas_busqueda[i].nombre==tienda){
         _listas_generadas_busqueda[i]._listasProductosAnadidos.add(productosAnadir);
         resultado = true;
-      }else{
-        developer.log("No existe ninguna tienda con el nombre $tienda | funcion: anadirproductoOproductosATienda");
-        resultado = false;
+        return resultado;//Si se cumple la condición sale del bucle
       }
     }
+    developer.log("No existe ninguna tienda con el nombre $tienda | funcion: anadirproductoOproductosATienda");
     return resultado;
     
   }
-
-  void generarTiendas() async {
+/// Creador de todas las tiendas, en base a los nombres de las tablas de la BD
+  static Future<void> generarTiendas() async {
     _listas_generadas_busqueda=await GestionDatos.devuelveTiendas();
+    print(_listas_generadas_busqueda.length);
   }
 
 
