@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pagina1.dart';
+import 'inicio.dart';
 import 'pagina3.dart';
 import 'pagina4.dart';
 import 'pagina5.dart';

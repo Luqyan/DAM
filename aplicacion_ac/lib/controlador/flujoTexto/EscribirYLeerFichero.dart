@@ -10,12 +10,11 @@ class EscribirYLeerFichero {
   ///   -0: Si no ha encontrado el fichero
 	static Future<String> leerFichero({required String rutaFichero}) async {
 		File fichero=File(rutaFichero);
-    print("Se mete aqui0");
-    print(fichero.toString())
+   
 ;    if( await fichero.exists()){
-      print("Se mete aqui1");
+  
 			String contenidoFichero = await fichero.readAsString().then((value) => value);
-      print("Se mete aqui2");
+      
 			return contenidoFichero;
 		}else{
       developer.log("La ruta del JSON establecida no existe | aplicacion_ac\lib\controlador\flujoTexto\EscribirYLeerFichero.dart");

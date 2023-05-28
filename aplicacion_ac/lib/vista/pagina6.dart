@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pagina1.dart';
+import 'inicio.dart';
 import 'menugeneral.dart';
 
 // CLASE PRINCIPAL CREADORA DE 'HOME'

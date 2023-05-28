@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:aplicacion_ac/modelo/TiendaJson.dart';
 
 import 'Producto.dart';
@@ -245,24 +246,48 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return resultado;
   }
 
-  static Future<List<Producto>> consultaProductosTienda(String nomTabla, String nombre) async {
-    List<Producto> resultado = [];
+  static Future<List<Tienda>> consultaProductosTienda(
+      List<String> tablas, String nombre) async {
+    List<Tienda> tiendas = [];
 
     Database database = baseDatos;
 
-    final List<Map<String, dynamic>> producto = await database
-        .query("$nomTabla", where: "nombre LIKE (?)", whereArgs: ['%$nombre%']);
-    if(producto.length!=0){//Este if esta puesto por la estructura del del Map si tiene tamaño 0 peta debido a que no encuentra el producto[0]: no se ha comprobado si la causa es esta
-      //TODO:Investigar cual es el esquema del map generado
-      for (int f = 0; f < producto[0].length; f++) {
-        resultado.add(Producto.inicializandoDesdeMapa(producto[f]));
+    for (String nombreTabla in tablas) {
+      Tienda tienda = Tienda.tabla(nombre: nombreTabla);
+      List<Producto> productosDeTienda = [];
+      final List<Map<String, dynamic>> producto = await database.query(
+          "$nombreTabla",
+          where: "nombre LIKE (?)",
+          whereArgs: ['%$nombre%']);
+
+      if (producto.length != 0) {
+        //Este if esta puesto por la estructura del del Map si tiene tamaño 0 peta debido a que no encuentra el producto[0]: no se ha comprobado si la causa es esta
+        //TODO:Investigar cual es el esquema del map generado
+        for (int f = 0; f < producto.length; f++) {
+          // productosDeTienda.add(Producto.inicializandoDesdeMapa(producto[f]));
+
+
+
+          tienda.lista_x_busqueda
+              .add(Producto.inicializandoDesdeMapa(producto[f]));
+        }
+
+        // esta funcion se usara en confirmar lista
+        // Tienda.anadirproductoOproductosATienda(nombreTabla, productosDeTienda);
+      } else {
+        developer.log(
+            "No hay ningun producto que tenga el nombre '$nombre' en la tabla : '$nombreTabla' ");
       }
-    }else{
-      developer.log("No hay ningun producto que tenga el nombre '$nombre' en la tabla : '$nomTabla' ");
+      for (Producto p in productosDeTienda) {
+        print(p);
+        // tienda._aniadir_prod_tienda(p);
+      }
+
+      tiendas.add(tienda);
     }
-    return resultado;
+
+    return tiendas;
   }
-}
 
 /*
 /*El método cargarProductos() utiliza el método productos() de la clase BD para obtener la lista de todos 
@@ -298,3 +323,4 @@ cargarProductos() async {
 
 
 */
+}

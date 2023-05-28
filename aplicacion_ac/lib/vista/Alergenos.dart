@@ -11,7 +11,7 @@ class Alergenos{
 
   @override
     String toString() {
-      // TODO: implement toString
+      // TO DO: implement toString
       return tipoClase;
     }
 

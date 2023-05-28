@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/tratamientoTipos/TratarString.dart';
 
 
@@ -16,10 +15,10 @@ class Producto implements Comparable<Producto>{
 
   Producto.filtrado() :
     
-    this._nombreProducto = "",
-    this._precio = 0.0,
-    this._hrefProducto = "",
-    this._unidades = 0
+    _nombreProducto = "",
+    _precio = 0.0,
+    _hrefProducto = "",
+    _unidades = 0
   ;
 
 
@@ -27,31 +26,31 @@ class Producto implements Comparable<Producto>{
 
 
 
-  Producto({required String nombreProducto,required double precio,required String hrefProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null, int? unidades = null}):
+  Producto({required String nombreProducto,required double precio,required String hrefProducto, double? peso, double? volumen, String? marca, String? categoria, int? unidades}):
   
-    this._nombreProducto=nombreProducto,
-    this._precio=precio,
-    this._hrefProducto=hrefProducto,
-    this._peso=peso,
-    this._volumen=volumen,
-    this._marca=marca,
-    this._categoria=categoria,
-    this._unidades = unidades
+    _nombreProducto=nombreProducto,
+    _precio=precio,
+    _hrefProducto=hrefProducto,
+    _peso=peso,
+    _volumen=volumen,
+    _marca=marca,
+    _categoria=categoria,
+    _unidades = unidades
     ;
-    
+  
 
    Producto copyWith({required String nombreProducto,required double precio,
-   required String hrefProducto, double? peso =null, double? volumen=null, String? marca=null, String? categoria=null, required int unidades})
+   required String hrefProducto, double? peso, double? volumen, String? marca, String? categoria, required int unidades})
   { return Producto (
     
-    nombreProducto : nombreProducto ?? this._nombreProducto,
-    precio : precio  ?? this._precio ,
-    hrefProducto : hrefProducto  ?? this._hrefProducto,
-    peso : peso  ?? this._peso ,
-    volumen : volumen  ?? this._volumen ,
-    marca : marca  ?? this._marca ,
+    nombreProducto : nombreProducto,
+    precio : precio ,
+    hrefProducto : hrefProducto,
+    peso : peso  ?? _peso ,
+    volumen : volumen  ?? _volumen ,
+    marca : marca  ?? _marca ,
     categoria : categoria  ?? this.categoria ,
-    unidades : unidades  ?? this._unidades
+    unidades : unidades
   );
 
  }
@@ -130,7 +129,7 @@ class Producto implements Comparable<Producto>{
         _peso=null;
         _volumen=null;
         _marca=null;
-        // print("9");
+        // print("9");s
       }
       // print("10");
       // print("Categoria: ${json['Producto $i']['Categoria']}");
@@ -153,53 +152,53 @@ class Producto implements Comparable<Producto>{
     _unidades=0;
 
   }
-  String get nombreProducto => this._nombreProducto;
+  String get nombreProducto => _nombreProducto;
 
-  set nombreProducto(value) => this._nombreProducto = value;
+  void nombre(value) { _nombreProducto = value; }
 
-  get precio => this._precio;
+  get precio => _precio;
 
-  set precio( value) => this._precio = value;
+  set precio( value) => _precio = value;
 
-  get peso => this._peso;
+  get peso => _peso;
 
-  set peso( value) => this._peso = value;
+  set peso(value) => _peso = value;
 
-  get volumen => this._volumen;
+  get volumen => _volumen;
 
-  void set setUnidades(int value) => this._unidades = value;
+  set setUnidades(int value) => _unidades = value;
 
-  get unidades => this._unidades;
+  get unidades => _unidades;
 
-  set volumen( value) => this._volumen = value;
+  set volumen( value) => _volumen = value;
 
-  get marca => this._marca;
+  get marca => _marca;
 
-  set marca( value) => this._marca = value;
+  set marca( value) => _marca = value;
 
-  get categoria => this._categoria;
+  get categoria => _categoria;
 
-  set categoria( value) => this._categoria = value;
+  set categoria( value) => _categoria = value;
 
-  get hrefProducto => this._hrefProducto;
+  get hrefProducto => _hrefProducto;
 
-  set hrefProducto( value) => this._hrefProducto = value;
+  void imagen(value) { _hrefProducto = value;}
 
 
-  List<dynamic?> toList(){
-    return [this._nombreProducto,this._precio,this._peso,this._volumen,this._marca,this._volumen,this._categoria,this._hrefProducto];
+  List<dynamic> toList(){
+    return [_nombreProducto,_precio,_peso,_volumen,_marca,_volumen,_categoria,_hrefProducto];
 
   } 
 
-  Map<String,dynamic?> toMap(){
+  Map<String,dynamic> toMap(){
     return {
-      'nombre':this._nombreProducto,
-      'precio':this._precio,
-      'categoria':this._categoria,
-      'marca':this._marca,
-      'volumen':this._volumen,
-      'peso':this._peso,
-      'imagen':this._hrefProducto,
+      'nombre':_nombreProducto,
+      'precio':_precio,
+      'categoria':_categoria,
+      'marca':_marca,
+      'volumen':_volumen,
+      'peso':_peso,
+      'imagen':_hrefProducto,
     };
   }
   Producto.inicializandoDesdeMapa(Map<String,dynamic> productoMapa):
@@ -219,22 +218,21 @@ class Producto implements Comparable<Producto>{
   Producto toObjeto(Map<String,dynamic> objeto){
      
     Producto resultado= Producto(nombreProducto: objeto['nombre'], precio: objeto['precio'], hrefProducto: objeto['imagen'], categoria: objeto['categoria'],marca: objeto['marca'],peso: objeto[peso],volumen: objeto['volumen']);
-    print(resultado);
     return resultado;
   }  
 
   @override
   String toString() {
-    // TODO: implement toString
+    
     return """
-    Nombre del Producto: ${ this._nombreProducto}
-    Precio: ${this._precio} 
-    Peso: ${this._peso} 
-    Volumen: ${this._volumen}
-    Marca: ${this.marca}
-    Categoria: ${this._categoria}
-    Unidades: ${this._unidades}
-    hrefproducto: ${this.hrefProducto}""";
+    Nombre del Producto: $_nombreProducto
+    Precio: $_precio 
+    Peso: $_peso 
+    Volumen: $_volumen
+    Marca: $marca
+    Categoria: $_categoria
+    Unidades: $_unidades
+    hrefproducto: $hrefProducto""";
   }
 
 

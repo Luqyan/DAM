@@ -1,9 +1,9 @@
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:aplicacion_ac/vista/pagina11.dart';
-import 'package:aplicacion_ac/vista/pagina7.dart';
+import 'package:aplicacion_ac/vista/buscador.dart';
 import 'package:flutter/material.dart';
 import 'Lista.dart';
-import 'pagina1.dart';
+import 'inicio.dart';
 import 'menugeneral.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
 
@@ -95,7 +95,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
                 onTap: () {
                   print('Pulsado "Guardar Lista"');
 
-                  if (Lista.getProductos().length > 0) {
+                  if (Lista.getProductos().isNotEmpty) {
                     guardar_lista();
                   } else {
                     _showDailog() {}
@@ -204,12 +204,16 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
               child: Text("Aceptar"),
               onPressed: () {
                 // SE GENERA UNA LISTA NUEVA Y SE AÑADE A LA LISTA DE LISTAS
-                Lista lista1 =
-                    new Lista(valor_introducido.text);
-                lista1.productos = Lista.getProductos();
-                Lista.addLista();
+                Lista lista1 = new Lista(valor_introducido.text);
 
-                print((Lista.listas).length);
+                lista1.aniade_lista_productos(Lista.getProductos());
+                Lista.addLista(lista1);
+
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  duration: Duration(milliseconds: 1500),
+                  backgroundColor: Color.fromARGB(255, 70, 213, 97),
+                  content: Text("Lista guardada con éxito!"),
+                ));
 
                 submit();
               },
@@ -227,7 +231,8 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
         context: context,
         builder: (context) => AlertDialog(
           title: Text("Lista confirmada!"),
-          content: Text("Pulse aceptar para generar y visualizar el resultado."),
+          content:
+              Text("Pulse aceptar para generar y visualizar el resultado."),
           actions: [
             TextButton(
                 child: Text("Aceptar"),
@@ -262,8 +267,8 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Image(image: 
-        AssetImage('assets/logo4.png'),
+      leading: const Image(
+        image: AssetImage('assets/logo4.png'),
         filterQuality: FilterQuality.high,
       ),
       title: const Text(
@@ -301,7 +306,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   Widget _buildContent(conte, productos) {
     // Indicador si se ha arrastrado y soltado algo
     bool centralizado = false;
-    bool precio = false;
+    bool precio = true;
 
     return Container(
       margin: const EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
@@ -343,7 +348,7 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
                 value: precio,
                 onChanged: (bool value) {
                   setState(() {
-                    precio = value;
+                    precio = !value;
                     print(value);
                   });
                 },
@@ -457,12 +462,20 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
                   minHeight: 100.0,
                   maxWidth: 200.0,
                   maxHeight: 200.0),
-              child: Image.asset(
+              child: Image.network(
                 p.hrefProducto,
-                width: 50.0,
                 height: MediaQuery.of(context).size.height,
+                width: 70.0,
                 alignment: Alignment.center,
-                fit: BoxFit.contain,
+                scale: 1,
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stacktrace) {
+                  return Image.asset("assets/image_producto_no_encontrada.jpg",
+                      height: MediaQuery.of(context).size.height,
+                      width: 50.0,
+                      alignment: Alignment.center,
+                      fit: BoxFit.contain);
+                },
               ),
             ),
             title: Text(
@@ -485,7 +498,6 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   }
 
   void aniadir_favorito(Producto p) {
-
     Lista.aniadir_favorito(p);
   }
 

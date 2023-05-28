@@ -3,58 +3,38 @@ import 'dart:math';
 import 'package:aplicacion_ac/modelo/TiendaJson.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 import 'package:flutter/material.dart';
-import 'package:aplicacion_ac/vista/pagina1.dart';
+import 'package:aplicacion_ac/vista/inicio.dart';
 import 'controlador/GestionDatosTablas.dart';
 import 'modelo/Tienda.dart';
 import 'vista/menugeneral.dart';
 import 'package:aplicacion_ac/modelo/base_datos.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await BD.openBD();
-  // getDatabasesPath().then((value) => print(value));
-  //await BD.borrarTabla("ahorramas");
-  print("Hola");
-  //  print(await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g"));
-  print("adioos");
-  // List<Producto> productos=await BD.consultaProductosTienda("ahorramas","chicle");
-  // for (var i = 0; i < productos.length; i++) {
-  //   print("index $i ${productos[i].nombreProducto}");
-  // }
-  //  var p = await BD.consultaPrimerProducto("ahorramas", "Ternera a la jardinera Carretilla 300g");
-  //  print(p.runtimeType.toString());
-  //  print(p.toString());
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await BD.openBD();
+
   
 
 
-  await Tienda.generarTiendas();
-  Tienda.obtenerTiendas;
-  await GestionDatos.anadirElementosAarrayTienda("chicle");
-
-  List<Tienda> tiendas=await Tienda.obtenerTiendas;
-  for(int i=0;i<tiendas.length;i++){
-    print(tiendas[i].nombre);
-  }
-  
+//   await Tienda.generarTiendas();
 
 
-
-
-  final ThemeData theme = ThemeData();
-  runApp(
+ 
+//   final ThemeData theme = ThemeData();
+//   runApp(
     
-    MaterialApp(
-       theme: theme.copyWith(
-    colorScheme: theme.colorScheme.copyWith(secondary: Colors.greenAccent),
-  ),
+//     MaterialApp(
+//        theme: theme.copyWith(
+//     colorScheme: theme.colorScheme.copyWith(secondary: Colors.greenAccent),
+//   ),
 
-      home: MiAplicacion(),
-      debugShowCheckedModeBanner: false,
-    ),
-  );
-}
+//       home: MiAplicacion(),
+//       debugShowCheckedModeBanner: false,
+//     ),
+//   );
 
+// }
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class MiAplicacion extends StatefulWidget {
   const MiAplicacion({
@@ -191,7 +171,7 @@ class _MiAplicacion extends State<MiAplicacion>
             ),
             onTap: () => {
                   Navigator.push(conte,
-                      MaterialPageRoute(builder: (conte) => (Pagina1()))),
+                      MaterialPageRoute(builder: (conte) => (inicio()))),
                 }),
       ),
     );

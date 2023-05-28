@@ -42,14 +42,12 @@ class TiendaJson {
     Map<String, dynamic> userMap = await jsonDecode(contenidoJson);
 
     for (int i = 1; i < userMap.length + 1; i++) {
-      print(i);
+      
       if(Producto.userDesdeJson(userMap, i).nombreProducto == "ProductoNoExisteJSON"||  Producto.userDesdeJson(userMap, i).nombreProducto == "ProductoJSONnoTienePrecio"){
         developer.log("No existe o no tiene ningun precio el producto en el json con el id: $i ");
       }else{
-        print(Producto.userDesdeJson(userMap, i));
         productoss.add(Producto.userDesdeJson(userMap, i));
       }
-      
     }
     return productoss;
   }

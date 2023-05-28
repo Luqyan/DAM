@@ -1,7 +1,7 @@
 name: aplicacion_ac
 description: A new Flutter project.
 publish_to: 'none'
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: '>=3.0.0-313.0.dev <4.0.0'
@@ -14,9 +14,12 @@ dependencies:
   path: ^1.8.0
   sqflite: ^2.0.0+3
   
-  path_provider: ^2.0.14
+  
   numberpicker: ^2.1.2
-
+  permission_handler: ^10.2.0
+  path_provider: ^2.0.14
+  lecle_downloads_path_provider: ^0.0.2+2
+  downloads_path_provider_28: ^0.1.2
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +36,6 @@ flutter_icons:
 
 flutter:
   uses-material-design: true
-
+  
   assets: 
     - assets/

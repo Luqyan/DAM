@@ -1,6 +1,6 @@
 
 import 'package:aplicacion_ac/vista/pagina11.dart';
-import 'package:aplicacion_ac/vista/pagina8.dart';
+import 'package:aplicacion_ac/vista/mi_cesta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_ac/main.dart';
@@ -8,7 +8,7 @@ import 'pagina2.dart';
 import 'pagina3.dart';
 import 'pagina4.dart';
 import 'pagina5.dart';
-import 'pagina7.dart';
+import 'buscador.dart';
 
 /////////////////////////////////2 ª PARTE/////CLASE MENU ////////////////////////////////////////////
 
