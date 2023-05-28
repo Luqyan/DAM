@@ -2,7 +2,6 @@ import 'package:aplicacion_ac/modelo/base_datos.dart';
 import 'package:aplicacion_ac/vista/buscador.dart';
 import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:flutter/material.dart';
-import 'pagina2.dart';
 import 'dart:async';
 
 /// Función principal del programa.
@@ -127,27 +126,27 @@ class _Pagina1State extends State<inicio> with TickerProviderStateMixin {
             },
           ),
           const SizedBox(height: 120),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 201, 215, 202),
-              minimumSize: const Size(300, 80),
-            ),
-            child: const Text(
-              "Mensaje: Regístrate para elegir tus propias listas y obtener más funcionalidades",
-              style: TextStyle(
-                fontSize: 12.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Pagina2()),
-              );
-            },
-          ),
+          // ElevatedButton(
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: const Color.fromARGB(255, 201, 215, 202),
+          //     minimumSize: const Size(300, 80),
+          //   ),
+          //   child: const Text(
+          //     "Mensaje: Regístrate para elegir tus propias listas y obtener más funcionalidades",
+          //     style: TextStyle(
+          //       fontSize: 12.0,
+          //       fontWeight: FontWeight.w600,
+          //       color: Colors.black87,
+          //     ),
+          //     textAlign: TextAlign.center,
+          //   ),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const Pagina2()),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );
@@ -187,7 +186,7 @@ class _Pagina1State extends State<inicio> with TickerProviderStateMixin {
               return Opacity(
                 opacity: _animation.value,
                 child: _animation.value == 1
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Center(child: child),
               );
             },

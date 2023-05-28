@@ -1,24 +1,22 @@
-import 'package:aplicacion_ac/vista/Lista.dart';
-import 'package:aplicacion_ac/vista/pagina11.dart';
-import 'package:aplicacion_ac/vista/buscador.dart';
-import 'package:flutter/material.dart';
-import 'Lista.dart';
-import 'inicio.dart';
-import 'menugeneral.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
+import 'package:aplicacion_ac/vista/vista_resultado.dart';
+import 'package:aplicacion_ac/vista/Lista.dart';
+import 'package:flutter/material.dart';
+import 'menugeneral.dart';
 
-// CLASE PRINCIPAL CREADORA DE 'HOME'
+
+/// CLASE PRINCIPAL CREADORA DE 'HOME'
 class Pagina8 extends StatefulWidget {
   const Pagina8({Key? key}) : super(key: key);
-
-  // creamos la ista de listas a través del método
-
   @override
   State<Pagina8> createState() => _Pagina8();
 }
 
-/////////////////////////////////////1 ª PARTE//////////////////////////////////////////////
-// CLASE ANIMADO
+/// Clase que representa la página 8 de la aplicación.
+///
+/// Esta clase utiliza el mixin `SingleTickerProviderStateMixin` para proporcionar
+/// un controlador de animación para la apertura y cierre del menú lateral.
+
 class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
@@ -36,25 +34,39 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     );
   }
 
-  // metodos controladores de estados
+  /// Libera los recursos utilizados por la clase antes de ser destruida.
+
   @override
   void dispose() {
     _drawerSlideController.dispose();
     super.dispose();
   }
 
+  /// Verifica si el menú lateral está abierto.
+  ///
+  /// Retorna `true` si el menú lateral está abierto, de lo contrario retorna `false`.
+
   bool _isDrawerOpen() {
     return _drawerSlideController.value == 1.0;
   }
+
+  /// Verifica si el menú lateral se está abriendo.
+  ///
+  /// Retorna `true` si el menú lateral se está abriendo, de lo contrario retorna `false`.
 
   bool _isDrawerOpening() {
     return _drawerSlideController.status == AnimationStatus.forward;
   }
 
+  /// Verifica si el menú lateral está cerrado.
+  ///
+  /// Retorna `true` si el menú lateral está cerrado, de lo contrario retorna `false`.
+
   bool _isDrawerClosed() {
     return _drawerSlideController.value == 0.0;
   }
 
+  /// Alterna entre abrir y cerrar el menú lateral.
   void _toggleDrawer() {
     if (_isDrawerOpen() || _isDrawerOpening()) {
       _drawerSlideController.reverse();
@@ -63,11 +75,14 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     }
   }
 
-  // metodo creacion Scaffold
+  /// Construye la interfaz de usuario de la página principal.
+  ///
+  /// El [context] parámetro es el contexto de la aplicación.
+  ///
+  /// Retorna un Widget de tipo Scaffold que representa la interfaz de usuario
+  /// de la página principal.
   @override
   Widget build(BuildContext context) {
-///////////////////////////////////////////////generamos la lista de elementos
-
     // Cogemos los Productos de la lista atributo de la clase Lista
     List<Widget> listaListas = crearListas(Lista.getProductos(), context);
 
@@ -190,6 +205,9 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     );
   }
 
+  /// Muestra un diálogo para guardar una lista y retorna un Future.
+  ///
+  /// Retorna un Future que se resuelve cuando se cierra el diálogo.
   Future guardar_lista() => showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -227,6 +245,11 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
         ),
       );
 
+  /// Muestra un diálogo de confirmación de lista y retorna un Future.
+  ///
+  /// El [conte] parámetro es el contexto de la aplicación.
+  ///
+  /// Retorna un Future que se resuelve cuando se cierra el diálogo.
   Future confirmar_lista(conte) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -265,6 +288,11 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
 ////////////////////// método de creación de appBaar personalizado/////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
+  /// Construye la barra de aplicación (AppBar).
+  ///
+  /// Retorna un Widget de tipo PreferredSizeWidget que representa la barra de
+  /// aplicación con el logo, título, botón de menú y animación de apertura
+  /// y cierre del menú lateral.
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       leading: const Image(
@@ -302,7 +330,12 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     );
   }
 
-  ////////////////////////////////////////////////////////////////////////
+  /// Construye el contenido principal de la interfaz de usuario.
+  ///
+  /// El [conte] parámetro representa un valor de contenido.
+  /// El [productos] parámetro es una lista de widgets de productos.
+  ///
+  /// Retorna un Widget de tipo Container que contiene el contenido principal.
   Widget _buildContent(conte, productos) {
     // Indicador si se ha arrastrado y soltado algo
     bool centralizado = false;
@@ -373,9 +406,13 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
       ),
     );
   }
-  ////////////////////////////////////////////////////////////////////////
 
-  /// Metodo que genera una lista de widgets de listas favoritas (guardadas)
+  /// Genera una lista de Widgets a partir de una lista de productos.
+  ///
+  /// El [productos] parámetro es la lista de productos a mostrar.
+  /// El [context] parámetro es el contexto de la aplicación.
+  ///
+  /// Retorna una lista de Widgets que representan los productos.
   List<Widget> crearListas(List<Producto> productos, context) {
     final List<Widget> listaObj = [];
 
@@ -395,8 +432,14 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     return listaObj;
   }
 
-  // Metodo de conversión de los elementos de ListView a Draggable
-
+  /// Genera un Widget arrastrable (Draggable) que permite eliminar un elemento.
+  ///
+  /// El [w] parámetro es el Widget que se desea hacer arrastrable.
+  /// El [pos] parámetro indica la posición del elemento en la lista.
+  ///
+  /// Retorna un Widget de tipo Dismissible que envuelve al Widget arrastrable.
+  /// Al arrastrar y soltar el elemento, se muestra una Snackbar de confirmación
+  /// de eliminación y se actualiza la lista de productos.
   Widget _generaDraggable(Widget w, int pos) {
     const snackBar = SnackBar(
         duration: Duration(seconds: 1),
@@ -433,7 +476,13 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     );
   }
 
-  // Metodo constructor de contenedor de lista (ListTile)
+  /// Construye y retorna un Widget de tipo Container que muestra un producto.
+  ///
+  /// El [p] parámetro representa el producto a mostrar.
+  /// El [context] parámetro es el contexto de la aplicación.
+  ///
+  /// Retorna un Widget de tipo Container que contiene la representación visual
+  /// del producto, incluyendo su imagen, nombre y un botón de añadir a favoritos.
   Widget _montar_contenedor(Producto p, context) {
     const snackBar = SnackBar(
         duration: Duration(seconds: 1),
@@ -501,7 +550,17 @@ class _Pagina8 extends State<Pagina8> with SingleTickerProviderStateMixin {
     Lista.aniadir_favorito(p);
   }
 
-  // METODO QUE DEVUELVE UN BUILDER ANIMADO
+  /// Construye el Drawer animado.
+  ///
+  /// Este método devuelve un widget de tipo Builder animado que controla la animación del Drawer.
+  /// Utiliza el controlador de animación [_drawerSlideController] para controlar la transición del Drawer.
+  /// La animación se aplica mediante la transformación [FractionalTranslation], desplazando el Drawer
+  /// hacia la derecha según el valor actual del controlador.
+  ///
+  /// Si el Drawer está cerrado, se muestra un widget [SizedBox] vacío. De lo contrario, se muestra
+  /// el widget [Menu].
+  ///
+  /// Retorna el widget que representa el Drawer animado.
   Widget _buildDrawer() {
     return AnimatedBuilder(
       animation: _drawerSlideController,

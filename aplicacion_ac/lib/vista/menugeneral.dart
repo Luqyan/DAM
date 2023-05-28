@@ -1,19 +1,10 @@
-
-import 'package:aplicacion_ac/vista/pagina11.dart';
 import 'package:aplicacion_ac/vista/mi_cesta.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:aplicacion_ac/main.dart';
-import 'pagina2.dart';
-import 'pagina3.dart';
-import 'pagina4.dart';
-import 'pagina5.dart';
+import '../inicio.dart';
+import 'productos_favoritos.dart';
+import 'listas_favoritas.dart';
+import 'vista_resultado.dart';
 import 'buscador.dart';
-
-/////////////////////////////////2 ª PARTE/////CLASE MENU ////////////////////////////////////////////
-
-
-
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -30,7 +21,6 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     'Selector de productos',
     'Configuración cuenta',
     'Mi cesta',
-    
   ];
 
   // creamos variables que contienen los valores definidos
@@ -48,8 +38,6 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   late AnimationController _staggeredController;
   final List<Interval> _itemSlideIntervals = [];
   late Interval _buttonInterval;
-  
-  
 
   @override
   void initState() {
@@ -62,7 +50,6 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
       duration: _animationDuration,
     )..forward();
   }
-
 
   // metodo definición de la animación de interacción con el menú
   void _createAnimationIntervals() {
@@ -95,8 +82,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
-      color: Color.fromRGBO(255, 255, 255, 0.89),
+      color: const Color.fromRGBO(255, 255, 255, 0.89),
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -107,7 +93,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     );
   }
 
-  // método creación de un logo 
+  // método creación de un logo
   Widget _buildFlutterLogo() {
     return const Positioned(
       right: -100,
@@ -121,10 +107,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     );
   }
 
-
-
-
-  // MONTAMOS CON ESTE METODO LOS ITEMS Y EL BOTON 
+  // MONTAMOS CON ESTE METODO LOS ITEMS Y EL BOTON
   // el contexto con el contenido se ha creado en una sola columna
   // llamamos a la parte de los contenidos con la función '_buildListItems' y del boton de Inicio
   Widget _buildContent(context) {
@@ -139,19 +122,15 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     );
   }
 
-
-  // lista de cada opción del menú con valores recogidos desde la 
+  // lista de cada opción del menú con valores recogidos desde la
   List<Widget> _buildListItems(conte) {
     final listItems = <Widget>[];
     for (var i = 0; i < _menuOpciones.length; ++i) {
       listItems.add(
-
         // se crean las filas del manu en funcion de la cantidad de elementos
         // encontrados en la lista estatica
         AnimatedBuilder(
-          
           animation: _staggeredController,
-          
           builder: (context, child) {
             final animationPercent = Curves.easeOut.transform(
               _itemSlideIntervals[i].transform(_staggeredController.value),
@@ -159,7 +138,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 
             final opacity = animationPercent;
             final slideDistance = (1.0 - animationPercent) * 150;
-            
+
             return Opacity(
               opacity: opacity,
               child: Transform.translate(
@@ -168,69 +147,45 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
               ),
             );
           },
-          
-        child: InkWell(
-         splashColor: Theme.of(context).primaryColorLight,
-         
-        child: GestureDetector(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 36.0, vertical: 16),
-           
-              child: Text(
-                
-                _menuOpciones[i],
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w500,
+          child: InkWell(
+              splashColor: Theme.of(context).primaryColorLight,
+              child: GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 36.0, vertical: 16),
+                  child: Text(
+                    _menuOpciones[i],
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
               ),
-            ),
-           
-          
-          ),
-          
-     
-        ),   
-
-          
-          onTap: () {
-            if (i==0) {
-              Navigator.push(
-              conte, 
-              MaterialPageRoute(builder: (conte)=>const Pagina3()));
-            } else if(i==1) {
-              Navigator.push(
-              conte, 
-              MaterialPageRoute(builder: (conte)=>const Pagina4()));
-            } else if(i==2) {
-              Navigator.push(
-              conte, 
-              MaterialPageRoute(builder: (conte)=> Pagina8()));
-            } else if(i==3) {
-              Navigator.push(
-              conte, 
-              MaterialPageRoute(builder: (conte)=>const Pagina7()));
-            } else if(i==4) {
-              Navigator.push(
-              conte, 
-              MaterialPageRoute(builder: (conte)=>const Pagina5()));
-            } else if(i==5) {
-              Navigator.push(
-              conte, 
-              MaterialPageRoute(builder: (conte)=>const Pagina11()));
-            }
-           } 
+              onTap: () {
+                if (i == 0) {
+                  Navigator.push(conte,
+                      MaterialPageRoute(builder: (conte) => const Pagina3()));
+                } else if (i == 1) {
+                  Navigator.push(conte,
+                      MaterialPageRoute(builder: (conte) => const Pagina4()));
+                } else if (i == 2) {
+                  Navigator.push(conte,
+                      MaterialPageRoute(builder: (conte) => const Pagina8()));
+                } else if (i == 3) {
+                  Navigator.push(conte,
+                      MaterialPageRoute(builder: (conte) => const Pagina7()));
+                  } else if (i == 5) {
+                  Navigator.push(conte,
+                      MaterialPageRoute(builder: (conte) => const Pagina11()));
+                }
+              }),
         ),
-          ),
-      
-      );    
-        
-      
+      );
     }
     return listItems;
   }
-
-
 
   // CONSTRUCTOR DE BOTON INICIAL
   Widget _buildGetStartedButton(conte) {
@@ -255,18 +210,20 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
             );
           },
 
-          // BOTON ADICIONAL 
+          // BOTON ADICIONAL
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               shape: const StadiumBorder(),
-              backgroundColor: Color.fromARGB(255, 25, 214, 158),
+              backgroundColor: const Color.fromARGB(255, 25, 214, 158),
               padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 14),
             ),
-            onPressed: () {Navigator.push(
-        conte, 
-        // nos pide el widget a utilizar que es de tipo materialpageroute
-        // creando una ruta de la pagina
-        MaterialPageRoute(builder: (conte)=>const MiAplicacion()));},
+            onPressed: () {
+              Navigator.push(
+                  conte,
+                  // nos pide el widget a utilizar que es de tipo materialpageroute
+                  // creando una ruta de la pagina
+                  MaterialPageRoute(builder: (conte) => const inicio()));
+            },
             child: const Text(
               'Inicio',
               style: TextStyle(

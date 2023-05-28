@@ -1,8 +1,6 @@
 import 'package:flutter/services.dart';
 import 'Producto.dart';
-import 'package:aplicacion_ac/controlador/flujoTexto/EscribirYLeerFichero.dart';
 import 'dart:convert'; //Libreria para parsear un json
-import 'base_datos.dart';
 import 'dart:developer' as developer;
 
 ///Clase que sirve para tratar el json de todas las tiendas y pasarlo a una lista de productos
@@ -62,7 +60,5 @@ class TiendaJson {
   }
 
   void imprimir() {
-    print(_nombreTienda);
-    print(_productos);
   }
 }

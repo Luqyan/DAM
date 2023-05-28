@@ -6,7 +6,6 @@ import 'Producto.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:developer' as developer; //Sirve para los logs
-import 'dart:io' as system;
 
 class BD {
   static late Database baseDatos;
@@ -98,7 +97,7 @@ Luego, utiliza el método update() de la clase Database para actualizar los dato
 
 Además, el método tiene dos parámetros opcionales where y whereArgs que se utilizan para filtrar los resultados 
 a actualizar. En este caso, se actualiza el primer registro cuyo nombre sea igual al nombre del objeto prod.*/
-  //TODO: Se va a usar esta función
+  //TO DO: Se va a usar esta función
   static Future<void> update(Producto prod) async {
     Database database = baseDatos;
 
@@ -115,12 +114,12 @@ El resultado de la consulta es una lista de objetos Map, donde cada objeto Map r
 una fila en la tabla "productos". 
 
 El método crea una nueva lista de objetos Producto, basada en el resultado de la consulta, y devuelve la lista.*/
-  //TODO: no funciona
+  //TO DO: no funciona
   static Future<List<Producto>> productos(String tienda) async {
     Database database = baseDatos;
 
     final List<Map<String, dynamic>> productosLista =
-        await database.query("$tienda");
+        await database.query(tienda);
 
     return List.generate(
         productosLista.length,
@@ -143,7 +142,7 @@ se especifican mediante los parámetros ${prod.nombreProducto}, ${prod.precio}, 
  ${prod.peso}, ${prod.volumen}, ${prod.hrefProducto}, correspondientes a las columnas de la tabla.
 
 Además, el método almacena el resultado de la operación de inserción en una variable llamada resultado.*/
-  //TODO: no funciona este método
+  //TO DO: no funciona este método
   static Future<int> insertarProducto(Producto prod) async {
     Database database = baseDatos;
 
@@ -158,14 +157,14 @@ Además, el método almacena el resultado de la operación de inserción en una 
     await database.execute('DELETE FROM $nombre');
   }
 
-  //TODO: No se si funciona correctamente
+  //TO DO: No se si funciona correctamente
   static Future<void> borrarBBDD() async {
     String ruta = join(await getDatabasesPath(), 'baseDB2.db');
     File baseDatosEliminar = File(ruta);
     await baseDatosEliminar.delete();
   }
 
-  //TODO: No se si funciona correctamente
+  //TO DO: No se si funciona correctamente
   static Future<int> getCount() async {
     Database database = baseDatos;
     var result = await database.query("ahorramas");
@@ -174,7 +173,7 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return count;
   }
 
-  //TODO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
+  //TO DO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
   static Future<List<Producto>?> muestraTodo(String nomTabla) async {
     // ABRIMOS LA BASE DE DATOS
     Database database = baseDatos;
@@ -216,7 +215,7 @@ Además, el método almacena el resultado de la operación de inserción en una 
 
     Database database = baseDatos;
 
-    final List<Map<String, dynamic>> producto = await database.query("$tabla",
+    final List<Map<String, dynamic>> producto = await database.query(tabla,
         where: "nombre LIKE (?)", whereArgs: ['%$nombreProducto%']);
 
     if (producto.length > 0) {
@@ -279,7 +278,6 @@ Además, el método almacena el resultado de la operación de inserción en una 
             "No hay ningun producto que tenga el nombre '$nombre' en la tabla : '$nombreTabla' ");
       }
       for (Producto p in productosDeTienda) {
-        print(p);
         // tienda._aniadir_prod_tienda(p);
       }
 

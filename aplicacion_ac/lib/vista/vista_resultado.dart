@@ -1,18 +1,19 @@
-import 'dart:io';
-import 'dart:typed_data';
-import 'package:permission_handler/permission_handler.dart';
-
-import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
-import 'package:aplicacion_ac/modelo/Tienda.dart';
-import 'package:flutter/material.dart';
 import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
-import 'Lista.dart';
-import 'menugeneral.dart';
+import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:aplicacion_ac/modelo/Producto.dart';
+import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:path/path.dart' as path;
 import 'package:pdf/widgets.dart' as pw;
-import 'package:aplicacion_ac/modelo/Producto.dart';
-// CLASE PRINCIPAL CREADORA DE 'HOME'
+import 'package:flutter/material.dart';
+import 'menugeneral.dart';
+import 'dart:typed_data';
+import 'Lista.dart';
+import 'dart:io';
+
+/// Página 11, StatefulWidget que representa una página con estado.
 class Pagina11 extends StatefulWidget {
+  /// Constructor de la clase Pagina11.
   const Pagina11({
     super.key,
   });
@@ -21,38 +22,43 @@ class Pagina11 extends StatefulWidget {
   State<Pagina11> createState() => _Pagina11();
 }
 
+/// Estado de la página 11 (_Pagina11) que extiende de State y utiliza SingleTickerProviderStateMixin.
 class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
   @override
   void initState() {
     super.initState();
-
+// Inicialización del controlador de animación del drawer.
     _drawerSlideController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 150),
     );
   }
 
-  // metodos controladores de estados
+  /// Libera los recursos utilizados por la clase antes de ser destruida.
   @override
   void dispose() {
     _drawerSlideController.dispose();
     super.dispose();
   }
 
+  /// Verifica si el drawer está abierto.
   bool _isDrawerOpen() {
     return _drawerSlideController.value == 1.0;
   }
 
+  /// Verifica si el drawer está abriendo.
   bool _isDrawerOpening() {
     return _drawerSlideController.status == AnimationStatus.forward;
   }
 
+  /// Verifica si el drawer está cerrado.
   bool _isDrawerClosed() {
     return _drawerSlideController.value == 0.0;
   }
 
+  /// Alterna la apertura/cierre del drawer.
   void _toggleDrawer() {
     if (_isDrawerOpen() || _isDrawerOpening()) {
       _drawerSlideController.reverse();
@@ -61,24 +67,9 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     }
   }
 
-  // metodo creacion Scaffold
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: const Color.fromRGBO(254, 239, 188, 1),
-        appBar: _buildAppBar(),
-        body: Stack(
-          children: [
-            _buildContent(context),
-            _buildDrawer(),
-          ],
-        ));
-  }
-
-//////////////////////////////////////////////////////////////////////////////////////////
-////////////////////// método de creación de appBar personalizado/////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
+  /// Construye la barra de aplicaciones preferida (AppBar).
+  ///
+  /// Retorna un widget de tipo PreferredSizeWidget que representa la barra de aplicaciones.
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       leading: const Image(
@@ -116,11 +107,23 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     );
   }
 
-  /////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////AQUI AÑADIMOS EL CONTENIDO DE LA PAGINA (BODY)/////////////
-  /////////////////////// METODO QUE DEVUELVE UN SIZED BOX CON SU CONTENIDO////////////
-  /////////////////////////////////////////////////////////////////////////////////////
+  // metodo creacion Scaffold
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: const Color.fromRGBO(254, 239, 188, 1),
+        appBar: _buildAppBar(),
+        body: Stack(
+          children: [
+            _buildContent(context),
+            _buildDrawer(),
+          ],
+        ));
+  }
 
+  /// Construye el contenido principal del widget.
+  ///
+  /// [conte] - El contenido del widget.
   Widget _buildContent(conte) {
     List<List<Producto>> listas = devuelve_listas_por_precio();
 
@@ -146,10 +149,8 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
       ),
     );
   }
-  ////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////
 
-  // Metodo constructor de contenedor de lista (ListTile)
+  /// Construye un widget de contenedor personalizado.
   Widget _montar_contenedor(listas) {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -212,14 +213,10 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     );
   }
 
-  ////// Función que coge los productos de la lista de clase introducidos previamente
+  /// Función que coge los productos de la lista de clase introducidos previamente
   /// y los busca en cada tienda para devolvernos las opciones más baratas
   ///  que en este caso se generarán 2 ya que solo tenemos datos de 2 tiendas
-  /// tabien si algúnb producto se encuentra en una sola tienda se escogera directamente ese
-
-  /// NOS TENDRÁ QUE DEVOLVER UNA LISTA DE LISTVIEWS ??????
-  /// mirar Pagina7 fila 460
-
+  /// tabien si algún producto se encuentra en una sola tienda se escogera directamente ese
   List<List<Producto>> devuelve_listas_por_precio() {
     // Objeto que nos devuelve que incluye las listas generadas en base al precio más barato
     List<List<Producto>> listasGeneradas = List.empty(growable: true);
@@ -307,25 +304,26 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     listasGeneradas
         .addAll([listaCarrefour.productos, listaAhorramas.productos]);
 
-
     // Borrar contenido de la lista de productos buscados
     Lista.getProductos().clear();
 
     return listasGeneradas;
   }
 
+  /// Genera una lista de tarjetas (cards) a partir de una lista de listas de productos.
   Widget _generarCards(List<List<Producto>> lista) {
     List<Widget> cards = [];
 
     for (int i = 0; i < lista.length; i++) {
       List<Producto> productos = lista[i];
       var total = 0.0;
+
+      // Calcular el total sumando el precio de cada producto multiplicado por las unidades
       for (Producto p in productos) {
         total += p.precio * p.unidades;
       }
 
       Widget card = Card(
-        ////////////////////////////////////// TEXT PRODUCTOS TYPE (CARREFOUR / AHORRAMAS)
         color: const Color.fromARGB(255, 153, 224, 199),
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -369,6 +367,8 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
         height: 35.0,
         thickness: 3.0,
       ));
+
+      // Agregar el encabezado dependiendo del índice (Carrefour o Ahorramás)
       if (i == 0) {
         cards.add(const Text(
           "Carrefour",
@@ -387,6 +387,7 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
 
       cards.add(card);
 
+      // Agregar el total al final de la tarjeta
       cards.add(Text(
         "TOTAL: ${total.toStringAsFixed(2)}Eu",
         style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -406,29 +407,31 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
     );
   }
 
+  /// Genera un archivo PDF a partir de una lista de listas de productos y lo guarda en el directorio de descargas del dispositivo.
   Future<void> generatePDF(List<List<Producto>> lista) async {
-
+    // Generar el contenido del PDF
     final Uint8List pdfBytes = await makePdf(lista);
 
-    String? downloadsDirectoryPath = (await DownloadsPath.downloadsDirectory())?.path;
+    // Obtener el directorio de descargas
+    String? downloadsDirectoryPath =
+        (await DownloadsPath.downloadsDirectory())?.path;
+
+    // Construir la ruta y el nombre de archivo del PDF
     final filePath = path.join(downloadsDirectoryPath!, 'lista_compra.pdf');
     final file = File(filePath);
 
-    // Verificar y solicitar permisos
-  var status = await Permission.storage.status;
-  if (!status.isGranted) {
-    status = await Permission.storage.request();
+    // Verificar y solicitar permisos de almacenamiento
+    var status = await Permission.storage.status;
     if (!status.isGranted) {
-      return;
+      status = await Permission.storage.request();
+      if (!status.isGranted) {
+        return;
+      }
     }
+
+    // Escribir el archivo PDF
+    await file.writeAsBytes(pdfBytes);
   }
-
-  // Escribir el archivo PDF
-  await file.writeAsBytes(pdfBytes);
-
-  print('Archivo PDF generado en: $filePath');
-  }
-
 
 // Future<void> generatePDF(List<List<Producto>> lista) async {
 //     print("Pasamos a generar el pdf...");
@@ -446,18 +449,8 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
 //     print('Archivo PDF generado en: $filePath');
 //   }
 
-
-
-
-
+  /// Genera un documento PDF a partir de una lista de listas de productos.
   Future<Uint8List> makePdf(List<List<Producto>> lista) async {
-    // Registro de la fuente "NotoSans" con soporte Unicode
-    // Cargar una fuente personalizada
-    // final fontLoader = FontLoader("Courier");
-    // final ttf = await rootBundle.load("assets/fonts/CourierPrime-Regular.ttf");
-    // final font = Font.ttf(ttf);
-    // fontLoader.addFont(font as Future<ByteData>);
-    // await fontLoader.load();
     List<String> nombresTiendas = ["Carrefour", "Ahorramas"];
     final pdf = pw.Document();
 
@@ -476,34 +469,35 @@ class _Pagina11 extends State<Pagina11> with SingleTickerProviderStateMixin {
 
             cards.add(pw.Text("Tienda: ${nombresTiendas[i]}",
                 style: pw.TextStyle(
-                    fontWeight: pw.FontWeight.bold,
-                    fontSize: 28,
-                   )));
-            cards.add(pw.Text("Productos encontrados: ${productos.length}",
-                ));
+                  fontWeight: pw.FontWeight.bold,
+                  fontSize: 28,
+                )));
+            cards.add(pw.Text(
+              "Productos encontrados: ${productos.length}",
+            ));
 
             for (Producto producto in productos) {
               cards.add(pw.Text(
-                "${producto.nombreProducto}",
+                producto.nombreProducto,
                 textAlign: pw.TextAlign.justify,
-                style: pw.TextStyle(fontSize: 18),
+                style: const pw.TextStyle(fontSize: 18),
               ));
               cards.add(pw.Text(
                 "Precio: ${producto.precio.toStringAsFixed(2)}",
-                style: pw.TextStyle(fontSize: 18),
+                style: const pw.TextStyle(fontSize: 18),
               ));
               cards.add(pw.Text(
                 "Unidades: ${producto.unidades.toStringAsFixed(2)}",
-                style: pw.TextStyle(fontSize: 18),
+                style: const pw.TextStyle(fontSize: 18),
               ));
               cards.add(pw.Divider());
             }
 
             cards.add(pw.Text("TOTAL: ${total.toStringAsFixed(2)}Eu",
                 style: pw.TextStyle(
-                    fontSize: 18,
-                    fontWeight: pw.FontWeight.bold,
-            )));
+                  fontSize: 18,
+                  fontWeight: pw.FontWeight.bold,
+                )));
 
             return pw.Container(
               child: pw.Column(children: cards),

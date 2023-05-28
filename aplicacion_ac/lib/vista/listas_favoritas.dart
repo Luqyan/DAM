@@ -1,12 +1,10 @@
-import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:flutter/material.dart';
-import 'Lista.dart';
-import 'Lista.dart';
-import 'inicio.dart';
 import 'menugeneral.dart';
+import 'Lista.dart';
 
-// CLASE PRINCIPAL CREADORA DE 'HOME'
+/// Clase que representa la página 3 y es un [StatefulWidget].
 class Pagina3 extends StatefulWidget {
+  /// Constructor de la clase Pagina3.
   const Pagina3({
     super.key,
   });
@@ -16,39 +14,48 @@ class Pagina3 extends StatefulWidget {
   State<Pagina3> createState() => _Pagina3();
 }
 
-/////////////////////////////////////1 ª PARTE//////////////////////////////////////////////
-// CLASE ANIMADO
+/// Clase privada que extiende [State] y utiliza [SingleTickerProviderStateMixin]
+/// para manejar la animación del cajón (drawer).
 class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
   @override
   void initState() {
     super.initState();
-
+// Inicialización del controlador de animación del drawer.
     _drawerSlideController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 150),
     );
   }
 
-  // metodos controladores de estados
+  /// Libera los recursos utilizados por la clase antes de ser destruida.
+
   @override
   void dispose() {
     _drawerSlideController.dispose();
     super.dispose();
   }
 
+  /// Devuelve verdadero si el cajón está completamente abierto.
+
   bool _isDrawerOpen() {
     return _drawerSlideController.value == 1.0;
   }
+
+  /// Devuelve verdadero si el cajón se está abriendo.
 
   bool _isDrawerOpening() {
     return _drawerSlideController.status == AnimationStatus.forward;
   }
 
+  /// Devuelve verdadero si el cajón está completamente cerrado.
+
   bool _isDrawerClosed() {
     return _drawerSlideController.value == 0.0;
   }
+
+  /// Alterna la apertura y cierre del cajón.
 
   void _toggleDrawer() {
     if (_isDrawerOpen() || _isDrawerOpening()) {
@@ -58,14 +65,15 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
     }
   }
 
-  // metodo creacion Scaffold
+  /// Anulación del método [build] de la clase [StatefulWidget].
+  /// Construye la interfaz de usuario de la página.
+  /// Recibe el [context] como parámetro.
   @override
   Widget build(BuildContext context) {
-///////////////////////////////////////////////generamos la lista de elementos
     List<Widget> listaListas = crearListas();
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(254, 239, 188, 1),
+      backgroundColor: const Color.fromRGBO(254, 239, 188, 1),
       appBar: _buildAppBar(),
       body: Stack(
         children: [
@@ -76,10 +84,8 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
     );
   }
 
-//////////////////////////////////////////////////////////////////////////////////////////
-////////////////////// método de creación de appBar personalizado/////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
+  /// Método que construye la barra de la aplicación.
+  /// Retorna un [AppBar] como una instancia de [PreferredSizeWidget].
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       leading: const Icon(
@@ -92,7 +98,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
           color: Colors.black,
         ),
       ),
-      backgroundColor: Color.fromARGB(0, 44, 202, 246),
+      backgroundColor: const Color.fromARGB(0, 44, 202, 246),
       elevation: 3,
       automaticallyImplyLeading: false,
       actions: [
@@ -117,20 +123,15 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
     );
   }
 
-  /////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////AQUI AÑADIMOS EL CONTENIDO DE LA PAGINA (BODY)/////////////
-  /////////////////////// METODO QUE DEVUELVE UN SIZED BOX CON SU CONTENIDO////////////
-  /////////////////////////////////////////////////////////////////////////////////////
-
+  /// Método que construye el contenido principal de la página.
+  /// Recibe como parámetros el contexto [conte] y una lista de [listaListas].
   Widget _buildContent(conte, listaListas) {
     // Indicador si se ha arrastrado y soltado algo
-    bool pasadoOnaccept = false;
 
     List<Widget> lista = List.from(listaListas);
 
     return Container(
       margin: const EdgeInsets.only(left: 50.0, right: 50.0, top: 20.0),
-      //color: Color(0xFFFAF482),
       alignment: AlignmentDirectional.center,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -167,30 +168,28 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
       final objetoFinal = _generaDraggable(objetoTemporal, li.nombreLista);
       listaObj.add(objetoFinal);
 
-      listaObj.add(SizedBox(height: 20.0));
+      listaObj.add(const SizedBox(height: 20.0));
     }
 
     return listaObj;
   }
 
-// Método de conversión de los elementos de ListView a Draggable
-  Widget _generaDraggable(Widget w, String nombre_lista) {
-    final snackBar = SnackBar(content: Text("La lista ha sido eliminada!"));
-
-    bool muestraCaja = true;
+  /// Función que genera un Widget arrastrable y deslizable para eliminar una lista.
+  /// Recibe como parámetros el Widget a mostrar y el nombre de la lista.
+  Widget _generaDraggable(Widget w, String nombreLista) {
+    const snackBar = SnackBar(content: Text("La lista ha sido eliminada!"));
 
     return Dismissible(
       direction: DismissDirection.endToStart,
       background: Container(
-        padding: EdgeInsets.only(left: 20.0),
-        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        padding: const EdgeInsets.only(left: 20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         color: Colors.red,
-        child: Icon(Icons.delete, color: Colors.white, size: 40.0),
+        child: const Icon(Icons.delete, color: Colors.white, size: 40.0),
       ),
       key: ValueKey(w),
       onDismissed: (_) {
-        print("Elemento eliminado");
-        Lista.borrarListaPorNombre(nombre_lista);
+        Lista.borrarListaPorNombre(nombreLista);
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       child: SizedBox(
@@ -205,13 +204,14 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
     );
   }
 
-// Método constructor de contenedor de lista (ListTile)
+  /// Función que retorna un Widget de contenedor personalizado para una lista.
+  /// Recibe como parámetro una instancia de la clase Lista.
   Widget _montar_contenedor(Lista li) {
     List<String> nombresProductos = [];
 
-    li.productos.forEach((element) {
+    for (var element in li.productos) {
       nombresProductos.add(element.nombreProducto);
-    });
+    }
 
     return GestureDetector(
       onTap: () {
@@ -230,14 +230,14 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
                       .map((nombre) => RichText(
                                   text: TextSpan(
                                       text: '\u2022 ',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 21,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                       children: [
                                     TextSpan(
                                         text: nombre,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 21,
                                             color: Colors.black,
                                             fontWeight: FontWeight.normal))
@@ -250,7 +250,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
               ),
               actions: [
                 TextButton(
-                  child: Text("Volver"),
+                  child: const Text("Volver"),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -293,7 +293,7 @@ class _Pagina3 extends State<Pagina3> with SingleTickerProviderStateMixin {
                 fit: BoxFit.fill,
               ),
             ),
-            title: Text(li.nombreLista, style: TextStyle(fontSize: 20)),
+            title: Text(li.nombreLista, style: const TextStyle(fontSize: 20)),
           ),
         ),
       ),

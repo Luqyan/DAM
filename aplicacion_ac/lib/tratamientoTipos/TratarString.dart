@@ -34,9 +34,8 @@ class TratarString{
   }
   static printAsincrono(dynamic frase,int tiempoMilisegundos) async{
     if(frase!=null ||frase!="" ){
-      print(frase);
     }
-    Timer(Duration(milliseconds: tiempoMilisegundos), () {print(frase); });
+    Timer(Duration(milliseconds: tiempoMilisegundos), () {});
     
     
   }

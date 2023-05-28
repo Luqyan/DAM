@@ -1,4 +1,3 @@
-import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
 import 'package:aplicacion_ac/vista/Alergenos.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/vista/mi_cesta.dart';
@@ -14,7 +13,7 @@ import 'dart:math';
 // Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
 List<Item> _listaItems = generaItems(1);
 
-late List<Tienda> tiendas = List.empty(growable: true);
+List<Tienda> tiendas = List.empty(growable: true);
 
 final _opcionesTiendas = [
   Tienda(nombre: "Carrefour", imagen: "assets/carrefour.png"),
@@ -50,7 +49,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   String _valorIntroducido = "";
   bool productoEncontrado = false;
   Producto productoE =
-      new Producto(nombreProducto: "", precio: 0, hrefProducto: "");
+      Producto(nombreProducto: "", precio: 0, hrefProducto: "");
   bool visible = false;
   late List<Producto> lista_productos;
   bool aniadir_a_cesta_pulsado = false;
@@ -110,7 +109,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(254, 239, 188, 1),
+      backgroundColor: const Color.fromRGBO(254, 239, 188, 1),
       appBar: _buildAppBar(),
       body: Container(
         height: double.infinity,
@@ -144,7 +143,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
           color: Colors.black,
         ),
       ),
-      backgroundColor: Color.fromARGB(0, 44, 202, 246),
+      backgroundColor: const Color.fromARGB(0, 44, 202, 246),
       elevation: 3,
       automaticallyImplyLeading: false,
       actions: [
@@ -204,7 +203,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                     conte,
                     // nos pide el widget a utilizar que es de tipo materialpageroute
                     // creando una ruta de la pagina
-                    MaterialPageRoute(builder: (conte) => Pagina8()));
+                    MaterialPageRoute(builder: (conte) => const Pagina8()));
               },
               child: const Text(
                 'Mi cesta',
@@ -514,7 +513,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                               size: const Size(60, 60),
                               child: ClipOval(
                                 child: Material(
-                                  color: Color.fromARGB(255, 190, 224, 169),
+                                  color: const Color.fromARGB(255, 190, 224, 169),
                                   child: InkWell(
                                     splashColor: Colors.green,
                                     onTap: () {
@@ -566,7 +565,6 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
   /// Retorna el widget construido para seleccionar las unidades del producto.
 
   Widget _construye_unidades(Producto p, context) {
-    List<int> unidades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     final growableList =
         List<int>.generate(20, (int index) => index + 1, growable: true);
 
@@ -594,7 +592,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
                         squeeze: 1,
                         scrollController: FixedExtentScrollController(
                             initialItem: valor_actual),
-                        backgroundColor: Color.fromARGB(255, 241, 239, 230),
+                        backgroundColor: const Color.fromARGB(255, 241, 239, 230),
                         itemExtent: 25,
                         onSelectedItemChanged: (int value) {
                           setState(() {
@@ -629,10 +627,10 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
   Widget _contenidoFiltrado() {
     return ExpansionPanelList(
-      animationDuration: Duration(seconds: 1),
+      animationDuration: const Duration(seconds: 1),
       dividerColor: Colors.green,
       elevation: 1,
-      expandedHeaderPadding: EdgeInsets.all(8),
+      expandedHeaderPadding: const EdgeInsets.all(8),
       expansionCallback: (int index, bool isExpanded) {
         // actualizamos el estado del item (desplegado o no)
         setState(() {
@@ -648,8 +646,8 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
           body: SizedBox(
             height: MediaQuery.of(context).size.height / 1.5,
             child: Container(
-                padding: EdgeInsets.all(15.0),
-                color: Color.fromARGB(255, 226, 203, 181),
+                padding: const EdgeInsets.all(15.0),
+                color: const Color.fromARGB(255, 226, 203, 181),
                 child: eligeOpciones()),
           ),
           isExpanded: item.isExpanded!,
@@ -704,7 +702,7 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
         textAlign: TextAlign.left,
         style: TextStyle(fontSize: 20),
       ),
-      Divider(height: 15),
+      const Divider(height: 15),
       Column(
         //padding: EdgeInsets.all(15.0),
 
@@ -727,8 +725,8 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
   CheckboxListTile construyeCheckboxTienda(Tienda tienda) {
     return CheckboxListTile(
-      activeColor: Color.fromARGB(255, 122, 214, 16),
-      checkColor: Color.fromARGB(255, 0, 0, 0),
+      activeColor: const Color.fromARGB(255, 122, 214, 16),
+      checkColor: const Color.fromARGB(255, 0, 0, 0),
       title: Text(tienda.nombre),
       value: tienda.clickado,
       controlAffinity: ListTileControlAffinity.platform,
@@ -757,8 +755,8 @@ class _Pagina7 extends State<Pagina7> with SingleTickerProviderStateMixin {
 
   CheckboxListTile construyeCheckboxAlergenos(Alergenos alergeno) {
     return CheckboxListTile(
-      activeColor: Color.fromARGB(255, 122, 214, 16),
-      checkColor: Color.fromARGB(255, 0, 0, 0),
+      activeColor: const Color.fromARGB(255, 122, 214, 16),
+      checkColor: const Color.fromARGB(255, 0, 0, 0),
       title: Text(alergeno.nombre),
       value: alergeno.clickado,
       controlAffinity: ListTileControlAffinity.platform,
