@@ -56,7 +56,7 @@ class GestionDatos {
     Tienda Ahorramas = Tienda.tabla(nombre: "Ahorramas", imagen: "assets/ahorramas.jpg");
     for (Tienda t in Tienda.obtenerTiendas) {
       for (List<Producto> lista in t.listas) {
-        lista.sort(((a, b) => a.compareTo(b)));
+        lista.sort(((b, a) => a.compareTo(b)));
         if (lista.isNotEmpty) {
           if (t.nombre == "carrefour") {
             Carrefour.lista_busqueda.add(lista[0]);

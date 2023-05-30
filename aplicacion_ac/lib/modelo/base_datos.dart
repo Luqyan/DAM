@@ -1,11 +1,14 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:aplicacion_ac/modelo/TiendaJson.dart';
+import 'package:aplicacion_ac/vista/Lista.dart';
 
 import 'Producto.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:developer' as developer; //Sirve para los logs
+import 'dart:io' as system;
 
 class BD {
   static late Database baseDatos;
@@ -23,40 +26,79 @@ class BD {
   static Future<void> openBD() async {
     baseDatos = await openDatabase(join(await getDatabasesPath(), 'cacatua.db'),
         onCreate: (db, version) async {
-      db.execute("""CREATE TABLE ahorramas (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          nombre TEXT UNIQUE,
-          precio REAL,
-          categoria TEXT,
-          marca TEXT,
-          peso REAL,
-          volumen REAL,
-          imagen TEXT
-); """);
-      db.execute("""CREATE TABLE carrefour (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          nombre TEXT UNIQUE,
-          precio REAL,
-          categoria TEXT,
-          marca TEXT,
-          peso REAL,
-          volumen REAL,
-          imagen TEXT
-); """);
-      await _insertarTodosProductosDeTienda(db, ['Ahorramas', 'carrefour']);
+      db.execute("""CREATE TABLE IF NOT EXISTS tiendas(
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        nombre TEXT UNIQUE NOT NULL,
+                        imagen TEXT NOT NULL
+                  );""");
+      db.execute("""CREATE TABLE IF NOT EXISTS productos(
+                              id INTEGER PRIMARY KEY AUTOINCREMENT,
+                              idTienda INTEGER NOT NULL,
+                              nombre TEXT NOT NULL,
+                              precio REAL NOT NULL,
+                              categoria TEXT,
+                              marca TEXT,
+                              peso REAL,
+                              volumen REAL,
+                              imagen TEXT NOT NULL,
+                              FOREIGN KEY(idTienda) REFERENCES tiendas(id) ON DELETE CASCADE
+                  ); """);
+      db.execute("""CREATE TABLE IF NOT EXISTS listas_favoritas(
+                              id INTEGER PRIMARY KEY AUTOINCREMENT,
+                              nombre TEXT NOT NULL
+                  );""");
+      db.execute("""CREATE TABLE IF NOT EXISTS productos_listas_favoritas(
+                              id INTEGER PRIMARY KEY AUTOINCREMENT,
+                              idListaFavorita INTEGER NOT NULL,
+                              nombreProducto TEXT NOT NULL,
+                              FOREIGN KEY(idListaFavorita) REFERENCES listasFavoritas(id) ON DELETE CASCADE
+                  );""");
+      db.execute("""CREATE TABLE IF NOT EXISTS productos_favoritos(
+                              id INTEGER PRIMARY KEY AUTOINCREMENT,
+                              nombre TEXT UNIQUE,
+                              imagen TEXT UNIQUE
+                  );""");
+
+      await _insertarTodasTiendas(db);
+      await _insertarTodosProductosDeTienda(
+          db, await BD._obtenerTodosLosDatosTienda(db));
     }, version: 1);
+  }
+
+  // Lista lista<Producto>
+
+  // INSERT listas_favoritas nombre_lista
+  // for producto in lista:
+
+  //   INSERT IN productos_listas_favoritas nombreProducto, idListaFavorita VALUES ......
+
+  static Future<void> _insertarTodasTiendas(Database db) async {
+    List<Map<String, dynamic>> tiendas = [
+      TiendaJson(
+          "ahorramas",
+          "https://www.mercadoventas.es/wp-content/uploads/2018/03/LOGO-AHORRAMAS2.jpg",
+          []).toMapParaBD(),
+      TiendaJson(
+          "carrefour",
+          "https://upload.wikimedia.org/wikipedia/commons/5/5b/Carrefour_logo.svg",
+          []).toMapParaBD()
+    ];
+    for (int i = 0; i < tiendas.length; i++) {
+      await db.insert("tiendas", tiendas[i]);
+    }
   }
 
   //Funciona
   static Future<void> _insertarTodosProductosDeTienda(
-      Database db, List<String> nomTiendas) async {
-    for (int i = 0; i < nomTiendas.length; i++) {
+      Database db, List<Map<String, Object>> nomTiendasEid) async {
+    for (int i = 0; i < nomTiendasEid.length; i++) {
       List<Producto> productosIntroducir =
-          await TiendaJson.obtenerProductosDeJson(nomTiendas[i]);
+          await TiendaJson.obtenerProductosDeJson(
+              nomTiendasEid[i]['nombre'] as String);
       //  print("cantidad de productos: ${productosIntroducir.length} de ${nomTiendas[i]}");
       for (Producto p in productosIntroducir) {
         try {
-          await BD._insert(db, p, nomTiendas[i]);
+          await BD._insert(db, p, nomTiendasEid[i]['id'] as int);
         } on Exception catch (e) {
           developer.log(e.toString());
         }
@@ -65,9 +107,17 @@ class BD {
   }
 
 //Funciona
-  static Future<void> _insert(
-      Database db, Producto prod, String nomTabla) async {
-    return await db.insert(nomTabla, prod.toMap()).then((value) => value);
+  static Future<void> _insert(Database db, Producto prod, int idTienda) async {
+    return await db
+        .insert("productos", prod.toMapIntroducirProductosEnBD(idTienda))
+        .then((value) => value);
+  }
+
+  static Future<void> insertProductoFavorito(Producto prod) async {
+    return await baseDatos
+        .insert(
+            "productos_favoritos", prod.toMapIntroducirProductoFavoritoEnBD())
+        .then((value) => value);
   }
 
 /*El método delete() es un método estático y asincrónico que toma un objeto Producto como entrada. 
@@ -79,13 +129,17 @@ Luego, utiliza el método delete() de la clase Database para eliminar un registr
 La condición de eliminación se especifica utilizando el parámetro where, que se establece en 'nombre = ?', 
 y el valor que coincide con la condición se proporciona al parámetro whereArgs, que se establece en 
 [prod.nombreProducto].*/
-  // //No lhe comprobado si funciona
-  // // static Future<int> delete(Producto prod) async {
-  // //   Database database = await openBD();
 
-  // //   return database.delete('ahorramas',
-  // //       where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
-  // // }
+  // Funsiona
+  static void deleteProductoFavorito(Producto prod) async {
+    baseDatos.delete('productos_favoritos',
+        where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
+  }
+
+  static void deleteListaFavorita(String nombreLista) async {
+    baseDatos.delete('listas_favoritas',
+        where: 'nombre = ?', whereArgs: [nombreLista]);
+  }
 
 /*El método update() es una función asíncrona que toma un objeto Producto como entrada. 
 
@@ -97,7 +151,7 @@ Luego, utiliza el método update() de la clase Database para actualizar los dato
 
 Además, el método tiene dos parámetros opcionales where y whereArgs que se utilizan para filtrar los resultados 
 a actualizar. En este caso, se actualiza el primer registro cuyo nombre sea igual al nombre del objeto prod.*/
-  //TO DO: Se va a usar esta función
+  //TODO: Se va a usar esta función
   static Future<void> update(Producto prod) async {
     Database database = baseDatos;
 
@@ -114,12 +168,12 @@ El resultado de la consulta es una lista de objetos Map, donde cada objeto Map r
 una fila en la tabla "productos". 
 
 El método crea una nueva lista de objetos Producto, basada en el resultado de la consulta, y devuelve la lista.*/
-  //TO DO: no funciona
+  //TODO: no funciona
   static Future<List<Producto>> productos(String tienda) async {
     Database database = baseDatos;
 
     final List<Map<String, dynamic>> productosLista =
-        await database.query(tienda);
+        await database.query("$tienda");
 
     return List.generate(
         productosLista.length,
@@ -142,7 +196,7 @@ se especifican mediante los parámetros ${prod.nombreProducto}, ${prod.precio}, 
  ${prod.peso}, ${prod.volumen}, ${prod.hrefProducto}, correspondientes a las columnas de la tabla.
 
 Además, el método almacena el resultado de la operación de inserción en una variable llamada resultado.*/
-  //TO DO: no funciona este método
+  //TODO: no funciona este método
   static Future<int> insertarProducto(Producto prod) async {
     Database database = baseDatos;
 
@@ -157,14 +211,14 @@ Además, el método almacena el resultado de la operación de inserción en una 
     await database.execute('DELETE FROM $nombre');
   }
 
-  //TO DO: No se si funciona correctamente
+  //TODO: No se si funciona correctamente
   static Future<void> borrarBBDD() async {
     String ruta = join(await getDatabasesPath(), 'baseDB2.db');
     File baseDatosEliminar = File(ruta);
     await baseDatosEliminar.delete();
   }
 
-  //TO DO: No se si funciona correctamente
+  //TODO: No se si funciona correctamente
   static Future<int> getCount() async {
     Database database = baseDatos;
     var result = await database.query("ahorramas");
@@ -173,7 +227,7 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return count;
   }
 
-  //TO DO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
+  //TODO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
   static Future<List<Producto>?> muestraTodo(String nomTabla) async {
     // ABRIMOS LA BASE DE DATOS
     Database database = baseDatos;
@@ -188,22 +242,116 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return null;
   }
 
-  //Funciona
+  //TODO:AQUI
+  //Funciona y se usa
   static Future<List<Object?>> obtenerNombresTablasTiendas() async {
     List<Object?> resultado = [];
     Database database = baseDatos;
     List<Map<String, Object?>> tablas = await database.query(
-        columns: ['name'],
-        "sqlite_master",
-        where:
-            "type LIKE (?) AND name != 'android_metadata' AND name != 'sqlite_sequence' ",
-        whereArgs: ['table'],
-        orderBy: 'name');
+      columns: ['id', 'nombre'],
+      "tiendas",
+    );
     for (int i = 0; i < tablas.length; i++) {
-      resultado.add((tablas[i]['name']));
+      resultado.add((tablas[i]['nombre']));
     }
     return resultado;
   }
+
+  static Future<List<Map<String, Object>>> _obtenerTodosLosDatosTienda(
+      Database db) async {
+    List<Map<String, Object>> resultado = [];
+    List<Map<String, Object?>> tablas = await db.query(
+      columns: ['id', 'nombre', 'imagen'],
+      "tiendas",
+    );
+
+    for (int i = 0; i < tablas.length; i++) {
+      resultado.add({
+        'id': tablas[i]['id']!,
+        'nombre': tablas[i]['nombre']!,
+        'imagen': tablas[i]['imagen']!
+      });
+    }
+    return resultado;
+  }
+
+  static Future<List<Lista>> _devolverListasFavoritas() async {
+    List<Lista> resultado = List.empty(growable: true);
+
+    Database database = baseDatos;
+
+    final List<Map<String, dynamic>> lista_favoritas =
+        await database.query("listas_favoritas");
+
+    for (int f = 0; f < lista_favoritas.length; f++) {
+      resultado
+          .add(Lista.inicializandoDesdeMapaListaFavorita(lista_favoritas[f]));
+    }
+
+    return resultado;
+  }
+
+// List<Producto> lista = SELECT FROM productos_listas_favoritas WHERE idListaFavorita = id
+
+//	Lista lista.addLista(lista);
+
+//	Lista.listas.add(lista);
+
+  static Future<List<Lista>> cargaProductosListasFavoritas() async {
+    List<Lista> lista_favorita = await BD._devolverListasFavoritas();
+
+    for (Lista li in lista_favorita) {
+      List<Map<String, Object?>> productos_listas_favoritas =
+          await baseDatos.query("productos_listas_favoritas",
+              columns: ["nombreProducto"],
+              where: "idListaFavorita = ?",
+              whereArgs: [li.id]);
+
+      //if (productos_listas_favoritas.length != 0) {
+      //Este if esta puesto por la estructura del del Map si tiene tamaño 0 peta debido a que no encuentra el producto[0]: no se ha comprobado si la causa es esta
+
+      List<Producto> productos = List.empty(growable: true);
+
+      //TODO:Investigar cual es el esquema del map generado
+      for (int f = 0; f < productos_listas_favoritas.length; f++) {
+        // productosDeTienda.add(Producto.inicializandoDesdeMapa(producto[f]));
+        productos.add(Producto.inicializandoDesdeMapaProductoListaFavorita(
+            productos_listas_favoritas[f]));
+      }
+
+      li.aniade_lista_productos(productos);
+
+      // esta funcion se usara en confirmar lista
+      // Tienda.anadirproductoOproductosATienda(tienda, productosDeTienda);
+      // } else {
+      //  developer.log(
+      //    "No hay ningun producto que tenga el id de lista especificado.");
+      // }
+    }
+
+    return lista_favorita;
+  }
+
+  static Future<int> _devuelveIdMaxListasFavoritas() async {
+    int idMax;
+    List<Lista> ultima_lista_favorita = await BD._devolverListasFavoritas();
+    idMax = ultima_lista_favorita.last.id;
+    return idMax;
+  }
+
+  static Future<void> insertListaFavorita(Lista lista) async {
+    await baseDatos.insert(
+        "listas_favoritas", lista.toMapIntroducirListaFavoritaEnBD());
+
+    int idMax = await BD._devuelveIdMaxListasFavoritas();
+
+    for (Producto p in lista.productos) {
+      await baseDatos.insert("productos_listas_favoritas",
+          p.toMapIntroducirProductoListaFavoritaEnBD(idMax));
+    }
+  }
+
+// metodo
 
   //Funciona
   static Future<Producto> consultaPrimerProducto(
@@ -215,11 +363,27 @@ Además, el método almacena el resultado de la operación de inserción en una 
 
     Database database = baseDatos;
 
-    final List<Map<String, dynamic>> producto = await database.query(tabla,
+    final List<Map<String, dynamic>> producto = await database.query("$tabla",
         where: "nombre LIKE (?)", whereArgs: ['%$nombreProducto%']);
 
     if (producto.length > 0) {
       resultado = Producto.inicializandoDesdeMapa(producto[0]);
+    }
+
+    return resultado;
+  }
+
+  static Future<Set<Producto>> devuelveProductosFavoritos() async {
+    Set<Producto> resultado = Set();
+
+    Database database = baseDatos;
+
+    final List<Map<String, dynamic>> producto =
+        await database.query("productos_favoritos");
+
+    for (int f = 0; f < producto.length; f++) {
+      resultado
+          .add(Producto.inicializandoDesdeMapaProductoFavorito(producto[f]));
     }
 
     return resultado;
@@ -246,38 +410,43 @@ Además, el método almacena el resultado de la operación de inserción en una 
   }
 
   static Future<List<Tienda>> consultaProductosTienda(
-      List<String> tablas, String nombre) async {
+      String nombreBuscado) async {
+    List<Map<String, Object>> nomTiendasEid =
+        await BD._obtenerTodosLosDatosTienda(BD.baseDatos);
     List<Tienda> tiendas = [];
 
     Database database = baseDatos;
 
-    for (String nombreTabla in tablas) {
-      Tienda tienda = Tienda.tabla(nombre: nombreTabla);
+    for (Map<String, Object> tiendaValores in nomTiendasEid) {
+      print(tiendaValores['nombre']);
+      String nombreTienda = tiendaValores['nombre'] as String;
+      int IdTienda = tiendaValores['id'] as int;
+
+      Tienda tienda = Tienda.tabla(nombre: nombreTienda);
+
       List<Producto> productosDeTienda = [];
       final List<Map<String, dynamic>> producto = await database.query(
-          "$nombreTabla",
-          where: "nombre LIKE (?)",
-          whereArgs: ['%$nombre%']);
+          "productos",
+          where: "idTienda = (?)and nombre LIKE (?)",
+          whereArgs: [IdTienda, '%$nombreBuscado%']);
 
       if (producto.length != 0) {
         //Este if esta puesto por la estructura del del Map si tiene tamaño 0 peta debido a que no encuentra el producto[0]: no se ha comprobado si la causa es esta
         //TODO:Investigar cual es el esquema del map generado
         for (int f = 0; f < producto.length; f++) {
           // productosDeTienda.add(Producto.inicializandoDesdeMapa(producto[f]));
-
-
-
           tienda.lista_x_busqueda
               .add(Producto.inicializandoDesdeMapa(producto[f]));
         }
 
         // esta funcion se usara en confirmar lista
-        // Tienda.anadirproductoOproductosATienda(nombreTabla, productosDeTienda);
+        // Tienda.anadirproductoOproductosATienda(tienda, productosDeTienda);
       } else {
         developer.log(
-            "No hay ningun producto que tenga el nombre '$nombre' en la tabla : '$nombreTabla' ");
+            "No hay ningun producto que tenga el nombre '$nombreBuscado' en la tabla : '$tienda' ");
       }
       for (Producto p in productosDeTienda) {
+        print(p);
         // tienda._aniadir_prod_tienda(p);
       }
 
@@ -286,39 +455,4 @@ Además, el método almacena el resultado de la operación de inserción en una 
 
     return tiendas;
   }
-
-/*
-/*El método cargarProductos() utiliza el método productos() de la clase BD para obtener la lista de todos 
-los productos almacenados en la base de datos. El método es asíncrono y no toma parámetros de entrada. 
-Al final de la función se actualiza el estado de los widgets mediante el método setState().
-
-La función carga los datos de la base de datos en una lista de objetos de tipo Producto llamada productos_bd. 
-Utilizando la palabra clave await, la función espera a que la lista sea devuelta por el método productos(), 
-antes de continuar con otras operaciones.
-
-Finalmente, la función actualiza el estado del objeto "productos" con la lista de productos cargada desde la 
-base de datos, lo que provoca una nueva renderización visual.
-
-
-******************* Es importante mencionar que si el número de productos es grande, esta función podría tomar un tiempo 
-considerable para completarse y actualizar la pantalla, lo que podría afectar negativamente la experiencia 
-del usuario. ********************
-
-*/
-
-
-cargarProductos() async {
-
-  List<Producto> productos_bd = await BD.productos();
-
-  setState(() {
-
-    productos = productos_BD;
-
-  })
-}
-
-
-
-*/
 }

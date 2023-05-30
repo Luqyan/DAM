@@ -166,19 +166,19 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
               onTap: () {
                 if (i == 0) {
                   Navigator.push(conte,
-                      MaterialPageRoute(builder: (conte) => const Pagina3()));
+                      MaterialPageRoute(builder: (conte) => const listas_favoritas()));
                 } else if (i == 1) {
                   Navigator.push(conte,
-                      MaterialPageRoute(builder: (conte) => const Pagina4()));
+                      MaterialPageRoute(builder: (conte) => const productos_favoritos()));
                 } else if (i == 2) {
                   Navigator.push(conte,
-                      MaterialPageRoute(builder: (conte) => const Pagina8()));
+                      MaterialPageRoute(builder: (conte) => const mi_cesta()));
                 } else if (i == 3) {
                   Navigator.push(conte,
-                      MaterialPageRoute(builder: (conte) => const Pagina7()));
+                      MaterialPageRoute(builder: (conte) => const buscador()));
                   } else if (i == 5) {
                   Navigator.push(conte,
-                      MaterialPageRoute(builder: (conte) => const Pagina11()));
+                      MaterialPageRoute(builder: (conte) => const genera_resultado()));
                 }
               }),
         ),
