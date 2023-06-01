@@ -11,7 +11,6 @@ import 'menugeneral.dart';
 import 'dart:math';
 import 'Item.dart';
 
-/////////////////////////////////////1 ª PARTE//////////////////////////////////////////////
 /// Estado de la página "Pagina7".
 ///
 /// La clase [Pagina7] es el estado de la página "Pagina7" y extiende la clase [State]
@@ -430,6 +429,14 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
           padding: const EdgeInsets.all(5.0),
           margin: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 7,
+                blurRadius: 9,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
             borderRadius: BorderRadius.circular(12),
             color: const Color.fromRGBO(239, 237, 254, 0.898),
             border: Border.all(
@@ -537,7 +544,6 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
   /// [onSelectedItemChanged] del [CupertinoPicker].
   ///
   /// Retorna el widget construido para seleccionar las unidades del producto.
-
   Widget _construye_unidades(Producto p, context) {
     final growableList =
         List<int>.generate(20, (int index) => index + 1, growable: true);
@@ -587,9 +593,6 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
     );
   }
 
-  /////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////
-
   /// Construye el contenido filtrado desplegable.
   ///
   /// El método [_contenidoFiltrado] retorna un widget [ExpansionPanelList] que muestra una lista
@@ -599,7 +602,6 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
   /// Al desplegar o contraer un panel, se actualiza el estado del item correspondiente para reflejar su estado.
   ///
   /// Retorna el widget construido para el contenido filtrado desplegable.
-
   Widget _contenidoFiltrado() {
     return ExpansionPanelList(
       animationDuration: const Duration(seconds: 1),
@@ -697,7 +699,6 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
   /// - [tienda]: El objeto [Tienda] que representa la tienda.
   ///
   /// Retorna el widget construido para la tienda dada.
-
   CheckboxListTile construyeCheckboxTienda(Tienda tienda) {
     return CheckboxListTile(
       activeColor: const Color.fromARGB(255, 122, 214, 16),
@@ -727,7 +728,6 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
   /// - [alergeno]: El objeto [Alergenos] que representa el alérgeno.
   ///
   /// Retorna el widget construido para el alérgeno dado.
-
   CheckboxListTile construyeCheckboxAlergenos(Alergenos alergeno) {
     return CheckboxListTile(
       activeColor: const Color.fromARGB(255, 122, 214, 16),
@@ -761,7 +761,6 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
   /// - [eligeAlergenos]: Un widget para que el usuario elija alérgenos.
   ///
   /// Retorna el widget construido para elegir opciones.
-
   Widget eligeOpciones() {
     return SizedBox(
         height: 100.0,
@@ -801,7 +800,7 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
   }
 }
 
-// Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
+/// Lista para determinar el numero de Items de la seccion desplegable 'Filtrado'
 List<Item> _listaItems = generaItems(1);
 
 List<Tienda> tiendas = List.empty(growable: true);

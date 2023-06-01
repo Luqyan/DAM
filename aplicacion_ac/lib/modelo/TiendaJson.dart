@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
-import 'Producto.dart';
-import 'dart:convert'; //Libreria para parsear un json
 import 'dart:developer' as developer;
+import 'Producto.dart';
+import 'dart:convert';
 
 ///Clase que sirve para tratar el json de todas las tiendas y pasarlo a una lista de productos
 class TiendaJson {
@@ -9,6 +9,9 @@ class TiendaJson {
   List<Producto> _productos;
   String _imagen;
 
+  /// El constructor [TiendaJson] crea una instancia de la clase [TiendaJson] con los valores proporcionados para cada atributo.
+  ///
+  /// Recibe como argumentos el nombre de la tienda, la imagen de la tienda y una lista de productos.
   TiendaJson(String nombreTienda, String imagen, List<Producto> productos)
       : _nombreTienda = nombreTienda,
         _imagen = imagen,
@@ -22,6 +25,9 @@ class TiendaJson {
 
   set productos(value) => _productos = value;
 
+  /// El método estático [obtenerProductosDeJson] obtiene una lista de productos a partir de un archivo JSON.
+  ///
+  /// Recibe el nombre de la tienda como argumento y devuelve una lista de productos obtenidos del archivo JSON correspondiente a la tienda.
   static Future<String> leerJSON(String nomTienda) async {
     String resultado = "";
     if (nomTienda.toLowerCase() == 'ahorramas') {
@@ -35,6 +41,9 @@ class TiendaJson {
     return resultado;
   }
 
+  /// El método estático [obtenerProductosDeJson()] obtiene una lista de productos a partir de un archivo JSON.
+  ///
+  /// Recibe el nombre de la tienda como argumento y devuelve una lista de productos obtenidos del archivo JSON correspondiente a la tienda.
   static Future<List<Producto>> obtenerProductosDeJson(String nomTienda) async {
     List<Producto> productoss = [];
     String contenidoJson = "no hay contenido de JSON1";
@@ -55,6 +64,9 @@ class TiendaJson {
     return productoss;
   }
 
+  /// El método [toMapParaBD] devuelve un mapa que representa los atributos de la tienda para su almacenamiento en una base de datos.
+  ///
+  /// El mapa resultante contiene las claves [nombre] e [imagen], con sus respectivos valores de la tienda.
   Map<String, dynamic> toMapParaBD() {
     return {
       'nombre': _nombreTienda,
@@ -62,6 +74,9 @@ class TiendaJson {
     };
   }
 
+  /// La anotación [@override] indica que el método [toString] está sobrescribiendo el método de la clase padre [Object].
+  ///
+  /// El método [toString] devuelve una representación en forma de cadena del objeto [Tienda] y sus productos.
   @override
   String toString() {
     String resultado = _nombreTienda;

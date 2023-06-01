@@ -1,7 +1,7 @@
 import 'package:aplicacion_ac/vista/vista_resultado.dart';
 import 'package:flutter/material.dart';
-import '../modelo/Producto.dart';
 import '../modelo/base_datos.dart';
+import '../modelo/Producto.dart';
 import 'menugeneral.dart';
 import 'mi_cesta.dart';
 import 'Lista.dart';
@@ -10,12 +10,12 @@ import 'Lista.dart';
 ///
 /// Esta clase utiliza el mixin `SingleTickerProviderStateMixin` para proporcionar
 /// un controlador de animación para la apertura y cierre del menú lateral.
-
 class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
+  // ignore: non_constant_identifier_names
   final TextEditingController valor_introducido = TextEditingController();
-
+  // ignore: non_constant_identifier_names
   List<Lista> listas_confirmdas = List<Lista>.empty();
 
   @override
@@ -29,7 +29,6 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
   }
 
   /// Libera los recursos utilizados por la clase antes de ser destruida.
-
   @override
   void dispose() {
     _drawerSlideController.dispose();
@@ -39,7 +38,6 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
   /// Verifica si el menú lateral está abierto.
   ///
   /// - [@return] `true` si el menú lateral está abierto, de lo contrario retorna `false`.
-
   bool _isDrawerOpen() {
     return _drawerSlideController.value == 1.0;
   }
@@ -47,7 +45,6 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
   /// Verifica si el menú lateral se está abriendo.
   ///
   /// - [@return] `true` si el menú lateral se está abriendo, de lo contrario retorna `false`.
-
   bool _isDrawerOpening() {
     return _drawerSlideController.status == AnimationStatus.forward;
   }
@@ -55,7 +52,6 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
   /// Verifica si el menú lateral está cerrado.
   ///
   /// - [@return] `true` si el menú lateral está cerrado, de lo contrario retorna `false`.
-
   bool _isDrawerClosed() {
     return _drawerSlideController.value == 0.0;
   }
@@ -96,18 +92,15 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
           Expanded(
             flex: 2,
             child: Material(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   side: BorderSide(
                       color: Color.fromRGBO(240, 158, 111, 1), width: 5.0)),
-              color: Color.fromARGB(255, 80, 184, 74),
+              color: const Color.fromARGB(255, 80, 184, 74),
               child: InkWell(
                 onTap: () {
-                  print('Pulsado "Guardar Lista"');
-
                   if (Lista.getProductos().isNotEmpty) {
                     guardar_lista();
                   } else {
-                    _showDailog() {}
                     showDialog(
                         context: context,
                         builder: (context) {
@@ -145,19 +138,15 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
           Expanded(
             flex: 2,
             child: Material(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   side: BorderSide(
                       color: Color.fromRGBO(240, 158, 111, 1), width: 5.0)),
-              color: Color.fromARGB(255, 80, 184, 74),
+              color: const Color.fromARGB(255, 80, 184, 74),
               child: InkWell(
                 onTap: () {
-                  print('Pulsado "Confirmar Lista"');
-
-                  // /// // // / /// / //// / / // /AQUI VER COMO HACEMOS PARA GENERAR RESULTADO / / // / / // //// / //// / / // // / // / // / / //
-                  if (Lista.getProductos().length > 0) {
+                  if (Lista.getProductos().isNotEmpty) {
                     confirmar_lista(context);
                   } else {
-                    _showDailog() {}
                     showDialog(
                         context: context,
                         builder: (context) {
@@ -213,15 +202,14 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
           ),
           actions: [
             TextButton(
-              child: Text("Aceptar"),
+              child: const Text("Aceptar"),
               onPressed: () {
                 // SE GENERA UNA LISTA NUEVA Y SE AÑADE A LA LISTA DE LISTAS
-                Lista lista1 = new Lista(valor_introducido.text);
+                Lista lista1 = Lista(valor_introducido.text);
 
                 lista1.aniade_lista_productos(Lista.getProductos());
 
                 BD.insertListaFavorita(lista1);
-                
 
                 Lista.addLista(lista1);
 
@@ -238,7 +226,7 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text("Cancelar"))
+                child: const Text("Cancelar"))
           ],
         ),
       );
@@ -251,12 +239,12 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
   Future confirmar_lista(conte) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Lista confirmada!"),
-          content:
-              Text("Pulse aceptar para generar y visualizar el resultado."),
+          title: const Text("Lista confirmada!"),
+          content: const Text(
+              "Pulse aceptar para generar y visualizar el resultado."),
           actions: [
             TextButton(
-                child: Text("Aceptar"),
+                child: const Text("Aceptar"),
                 onPressed: () {
                   // LA LISTA CREADA SE CONSERVA EN LA VARIABLE STATIC '_lista_productos'
                   // CUYOS VALORES SE UTILIZAN EN LA SIGUIENTE PÁGINA DONDE SE GENERAN
@@ -271,7 +259,8 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
                         conte,
                         // nos pide el widget a utilizar que es de tipo materialpageroute
                         // creando una ruta de la pagina
-                        MaterialPageRoute(builder: (conte) => genera_resultado()));
+                        MaterialPageRoute(
+                            builder: (conte) => const genera_resultado()));
                   });
                 }),
           ],
@@ -282,13 +271,9 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
     Navigator.of(context).pop();
   }
 
-//////////////////////////////////////////////////////////////////////////////////////////
-////////////////////// método de creación de appBaar personalizado/////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
   /// Construye la barra de aplicación (AppBar).
   ///
-  /// Retorna un Widget de tipo PreferredSizeWidget que representa la barra de
+  /// Retorna un Widget de tipo [PreferredSizeWidget] que representa la barra de
   /// aplicación con el logo, título, botón de menú y animación de apertura
   /// y cierre del menú lateral.
   PreferredSizeWidget _buildAppBar() {
@@ -303,7 +288,7 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
           color: Colors.black,
         ),
       ),
-      backgroundColor: Color.fromARGB(0, 44, 202, 246),
+      backgroundColor: const Color.fromARGB(0, 44, 202, 246),
       elevation: 3,
       automaticallyImplyLeading: false,
       actions: [
@@ -346,34 +331,29 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
-          Divider(
+          const Divider(
             height: 20,
             thickness: 3,
             color: Colors.orangeAccent,
           ),
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 flex: 2,
-                child: Container(
-                  child: Text("Centralizado"),
-                ),
+                child: Text("Centralizado"),
               ),
               Switch(
                 value: centralizado,
                 onChanged: (bool value) {
                   setState(() {
                     centralizado = value;
-                    print(value);
                   });
                 },
               ),
-              Spacer(),
-              Expanded(
+              const Spacer(),
+              const Expanded(
                 flex: 2,
-                child: Container(
-                  child: Text("Precio"),
-                ),
+                child: Text("Precio"),
               ),
               Switch(
                 value: precio,
@@ -386,14 +366,14 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
               ),
             ],
           ),
-          Divider(
+          const Divider(
             height: 30,
             thickness: 3,
             color: Colors.orangeAccent,
           ),
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 30),
               controller: ScrollController(initialScrollOffset: 2),
               itemCount: productos.length,
               itemBuilder: (BuildContext context, int index) =>
@@ -423,7 +403,7 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
       final objetoFinal = _generaDraggable(objetoTemporal, pos);
       listaObj.add(objetoFinal);
 
-      listaObj.add(SizedBox(height: 20.0));
+      listaObj.add(const SizedBox(height: 20.0));
       pos += 1;
     }
 
@@ -485,21 +465,19 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
     const snackBar = SnackBar(
         duration: Duration(seconds: 1),
         content: Text("El producto ha sido añadido a favoritos!"));
-    final ThemeData theme = ThemeData();
-    Color myColor = Theme.of(context).colorScheme.secondary;
 
     return Container(
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-          border:
-              Border.all(color: Color.fromRGBO(240, 158, 111, 1), width: 3.0),
+          border: Border.all(
+              color: const Color.fromRGBO(240, 158, 111, 1), width: 3.0),
           borderRadius: BorderRadius.circular(15),
-          color: Color.fromARGB(226, 244, 250, 226)),
+          color: const Color.fromARGB(226, 244, 250, 226)),
       child: SizedBox(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           child: ListTile(
-            contentPadding: EdgeInsets.all(10.0),
+            contentPadding: const EdgeInsets.all(10.0),
             visualDensity: const VisualDensity(vertical: 0.0),
             minLeadingWidth: 70.0,
             dense: false,
@@ -538,7 +516,6 @@ class Pagina8 extends State<mi_cesta> with SingleTickerProviderStateMixin {
                 setState(() {
                   BD.insertProductoFavorito(p);
                   aniadir_favorito(p);
-                  print(Lista.productos_favoritos);
                 });
               },
             ),

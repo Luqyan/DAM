@@ -1,10 +1,10 @@
-
 import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
 import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:aplicacion_ac/vista/vista_resultado.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:aplicacion_ac/modelo/Tienda.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
@@ -14,9 +14,10 @@ import 'Lista.dart';
 import 'dart:io';
 
 /// Estado de la página 11 (_Pagina11) que extiende de State y utiliza SingleTickerProviderStateMixin.
-class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMixin {
+class Pagina11 extends State<genera_resultado>
+    with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
-
+  final int _numero_prod = Lista.getProductos().length;
   @override
   void initState() {
     super.initState();
@@ -98,7 +99,7 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
     );
   }
 
-  // metodo creacion Scaffold
+  /// Método creacion Scaffold
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,7 +177,7 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
             style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            "Total productos:  ${Lista.getProductos().length}",
+            "Total productos:  ${_numero_prod}",
             style: const TextStyle(fontSize: 11),
           ),
           trailing: Tooltip(
@@ -204,10 +205,14 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
     );
   }
 
-  /// Función que coge los productos de la lista de clase introducidos previamente
-  /// y los busca en cada tienda para devolvernos las opciones más baratas
-  ///  que en este caso se generarán 2 ya que solo tenemos datos de 2 tiendas
-  /// tabien si algún producto se encuentra en una sola tienda se escogera directamente ese
+  /// El método [devuelve_listas_por_precio] devuelve una lista de listas de productos generadas en función del precio más barato.
+  ///
+  /// El método compara los productos de las tiendas "Carrefour" y "Ahorramas" y crea dos listas: "listaCarrefour" y "listaAhorramas".
+  /// Luego, itera sobre los productos de una lista general y busca productos similares en las listas de cada tienda.
+  /// Compara los precios y agrega el producto más barato a la lista correspondiente.
+  /// Si los precios son iguales, elige la tienda con menos productos encontrados para equilibrar las cantidades.
+  ///
+  /// El método devuelve una lista que contiene las listas de productos de "Carrefour" y "Ahorramas" generadas.
   List<List<Producto>> devuelve_listas_por_precio() {
     // Objeto que nos devuelve que incluye las listas generadas en base al precio más barato
     List<List<Producto>> listasGeneradas = List.empty(growable: true);
@@ -218,10 +223,9 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
     List<Producto> _Carrefour = [];
     List<Producto> _Ahorramas = [];
 
-    List<Tienda> tiendas_listas_filtradas_precio =
-        GestionDatos.filtrarPorPrecio();
+    List<Tienda> tiendasListasFiltradasPrecio = GestionDatos.filtrarPorPrecio();
 
-    for (Tienda tienda in tiendas_listas_filtradas_precio) {
+    for (Tienda tienda in tiendasListasFiltradasPrecio) {
       if (tienda.nombre.contains("Carrefour")) {
         _Carrefour = tienda.lista_x_busqueda;
       } else if (tienda.nombre.contains("Ahorramas")) {
@@ -398,23 +402,28 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
     );
   }
 
+  Future<String> getDownloadsPath() async {
+    var appDocumentsDirectory = await getApplicationDocumentsDirectory();
+    var downloadsPath = '${appDocumentsDirectory.path}/Downloads';
+    return downloadsPath;
+    // Realiza las operaciones necesarias con el directorio de descargas...
+  }
+
   /// Genera un archivo PDF a partir de una lista de listas de productos y lo guarda en el directorio de descargas del dispositivo.
   Future<void> generatePDF(List<List<Producto>> lista) async {
     // Generar el contenido del PDF
     final Uint8List pdfBytes = await makePdf(lista);
 
-    // Obtener el directorio de descargas con lecle_downloads_path_provider
-    // String? downloadsDirectoryPath =
-    //     (await DownloadsPath.downloadsDirectory())?.path;
-
-
+    // Obtener el directorio de descargas
     String? downloadsDirectoryPath =
-         (await DownloadsPath.downloadsDirectory())?.path;
+        (await DownloadsPath.downloadsDirectory())?.path;
 
+    var _downloadsDirectory = getDownloadsDirectory();
 
-
+    String dwnld = await getDownloadsPath();
+    print(_downloadsDirectory);
     // Construir la ruta y el nombre de archivo del PDF
-    final filePath = path.join(downloadsDirectoryPath!, 'lista_compra.pdf');
+    final filePath = path.join(dwnld as String, 'lista_compra.pdf');
     final file = File(filePath);
 
     // Verificar y solicitar permisos de almacenamiento
@@ -425,7 +434,7 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
         return;
       }
     }
-    print(status);
+
     // Escribir el archivo PDF
     await file.writeAsBytes(pdfBytes);
   }
@@ -529,7 +538,7 @@ class Pagina11 extends State<genera_resultado> with SingleTickerProviderStateMix
 //   }
 // }
 
-  // METODO QUE DEVUELVE UN BUILDER ANIMADO
+  /// METODO QUE DEVUELVE UN BUILDER ANIMADO
   Widget _buildDrawer() {
     return AnimatedBuilder(
       animation: _drawerSlideController,

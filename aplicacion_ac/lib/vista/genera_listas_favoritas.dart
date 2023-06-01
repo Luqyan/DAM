@@ -4,11 +4,10 @@ import 'listas_favoritas.dart';
 import 'menugeneral.dart';
 import 'Lista.dart';
 
-
-
 /// Clase privada que extiende [State] y utiliza [SingleTickerProviderStateMixin]
 /// para manejar la animación del cajón (drawer).
-class Pagina3 extends State<listas_favoritas> with SingleTickerProviderStateMixin {
+class Pagina3 extends State<listas_favoritas>
+    with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
   @override
@@ -258,9 +257,17 @@ class Pagina3 extends State<listas_favoritas> with SingleTickerProviderStateMixi
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color.fromARGB(255, 220, 230, 247),
-            width: 4.0,
+            width: 20.0,
           ),
-          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 7,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
+          borderRadius: BorderRadius.circular(25),
           color: const Color.fromRGBO(239, 237, 254, 0.898),
         ),
         child: SizedBox(

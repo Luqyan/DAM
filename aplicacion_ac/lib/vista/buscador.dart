@@ -3,10 +3,6 @@ import 'package:aplicacion_ac/vista/Item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
-
-
 // CLASE PRINCIPAL CREADORA DE 'HOME'
 class buscador extends StatefulWidget {
   const buscador({
@@ -16,8 +12,6 @@ class buscador extends StatefulWidget {
   @override
   State<buscador> createState() => Pagina7();
 }
-
-
 
 /// Genera una lista de elementos [Item] con el tamaño especificado.
 ///

@@ -1,10 +1,11 @@
 import 'genera_productos_favoritos.dart';
 import 'package:flutter/material.dart';
-import 'Item.dart';
 
 
-/// Clase de la página 4, que es un widget [StatefulWidget].
+
+/// Clase que representa los productos favoritos.
 class productos_favoritos extends StatefulWidget {
+  /// Constructor de la clase productos_favoritos.
   const productos_favoritos({
     super.key,
   });

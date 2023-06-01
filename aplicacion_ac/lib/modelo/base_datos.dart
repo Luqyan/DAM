@@ -1,28 +1,25 @@
-import 'dart:ffi';
-import 'dart:io';
 import 'package:aplicacion_ac/modelo/Tienda.dart';
 import 'package:aplicacion_ac/modelo/TiendaJson.dart';
 import 'package:aplicacion_ac/vista/Lista.dart';
 
-import 'Producto.dart';
 import 'package:sqflite/sqflite.dart';
+import 'dart:developer' as developer;
 import 'package:path/path.dart';
-import 'dart:developer' as developer; //Sirve para los logs
-import 'dart:io' as system;
+import 'Producto.dart';
 
 class BD {
   static late Database baseDatos;
-  /* El método _openBD() es un método asincrónico que devuelve una instancia de la base de datos Database.
 
-  El método utiliza el método getDatabasesPath() para obtener la ruta de acceso al directorio de bases de datos 
-  en el dispositivo del usuario. Luego, el método join() se utiliza para agregar el nombre del archivo de la base 
-  de datos (en este caso "productos.db") a la ruta de acceso de la carpeta de bases de datos.
-
-  Si la base de datos no existe, se crea utilizando el método onCreate(). El método ejecuta una sentencia SQL 
-  para crear una nueva tabla llamada "carrefour" con varios campos de diferentes tipos de datos, incluyendo 
-  "nombre", "categoria", "precio", "marca", "volumen", "peso" e "imagen". La columna "nombre" se convierte en 
-  clave primaria.*/
-
+  /// El método [_openBD] es un método asincrónico que devuelve una instancia de la base de datos [Database].
+  ///
+  /// El método utiliza el método [getDatabasesPath] para obtener la ruta de acceso al directorio de bases de datos
+  /// en el dispositivo del usuario. Luego, el método [join] se utiliza para agregar el nombre del archivo de la base
+  /// de datos (en este caso [productos.db]) a la ruta de acceso de la carpeta de bases de datos.
+  ///
+  /// Si la base de datos no existe, se crea utilizando el método [onCreate]. El método ejecuta una sentencia [SQL]
+  /// para crear una nueva tabla llamada [carrefour] con varios campos de diferentes tipos de datos, incluyendo
+  /// [nombre], [categoria], [precio], [marca], [volumen], [peso] e [imagen]. La columna [nombre] se convierte en
+  /// clave primaria.
   static Future<void> openBD() async {
     baseDatos = await openDatabase(join(await getDatabasesPath(), 'cacatua.db'),
         onCreate: (db, version) async {
@@ -65,13 +62,13 @@ class BD {
     }, version: 1);
   }
 
-  // Lista lista<Producto>
-
-  // INSERT listas_favoritas nombre_lista
-  // for producto in lista:
-
-  //   INSERT IN productos_listas_favoritas nombreProducto, idListaFavorita VALUES ......
-
+  /// Inserta todas las tiendas en la base de datos utilizando una conexión de base de datos específica.
+  ///
+  /// [db]: El objeto de tipo [Database] que representa la conexión de base de datos.
+  ///
+  /// Crea una lista de mapas que representa cada tienda, utilizando la clase [TiendaJson]. Luego, recorre la lista y realiza una inserción en la tabla [tiendas] de la base de datos utilizando la conexión específica proporcionada.
+  ///
+  /// Este método no retorna ningún valor.
   static Future<void> _insertarTodasTiendas(Database db) async {
     List<Map<String, dynamic>> tiendas = [
       TiendaJson(
@@ -88,7 +85,14 @@ class BD {
     }
   }
 
-  //Funciona
+  /// Inserta todos los productos de una tienda en la base de datos utilizando una conexión de base de datos específica.
+  ///
+  /// [db]: El objeto de tipo Database que representa la conexión de base de datos.
+  /// [nomTiendasEid]: Una lista de mapas que contiene los nombres y los IDs de las tiendas.
+  ///
+  /// Recorre la lista de tiendas y obtiene los productos correspondientes a cada tienda mediante la función obtenerProductosDeJson() de la clase TiendaJson. Luego, inserta cada producto en la tabla "productos" de la base de datos utilizando la conexión específica proporcionada.
+  ///
+  /// Este método no retorna ningún valor.
   static Future<void> _insertarTodosProductosDeTienda(
       Database db, List<Map<String, Object>> nomTiendasEid) async {
     for (int i = 0; i < nomTiendasEid.length; i++) {
@@ -106,13 +110,24 @@ class BD {
     }
   }
 
-//Funciona
+  /// Inserta un producto en la base de datos utilizando una conexión de base de datos específica.
+  ///
+  /// [db]: El objeto de tipo Database que representa la conexión de base de datos.
+  /// [prod]: El objeto de tipo Producto que se desea insertar en la base de datos.
+  /// [idTienda]: El ID de la tienda a la que pertenece el producto.
+  ///
+  /// Inserta los datos del producto en la tabla "productos" de la base de datos utilizando la conexión específica proporcionada. Este método no retorna ningún valor.
   static Future<void> _insert(Database db, Producto prod, int idTienda) async {
     return await db
         .insert("productos", prod.toMapIntroducirProductosEnBD(idTienda))
         .then((value) => value);
   }
 
+  /// Inserta un producto favorito en la base de datos.
+  ///
+  /// [prod]: El objeto de tipo Producto que se desea insertar como favorito.
+  ///
+  /// Inserta los datos del producto favorito en la tabla "productos_favoritos" de la base de datos. Este método no retorna ningún valor.
   static Future<void> insertProductoFavorito(Producto prod) async {
     return await baseDatos
         .insert(
@@ -120,55 +135,31 @@ class BD {
         .then((value) => value);
   }
 
-/*El método delete() es un método estático y asincrónico que toma un objeto Producto como entrada. 
-
-El método no devuelve nada, por lo que su tipo de retorno es Future<void>.
-
-El método utiliza el método _openBD() para obtener una instancia de la base de datos. 
-Luego, utiliza el método delete() de la clase Database para eliminar un registro de la tabla "productos". 
-La condición de eliminación se especifica utilizando el parámetro where, que se establece en 'nombre = ?', 
-y el valor que coincide con la condición se proporciona al parámetro whereArgs, que se establece en 
-[prod.nombreProducto].*/
-
-  // Funsiona
+  /// Elimina un producto favorito de la base de datos.
+  ///
+  /// [prod]: El objeto de tipo Producto que se desea eliminar de los favoritos.
+  ///
+  /// Elimina el producto favorito de la tabla "productos_favoritos" de la base de datos, utilizando el nombre del producto como criterio de búsqueda. Este método no retorna ningún valor.
   static void deleteProductoFavorito(Producto prod) async {
     baseDatos.delete('productos_favoritos',
         where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
   }
 
+  /// Elimina una lista favorita de la base de datos.
+  ///
+  /// [nombreLista]: El nombre de la lista favorita que se desea eliminar.
+  ///
+  /// Elimina la lista favorita de la tabla "listas_favoritas" de la base de datos, utilizando el nombre de la lista como criterio de búsqueda. Este método no retorna ningún valor.
   static void deleteListaFavorita(String nombreLista) async {
     baseDatos.delete('listas_favoritas',
         where: 'nombre = ?', whereArgs: [nombreLista]);
   }
 
-/*El método update() es una función asíncrona que toma un objeto Producto como entrada. 
-
-El método devuelve una Future<void>.
-
-Primero, la función utiliza el método _openBD() para obtener una instancia de la base de datos. 
-Luego, utiliza el método update() de la clase Database para actualizar los datos del objeto prod en la tabla 
-"productos". Los valores actualizados se especifican mediante el método toMap() llamado en el objeto prod.
-
-Además, el método tiene dos parámetros opcionales where y whereArgs que se utilizan para filtrar los resultados 
-a actualizar. En este caso, se actualiza el primer registro cuyo nombre sea igual al nombre del objeto prod.*/
-  //TODO: Se va a usar esta función
-  static Future<void> update(Producto prod) async {
-    Database database = baseDatos;
-
-    database.update('productos', prod.toMap(),
-        where: 'nombre = ?', whereArgs: [prod.nombreProducto]);
-  }
-
-/*El método productos() es un método asincrónico que devuelve una lista de objetos Producto.
-
-El método abre la base de datos utilizando el método _openBD(), y luego hace una consulta a la tabla "productos" 
-utilizando el método database.query("productos").
-
-El resultado de la consulta es una lista de objetos Map, donde cada objeto Map representa 
-una fila en la tabla "productos". 
-
-El método crea una nueva lista de objetos Producto, basada en el resultado de la consulta, y devuelve la lista.*/
-  //TODO: no funciona
+  /// Obtiene la lista de productos de una tienda específica en la base de datos.
+  ///
+  /// [tienda]: El nombre de la tabla que contiene los productos de la tienda.
+  ///
+  /// Retorna una lista de objetos de tipo Producto que representan los productos de la tienda especificada.
   static Future<List<Producto>> productos(String tienda) async {
     Database database = baseDatos;
 
@@ -184,66 +175,9 @@ El método crea una nueva lista de objetos Producto, basada en el resultado de l
             precio: productosLista[index]['precio']));
   }
 
-/*El método insertarTodo() es una función asíncrona que toma un objeto Producto como entrada. 
-El método devuelve una Future<void>.
-
-Primero, la función utiliza el método _openBD() para obtener una instancia de la base de datos. 
-Luego, utiliza el método rawInsert() de la clase Database para insertar los datos del objeto prod en la tabla 
-"productos" mediante una sentencia SQL.
-
-La sentencia SQL INSERT INTO se utiliza para insertar una nueva fila en una tabla. Los valores a insertar 
-se especifican mediante los parámetros ${prod.nombreProducto}, ${prod.precio}, ${prod.categoria}, ${prod.marca},
- ${prod.peso}, ${prod.volumen}, ${prod.hrefProducto}, correspondientes a las columnas de la tabla.
-
-Además, el método almacena el resultado de la operación de inserción en una variable llamada resultado.*/
-  //TODO: no funciona este método
-  static Future<int> insertarProducto(Producto prod) async {
-    Database database = baseDatos;
-
-    return await database.rawInsert(
-        'INSERT INTO ahorramas (nombre, precio, categoria, marca, volumen, peso, imagen) VALUES (${prod.nombreProducto}, ${prod.precio}, ${prod.categoria}, ${prod.marca}, ${prod.volumen}, ${prod.peso}, "${prod.hrefProducto}")');
-  }
-
-  //Funciona
-  static Future<void> borrarTabla(String nombre) async {
-    Database database = baseDatos;
-
-    await database.execute('DELETE FROM $nombre');
-  }
-
-  //TODO: No se si funciona correctamente
-  static Future<void> borrarBBDD() async {
-    String ruta = join(await getDatabasesPath(), 'baseDB2.db');
-    File baseDatosEliminar = File(ruta);
-    await baseDatosEliminar.delete();
-  }
-
-  //TODO: No se si funciona correctamente
-  static Future<int> getCount() async {
-    Database database = baseDatos;
-    var result = await database.query("ahorramas");
-    int count = result.length;
-
-    return count;
-  }
-
-  //TODO: como puede devolver un valor nulo puede dar problemas a la hora de hacer bucles
-  static Future<List<Producto>?> muestraTodo(String nomTabla) async {
-    // ABRIMOS LA BASE DE DATOS
-    Database database = baseDatos;
-
-    // RECOGEMOS TODAS LAS FILAS DE LA TABLA
-    final List<Map<String, dynamic>> result = await database.query(nomTabla);
-
-    // IMPRIMIMOS CADA FILA
-
-    result.forEach((row) => print(row));
-
-    return null;
-  }
-
-  //TODO:AQUI
-  //Funciona y se usa
+  /// Obtiene los nombres de las tablas de tiendas almacenadas en la base de datos.
+  ///
+  /// Retorna una lista de objetos que representan los nombres de las tablas de tiendas.
   static Future<List<Object?>> obtenerNombresTablasTiendas() async {
     List<Object?> resultado = [];
     Database database = baseDatos;
@@ -257,6 +191,11 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return resultado;
   }
 
+  /// Obtiene todos los datos de las tiendas almacenadas en la base de datos.
+  ///
+  /// [db]: El objeto de tipo [Database] que representa la base de datos.
+  ///
+  /// Retorna una lista de mapas que contienen los datos de las tiendas. Cada mapa contiene las siguientes claves: [id], [nombre] e [imagen].
   static Future<List<Map<String, Object>>> _obtenerTodosLosDatosTienda(
       Database db) async {
     List<Map<String, Object>> resultado = [];
@@ -275,6 +214,9 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return resultado;
   }
 
+  /// Obtiene las listas favoritas almacenadas en la base de datos.
+  ///
+  /// Retorna una lista de objetos de tipo [Lista] que representan las listas favoritas.
   static Future<List<Lista>> _devolverListasFavoritas() async {
     List<Lista> resultado = List.empty(growable: true);
 
@@ -291,12 +233,9 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return resultado;
   }
 
-// List<Producto> lista = SELECT FROM productos_listas_favoritas WHERE idListaFavorita = id
-
-//	Lista lista.addLista(lista);
-
-//	Lista.listas.add(lista);
-
+  /// Carga los productos de las listas favoritas desde la base de datos.
+  ///
+  /// Retorna una lista de objetos de tipo [Lista] que contienen los productos asociados a las listas favoritas.
   static Future<List<Lista>> cargaProductosListasFavoritas() async {
     List<Lista> lista_favorita = await BD._devolverListasFavoritas();
 
@@ -332,6 +271,9 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return lista_favorita;
   }
 
+  /// Obtiene el ID máximo de las listas favoritas almacenadas en la base de datos.
+  ///
+  /// Retorna un entero que representa el ID máximo de las listas favoritas.
   static Future<int> _devuelveIdMaxListasFavoritas() async {
     int idMax;
     List<Lista> ultima_lista_favorita = await BD._devolverListasFavoritas();
@@ -339,6 +281,13 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return idMax;
   }
 
+  /// Inserta una lista favorita en la base de datos.
+  ///
+  /// [lista]: El objeto de tipo [Lista] que se desea insertar en la base de datos.
+  ///
+  /// Realiza la inserción de la lista favorita en la tabla [listas_favoritas] de la base de datos. Además, inserta los productos de la lista en la tabla [productos_listas_favoritas] asociados a la lista favorita.
+  ///
+  /// Este método no retorna ningún valor.
   static Future<void> insertListaFavorita(Lista lista) async {
     await baseDatos.insert(
         "listas_favoritas", lista.toMapIntroducirListaFavoritaEnBD());
@@ -351,28 +300,9 @@ Además, el método almacena el resultado de la operación de inserción en una 
     }
   }
 
-// metodo
-
-  //Funciona
-  static Future<Producto> consultaPrimerProducto(
-      String tabla, String nombreProducto) async {
-    Producto resultado = Producto(
-        nombreProducto: "productoNoEncontrado",
-        precio: 0,
-        hrefProducto: "assets/producto_no_encontrado.png");
-
-    Database database = baseDatos;
-
-    final List<Map<String, dynamic>> producto = await database.query("$tabla",
-        where: "nombre LIKE (?)", whereArgs: ['%$nombreProducto%']);
-
-    if (producto.length > 0) {
-      resultado = Producto.inicializandoDesdeMapa(producto[0]);
-    }
-
-    return resultado;
-  }
-
+  /// Obtiene los productos favoritos almacenados en la base de datos.
+  ///
+  /// Retorna un conjunto de objetos de tipo Producto que representan los productos favoritos.
   static Future<Set<Producto>> devuelveProductosFavoritos() async {
     Set<Producto> resultado = Set();
 
@@ -389,26 +319,11 @@ Además, el método almacena el resultado de la operación de inserción en una 
     return resultado;
   }
 
-  //Funciona
-  static Future<List<Producto>> consultaProductos(
-      List<String> tablas, String nombre) async {
-    List<Producto> resultado = [];
-
-    Database database = baseDatos;
-
-    for (int i = 0; i < tablas.length; i++) {
-      final List<Map<String, dynamic>> producto = await database.query(
-          "${tablas[i]}",
-          where: "nombre LIKE (?)",
-          whereArgs: ['%$nombre%']);
-      for (int f = 0; f < producto.length; f++) {
-        resultado.add(Producto.inicializandoDesdeMapa(producto[f]));
-      }
-    }
-
-    return resultado;
-  }
-
+  /// Realiza una consulta de productos de una tienda en base a un nombre buscado.
+  ///
+  /// [nombreBuscado]: El nombre que se utiliza para buscar los productos.
+  ///
+  /// Retorna una lista de objetos de tipo Tienda que contienen los productos encontrados.
   static Future<List<Tienda>> consultaProductosTienda(
       String nombreBuscado) async {
     List<Map<String, Object>> nomTiendasEid =
@@ -444,10 +359,6 @@ Además, el método almacena el resultado de la operación de inserción en una 
       } else {
         developer.log(
             "No hay ningun producto que tenga el nombre '$nombreBuscado' en la tabla : '$tienda' ");
-      }
-      for (Producto p in productosDeTienda) {
-        print(p);
-        // tienda._aniadir_prod_tienda(p);
       }
 
       tiendas.add(tienda);

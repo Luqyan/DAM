@@ -1,15 +1,13 @@
-import 'package:aplicacion_ac/modelo/base_datos.dart';
 import 'package:aplicacion_ac/vista/productos_favoritos.dart';
+import 'package:aplicacion_ac/modelo/base_datos.dart';
 import 'package:aplicacion_ac/modelo/Producto.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Item.dart';
 import 'menugeneral.dart';
 import 'Lista.dart';
 
-
 /// Estado de la página 4, que extiende [State] y utiliza [SingleTickerProviderStateMixin].
-class Pagina4 extends State<productos_favoritos> with SingleTickerProviderStateMixin {
+class Pagina4 extends State<productos_favoritos>
+    with SingleTickerProviderStateMixin {
   late AnimationController _drawerSlideController;
 
   @override
@@ -141,6 +139,14 @@ class Pagina4 extends State<productos_favoritos> with SingleTickerProviderStateM
                     border: Border.all(
                         color: const Color.fromARGB(255, 220, 230, 247),
                         width: 3.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
                   ),
                   child: const Expanded(
                     child: Text(
@@ -177,6 +183,14 @@ class Pagina4 extends State<productos_favoritos> with SingleTickerProviderStateM
         padding: const EdgeInsets.all(5.0),
         margin: const EdgeInsets.only(bottom: 15.0),
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.8),
+              spreadRadius: 8,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
           borderRadius: BorderRadius.circular(12),
           color: const Color.fromRGBO(239, 237, 254, 0.898),
           border: Border.all(
@@ -203,9 +217,18 @@ class Pagina4 extends State<productos_favoritos> with SingleTickerProviderStateM
                 },
               ),
               Container(
-                decoration: const BoxDecoration(
-                    //border: Border.all(color: Colors.blueAccent)
-                    color: Color.fromRGBO(255, 255, 255, 0.5)),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 8,
+                      blurRadius: 9,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                  //border: Border.all(color: Colors.blueAccent)
+                  color: Color.fromRGBO(255, 255, 255, 0.5),
+                ),
                 width: MediaQuery.of(context).size.width / 2.2,
                 margin: const EdgeInsets.all(8.0),
                 padding: const EdgeInsets.all(3.0),
@@ -306,5 +329,4 @@ class Pagina4 extends State<productos_favoritos> with SingleTickerProviderStateM
       },
     );
   }
-
 }

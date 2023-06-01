@@ -10,12 +10,18 @@ class Producto implements Comparable<Producto> {
   late String _hrefProducto;
   int? _unidades;
 
+  /// El constructor [Producto.filtrado] crea una instancia de la clase [Producto] con valores predeterminados para los atributos.
+  ///
+  /// Este constructor se utiliza para crear un objeto [Producto] que se utiliza en el proceso de filtrado, donde se establecen valores iniciales vacíos o nulos para los atributos relevantes.
   Producto.filtrado()
       : _nombreProducto = "",
         _precio = 0.0,
         _hrefProducto = "",
         _unidades = 0;
 
+  /// El constructor [Producto] crea una instancia de la clase [Producto] con los valores proporcionados para cada atributo.
+  ///
+  /// Recibe como argumentos los valores iniciales de los atributos requeridos, y los valores opcionales para los atributos no requeridos.
   Producto(
       {required String nombreProducto,
       required double precio,
@@ -34,6 +40,10 @@ class Producto implements Comparable<Producto> {
         _categoria = categoria,
         _unidades = unidades;
 
+  /// El método [copyWith] crea una copia modificada del objeto [Producto] actual, con la posibilidad de actualizar algunos de sus atributos.
+  ///
+  /// Recibe como argumentos los nuevos valores de los atributos que se desean modificar, y retorna un nuevo objeto [Producto] con los atributos actualizados.
+  /// Los atributos que no se especifiquen en los argumentos mantendrán su valor original.
   Producto copyWith(
       {required String nombreProducto,
       required double precio,
@@ -54,18 +64,12 @@ class Producto implements Comparable<Producto> {
         unidades: unidades);
   }
 
-  ///Funcion que es usada en la funcion obtener jSON ubicada en las crpeta JSON cada vez que se quiera leer el archivo
+  /// El método [productoDesdeJson] crea un objeto [Producto] a partir de un mapa [json] que contiene los datos del producto en formato JSON.
+  ///
+  /// Recibe como argumentos el mapa [json] y un entero [i] que indica el índice del producto en el JSON.
+  ///
+  /// Este método se utiliza para deserializar el JSON y asignar los valores correspondientes a los atributos del producto.
   Producto.productoDesdeJson(Map<String, dynamic> json, int i) {
-    //     print("""
-    // Nombre del Producto: ${ json['Producto $i']['Producto']}
-    // Precio: ${json['Producto $i']['Precio']}
-    // Peso: ${json['Producto $i']['Características']['Peso Neto']}
-    // Volumen: ${json['Producto $i']['Características']['Volumen']}
-    // Marca: ${json['Producto $i']['Características']['Marca']}
-    // Categoria: ${json['Producto $i']['Categoria']}
-    // hrefproducto: ${json['Producto $i']['Imagen']}""");
-    // print("1");
-    //if(json['Producto $i']!=null || json['Producto $i']['Imagen']!=null || json['Producto $i']['Precio']!=null){
     if (json['Producto $i'] != null) {
       if (json['Producto $i']['Producto'] != "" &&
           json['Producto $i']['Producto'] != null) {
@@ -84,10 +88,6 @@ class Producto implements Comparable<Producto> {
         } else {
           _precio = variable;
         }
-
-        // print("Nombre del Producto: ${ json['Producto $i']['Producto']}");
-        // print("Precio: ${json['Producto $i']['Precio']}");
-        // print("2");
       } else {
         _precio = 0.00;
         _nombreProducto = "ProductoJSONnoTienePrecio";
@@ -98,51 +98,35 @@ class Producto implements Comparable<Producto> {
           _peso = TratarString.quitarUnidadesEspacios(
               TratarString.sustituirComasPorPuntos(
                   json['Producto $i']['Características']['Peso Neto']));
-          // print("Peso: ${json['Producto $i']['Características']['Peso Neto']}");
-          // print("3");
         } else {
           _peso = null;
-          // print("Peso: ${json['Producto $i']['Características']['Peso Neto']}");
-          // print("4");
         }
 
         if (json['Producto $i']['Características']['Volumen'] != null) {
-          // print("4");
-          // print("Volumen: ${json['Producto $i']['Características']['Volumen']}");
           _volumen = TratarString.quitarUnidadesEspacios(
               TratarString.sustituirComasPorPuntos(
                   json['Producto $i']['Características']['Volumen']));
-        } else {
-          // print("5");
-          // print("Volumen: ${json['Producto $i']['Características']['Volumen']}");
+
           _volumen = null;
         }
 
-        // print("6");
-        // print("Marca: ${json['Producto $i']['Características']['Marca']}");
         if (json['Producto $i']['Características']['Marca'] != null) {
           _marca = json['Producto $i']['Características']['Marca'];
         } else {
           _marca = null;
         }
       } else {
-        // print("8");
         _peso = null;
         _volumen = null;
         _marca = null;
-        // print("9");s
       }
-      // print("10");
-      // print("Categoria: ${json['Producto $i']['Categoria']}");
-      // print("hrefproducto: ${json['Producto $i']['Imagen']}");
+
       _categoria = json['Producto $i']['Categoria'];
       if (TratarString.detectarSiTieneRutaHttp(json['Producto $i']['Imagen'])) {
         _hrefProducto = json['Producto $i']['Imagen'];
       } else {
         _hrefProducto = "assets/image_producto_no_encontrada.jpg";
       }
-
-      // // print("11");
     } else {
       _nombreProducto = "ProductoNoExisteJSON";
       _precio = 0.00;
@@ -186,6 +170,10 @@ class Producto implements Comparable<Producto> {
     _hrefProducto = value;
   }
 
+  /// El método [toList()] convierte el objeto [Producto] en una lista de valores.
+  ///
+  /// Retorna una lista de tipo [List<dynamic>] que contiene los valores de los atributos del producto en el mismo orden en el que fueron definidos.
+
   List<dynamic> toList() {
     return [
       _nombreProducto,
@@ -199,15 +187,22 @@ class Producto implements Comparable<Producto> {
     ];
   }
 
+  /// El método [toMapIntroducirProductoListaFavoritaEnBD] convierte el objeto [Producto] en un mapa de datos para su inserción en la base de datos de una lista favorita.
+  ///
+  /// Recibe como argumento un entero [idListaFavorita], que representa el ID de la lista favorita.
+  /// Retorna un mapa de tipo [Map<String, dynamic>] que contiene los datos del producto en el formato adecuado para su inserción en la base de datos.
+
   Map<String, dynamic> toMapIntroducirProductoListaFavoritaEnBD(
       int idListaFavorita) {
     return {
       'idListaFavorita': idListaFavorita,
       'nombreProducto': _nombreProducto,
-      
     };
   }
 
+  /// El método [toMapIntroducirProductoFavoritoEnBD] convierte el objeto [Producto] en un mapa de datos para su inserción en la base de datos de productos favoritos.
+  ///
+  /// Retorna un mapa de tipo [Map<String, dynamic>] que contiene los datos del producto en el formato adecuado para su inserción en la base de datos.
   Map<String, dynamic> toMapIntroducirProductoFavoritoEnBD() {
     return {
       'nombre': _nombreProducto,
@@ -215,6 +210,10 @@ class Producto implements Comparable<Producto> {
     };
   }
 
+  /// El método [toMapIntroducirProductosEnBD] convierte el objeto [Producto] en un mapa de datos para su inserción en la base de datos de productos.
+  ///
+  /// Recibe como argumento un entero [idTienda], que representa el ID de la tienda.
+  /// Retorna un mapa de tipo [Map<String, dynamic>] que contiene los datos del producto en el formato adecuado para su inserción en la base de datos.
   Map<String, dynamic> toMapIntroducirProductosEnBD(int idTienda) {
     return {
       'idTienda': idTienda,
@@ -228,6 +227,9 @@ class Producto implements Comparable<Producto> {
     };
   }
 
+  /// El método [toMap] convierte el objeto [Producto] en un mapa de datos.
+  ///
+  /// Retorna un mapa de tipo [Map<String, dynamic>] que contiene los datos del producto en formato clave-valor.
   Map<String, dynamic> toMap() {
     return {
       'nombre': _nombreProducto,
@@ -240,14 +242,34 @@ class Producto implements Comparable<Producto> {
     };
   }
 
+  /// El constructor [Producto.inicializandoDesdeMapaProductoListaFavorita] crea un objeto [Producto] a partir de un mapa de datos.
+  ///
+  /// Recibe como argumento un mapa de tipo [Map<String, dynamic>] llamado [productoMapa], que contiene los datos del producto.
+  /// Utiliza el valor correspondiente del mapa para inicializar la propiedad [_nombreProducto] del objeto [Producto].
+
   Producto.inicializandoDesdeMapaProductoListaFavorita(
       Map<String, dynamic> productoMapa)
       : _nombreProducto = productoMapa['nombreProducto'];
+
+  /// El constructor [Producto.inicializandoDesdeMapaProductoFavorito] crea un objeto [Producto] a partir de un mapa de datos.
+  ///
+  /// Recibe como argumento un mapa de tipo [Map<String, dynamic>] llamado [productoMapa], que contiene los datos del producto.
+  /// Utiliza los valores del mapa para inicializar las propiedades [_nombreProducto] y [_hrefProducto] del objeto [Producto].
+  /// Las propiedades se obtienen del mapa mediante claves como [nombre] y [imagen].
 
   Producto.inicializandoDesdeMapaProductoFavorito(
       Map<String, dynamic> productoMapa)
       : _nombreProducto = productoMapa['nombre'],
         _hrefProducto = productoMapa['imagen'];
+
+  /// El constructor [Producto.inicializandoDesdeMapa] crea un objeto [Producto] a partir de un mapa de datos.
+  ///
+  /// Recibe como argumento un mapa de tipo [Map<String, dynamic>] llamado [productoMapa], que contiene los datos del producto.
+  /// Utiliza los valores del mapa para inicializar las propiedades del objeto [Producto].
+  /// Las propiedades se obtienen del mapa mediante claves como [nombre], [precio], [imagen], [peso], [volumen], [marca] y [categoria].
+  /// La propiedad [_unidades] se inicializa con el valor 0.
+  ///
+  /// Nota: Asegúrate de que el mapa de datos contenga las claves necesarias y los tipos de datos correctos para inicializar correctamente el objeto [Producto].
 
   Producto.inicializandoDesdeMapa(Map<String, dynamic> productoMapa)
       : _nombreProducto = productoMapa['nombre'],
@@ -259,6 +281,12 @@ class Producto implements Comparable<Producto> {
         _categoria = productoMapa['categoria'],
         _unidades = 0;
 
+  /// El método [toObjeto()] convierte un mapa de datos en un objeto [Producto].
+  ///
+  /// Recibe como argumento un mapa de tipo [Map<String, dynamic>] llamado [objeto], que contiene los datos del producto.
+  /// Utiliza los valores del mapa para crear un objeto [Producto] con las propiedades correspondientes.
+  /// Las propiedades se obtienen del mapa mediante claves como 'nombre', 'precio', 'imagen', 'categoria', 'marca', 'peso' y 'volumen'.
+  /// Retorna el objeto [Producto] creado.
   Producto toObjeto(Map<String, dynamic> objeto) {
     Producto resultado = Producto(
         nombreProducto: objeto['nombre'],

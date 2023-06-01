@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'genera_resultados.dart';
 
 
-/// Página 11, StatefulWidget que representa una página con estado.
+/// Clase que representa la generación de un resultado.
 class genera_resultado extends StatefulWidget {
-  /// Constructor de la clase Pagina11.
+  /// Constructor de la clase genera_resultado.
   const genera_resultado({
     super.key,
   });

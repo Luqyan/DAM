@@ -1,7 +1,7 @@
 import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
-
-import 'Producto.dart';
 import 'dart:developer' as developer;
+import 'Producto.dart';
+
 
 class Tienda {
   final String nombre;
@@ -75,7 +75,7 @@ class Tienda {
 
   @override
   String toString() {
-    // TO DO: implement toString
+  
     return tipoClase;
   }
 }

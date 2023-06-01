@@ -57,7 +57,6 @@ class Lista {
   static Set<Producto> productos_favoritos = Set();
 
   /// Constructor de la clase Lista.
-
   Lista(this._nombre);
 
   /// Getter para el nombre de la lista.
@@ -134,10 +133,18 @@ class Lista {
   /// Método sin implementación.
   map(Text Function(dynamic producto) param0) {}
 
+  /// Constructor de la clase [Lista] que inicializa los atributos a partir de un [Map].
+  ///
+  /// - Parámetro [lista]: El mapa con los datos de la lista.
+  ///
+  /// El mapa debe contener las claves 'id' y 'nombre' para asignar los valores correspondientes a [_id] y [_nombre].
   Lista.inicializandoDesdeMapaListaFavorita(Map<String, dynamic> lista)
       : _id = lista['id'],
         _nombre = lista['nombre'];
 
+  /// Convierte la lista en un [Map] para ser introducido en una base de datos.
+  ///
+  /// Devuelve un mapa con la clave 'nombre' y el valor [_nombre].
   Map<String, dynamic> toMapIntroducirListaFavoritaEnBD() {
     return {'nombre': _nombre};
   }
