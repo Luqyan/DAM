@@ -27,11 +27,11 @@ def main():
         elif(numero==2):
              contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosAhorramas.json",1),(f"{obtenerRutaFicheroMain()}//jsons//productosCarrefour.json",2)],generarCreate=False,generarInsert=True)
         elif(numero==3):
-            contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosAhorramas.json",1)],generarCreate=False,generarInsert=True)
+            contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosCarrefour.json",2)],generarCreate=False,generarInsert=True)
         elif(numero==4):
-            contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosCarrefour.json",1)],generarCreate=False,generarInsert=True)
+            contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosAhorramas.json",1)],generarCreate=False,generarInsert=True)
         elif(numero==5):
-            contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosAhorramas.json",1),(f"{obtenerRutaFicheroMain()}\jsons\productosAhorramas.json",2)],generarCreate=True,generarInsert=True)
+            contructorSQL(ficherosIdTienda=[(f"{obtenerRutaFicheroMain()}\jsons\productosAhorramas.json",1),(f"{obtenerRutaFicheroMain()}\jsons\productosCarrefour.json",2)],generarCreate=True,generarInsert=True)
         elif(numero==9):
             mensajeSalir()
             sys.exit()
