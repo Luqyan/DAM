@@ -269,9 +269,11 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
           ),
           onSubmitted: (value) async {
             setState(() {
+              productoEncontrado=!productoEncontrado;
+              visible=!visible;
               pulsado_buscar = !pulsado_buscar;
               _valorIntroducido = value;
-              visible = true;
+              
             });
 
             if (pulsado_buscar) {
@@ -303,6 +305,7 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
                 }
 
                 if (productoEncontrado) {
+                  visible = true;
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     duration: Duration(seconds: 1),
                     backgroundColor: Color.fromARGB(255, 31, 85, 34),
@@ -324,6 +327,7 @@ class Pagina7 extends State<buscador> with SingleTickerProviderStateMixin {
               });
 
               pulsado_buscar = !pulsado_buscar;
+              _valorIntroducido = "";
             }
           }),
     );

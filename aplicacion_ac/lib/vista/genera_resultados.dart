@@ -418,12 +418,15 @@ class Pagina11 extends State<genera_resultado>
     String? downloadsDirectoryPath =
         (await DownloadsPath.downloadsDirectory())?.path;
 
-    var _downloadsDirectory = getDownloadsDirectory();
+
+    final directory = await getExternalStorageDirectory();
+    final downloadsPath = directory!.path + '/Download';
+
 
     String dwnld = await getDownloadsPath();
-    print(_downloadsDirectory);
+   
     // Construir la ruta y el nombre de archivo del PDF
-    final filePath = path.join(dwnld as String, 'lista_compra.pdf');
+    final filePath = path.join(downloadsPath as String, 'lista_compra.pdf');
     final file = File(filePath);
 
     // Verificar y solicitar permisos de almacenamiento
