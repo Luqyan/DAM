@@ -180,106 +180,93 @@
   <section class="summary offset-anchor" id="static-methods">
     <h2>Static Methods</h2>
     <dl class="callables">
-        <dt id="borrarBBDD" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/borrarBBDD.html">borrarBBDD</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+        <dt id="cargaProductosListasFavoritas" class="callable">
+  <span class="name"><a href="../modelo_base_datos/BD/cargaProductosListasFavoritas.html">cargaProductosListasFavoritas</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../vista_Lista/Lista-class.html">Lista</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  
-  
-
-</dd>
-
-        <dt id="borrarTabla" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/borrarTabla.html">borrarTabla</a></span><span class="signature">(<wbr><span class="parameter" id="borrarTabla-param-nombre"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombre</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  
-  
-
-</dd>
-
-        <dt id="consultaPrimerProducto" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/consultaPrimerProducto.html">consultaPrimerProducto</a></span><span class="signature">(<wbr><span class="parameter" id="consultaPrimerProducto-param-tabla"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">tabla</span>, </span><span class="parameter" id="consultaPrimerProducto-param-nombreProducto"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombreProducto</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  
-  
-
-</dd>
-
-        <dt id="consultaProductos" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/consultaProductos.html">consultaProductos</a></span><span class="signature">(<wbr><span class="parameter" id="consultaProductos-param-tablas"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">tablas</span>, </span><span class="parameter" id="consultaProductos-param-nombre"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombre</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  
+  Carga los productos de las listas favoritas desde la base de datos.
   
 
 </dd>
 
         <dt id="consultaProductosTienda" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/consultaProductosTienda.html">consultaProductosTienda</a></span><span class="signature">(<wbr><span class="parameter" id="consultaProductosTienda-param-tablas"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">tablas</span>, </span><span class="parameter" id="consultaProductosTienda-param-nombre"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombre</span></span>)
+  <span class="name"><a href="../modelo_base_datos/BD/consultaProductosTienda.html">consultaProductosTienda</a></span><span class="signature">(<wbr><span class="parameter" id="consultaProductosTienda-param-nombreBuscado"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombreBuscado</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Tienda/Tienda-class.html">Tienda</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  
+  Realiza una consulta de productos de una tienda en base a un nombre buscado.
   
 
 </dd>
 
-        <dt id="getCount" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/getCount.html">getCount</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+        <dt id="deleteListaFavorita" class="callable">
+  <span class="name"><a href="../modelo_base_datos/BD/deleteListaFavorita.html">deleteListaFavorita</a></span><span class="signature">(<wbr><span class="parameter" id="deleteListaFavorita-param-nombreLista"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombreLista</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  
+  Elimina una lista favorita de la base de datos.
   
 
 </dd>
 
-        <dt id="insertarProducto" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/insertarProducto.html">insertarProducto</a></span><span class="signature">(<wbr><span class="parameter" id="insertarProducto-param-prod"><span class="type-annotation"><a href="../modelo_Producto/Producto-class.html">Producto</a></span> <span class="parameter-name">prod</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+        <dt id="deleteProductoFavorito" class="callable">
+  <span class="name"><a href="../modelo_base_datos/BD/deleteProductoFavorito.html">deleteProductoFavorito</a></span><span class="signature">(<wbr><span class="parameter" id="deleteProductoFavorito-param-prod"><span class="type-annotation"><a href="../modelo_Producto/Producto-class.html">Producto</a></span> <span class="parameter-name">prod</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  
+  Elimina un producto favorito de la base de datos.
   
 
 </dd>
 
-        <dt id="muestraTodo" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/muestraTodo.html">muestraTodo</a></span><span class="signature">(<wbr><span class="parameter" id="muestraTodo-param-nomTabla"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nomTabla</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span>?</span>&gt;</span></span>
+        <dt id="devuelveProductosFavoritos" class="callable">
+  <span class="name"><a href="../modelo_base_datos/BD/devuelveProductosFavoritos.html">devuelveProductosFavoritos</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
+  Obtiene los productos favoritos almacenados en la base de datos.
   
+
+</dd>
+
+        <dt id="insertListaFavorita" class="callable">
+  <span class="name"><a href="../modelo_base_datos/BD/insertListaFavorita.html">insertListaFavorita</a></span><span class="signature">(<wbr><span class="parameter" id="insertListaFavorita-param-lista"><span class="type-annotation"><a href="../vista_Lista/Lista-class.html">Lista</a></span> <span class="parameter-name">lista</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Inserta una lista favorita en la base de datos.
+  
+
+</dd>
+
+        <dt id="insertProductoFavorito" class="callable">
+  <span class="name"><a href="../modelo_base_datos/BD/insertProductoFavorito.html">insertProductoFavorito</a></span><span class="signature">(<wbr><span class="parameter" id="insertProductoFavorito-param-prod"><span class="type-annotation"><a href="../modelo_Producto/Producto-class.html">Producto</a></span> <span class="parameter-name">prod</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Inserta un producto favorito en la base de datos.
   
 
 </dd>
@@ -292,7 +279,7 @@
 
 </dt>
 <dd>
-  
+  Obtiene los nombres de las tablas de tiendas almacenadas en la base de datos.
   
 
 </dd>
@@ -305,7 +292,7 @@
 
 </dt>
 <dd>
-  
+  El método <code>_openBD</code> es un método asincrónico que devuelve una instancia de la base de datos <a href="https://pub.dev/documentation/sqflite_common/2.4.5/sqlite_api/Database-class.html">Database</a>.
   
 
 </dd>
@@ -318,20 +305,7 @@
 
 </dt>
 <dd>
-  
-  
-
-</dd>
-
-        <dt id="update" class="callable">
-  <span class="name"><a href="../modelo_base_datos/BD/update.html">update</a></span><span class="signature">(<wbr><span class="parameter" id="update-param-prod"><span class="type-annotation"><a href="../modelo_Producto/Producto-class.html">Producto</a></span> <span class="parameter-name">prod</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  
+  Obtiene la lista de productos de una tienda específica en la base de datos.
   
 
 </dd>
@@ -398,18 +372,16 @@
           <li><a href="../modelo_base_datos/BD/baseDatos.html">baseDatos</a></li>
 
         <li class="section-title"><a href="../modelo_base_datos/BD-class.html#static-methods">Static methods</a></li>
-          <li><a href="../modelo_base_datos/BD/borrarBBDD.html">borrarBBDD</a></li>
-          <li><a href="../modelo_base_datos/BD/borrarTabla.html">borrarTabla</a></li>
-          <li><a href="../modelo_base_datos/BD/consultaPrimerProducto.html">consultaPrimerProducto</a></li>
-          <li><a href="../modelo_base_datos/BD/consultaProductos.html">consultaProductos</a></li>
+          <li><a href="../modelo_base_datos/BD/cargaProductosListasFavoritas.html">cargaProductosListasFavoritas</a></li>
           <li><a href="../modelo_base_datos/BD/consultaProductosTienda.html">consultaProductosTienda</a></li>
-          <li><a href="../modelo_base_datos/BD/getCount.html">getCount</a></li>
-          <li><a href="../modelo_base_datos/BD/insertarProducto.html">insertarProducto</a></li>
-          <li><a href="../modelo_base_datos/BD/muestraTodo.html">muestraTodo</a></li>
+          <li><a href="../modelo_base_datos/BD/deleteListaFavorita.html">deleteListaFavorita</a></li>
+          <li><a href="../modelo_base_datos/BD/deleteProductoFavorito.html">deleteProductoFavorito</a></li>
+          <li><a href="../modelo_base_datos/BD/devuelveProductosFavoritos.html">devuelveProductosFavoritos</a></li>
+          <li><a href="../modelo_base_datos/BD/insertListaFavorita.html">insertListaFavorita</a></li>
+          <li><a href="../modelo_base_datos/BD/insertProductoFavorito.html">insertProductoFavorito</a></li>
           <li><a href="../modelo_base_datos/BD/obtenerNombresTablasTiendas.html">obtenerNombresTablasTiendas</a></li>
           <li><a href="../modelo_base_datos/BD/openBD.html">openBD</a></li>
           <li><a href="../modelo_base_datos/BD/productos.html">productos</a></li>
-          <li><a href="../modelo_base_datos/BD/update.html">update</a></li>
 
 </ol>
 
@@ -420,7 +392,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

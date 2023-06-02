@@ -71,6 +71,12 @@
         <dd>
           Constructor de la clase Lista.
         </dd>
+        <dt id="Lista.inicializandoDesdeMapaListaFavorita" class="callable">
+          <span class="name"><a href="../vista_Lista/Lista/Lista.inicializandoDesdeMapaListaFavorita.html">Lista.inicializandoDesdeMapaListaFavorita</a></span><span class="signature">(<span class="parameter" id="inicializandoDesdeMapaListaFavorita-param-lista"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">lista</span></span>)</span>
+        </dt>
+        <dd>
+          Constructor de la clase <a href="../vista_Lista/Lista-class.html">Lista</a> que inicializa los atributos a partir de un <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a>.
+        </dd>
     </dl>
   </section>
 
@@ -97,6 +103,17 @@
 <dd class="inherited">
   The hash code for this object.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="id" class="property">
+  <span class="name"><a href="../vista_Lista/Lista/id.html">id</a></span>
+  <span class="signature">&#8596; dynamic</span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">read / write</span></div>
 
 </dd>
 
@@ -207,6 +224,19 @@
 
 </dd>
 
+        <dt id="toMapIntroducirListaFavoritaEnBD" class="callable">
+  <span class="name"><a href="../vista_Lista/Lista/toMapIntroducirListaFavoritaEnBD.html">toMapIntroducirListaFavoritaEnBD</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Convierte la lista en un <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a> para ser introducido en una base de datos.
+  
+
+</dd>
+
         <dt id="toString" class="callable inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -248,6 +278,17 @@
     <h2>Static Properties</h2>
 
     <dl class="properties">
+        <dt id="cargarListasFavoritas" class="property">
+  <span class="name"><a href="../vista_Lista/Lista/cargarListasFavoritas.html">cargarListasFavoritas</a></span>
+  <span class="signature">&#8592; dynamic</span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">write-only</span></div>
+
+</dd>
+
         <dt id="lista_productos" class="property">
   <span class="name"><a href="../vista_Lista/Lista/lista_productos.html">lista_productos</a></span>
   <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span> 
@@ -261,12 +302,23 @@
 
         <dt id="listas" class="property">
   <span class="name"><a href="../vista_Lista/Lista/listas.html">listas</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../vista_Lista/Lista-class.html">Lista</a></span>&gt;</span></span> 
 
 </dt>
 <dd>
   
   <div class="features"><span class="feature">read-only</span></div>
+
+</dd>
+
+        <dt id="productos_favoritos" class="property">
+  <span class="name"><a href="../vista_Lista/Lista/productos_favoritos.html">productos_favoritos</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">read / write</span></div>
 
 </dd>
 
@@ -422,6 +474,7 @@
 
         <li class="section-title"><a href="../vista_Lista/Lista-class.html#constructors">Constructors</a></li>
           <li><a href="../vista_Lista/Lista/Lista.html">Lista</a></li>
+          <li><a href="../vista_Lista/Lista/Lista.inicializandoDesdeMapaListaFavorita.html">inicializandoDesdeMapaListaFavorita</a></li>
 
 
         <li class="section-title">
@@ -429,6 +482,7 @@
         </li>
           <li><a href="../vista_Lista/Lista/descripcionLista.html">descripcionLista</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li><a href="../vista_Lista/Lista/id.html">id</a></li>
           <li><a href="../vista_Lista/Lista/nombreLista.html">nombreLista</a></li>
           <li><a href="../vista_Lista/Lista/productos.html">productos</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
@@ -439,6 +493,7 @@
           <li><a href="../vista_Lista/Lista/aniadir_producto.html">aniadir_producto</a></li>
           <li><a href="../vista_Lista/Lista/map.html">map</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../vista_Lista/Lista/toMapIntroducirListaFavoritaEnBD.html">toMapIntroducirListaFavoritaEnBD</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
         <li class="section-title inherited"><a href="../vista_Lista/Lista-class.html#operators">Operators</a></li>
@@ -446,8 +501,10 @@
 
 
         <li class="section-title"><a href="../vista_Lista/Lista-class.html#static-properties">Static properties</a></li>
+          <li><a href="../vista_Lista/Lista/cargarListasFavoritas.html">cargarListasFavoritas</a></li>
           <li><a href="../vista_Lista/Lista/lista_productos.html">lista_productos</a></li>
           <li><a href="../vista_Lista/Lista/listas.html">listas</a></li>
+          <li><a href="../vista_Lista/Lista/productos_favoritos.html">productos_favoritos</a></li>
 
         <li class="section-title"><a href="../vista_Lista/Lista-class.html#static-methods">Static methods</a></li>
           <li><a href="../vista_Lista/Lista/addLista.html">addLista</a></li>
@@ -468,7 +525,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

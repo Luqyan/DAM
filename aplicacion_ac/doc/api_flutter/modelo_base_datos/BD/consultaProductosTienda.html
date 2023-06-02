@@ -60,53 +60,58 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../modelo_Tienda/Tienda-class.html">Tienda</a></span>&gt;</span></span>&gt;</span></span>
-<span class="name ">consultaProductosTienda</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="consultaProductosTienda-param-tablas"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">tablas</span>, </span></li>
-<li><span class="parameter" id="consultaProductosTienda-param-nombre"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombre</span></span></li>
+<span class="name ">consultaProductosTienda</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="consultaProductosTienda-param-nombreBuscado"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombreBuscado</span></span></li>
 </ol>)
 
       
 
     </section>
     
+<section class="desc markdown">
+  <p>Realiza una consulta de productos de una tienda en base a un nombre buscado.</p>
+<p><code>nombreBuscado</code>: El nombre que se utiliza para buscar los productos.</p>
+<p>Retorna una lista de objetos de tipo Tienda que contienen los productos encontrados.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Future&lt;List&lt;Tienda&gt;&gt; consultaProductosTienda(
-    List&lt;String&gt; tablas, String nombre) async {
+    String nombreBuscado) async {
+  List&lt;Map&lt;String, Object&gt;&gt; nomTiendasEid =
+      await BD._obtenerTodosLosDatosTienda(BD.baseDatos);
   List&lt;Tienda&gt; tiendas = [];
 
   Database database = baseDatos;
 
-  for (String nombreTabla in tablas) {
-    Tienda tienda = Tienda.tabla(nombre: nombreTabla);
+  for (Map&lt;String, Object&gt; tiendaValores in nomTiendasEid) {
+    print(tiendaValores[&#39;nombre&#39;]);
+    String nombreTienda = tiendaValores[&#39;nombre&#39;] as String;
+    int IdTienda = tiendaValores[&#39;id&#39;] as int;
+
+    Tienda tienda = Tienda.tabla(nombre: nombreTienda);
+
     List&lt;Producto&gt; productosDeTienda = [];
     final List&lt;Map&lt;String, dynamic&gt;&gt; producto = await database.query(
-        &quot;$nombreTabla&quot;,
-        where: &quot;nombre LIKE (?)&quot;,
-        whereArgs: [&#39;%$nombre%&#39;]);
+        &quot;productos&quot;,
+        where: &quot;idTienda = (?)and nombre LIKE (?)&quot;,
+        whereArgs: [IdTienda, &#39;%$nombreBuscado%&#39;]);
 
     if (producto.length != 0) {
       &#47;&#47;Este if esta puesto por la estructura del del Map si tiene tamaño 0 peta debido a que no encuentra el producto[0]: no se ha comprobado si la causa es esta
       &#47;&#47;TODO:Investigar cual es el esquema del map generado
       for (int f = 0; f &lt; producto.length; f++) {
         &#47;&#47; productosDeTienda.add(Producto.inicializandoDesdeMapa(producto[f]));
-
-
-
         tienda.lista_x_busqueda
             .add(Producto.inicializandoDesdeMapa(producto[f]));
       }
 
       &#47;&#47; esta funcion se usara en confirmar lista
-      &#47;&#47; Tienda.anadirproductoOproductosATienda(nombreTabla, productosDeTienda);
+      &#47;&#47; Tienda.anadirproductoOproductosATienda(tienda, productosDeTienda);
     } else {
       developer.log(
-          &quot;No hay ningun producto que tenga el nombre &#39;$nombre&#39; en la tabla : &#39;$nombreTabla&#39; &quot;);
-    }
-    for (Producto p in productosDeTienda) {
-      &#47;&#47; tienda._aniadir_prod_tienda(p);
+          &quot;No hay ningun producto que tenga el nombre &#39;$nombreBuscado&#39; en la tabla : &#39;$tienda&#39; &quot;);
     }
 
     tiendas.add(tienda);
@@ -159,18 +164,16 @@
           <li><a href="../../modelo_base_datos/BD/baseDatos.html">baseDatos</a></li>
 
         <li class="section-title"><a href="../../modelo_base_datos/BD-class.html#static-methods">Static methods</a></li>
-          <li><a href="../../modelo_base_datos/BD/borrarBBDD.html">borrarBBDD</a></li>
-          <li><a href="../../modelo_base_datos/BD/borrarTabla.html">borrarTabla</a></li>
-          <li><a href="../../modelo_base_datos/BD/consultaPrimerProducto.html">consultaPrimerProducto</a></li>
-          <li><a href="../../modelo_base_datos/BD/consultaProductos.html">consultaProductos</a></li>
+          <li><a href="../../modelo_base_datos/BD/cargaProductosListasFavoritas.html">cargaProductosListasFavoritas</a></li>
           <li><a href="../../modelo_base_datos/BD/consultaProductosTienda.html">consultaProductosTienda</a></li>
-          <li><a href="../../modelo_base_datos/BD/getCount.html">getCount</a></li>
-          <li><a href="../../modelo_base_datos/BD/insertarProducto.html">insertarProducto</a></li>
-          <li><a href="../../modelo_base_datos/BD/muestraTodo.html">muestraTodo</a></li>
+          <li><a href="../../modelo_base_datos/BD/deleteListaFavorita.html">deleteListaFavorita</a></li>
+          <li><a href="../../modelo_base_datos/BD/deleteProductoFavorito.html">deleteProductoFavorito</a></li>
+          <li><a href="../../modelo_base_datos/BD/devuelveProductosFavoritos.html">devuelveProductosFavoritos</a></li>
+          <li><a href="../../modelo_base_datos/BD/insertListaFavorita.html">insertListaFavorita</a></li>
+          <li><a href="../../modelo_base_datos/BD/insertProductoFavorito.html">insertProductoFavorito</a></li>
           <li><a href="../../modelo_base_datos/BD/obtenerNombresTablasTiendas.html">obtenerNombresTablasTiendas</a></li>
           <li><a href="../../modelo_base_datos/BD/openBD.html">openBD</a></li>
           <li><a href="../../modelo_base_datos/BD/productos.html">productos</a></li>
-          <li><a href="../../modelo_base_datos/BD/update.html">update</a></li>
 
 </ol>
 
@@ -184,7 +187,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

@@ -66,6 +66,20 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>El método <a href="../../controlador_GestionDatosTablas/GestionDatos/devuelveTiendas.html">devuelveTiendas()</a> es un método asincrónico que devuelve una lista de objetos <a href="../../modelo_Tienda/Tienda-class.html">Tienda</a>.</p>
+<p>Este método realiza los siguientes pasos:</p>
+<ol>
+<li>Crea una lista vacía de objetos <a href="../../modelo_Tienda/Tienda-class.html">Tienda</a> llamada <code>lista</code>.</li>
+<li>Utiliza el método estático <code>obtenerNombresTablasTiendas()</code> de la clase <a href="../../modelo_base_datos/BD-class.html">BD</a> para obtener una lista de nombres de tablas de tiendas.</li>
+<li>Recorre la lista de nombres de tablas y crea un objeto <a href="../../modelo_Tienda/Tienda-class.html">Tienda</a> con cada nombre de tabla. El nombre de la tabla se pasa como argumento al constructor de la clase <a href="../../modelo_Tienda/Tienda-class.html">Tienda</a>.</li>
+<li>Agrega cada objeto <a href="../../modelo_Tienda/Tienda-class.html">Tienda</a> a la lista <code>lista</code>.</li>
+<li>Retorna la lista <code>lista</code> que contiene todas las tiendas.</li>
+</ol>
+<p>Ejemplo de uso:
+dart /// List<tienda> tiendas = await devuelveTiendas(); /// print(tiendas.length); // Imprime la cantidad de tiendas disponibles /// /// Este ejemplo obtiene la lista de tiendas utilizando el método <a href="../../controlador_GestionDatosTablas/GestionDatos/devuelveTiendas.html">devuelveTiendas()</a> y luego imprime la cantidad de tiendas en la lista.</tienda></p>
+<p>Nota: Asegúrate de tener las tablas de tiendas correctamente configuradas en tu base de datos antes de llamar a este método.</p>
+</section>
 
 
     
@@ -127,7 +141,6 @@
 
 
         <li class="section-title"><a href="../../controlador_GestionDatosTablas/GestionDatos-class.html#static-methods">Static methods</a></li>
-          <li><a href="../../controlador_GestionDatosTablas/GestionDatos/anadirElementosAarrayTienda.html">anadirElementosAarrayTienda</a></li>
           <li><a href="../../controlador_GestionDatosTablas/GestionDatos/devuelveTiendas.html">devuelveTiendas</a></li>
           <li><a href="../../controlador_GestionDatosTablas/GestionDatos/filtrarPorPrecio.html">filtrarPorPrecio</a></li>
 
@@ -143,7 +156,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

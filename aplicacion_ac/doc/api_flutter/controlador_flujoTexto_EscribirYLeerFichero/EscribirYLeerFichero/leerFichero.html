@@ -68,9 +68,22 @@
     </section>
     
 <section class="desc markdown">
-  <p>devuelve:</p>
-<p>-el contenido del JSON: Si encuentra el fichero lo devulve en String</p>
-<p>-0: Si no ha encontrado el fichero</p>
+  <p>El método <a href="../../controlador_flujoTexto_EscribirYLeerFichero/EscribirYLeerFichero/leerFichero.html">leerFichero()</a> es un método asincrónico que lee el contenido de un fichero y lo devuelve como una cadena de texto.</p>
+<p>Recibe un parámetro <code>rutaFichero</code> que especifica la ruta del fichero a leer.</p>
+<p>Crea una instancia de la clase <a href="https://api.flutter.dev/flutter/dart-io/File-class.html">File</a> con la ruta del fichero proporcionada.</p>
+<p>Verifica si el fichero existe utilizando el método <code>exists</code> de la clase <a href="https://api.flutter.dev/flutter/dart-io/File-class.html">File</a>. Si el fichero existe:</p>
+<ul>
+<li>Lee el contenido del fichero utilizando el método <code>readAsString</code> de la clase <a href="https://api.flutter.dev/flutter/dart-io/File-class.html">File</a> y espera a que la operación se complete.</li>
+<li>Devuelve el contenido del fichero como una cadena de texto.</li>
+</ul>
+<p>Si el fichero no existe, registra un mensaje de advertencia utilizando <a href="https://api.flutter.dev/flutter/dart-developer/log.html">developer.log</a> indicando la ruta del fichero que no existe.</p>
+<ul>
+<li>Devuelve una cadena de texto vacía.</li>
+</ul>
+<p>Ejemplo de uso:
+String contenido = await leerFichero(rutaFichero: <code>/ruta/al/fichero.txt</code>); /// print(contenido);
+  /// Esto imprimirá el contenido del fichero especificado en la ruta proporcionada.</p>
+<p>Nota: Asegúrate de proporcionar una ruta de fichero válida para evitar errores y de que el fichero exista antes de leerlo.</p>
 </section>
 
 
@@ -78,20 +91,19 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Future&lt;String&gt; leerFichero({required String rutaFichero}) async {
-		File fichero=File(rutaFichero);
+  File fichero = File(rutaFichero);
 
-;    if( await fichero.exists()){
+  if (await fichero.exists()) {
+    String contenidoFichero =
+        await fichero.readAsString().then((value) =&gt; value);
 
-			String contenidoFichero = await fichero.readAsString().then((value) =&gt; value);
-
-			return contenidoFichero;
-		}else{
-    developer.log(&quot;La ruta del JSON establecida no existe | aplicacion_ac\lib\controlador\flujoTexto\EscribirYLeerFichero.dart&quot;);
+    return contenidoFichero;
+  } else {
+    developer.log(
+        &quot;La ruta del JSON establecida no existe | aplicacion_ac\lib\controlador\flujoTexto\EscribirYLeerFichero.dart&quot;);
     return &quot;&quot;;
-		}
-
-
-	}</code></pre>
+  }
+}</code></pre>
 </section>
 
 
@@ -149,7 +161,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

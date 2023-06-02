@@ -67,13 +67,18 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Detecta si una cadena de texto comienza con una ruta HTTP.
+<code>frase</code>: La cadena de texto que se desea analizar.
+Retorna true si la cadena comienza con una ruta HTTP, de lo contrario retorna false.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static bool detectarSiTieneRutaHttp(String frase){
-  return frase.startsWith(RegExp(&quot;http&quot;));
+return frase.startsWith(RegExp(&quot;http&quot;));
 }</code></pre>
 </section>
 
@@ -137,7 +142,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

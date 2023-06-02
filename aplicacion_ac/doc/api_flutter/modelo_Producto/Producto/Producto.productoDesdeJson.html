@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Producto.productoDesdeJson constructor from Class Producto from the Producto library, for the Dart programming language.">
+  <title>Producto.productoDesdeJson constructor - Producto - Producto library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">aplicacion_ac</a></li>
+    <li><a href="../../modelo_Producto/modelo_Producto-library.html">Producto</a></li>
+    <li><a href="../../modelo_Producto/Producto-class.html">Producto</a></li>
+    <li class="self-crumb">Producto.productoDesdeJson constructor</li>
+  </ol>
+  <div class="self-name">Producto.productoDesdeJson</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-constructor">Producto.productoDesdeJson</span> constructor 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+      <span class="name ">Producto.productoDesdeJson</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="productoDesdeJson-param-json"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">json</span>, </span></li>
+<li><span class="parameter" id="productoDesdeJson-param-i"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">i</span></span></li>
+</ol>)
+    </section>
+
+    
+<section class="desc markdown">
+  <p>El método <a href="../../modelo_Producto/Producto/Producto.productoDesdeJson.html">productoDesdeJson</a> crea un objeto <a href="../../modelo_Producto/Producto-class.html">Producto</a> a partir de un mapa <code>json</code> que contiene los datos del producto en formato JSON.</p>
+<p>Recibe como argumentos el mapa <code>json</code> y un entero <code>i</code> que indica el índice del producto en el JSON.</p>
+<p>Este método se utiliza para deserializar el JSON y asignar los valores correspondientes a los atributos del producto.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Producto.productoDesdeJson(Map&lt;String, dynamic&gt; json, int i) {
+  if (json[&#39;Producto $i&#39;] != null) {
+    if (json[&#39;Producto $i&#39;][&#39;Producto&#39;] != &quot;&quot; &amp;&amp;
+        json[&#39;Producto $i&#39;][&#39;Producto&#39;] != null) {
+      _nombreProducto = json[&#39;Producto $i&#39;][&#39;Producto&#39;];
+    } else {
+      _nombreProducto = &quot;ProductoNoExisteJSON&quot;;
+    }
+
+    if (json[&#39;Producto $i&#39;][&#39;Precio&#39;] != null) {
+      var variable = TratarString.quitarUnidadesEspacios(
+          TratarString.sustituirComasPorPuntos(json[&#39;Producto $i&#39;][
+              &#39;Precio&#39;]))!; &#47;&#47;Confio en que simpre se devolvera el precio en el json
+      if (variable == &quot;&quot;) {
+        _precio = 0.0;
+        _nombreProducto = &quot;ProductoJSONnoTienePrecio&quot;;
+      } else {
+        _precio = variable;
+      }
+    } else {
+      _precio = 0.00;
+      _nombreProducto = &quot;ProductoJSONnoTienePrecio&quot;;
+    }
+
+    if (json[&#39;Producto $i&#39;][&#39;Características&#39;] != null) {
+      if (json[&#39;Producto $i&#39;][&#39;Características&#39;][&#39;Peso Neto&#39;] != null) {
+        _peso = TratarString.quitarUnidadesEspacios(
+            TratarString.sustituirComasPorPuntos(
+                json[&#39;Producto $i&#39;][&#39;Características&#39;][&#39;Peso Neto&#39;]));
+      } else {
+        _peso = null;
+      }
+
+      if (json[&#39;Producto $i&#39;][&#39;Características&#39;][&#39;Volumen&#39;] != null) {
+        _volumen = TratarString.quitarUnidadesEspacios(
+            TratarString.sustituirComasPorPuntos(
+                json[&#39;Producto $i&#39;][&#39;Características&#39;][&#39;Volumen&#39;]));
+
+        _volumen = null;
+      }
+
+      if (json[&#39;Producto $i&#39;][&#39;Características&#39;][&#39;Marca&#39;] != null) {
+        _marca = json[&#39;Producto $i&#39;][&#39;Características&#39;][&#39;Marca&#39;];
+      } else {
+        _marca = null;
+      }
+    } else {
+      _peso = null;
+      _volumen = null;
+      _marca = null;
+    }
+
+    _categoria = json[&#39;Producto $i&#39;][&#39;Categoria&#39;];
+    if (TratarString.detectarSiTieneRutaHttp(json[&#39;Producto $i&#39;][&#39;Imagen&#39;])) {
+      _hrefProducto = json[&#39;Producto $i&#39;][&#39;Imagen&#39;];
+    } else {
+      _hrefProducto = &quot;assets&#47;image_producto_no_encontrada.jpg&quot;;
+    }
+  } else {
+    _nombreProducto = &quot;ProductoNoExisteJSON&quot;;
+    _precio = 0.00;
+    _hrefProducto = &quot;&quot;;
+  }
+  _unidades = 0;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">aplicacion_ac</a></li>
+  <li><a href="../../modelo_Producto/modelo_Producto-library.html">Producto</a></li>
+  <li><a href="../../modelo_Producto/Producto-class.html">Producto</a></li>
+  <li class="self-crumb">Producto.productoDesdeJson constructor</li>
+</ol>
+
+
+    <h5>Producto class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../modelo_Producto/Producto-class.html#constructors">Constructors</a></li>
+          <li><a href="../../modelo_Producto/Producto/Producto.html">Producto</a></li>
+          <li><a href="../../modelo_Producto/Producto/Producto.filtrado.html">filtrado</a></li>
+          <li><a href="../../modelo_Producto/Producto/Producto.inicializandoDesdeMapa.html">inicializandoDesdeMapa</a></li>
+          <li><a href="../../modelo_Producto/Producto/Producto.inicializandoDesdeMapaProductoFavorito.html">inicializandoDesdeMapaProductoFavorito</a></li>
+          <li><a href="../../modelo_Producto/Producto/Producto.inicializandoDesdeMapaProductoListaFavorita.html">inicializandoDesdeMapaProductoListaFavorita</a></li>
+          <li><a href="../../modelo_Producto/Producto/Producto.productoDesdeJson.html">productoDesdeJson</a></li>
+
+
+        <li class="section-title">
+          <a href="../../modelo_Producto/Producto-class.html#instance-properties">Properties</a>
+        </li>
+          <li><a href="../../modelo_Producto/Producto/categoria.html">categoria</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li><a href="../../modelo_Producto/Producto/hrefProducto.html">hrefProducto</a></li>
+          <li><a href="../../modelo_Producto/Producto/marca.html">marca</a></li>
+          <li><a href="../../modelo_Producto/Producto/nombreProducto.html">nombreProducto</a></li>
+          <li><a href="../../modelo_Producto/Producto/peso.html">peso</a></li>
+          <li><a href="../../modelo_Producto/Producto/precio.html">precio</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+          <li><a href="../../modelo_Producto/Producto/setUnidades.html">setUnidades</a></li>
+          <li><a href="../../modelo_Producto/Producto/unidades.html">unidades</a></li>
+          <li><a href="../../modelo_Producto/Producto/volumen.html">volumen</a></li>
+
+        <li class="section-title"><a href="../../modelo_Producto/Producto-class.html#instance-methods">Methods</a></li>
+          <li><a href="../../modelo_Producto/Producto/compareTo.html">compareTo</a></li>
+          <li><a href="../../modelo_Producto/Producto/copyWith.html">copyWith</a></li>
+          <li><a href="../../modelo_Producto/Producto/imagen.html">imagen</a></li>
+          <li><a href="../../modelo_Producto/Producto/nombre.html">nombre</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../../modelo_Producto/Producto/toList.html">toList</a></li>
+          <li><a href="../../modelo_Producto/Producto/toMap.html">toMap</a></li>
+          <li><a href="../../modelo_Producto/Producto/toMapIntroducirProductoFavoritoEnBD.html">toMapIntroducirProductoFavoritoEnBD</a></li>
+          <li><a href="../../modelo_Producto/Producto/toMapIntroducirProductoListaFavoritaEnBD.html">toMapIntroducirProductoListaFavoritaEnBD</a></li>
+          <li><a href="../../modelo_Producto/Producto/toMapIntroducirProductosEnBD.html">toMapIntroducirProductosEnBD</a></li>
+          <li><a href="../../modelo_Producto/Producto/toObjeto.html">toObjeto</a></li>
+          <li><a href="../../modelo_Producto/Producto/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../modelo_Producto/Producto-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    aplicacion_ac
+      0.1.3
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

@@ -66,6 +66,25 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>El método <a href="../../controlador_GestionDatosTablas/GestionDatos/filtrarPorPrecio.html">filtrarPorPrecio</a> es un método que filtra las listas de productos de las tiendas por precio y devuelve una lista de tiendas con el producto más caro de cada una.</p>
+<p>Crea una lista vacía llamada <code>resultado</code> que almacenará las tiendas filtradas.
+Crea dos instancias de la clase <code>Tienda</code>: <code>Carrefour</code> y <code>Ahorramas</code>, con nombres y rutas de imagen predefinidos.</p>
+<p>Itera sobre todas las tiendas obtenidas mediante el método <code>obtenerTiendas</code> de la clase <code>Tienda</code>.
+Dentro del bucle, itera sobre las listas de productos de cada tienda.
+Ordena cada lista de productos de forma descendente utilizando el método de comparación proporcionado ((b, a) =&gt; a.compareTo(b)).
+Si la lista no está vacía, verifica el nombre de la tienda:</p>
+<ul>
+<li>Si el nombre de la tienda es<code>carrefour</code>, agrega el primer producto de la lista a la lista de búsqueda de <code>Carrefour</code>.</li>
+<li>Si el nombre de la tienda es <code>ahorramas</code>, agrega el primer producto de la lista a la lista de búsqueda de <code>Ahorramas</code>.</li>
+</ul>
+<p>Agrega <code>Carrefour</code> a la lista <code>resultado</code>.
+Agrega <code>Ahorramas</code> a la lista <code>resultado</code>.</p>
+<p>Devuelve la lista <code>resultado</code> con las tiendas filtradas.</p>
+<p>Ejemplo de uso:
+dart /// List<tienda> tiendasFiltradas = filtrarPorPrecio(); /// for (Tienda t in tiendasFiltradas) { /// print("Tienda: ${t.nombre}"); /// print("Producto más caro: ${t.lista_busqueda<code>0</code>.nombreProducto}"); /// } /// /// Esto imprimirá el nombre de cada tienda y el producto más caro de cada una según el filtrado por precio.</tienda></p>
+<p>Nota: Asegúrate de tener las tiendas y listas de productos correctamente configuradas antes de llamar a este método.</p>
+</section>
 
 
     
@@ -73,11 +92,13 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static List&lt;Tienda&gt; filtrarPorPrecio() {
   List&lt;Tienda&gt; resultado = List.empty(growable: true);
-  Tienda Carrefour = Tienda.tabla(nombre: &quot;Carrefour&quot;, imagen: &quot;assets&#47;carrefour.jpg&quot;);
-  Tienda Ahorramas = Tienda.tabla(nombre: &quot;Ahorramas&quot;, imagen: &quot;assets&#47;ahorramas.jpg&quot;);
+  Tienda Carrefour =
+      Tienda.tabla(nombre: &quot;Carrefour&quot;, imagen: &quot;assets&#47;carrefour.jpg&quot;);
+  Tienda Ahorramas =
+      Tienda.tabla(nombre: &quot;Ahorramas&quot;, imagen: &quot;assets&#47;ahorramas.jpg&quot;);
   for (Tienda t in Tienda.obtenerTiendas) {
     for (List&lt;Producto&gt; lista in t.listas) {
-      lista.sort(((a, b) =&gt; a.compareTo(b)));
+      lista.sort(((b, a) =&gt; a.compareTo(b)));
       if (lista.isNotEmpty) {
         if (t.nombre == &quot;carrefour&quot;) {
           Carrefour.lista_busqueda.add(lista[0]);
@@ -90,7 +111,6 @@
   resultado.add(Carrefour);
 
   resultado.add(Ahorramas);
-
 
   return resultado;
 }</code></pre>
@@ -137,7 +157,6 @@
 
 
         <li class="section-title"><a href="../../controlador_GestionDatosTablas/GestionDatos-class.html#static-methods">Static methods</a></li>
-          <li><a href="../../controlador_GestionDatosTablas/GestionDatos/anadirElementosAarrayTienda.html">anadirElementosAarrayTienda</a></li>
           <li><a href="../../controlador_GestionDatosTablas/GestionDatos/devuelveTiendas.html">devuelveTiendas</a></li>
           <li><a href="../../controlador_GestionDatosTablas/GestionDatos/filtrarPorPrecio.html">filtrarPorPrecio</a></li>
 
@@ -153,7 +172,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

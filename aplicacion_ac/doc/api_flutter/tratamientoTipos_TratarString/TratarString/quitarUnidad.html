@@ -67,15 +67,18 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Elimina las unidades de medida de una frase.
+<code>frase</code>: La frase de la que se desean eliminar las unidades.
+Retorna la frase sin las unidades de medida.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static String quitarUnidad(String frase){
-    return frase.toLowerCase().replaceAll(RegExp(&#39;€|kg|v|litro|g|G&#39;), &quot;&quot;);
-
-
+return frase.toLowerCase().replaceAll(RegExp(&#39;€|kg|v|litro|g|G&#39;), &quot;&quot;);
 }</code></pre>
 </section>
 
@@ -139,7 +142,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

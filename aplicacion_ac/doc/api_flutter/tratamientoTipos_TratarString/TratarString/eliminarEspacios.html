@@ -67,15 +67,18 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Elimina los espacios en blanco de una frase.
+<code>frase</code>: La frase de la que se desean eliminar los espacios.
+Retorna la frase sin espacios en blanco.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static  String eliminarEspacios(String frase){
-    return frase.toLowerCase().replaceAll(RegExp(&#39;\\s&#39;), &quot;&quot;);
-
-
+  <pre class="language-dart"><code class="language-dart">static String eliminarEspacios(String frase){
+return frase.toLowerCase().replaceAll(RegExp(&#39;\s&#39;), &quot;&quot;);
 }</code></pre>
 </section>
 
@@ -139,7 +142,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

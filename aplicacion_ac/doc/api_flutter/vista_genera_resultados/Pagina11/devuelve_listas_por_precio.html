@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the devuelve_listas_por_precio method from the Pagina11 class, for the Dart programming language.">
+  <title>devuelve_listas_por_precio method - Pagina11 class - genera_resultados library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">aplicacion_ac</a></li>
+    <li><a href="../../vista_genera_resultados/vista_genera_resultados-library.html">genera_resultados</a></li>
+    <li><a href="../../vista_genera_resultados/Pagina11-class.html">Pagina11</a></li>
+    <li class="self-crumb">devuelve_listas_por_precio method</li>
+  </ol>
+  <div class="self-name">devuelve_listas_por_precio</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">devuelve_listas_por_precio</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span>&gt;</span></span>
+<span class="name ">devuelve_listas_por_precio</span>(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>El método <a href="../../vista_genera_resultados/Pagina11/devuelve_listas_por_precio.html">devuelve_listas_por_precio</a> devuelve una lista de listas de productos generadas en función del precio más barato.</p>
+<p>El método compara los productos de las tiendas "Carrefour" y "Ahorramas" y crea dos listas: "listaCarrefour" y "listaAhorramas".
+Luego, itera sobre los productos de una lista general y busca productos similares en las listas de cada tienda.
+Compara los precios y agrega el producto más barato a la lista correspondiente.
+Si los precios son iguales, elige la tienda con menos productos encontrados para equilibrar las cantidades.</p>
+<p>El método devuelve una lista que contiene las listas de productos de "Carrefour" y "Ahorramas" generadas.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">List&lt;List&lt;Producto&gt;&gt; devuelve_listas_por_precio() {
+  &#47;&#47; Objeto que nos devuelve que incluye las listas generadas en base al precio más barato
+  List&lt;List&lt;Producto&gt;&gt; listasGeneradas = List.empty(growable: true);
+  &#47;&#47; Contendrán los objetos más baratos despues de compararlos entre tiendas y se mostrarán pr pantalla como resultado
+  Lista listaCarrefour = Lista(&quot;Carrefour&quot;);
+  Lista listaAhorramas = Lista(&quot;Ahorramas&quot;);
+
+  List&lt;Producto&gt; _Carrefour = [];
+  List&lt;Producto&gt; _Ahorramas = [];
+
+  List&lt;Tienda&gt; tiendasListasFiltradasPrecio = GestionDatos.filtrarPorPrecio();
+
+  for (Tienda tienda in tiendasListasFiltradasPrecio) {
+    if (tienda.nombre.contains(&quot;Carrefour&quot;)) {
+      _Carrefour = tienda.lista_x_busqueda;
+    } else if (tienda.nombre.contains(&quot;Ahorramas&quot;)) {
+      _Ahorramas = tienda.lista_x_busqueda;
+    }
+  }
+
+  &#47;&#47; Por cada elemento de nuestra lista creada cargamos el nombre y unidades
+  Lista.getProductos().forEach((element) {
+    Producto productoAhor = Producto.filtrado();
+    Producto productoCarr = Producto.filtrado();
+
+    &#47;&#47; Representan los datos extraidos desde la tabla de Carrefour
+    for (Producto prod_car in _Carrefour) {
+      &#47;&#47; Si se encuentra un producto con nombre similar
+      if (prod_car.nombreProducto
+          .toLowerCase()
+          .contains(element.nombreProducto.toLowerCase())) {
+        productoCarr = prod_car.copyWith(
+            nombreProducto: prod_car.nombreProducto,
+            precio: prod_car.precio,
+            hrefProducto: prod_car.hrefProducto,
+            unidades: element.unidades);
+        break;
+      }
+    }
+
+    &#47;&#47; Representan los datos extraidos desde la tabla de Ahorramas
+    for (Producto prod_ahor in _Ahorramas) {
+      if (prod_ahor.nombreProducto
+          .toLowerCase()
+          .contains(element.nombreProducto.toLowerCase())) {
+        productoAhor = prod_ahor.copyWith(
+            nombreProducto: prod_ahor.nombreProducto,
+            precio: prod_ahor.precio,
+            hrefProducto: prod_ahor.hrefProducto,
+            unidades: element.unidades);
+        break;
+      }
+    }
+
+    &#47;&#47; Se comparan los precios y nos quedamos con el más barato añadiendolo a la lista correspondiente
+    &#47;&#47; Para despues mostrarla por pantalla
+
+    if ((productoCarr.precio == 0) &amp;&amp; (productoAhor.precio == 0)) {
+    } else if (productoCarr.precio == 0) {
+      listaAhorramas.aniadir_producto(productoAhor);
+    } else if (productoAhor.precio == 0) {
+      listaCarrefour.aniadir_producto(productoCarr);
+    } else if (productoAhor.precio &gt; productoCarr.precio) {
+      listaCarrefour.aniadir_producto(productoCarr);
+    } else if (productoAhor.precio &lt; productoCarr.precio) {
+      listaAhorramas.aniadir_producto(productoAhor);
+
+      &#47;&#47; Si se han encontrado en las dos tiendas y los precios son iguales
+      &#47;&#47; miramos cual de las dos tiendas tienen un numero inferior de productos
+      &#47;&#47; encontrados y lo añadimos a esa para equilibrar las cantidades
+    } else if (productoAhor.precio == productoCarr.precio) {
+      if (listaAhorramas.productos.length &gt; listaCarrefour.productos.length) {
+        listaCarrefour.aniadir_producto(productoCarr);
+      } else if (listaAhorramas.productos.length &lt;
+          listaCarrefour.productos.length) {
+        listaAhorramas.aniadir_producto(productoAhor);
+      } else if (listaAhorramas.productos.length ==
+          listaCarrefour.productos.length) {
+        listaCarrefour.aniadir_producto(productoCarr);
+      }
+    }
+  });
+
+  listasGeneradas
+      .addAll([listaCarrefour.productos, listaAhorramas.productos]);
+
+  &#47;&#47; Borrar contenido de la lista de productos buscados
+  Lista.getProductos().clear();
+
+  return listasGeneradas;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">aplicacion_ac</a></li>
+  <li><a href="../../vista_genera_resultados/vista_genera_resultados-library.html">genera_resultados</a></li>
+  <li><a href="../../vista_genera_resultados/Pagina11-class.html">Pagina11</a></li>
+  <li class="self-crumb">devuelve_listas_por_precio method</li>
+</ol>
+
+
+    <h5>Pagina11 class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../vista_genera_resultados/Pagina11-class.html#constructors">Constructors</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/Pagina11.html">Pagina11</a></li>
+
+
+        <li class="section-title inherited">
+          <a href="../../vista_genera_resultados/Pagina11-class.html#instance-properties">Properties</a>
+        </li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/context.html">context</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/mounted.html">mounted</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/widget.html">widget</a></li>
+
+        <li class="section-title"><a href="../../vista_genera_resultados/Pagina11-class.html#instance-methods">Methods</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin/activate.html">activate</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/build.html">build</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin/createTicker.html">createTicker</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/deactivate.html">deactivate</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin/debugFillProperties.html">debugFillProperties</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/devuelve_listas_por_precio.html">devuelve_listas_por_precio</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/didChangeDependencies.html">didChangeDependencies</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/didUpdateWidget.html">didUpdateWidget</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/dispose.html">dispose</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/generatePDF.html">generatePDF</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/getDownloadsPath.html">getDownloadsPath</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/initState.html">initState</a></li>
+          <li><a href="../../vista_genera_resultados/Pagina11/makePdf.html">makePdf</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/reassemble.html">reassemble</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/State/setState.html">setState</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/Diagnosticable/toDiagnosticsNode.html">toDiagnosticsNode</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/Diagnosticable/toString.html">toString</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/Diagnosticable/toStringShort.html">toStringShort</a></li>
+
+        <li class="section-title inherited"><a href="../../vista_genera_resultados/Pagina11-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    aplicacion_ac
+      0.1.3
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

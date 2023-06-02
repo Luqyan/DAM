@@ -59,18 +59,24 @@
     <section class="multi-line-signature">
       
       <span class="name ">TiendaJson</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-nombreTienda"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">nombreTienda</span>, </span></li>
+<li><span class="parameter" id="-param-imagen"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">imagen</span>, </span></li>
 <li><span class="parameter" id="-param-productos"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../modelo_Producto/Producto-class.html">Producto</a></span>&gt;</span></span> <span class="parameter-name">productos</span></span></li>
 </ol>)
     </section>
 
     
+<section class="desc markdown">
+  <p>El constructor <a href="../../modelo_TiendaJson/TiendaJson-class.html">TiendaJson</a> crea una instancia de la clase <a href="../../modelo_TiendaJson/TiendaJson-class.html">TiendaJson</a> con los valores proporcionados para cada atributo.</p>
+<p>Recibe como argumentos el nombre de la tienda, la imagen de la tienda y una lista de productos.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">TiendaJson(String nombreTienda, List&lt;Producto&gt; productos)
+  <pre class="language-dart"><code class="language-dart">TiendaJson(String nombreTienda, String imagen, List&lt;Producto&gt; productos)
     : _nombreTienda = nombreTienda,
+      _imagen = imagen,
       _productos = productos;</code></pre>
 </section>
 
@@ -110,6 +116,7 @@
         <li class="section-title"><a href="../../modelo_TiendaJson/TiendaJson-class.html#instance-methods">Methods</a></li>
           <li><a href="../../modelo_TiendaJson/TiendaJson/imprimir.html">imprimir</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../../modelo_TiendaJson/TiendaJson/toMapParaBD.html">toMapParaBD</a></li>
           <li><a href="../../modelo_TiendaJson/TiendaJson/toString.html">toString</a></li>
 
         <li class="section-title inherited"><a href="../../modelo_TiendaJson/TiendaJson-class.html#operators">Operators</a></li>
@@ -133,7 +140,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   

@@ -60,17 +60,29 @@
       
       <span class="name ">Item</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-expanded">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">expanded</span>, </span></li>
 <li><span class="parameter" id="-param-title"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span>, </span></li>
-<li><span class="parameter" id="-param-isExpanded"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isExpanded</span>}</span></li>
+<li><span class="parameter" id="-param-isExpanded"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isExpanded</span>}</span></li>
 </ol>)
     </section>
 
     
+<section class="desc markdown">
+  <p>Constructor de la clase <a href="../../vista_Item/Item-class.html">Item</a>.</p>
+<ul>
+<li>Parámetro <a href="../../vista_Item/Item/expanded.html">expanded</a>: El contenido expandido del elemento.</li>
+<li>Parámetro <a href="../../vista_Item/Item/title.html">title</a>: El título del elemento.</li>
+<li>Parámetro <a href="../../vista_Item/Item/isExpanded.html">isExpanded</a>: Indica si el elemento está expandido. (Opcional)</li>
+</ul>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Item({required this.expanded, required this.title,required this.isExpanded});</code></pre>
+  <pre class="language-dart"><code class="language-dart">Item({
+  required this.expanded,
+  required this.title,
+  this.isExpanded,
+});</code></pre>
 </section>
 
 
@@ -129,7 +141,7 @@
 <footer>
   <span class="no-break">
     aplicacion_ac
-      0.1.1
+      0.1.3
   </span>
 
   
