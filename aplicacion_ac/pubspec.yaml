@@ -14,14 +14,12 @@ dependencies:
   path: ^1.8.0
   sqflite: ^2.0.0+3
   
-  
+  document_file_save_plus: ^2.0.0
   numberpicker: ^2.1.2
   permission_handler: ^10.2.0
-  path_provider: ^2.0.14
-  lecle_downloads_path_provider: ^0.0.2+2
-  downloads_path_provider_28: ^0.1.2
+  path_provider: ^2.0.5
   pubspec_generator: ^3.0.1
-  build_runner: ^2.0.0
+  build_runner: ^2.4.3
 
 dev_dependencies:
   flutter_test:

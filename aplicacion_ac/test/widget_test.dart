@@ -11,7 +11,7 @@ import 'package:aplicacion_ac/modelo/Producto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:aplicacion_ac/inicio.dart';
+import 'package:aplicacion_ac/main.dart';
 import 'package:shelf/shelf.dart' as shelf;
 
 Future<void> main() async {

@@ -73,7 +73,7 @@ const String repository = r'';
 const String issueTracker = r'';
 
 /// Homepage [homepage]
-const String homepage = r'';
+const String homepage = r'inicio';
 
 /// Documentation [documentation]
 const String documentation = r'';

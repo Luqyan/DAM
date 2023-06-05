@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../inicio.dart';
+import '../main.dart';
 import 'buscador.dart';
 import 'dart:async';
 

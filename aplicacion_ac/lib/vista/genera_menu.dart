@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'productos_favoritos.dart';
 import 'listas_favoritas.dart';
 import 'vista_resultado.dart';
-import '../inicio.dart';
+import 'package:aplicacion_ac/main.dart';
 import 'buscador.dart';
 /// Clase que representa el estado del menú.
 class MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   static const _menuOpciones = [
     'Listas favoritas',
     'Productos favoritos',
-    'Productos lista',
-    'Selector de productos',
-    'Configuración cuenta',
     'Mi cesta',
+    'Selector de productos',
+    
   ];
 
   // Creamos variables que contienen los valores definidos

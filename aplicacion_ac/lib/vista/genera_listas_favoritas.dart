@@ -79,9 +79,9 @@ class Pagina3 extends State<listas_favoritas>
   /// Retorna un [AppBar] como una instancia de [PreferredSizeWidget].
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      leading: const Icon(
-        Icons.shopping_basket_sharp,
-        color: Color.fromARGB(255, 3, 122, 44),
+      leading: const Image(
+        image: AssetImage('assets/logo4.png'),
+        filterQuality: FilterQuality.high,
       ),
       title: const Text(
         'Listas favoritas',
@@ -130,9 +130,21 @@ class Pagina3 extends State<listas_favoritas>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Container(
+            margin: EdgeInsets.only(bottom: 30.0),
+            decoration: const BoxDecoration(boxShadow: [
+              BoxShadow(
+                  color: Colors.grey, spreadRadius: -5.0, blurRadius: 40.0),
+            ]),
+            child: const Text(
+              "tip: Pulsa sobre cualquiera de las listas para ver su contenido.",
+              style: TextStyle(fontSize: 18.0, color: Colors.black87),
+              textAlign: TextAlign.left,
+            ),
+          ),
           Expanded(
             child: ListView(
-              //shrinkWrap: true,
+              shrinkWrap: true,
               children: lista,
             ),
           ),
@@ -206,58 +218,12 @@ class Pagina3 extends State<listas_favoritas>
     }
 
     return GestureDetector(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text(
-                li.nombreLista,
-                textAlign: TextAlign.center,
-              ),
-              content: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: nombresProductos
-                      .map((nombre) => RichText(
-                                  text: TextSpan(
-                                      text: '\u2022 ',
-                                      style: const TextStyle(
-                                          fontSize: 21,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                      children: [
-                                    TextSpan(
-                                        text: nombre,
-                                        style: const TextStyle(
-                                            fontSize: 21,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal))
-                                  ]))
-
-                          // Text(nombre, style: TextStyle(fontSize: 21),)).toList(),
-                          )
-                      .toList(),
-                ),
-              ),
-              actions: [
-                TextButton(
-                  child: const Text("Volver"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      },
       child: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color.fromARGB(255, 220, 230, 247),
-            width: 20.0,
+            width: 10.0,
           ),
           boxShadow: [
             BoxShadow(
@@ -273,27 +239,75 @@ class Pagina3 extends State<listas_favoritas>
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: ListTile(
-            visualDensity: const VisualDensity(vertical: 3),
-            minLeadingWidth: 50.0,
-            dense: false,
-            onTap: () {},
-            leading: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minWidth: 70.0,
-                minHeight: 70.0,
-                maxWidth: 200.0,
-                maxHeight: 200.0,
+          child: Center(
+            child: ListTile(
+              visualDensity: const VisualDensity(vertical: 3),
+              minLeadingWidth: 50.0,
+              dense: false,
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text(
+                        li.nombreLista,
+                        textAlign: TextAlign.center,
+                      ),
+                      content: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: nombresProductos
+                              .map((nombre) => RichText(
+                                          text: TextSpan(
+                                              text: '\u2022 ',
+                                              style: const TextStyle(
+                                                  fontSize: 21,
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                              children: [
+                                            TextSpan(
+                                                text: nombre,
+                                                style: const TextStyle(
+                                                    fontSize: 21,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.normal))
+                                          ]))
+
+                                  // Text(nombre, style: TextStyle(fontSize: 21),)).toList(),
+                                  )
+                              .toList(),
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                          child: const Text("Volver"),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              leading: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 70.0,
+                  minHeight: 70.0,
+                  maxWidth: 200.0,
+                  maxHeight: 200.0,
+                ),
+                child: Image.asset(
+                  'assets/logo_cart.png',
+                  width: 80.0,
+                  height: 80.0,
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.fill,
+                ),
               ),
-              child: Image.asset(
-                'assets/logo_cart.png',
-                width: 80.0,
-                height: 80.0,
-                alignment: Alignment.centerLeft,
-                fit: BoxFit.fill,
-              ),
+              title: Text(li.nombreLista, style: const TextStyle(fontSize: 20)),
             ),
-            title: Text(li.nombreLista, style: const TextStyle(fontSize: 20)),
           ),
         ),
       ),

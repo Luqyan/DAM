@@ -1,4 +1,4 @@
-import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
+import 'package:document_file_save_plus/document_file_save_plus.dart';
 import 'package:aplicacion_ac/controlador/GestionDatosTablas.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:aplicacion_ac/vista/vista_resultado.dart';
@@ -132,6 +132,42 @@ class Pagina11 extends State<genera_resultado>
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             // mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const Text(
+                'Pulse sobre el icono para descargar en PDF.',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12.0,
+                ),
+              ),
+              SizedBox(
+                height: 50.0,
+                width: 120.0,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.file_download,
+                    size: 40.0,
+                    color: Colors.blueGrey,
+                  ),
+                  tooltip: 'PDF descargado en la carpeta "Download" local.',
+                  onPressed: () {
+                    generatePDF(listas);
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => Dialog(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Text(
+                                      'PDF descargado en la carpeta "Download" local.', textAlign: TextAlign.center,),
+                                ),
+                                    TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Salir"))
+                              ],
+                            )));
+                  },
+                ),
+              ),
               _montar_contenedor(listas),
               const SizedBox(
                 height: 20,
@@ -153,7 +189,7 @@ class Pagina11 extends State<genera_resultado>
           color: const Color.fromRGBO(239, 237, 254, 0.898)),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: 100,
+        height: 80,
         child: ListTile(
           visualDensity: const VisualDensity(vertical: 3),
           minLeadingWidth: 70.0,
@@ -174,30 +210,14 @@ class Pagina11 extends State<genera_resultado>
           ),
           title: const Text(
             "Lista de compra",
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
             "Total productos:  ${_numero_prod}",
-            style: const TextStyle(fontSize: 11),
-          ),
-          trailing: Tooltip(
-            message: "Guardar lista.",
-            child: OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(100, 20, 80, 1),
-                  textStyle: const TextStyle(fontSize: 10.0)),
-
-              onPressed: () {
-                generatePDF(listas);
-                // openPDF();
-              },
-              // MOSTRAMOS CONFIRMACIÓN DE QUE SE HA GUARDADO ..........................
-              label: const Text("Descarga PDF"),
-
-              icon: const Icon(
-                Icons.picture_as_pdf,
-                size: 30.0,
-              ),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 20,
             ),
           ),
         ),
@@ -402,61 +422,19 @@ class Pagina11 extends State<genera_resultado>
     );
   }
 
-  Future<String> getDownloadsPath() async {
-    var appDocumentsDirectory = await getApplicationDocumentsDirectory();
-    var downloadsPath = '${appDocumentsDirectory.path}/Downloads';
-    return downloadsPath;
-    // Realiza las operaciones necesarias con el directorio de descargas...
-  }
+//////////////////////////////////////USANDO LA LIBRERIA DOCUMENT_FILE_SAVE_PLUS/////////////////////////////////////
 
-  /// Genera un archivo PDF a partir de una lista de listas de productos y lo guarda en el directorio de descargas del dispositivo.
   Future<void> generatePDF(List<List<Producto>> lista) async {
-    // Generar el contenido del PDF
     final Uint8List pdfBytes = await makePdf(lista);
 
-    // Obtener el directorio de descargas
-    String? downloadsDirectoryPath =
-        (await DownloadsPath.downloadsDirectory())?.path;
-
-
-    final directory = await getExternalStorageDirectory();
-    final downloadsPath = directory!.path + '/Download';
-
-
-    String dwnld = await getDownloadsPath();
-   
-    // Construir la ruta y el nombre de archivo del PDF
-    final filePath = path.join(downloadsPath as String, 'lista_compra.pdf');
-    final file = File(filePath);
-
-    // Verificar y solicitar permisos de almacenamiento
-    var status = await Permission.storage.status;
-    if (!status.isGranted) {
-      status = await Permission.storage.request();
-      if (!status.isGranted) {
-        return;
-      }
+    final status = await Permission.storage.request();
+    if (status.isGranted) {
+      DocumentFileSavePlus()
+          .saveFile(pdfBytes, 'lista_compra.pdf', "application/pdf");
+    } else {
+      return;
     }
-
-    // Escribir el archivo PDF
-    await file.writeAsBytes(pdfBytes);
   }
-
-// Future<void> generatePDF(List<List<Producto>> lista) async {
-//     print("Pasamos a generar el pdf...");
-
-//     final pdf = pw.Document();
-//     final Uint8List pdfBytes = await makePdf(lista);
-
-//     final downloadsDirectory = await DownloadsPathProvider.downloadsDirectory;
-
-//     final directory = await getApplicationDocumentsDirectory();
-//     final filePath = path.join(downloadsDirectory!.path, 'lista_compra.pdf');
-//     final file = File(filePath);
-//     await file.writeAsBytes(await pdfBytes);
-
-//     print('Archivo PDF generado en: $filePath');
-//   }
 
   /// Genera un documento PDF a partir de una lista de listas de productos.
   Future<Uint8List> makePdf(List<List<Producto>> lista) async {
@@ -477,8 +455,7 @@ class Pagina11 extends State<genera_resultado>
             List<pw.Widget> cards = [];
 
             cards.add(pw.Text("Tienda: ${nombresTiendas[i]}",
-                style: pw.TextStyle(
-                  fontWeight: pw.FontWeight.bold,
+                style: const pw.TextStyle(
                   fontSize: 28,
                 )));
             cards.add(pw.Text(
@@ -491,21 +468,21 @@ class Pagina11 extends State<genera_resultado>
                 textAlign: pw.TextAlign.justify,
                 style: const pw.TextStyle(fontSize: 18),
               ));
+              cards.add(pw.RichText(text: pw.TextSpan(children: [pw.TextSpan(text: "Precio: ${producto.precio.toStringAsFixed(2)}",
+                style: const pw.TextStyle(fontSize: 18),),
+                pw.TextSpan(text: 'Eu')]
+                
+              )));
               cards.add(pw.Text(
-                "Precio: ${producto.precio.toStringAsFixed(2)}",
-                style: const pw.TextStyle(fontSize: 18),
-              ));
-              cards.add(pw.Text(
-                "Unidades: ${producto.unidades.toStringAsFixed(2)}",
+                "Unidades: ${producto.unidades.toStringAsFixed(0)}",
                 style: const pw.TextStyle(fontSize: 18),
               ));
               cards.add(pw.Divider());
             }
 
-            cards.add(pw.Text("TOTAL: ${total.toStringAsFixed(2)}€",
-                style: pw.TextStyle(
+            cards.add(pw.Text("TOTAL: ${total.toStringAsFixed(2)} Eu",
+                style: const pw.TextStyle(
                   fontSize: 18,
-                  fontWeight: pw.FontWeight.bold,
                 )));
 
             return pw.Container(
@@ -518,28 +495,6 @@ class Pagina11 extends State<genera_resultado>
 
     return pdf.save();
   }
-
-// Metodo para visualizar el PDF por pantalla en una ventana aparte
-// Future<void> openPDF() async {
-//   final directory = await getApplicationDocumentsDirectory();
-//   final filePath = path.join(directory.path, 'lista_compra.pdf');
-//   final file = File(filePath);
-
-//   // Verificar si el archivo existe antes de intentar abrirlo
-//   if (await file.exists()) {
-//     Navigator.push(
-//       context,
-//       MaterialPageRoute(
-//         builder: (context) => PDFView(
-//           filePath: filePath,
-//           enableSwipe: true,
-//         ),
-//       ),
-//     );
-//   } else {
-//     print('El archivo PDF no existe');
-//   }
-// }
 
   /// METODO QUE DEVUELVE UN BUILDER ANIMADO
   Widget _buildDrawer() {
